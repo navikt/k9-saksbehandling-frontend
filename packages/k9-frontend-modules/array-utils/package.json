@@ -1,0 +1,15 @@
+{
+    "name": "@k9-saksbehandling-frontend/array-utils",
+    "version": "1.0.0",
+    "description": "A collection of array utils",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "scripts": {
+        "build": "rollup -c rollup.config.mjs",
+        "clean": "rm -rf ./dist ./node_modules",
+        "test": "jest --passWithNoTests",
+        "test-watch": "jest --watch"
+    },
+    "author": "NAV",
+    "license": "MIT"
+}

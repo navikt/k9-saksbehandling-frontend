@@ -1,0 +1,23 @@
+{
+    "name": "@k9-saksbehandling-frontend/bem-utils",
+    "version": "1.0.0",
+    "description": "A collection of bem utils",
+    "author": "NAV",
+    "license": "MIT",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "files": [
+        "dist",
+        "index.ts",
+        "package.json"
+    ],
+    "scripts": {
+        "build": "rollup -c rollup.config.mjs",
+        "clean": "rm -rf ./dist ./node_modules",
+        "test": "jest --passWithNoTests",
+        "test-watch": "jest --watch"
+    },
+    "bugs": {
+        "url": "https://github.com/navikt/not-a-platform/issues"
+    }
+}

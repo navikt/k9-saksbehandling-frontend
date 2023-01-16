@@ -1,0 +1,13 @@
+0 silly argv {
+0 silly argv   _: [ 'add' ],
+0 silly argv   globs: [],
+0 silly argv   lernaVersion: '6.0.3',
+0 silly argv   '$0': '/usr/local/bin/lerna',
+0 silly argv   pkg: 'k9-array-utils'
+0 silly argv }
+1 notice cli v6.0.3
+2 verbose rootPath /Users/hallvardandreasstark/dev/k9-frontend-saksbehandling
+3 error HttpErrorGeneral: 404 Not Found - GET https://registry.npmjs.org/k9-array-utils - Not found
+3 error     at /Users/hallvardandreasstark/dev/k9-frontend-saksbehandling/node_modules/npm-registry-fetch/lib/check-response.js:95:15
+3 error     at processTicksAndRejections (node:internal/process/task_queues:96:5)
+3 error     at async RegistryFetcher.packument (/Users/hallvardandreasstark/dev/k9-frontend-saksbehandling/node_modules/pacote/lib/registry.js:92:19)

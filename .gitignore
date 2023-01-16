@@ -1,0 +1,11 @@
+.cache
+.idea
+dist
+!dist/mockServiceWorker.js
+node_modules
+.DS_Store
+.eslintcache
+packages/**/build/
+packages/**/dist/
+yarn-error.log
+lerna-debug.log

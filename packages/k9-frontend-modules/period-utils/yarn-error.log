@@ -1,0 +1,66 @@
+Arguments: 
+  /Users/hallvardandreasstark/.nvm/versions/node/v16.15.1/bin/node /usr/local/Cellar/yarn/1.22.18/libexec/bin/yarn.js install --mutex network:42424 --non-interactive --no-lockfile --no-lockfile
+
+PATH: 
+  /var/folders/4j/r95023rs727067rq2x4nb6c40000gn/T/yarn--1655108341077-0.8627259566162133:/Users/hallvardandreasstark/dev/k9-frontend-modules/node_modules/.bin:/Users/hallvardandreasstark/.config/yarn/link/node_modules/.bin:/Users/hallvardandreasstark/.nvm/versions/node/v16.15.1/libexec/lib/node_modules/npm/bin/node-gyp-bin:/Users/hallvardandreasstark/.nvm/versions/node/v16.15.1/lib/node_modules/npm/bin/node-gyp-bin:/Users/hallvardandreasstark/.nvm/versions/node/v16.15.1/bin/node_modules/npm/bin/node-gyp-bin:/Users/hallvardandreasstark/.nvm/versions/node/v16.15.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/Applications/Privileges.app/Contents/Resources:/Users/hallvardandreasstark/.nvm/versions/node/v16.15.1/bin
+
+Yarn version: 
+  1.22.18
+
+Node version: 
+  16.15.1
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/@navikt%2fk9-date-utils: Not found
+      at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.22.18/libexec/lib/cli.js:66138:18)
+      at Request.self.callback (/usr/local/Cellar/yarn/1.22.18/libexec/lib/cli.js:140883:22)
+      at Request.emit (node:events:527:28)
+      at Request.<anonymous> (/usr/local/Cellar/yarn/1.22.18/libexec/lib/cli.js:141855:10)
+      at Request.emit (node:events:527:28)
+      at IncomingMessage.<anonymous> (/usr/local/Cellar/yarn/1.22.18/libexec/lib/cli.js:141777:12)
+      at Object.onceWrapper (node:events:641:28)
+      at IncomingMessage.emit (node:events:539:35)
+      at endReadableNT (node:internal/streams/readable:1345:12)
+      at processTicksAndRejections (node:internal/process/task_queues:83:21)
+
+npm manifest: 
+  {
+  	"name": "@navikt/k9-period-utils",
+  	"author": "NAV",
+  	"license": "MIT",
+  	"version": "0.0.11",
+  	"description": "A collection of period utils",
+  	"main": "./dist/index.js",
+  	"types": "./dist/index.d.ts",
+  	"files": [
+  		"dist",
+  		"index.ts",
+  		"package.json"
+  	],
+  	"dependencies": {
+  		"@navikt/k9-date-utils": "^0.0.7"
+  	},
+  	"devDependencies": {
+  		"dayjs": "^1.11.3",
+  		"jest": "^28.1.1"
+  	},
+  	"peerDependencies": {
+  		"dayjs": "1.11.3"
+  	},
+  	"publishConfig": {
+  		"registry": "https://npm.pkg.github.com"
+  	},
+  	"repository": {
+  		"type": "git",
+  		"url": "https://github.com/navikt/k9-frontend-modules"
+  	}
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

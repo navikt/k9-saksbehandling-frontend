@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "jsx": "react",
+        "sourceMap": true,
+        "declaration": true,
+        "skipLibCheck": true,
+        "target": "esnext",
+        "typeRoots": ["./node_modules/@types"],
+        "esModuleInterop": true,
+        "allowJs": true,
+        "module": "es2020",
+        "moduleResolution": "node"
+    },
+    "include": ["packages/**/*", "dist", "jest-config/**/*"],
+    "exclude": ["node_modules", "build", "**/*.test.ts", "**/*.spec.ts", "**/*.test.tsx", "dist"]
+}
