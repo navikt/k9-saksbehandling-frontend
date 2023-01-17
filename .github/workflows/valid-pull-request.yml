@@ -10,7 +10,7 @@ jobs:
         runs-on: ubuntu-latest
         defaults:
             run:
-                working-directory: packages/medisinsk-vilkår
+                working-directory: ./packages/medisinsk-vilkår
         steps:
             - name: Hente kode
               uses: actions/checkout@v3
@@ -29,10 +29,13 @@ jobs:
                   NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
             - name: Kjøre linter
               run: yarn lint
+              working-directory: ./packages/medisinsk-vilkår
             - name: Valider typescript
               run: yarn ts-check
+              working-directory: ./packages/medisinsk-vilkår
             - name: Kjøre enhetstester
               run: yarn test
+              working-directory: ./packages/medisinsk-vilkår
             - name: Laster opp screenshots dersom de visuelle regresjonstestene feiler
               uses: actions/upload-artifact@v3
               if: failure()
@@ -55,4 +58,5 @@ jobs:
                   name: cypress-screenshots
                   path: cypress/screenshots
             - name: Kjøre bygg
-              run: npm run build
+              run: yarn build
+              working-directory: ./packages/medisinsk-vilkår
