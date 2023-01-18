@@ -1,4 +1,4 @@
-import { addYearsToDate } from '@k9-saksbehandling-frontend/date-utils';
+import { addYearsToDate } from '@navikt/k9-date-utils';
 import React from 'react';
 import LinkRel from '../../../constants/LinkRel';
 import InnleggelsesperiodeVurdering from '../../../types/InnleggelsesperiodeVurdering';

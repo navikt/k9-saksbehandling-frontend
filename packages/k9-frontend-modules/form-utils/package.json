@@ -1,6 +1,6 @@
 {
-    "name": "@k9-saksbehandling-frontend/form-utils",
-    "version": "1.0.0",
+    "name": "@navikt/k9-form-utils",
+    "version": "1.4.1",
     "scripts": {
         "build": "rollup -c rollup.config.mjs",
         "clean": "rm -rf ./dist ./node_modules",
@@ -57,8 +57,8 @@
         "react-popper": "2.3.0"
     },
     "dependencies": {
-        "@k9-saksbehandling-frontend/bem-utils": "1.0.0",
-        "@k9-saksbehandling-frontend/period-utils": "1.0.0"
+        "@navikt/k9-bem-utils": "1.0.2",
+        "@navikt/k9-period-utils": "1.0.0"
     },
     "exports": {
         "require": "./dist/index.cjs.js",

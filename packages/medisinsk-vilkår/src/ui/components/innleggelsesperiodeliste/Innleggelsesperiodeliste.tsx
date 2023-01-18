@@ -1,5 +1,5 @@
 import React from 'react';
-import { Period, sortPeriodsByFomDate } from '@k9-saksbehandling-frontend/period-utils';
+import { Period, sortPeriodsByFomDate } from '@navikt/k9-period-utils';
 import styles from './innleggelsesperiodeliste.css';
 
 interface InnleggelsesperiodelisteProps {

@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import * as httpUtils from '@k9-saksbehandling-frontend/http-utils';
+import * as httpUtils from '@navikt/k9-http-utils';
 import { render, fireEvent, waitFor, screen } from '@testing-library/react';
 import VilkårsvurderingAvTilsynOgPleie from '../VilkårsvurderingAvTilsynOgPleie';
 import ContainerContext from '../../../context/ContainerContext';

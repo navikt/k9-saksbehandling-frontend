@@ -1,4 +1,4 @@
-import { prettifyDateString } from '@k9-saksbehandling-frontend/date-utils';
+import { prettifyDateString } from '@navikt/k9-date-utils';
 import { DocumentIcon } from '@navikt/ft-plattform-komponenter';
 import Lenke from 'nav-frontend-lenker';
 import React from 'react';

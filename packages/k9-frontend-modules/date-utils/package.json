@@ -1,5 +1,5 @@
 {
-    "name": "@k9-saksbehandling-frontend/date-utils",
+    "name": "@navikt/k9-date-utils",
     "version": "1.0.0",
     "description": "A collection of period utils",
     "main": "./dist/index.js",

@@ -1,5 +1,5 @@
 {
-    "name": "@k9-saksbehandling-frontend/http-utils",
+    "name": "@navikt/k9-http-utils",
     "author": "NAV",
     "license": "MIT",
     "version": "1.0.0",

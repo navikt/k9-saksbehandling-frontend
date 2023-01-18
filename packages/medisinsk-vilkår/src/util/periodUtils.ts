@@ -1,5 +1,5 @@
-import { Period, sortPeriodsByFomDate } from '@k9-saksbehandling-frontend/period-utils';
-import { initializeDate, isSameOrBefore } from '@k9-saksbehandling-frontend/date-utils';
+import { Period, sortPeriodsByFomDate } from '@navikt/k9-period-utils';
+import { initializeDate, isSameOrBefore } from '@navikt/k9-date-utils';
 
 const checkIfPeriodsAreEdgeToEdge = (period, otherPeriod) => {
     const dayAfterPeriod = initializeDate(period.tom).add(1, 'day');

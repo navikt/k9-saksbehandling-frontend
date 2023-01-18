@@ -1,6 +1,6 @@
 {
-    "name": "@k9-saksbehandling-frontend/bem-utils",
-    "version": "1.0.0",
+    "name": "@navikt/k9-bem-utils",
+    "version": "1.0.2",
     "description": "A collection of bem utils",
     "author": "NAV",
     "license": "MIT",

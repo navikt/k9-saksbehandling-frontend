@@ -1,5 +1,5 @@
 import React from 'react';
-import { Period, getHumanReadablePeriodString } from '@k9-saksbehandling-frontend/period-utils';
+import { Period, getHumanReadablePeriodString } from '@navikt/k9-period-utils';
 import Alertstripe from 'nav-frontend-alertstriper';
 
 interface VurderBehovForPerioderMeldingProps {

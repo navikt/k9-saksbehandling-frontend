@@ -1,5 +1,5 @@
 {
-    "name": "@k9-saksbehandling-frontend/array-utils",
+    "name": "@navikt/k9-array-utils",
     "version": "1.0.0",
     "description": "A collection of array utils",
     "main": "./dist/index.js",

@@ -1,6 +1,6 @@
 import Period from '../types/Period';
 import sortPeriodsByFomDate from './sortPeriodsByFomDate';
-import { initializeDate } from '@k9-saksbehandling-frontend/date-utils';
+import { initializeDate } from '@navikt/k9-date-utils';
 
 const checkIfPeriodsAreEdgeToEdge = (period, otherPeriod) => {
     const dayAfterPeriod = initializeDate(period.tom).add(1, 'day');
