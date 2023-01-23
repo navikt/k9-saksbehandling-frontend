@@ -3,7 +3,7 @@ on:
     pull_request:
         types: [opened, synchronize]
         paths:
-            - 'packages/medisinsk-vilkår/**'
+            - 'packages/medisinsk-vilkår/**/*'
 jobs:
     valid-pull-request:
         name: Validere pull request
@@ -28,26 +28,24 @@ jobs:
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
             - name: Kjøre linter
-              run: yarn lint
-              working-directory: ./packages/medisinsk-vilkår
+              run: lerna run lint --scope medisinsk-vilkar-frontend
             - name: Valider typescript
-              run: yarn ts-check
-              working-directory: ./packages/medisinsk-vilkår
+              run: lerna run ts-check --scope medisinsk-vilkar-frontend
             - name: Kjøre enhetstester
-              run: yarn test
-              working-directory: ./packages/medisinsk-vilkår
+              run: lerna run test --scope medisinsk-vilkar-frontend
             - name: Laster opp screenshots dersom de visuelle regresjonstestene feiler
               uses: actions/upload-artifact@v3
               if: failure()
               with:
                   name: visual-regression-screenshots
                   path: src/__tests__/__image_snapshots__/__diff_output__/
+                  working-directory: ./packages/medisinsk-vilkår
             - name: Kjør E2E-tester
               uses: cypress-io/github-action@v4
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
               with:
-                  start: yarn start:e2e
+                  start: lerna run start:e2e --scope medisinsk-vilkar-frontend
                   wait-on: 'http://localhost:8081'
                   wait-on-timeout: 60
                   headless: true
@@ -57,6 +55,6 @@ jobs:
               with:
                   name: cypress-screenshots
                   path: cypress/screenshots
+                  working-directory: ./packages/medisinsk-vilkår
             - name: Kjøre bygg
-              run: yarn build
-              working-directory: ./packages/medisinsk-vilkår
+              run: lerna run build --scope medisinsk-vilkar-frontend
