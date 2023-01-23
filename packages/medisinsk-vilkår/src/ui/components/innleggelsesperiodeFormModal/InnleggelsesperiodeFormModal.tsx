@@ -1,6 +1,6 @@
-import { Period } from '@k9-saksbehandling-frontend/period-utils';
+import { Period } from '@navikt/k9-period-utils';
 import { Box, Form, Margin } from '@navikt/ft-plattform-komponenter';
-import { PeriodpickerList } from '@k9-saksbehandling-frontend/form-utils';
+import { PeriodpickerList } from '@navikt/k9-form-utils';
 import { AlertStripeAdvarsel } from 'nav-frontend-alertstriper';
 import { Hovedknapp, Knapp } from 'nav-frontend-knapper';
 import Modal from 'nav-frontend-modal';

@@ -1,4 +1,4 @@
-import * as dateUtils from '@k9-saksbehandling-frontend/date-utils';
+import * as dateUtils from '@navikt/k9-date-utils';
 const { initializeDate, prettifyDateString, isSameOrBefore } = dateUtils;
 
 class Period {

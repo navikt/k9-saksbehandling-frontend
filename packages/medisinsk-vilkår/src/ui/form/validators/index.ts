@@ -1,5 +1,5 @@
-import { Period } from '@k9-saksbehandling-frontend/period-utils';
-import { initializeDate, dateConstants } from '@k9-saksbehandling-frontend/date-utils';
+import { Period } from '@navikt/k9-period-utils';
+import { initializeDate, dateConstants } from '@navikt/k9-date-utils';
 import { finnHullIPerioder } from '../../../util/periodUtils';
 
 type InputValue = string | number;

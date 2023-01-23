@@ -1,7 +1,7 @@
 import { ErrorMessage } from '@navikt/ds-react';
 import { Box, Margin } from '@navikt/ft-plattform-komponenter';
 import '@navikt/ft-plattform-komponenter/dist/style.css';
-import { Period } from '@k9-saksbehandling-frontend/period-utils';
+import { Period } from '@navikt/k9-period-utils';
 import { CalendarPlacement, DatepickerLimitations } from 'nav-datovelger';
 import React from 'react';
 import { Controller, useFieldArray, useFormContext } from 'react-hook-form';

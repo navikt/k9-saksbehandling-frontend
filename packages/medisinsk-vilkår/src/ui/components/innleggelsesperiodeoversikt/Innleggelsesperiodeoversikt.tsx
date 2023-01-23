@@ -1,6 +1,6 @@
-import { get } from '@k9-saksbehandling-frontend/http-utils';
+import { get } from '@navikt/k9-http-utils';
 import { PageError, Box, Margin, LinkButton, TitleWithUnderline } from '@navikt/ft-plattform-komponenter';
-import { Period } from '@k9-saksbehandling-frontend/period-utils';
+import { Period } from '@navikt/k9-period-utils';
 import Modal from 'nav-frontend-modal';
 import Spinner from 'nav-frontend-spinner';
 import axios from 'axios';

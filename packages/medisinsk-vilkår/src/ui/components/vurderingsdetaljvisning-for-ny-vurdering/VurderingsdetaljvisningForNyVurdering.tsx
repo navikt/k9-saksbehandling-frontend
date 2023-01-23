@@ -1,5 +1,5 @@
-import { addYearsToDate } from '@k9-saksbehandling-frontend/date-utils';
-import { Period } from '@k9-saksbehandling-frontend/period-utils';
+import { addYearsToDate } from '@navikt/k9-date-utils';
+import { Period } from '@navikt/k9-period-utils';
 import React from 'react';
 import LinkRel from '../../../constants/LinkRel';
 import Vurderingsoversikt from '../../../types/Vurderingsoversikt';

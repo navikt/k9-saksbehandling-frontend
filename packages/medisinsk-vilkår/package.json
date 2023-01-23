@@ -82,6 +82,11 @@
         "webpack-merge": "^5.8.0"
     },
     "dependencies": {
+        "@navikt/k9-array-utils": "1.0.1",
+        "@navikt/k9-date-utils": "0.0.10",
+        "@navikt/k9-form-utils": "1.4.0",
+        "@navikt/k9-http-utils": "0.0.3",
+        "@navikt/k9-period-utils": "0.0.12",
         "@navikt/ds-css": "^1.3.5",
         "@navikt/ds-icons": "^1.3.5",
         "@navikt/ds-react": "^1.3.5",
@@ -97,11 +102,6 @@
         "cors": "^2.8.5",
         "dayjs": "^1.11.7",
         "express": "^4.18.1",
-        "@k9-saksbehandling-frontend/array-utils": "1.0.0",
-        "@k9-saksbehandling-frontend/date-utils": "1.0.0",
-        "@k9-saksbehandling-frontend/form-utils": "1.0.0",
-        "@k9-saksbehandling-frontend/http-utils": "1.0.0",
-        "@k9-saksbehandling-frontend/period-utils": "1.0.0",
         "lodash.throttle": "^4.1.1",
         "msw": "0.47.4",
         "nav-datovelger": "^12.6.0",

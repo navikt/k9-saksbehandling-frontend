@@ -1,4 +1,4 @@
-import { get } from '@k9-saksbehandling-frontend/http-utils';
+import { get } from '@navikt/k9-http-utils';
 import { PageError } from '@navikt/ft-plattform-komponenter';
 import React, { useMemo } from 'react';
 import axios from 'axios';

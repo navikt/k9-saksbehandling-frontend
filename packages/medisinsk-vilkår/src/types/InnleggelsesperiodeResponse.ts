@@ -1,4 +1,4 @@
-import { Period } from '@k9-saksbehandling-frontend/period-utils';
+import { Period } from '@navikt/k9-period-utils';
 import Link from './Link';
 
 export interface InnleggelsesperiodeResponse {

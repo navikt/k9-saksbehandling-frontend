@@ -1,4 +1,4 @@
-import { get } from '@k9-saksbehandling-frontend/http-utils';
+import { get } from '@navikt/k9-http-utils';
 import { Box, Margin, NavigationWithDetailView, PageContainer } from '@navikt/ft-plattform-komponenter';
 import axios from 'axios';
 import React, { useMemo } from 'react';

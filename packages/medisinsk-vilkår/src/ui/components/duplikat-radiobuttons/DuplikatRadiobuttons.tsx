@@ -1,5 +1,5 @@
-import { prettifyDateString } from '@k9-saksbehandling-frontend/date-utils';
-import { RadioGroupPanel } from '@k9-saksbehandling-frontend/form-utils';
+import { prettifyDateString } from '@navikt/k9-date-utils';
+import { RadioGroupPanel } from '@navikt/k9-form-utils';
 import { Box, Margin } from '@navikt/ft-plattform-komponenter';
 import Lenke from 'nav-frontend-lenker';
 import * as React from 'react';

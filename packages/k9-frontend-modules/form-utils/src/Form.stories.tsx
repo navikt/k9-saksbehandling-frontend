@@ -21,7 +21,7 @@ const Template: Story<ComponentProps<typeof Form>> = (args) => {
             <Form {...args} buttonLabel="Lagre">
                 <CheckboxGroup
                     question="Er dette en checkbox group?"
-                    name="test"
+                    name="test1"
                     checkboxes={[
                         {
                             value: 'ja',
@@ -30,7 +30,15 @@ const Template: Story<ComponentProps<typeof Form>> = (args) => {
                     ]}
                 />
                 <Box marginTop={Margin.xLarge}>
-                    <Datepicker name="test" />
+                    <Datepicker
+                        name="test2"
+                        limitations={{
+                            invalidDateRanges: [
+                                { from: '2023-01-02', to: '2023-01-05' },
+                                { from: '2023-01-10', to: '2023-01-15' },
+                            ],
+                        }}
+                    />
                 </Box>
                 <Box marginTop={Margin.xLarge}>
                     <PeriodpickerList
@@ -42,13 +50,13 @@ const Template: Story<ComponentProps<typeof Form>> = (args) => {
                             label: 'Til',
                             ariaLabel: 'til',
                         }}
-                        name="test"
+                        name="test3"
                         legend="Period picker list"
                     />
                 </Box>
                 <Box marginTop={Margin.xLarge}>
                     <RadioGroupPanel
-                        name="test"
+                        name="test4"
                         question="Er dette et radio group panel?"
                         radios={[
                             {
@@ -63,10 +71,10 @@ const Template: Story<ComponentProps<typeof Form>> = (args) => {
                     />
                 </Box>
                 <Box marginTop={Margin.xLarge}>
-                    <TextArea name="test" />
+                    <TextArea name="test5" />
                 </Box>
                 <Box marginTop={Margin.xLarge}>
-                    <YesOrNoQuestion name="test" question="Ja eller nei?" />
+                    <YesOrNoQuestion name="test6" question="Ja eller nei?" />
                 </Box>
             </Form>
         </FormProvider>

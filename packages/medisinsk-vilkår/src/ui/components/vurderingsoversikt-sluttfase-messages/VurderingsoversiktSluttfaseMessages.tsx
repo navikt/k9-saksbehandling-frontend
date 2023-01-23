@@ -1,5 +1,5 @@
 import { Box, Margin } from '@navikt/ft-plattform-komponenter';
-import { getHumanReadablePeriodString } from '@k9-saksbehandling-frontend/period-utils';
+import { getHumanReadablePeriodString } from '@navikt/k9-period-utils';
 import Alertstripe from 'nav-frontend-alertstriper';
 import React from 'react';
 import Vurderingsoversikt from '../../../types/Vurderingsoversikt';
