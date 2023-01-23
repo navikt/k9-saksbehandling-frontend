@@ -1,5 +1,5 @@
-import { CheckboxGroup, PeriodpickerList, RadioGroupPanel, TextArea } from '@k9-saksbehandling-frontend/form-utils';
-import { Period } from '@k9-saksbehandling-frontend/period-utils';
+import { CheckboxGroup, PeriodpickerList, RadioGroupPanel, TextArea } from '@navikt/k9-form-utils';
+import { Period } from '@navikt/k9-period-utils';
 import { Box, ContentWithTooltip, Form, Margin, OnePersonOutlineGray } from '@navikt/ft-plattform-komponenter';
 import Ikon from 'nav-frontend-ikoner-assets';
 import Lenke from 'nav-frontend-lenker';

@@ -1,4 +1,4 @@
-import { Period } from '@k9-saksbehandling-frontend/period-utils';
+import { Period } from '@navikt/k9-period-utils';
 import Vurderingsoversikt from '../../../types/Vurderingsoversikt';
 import ActionType from './actionTypes';
 import Vurderingselement from '../../../types/Vurderingselement';

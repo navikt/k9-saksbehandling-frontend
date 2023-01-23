@@ -1,4 +1,4 @@
-import * as periodUtils from '@k9-saksbehandling-frontend/period-utils';
+import * as periodUtils from '@navikt/k9-period-utils';
 import { finnMaksavgrensningerForPerioder, finnHullIPerioder, slåSammenSammenhengendePerioder } from '../periodUtils';
 
 const { Period } = periodUtils;

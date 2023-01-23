@@ -1,6 +1,6 @@
 {
-    "name": "@k9-saksbehandling-frontend/bem-utils",
-    "version": "1.0.0",
+    "version": "1.0.1",
+    "name": "@navikt/k9-bem-utils",
     "description": "A collection of bem utils",
     "author": "NAV",
     "license": "MIT",
@@ -19,5 +19,12 @@
     },
     "bugs": {
         "url": "https://github.com/navikt/not-a-platform/issues"
+    },
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/navikt/k9-saksbehandling-frontend"
     }
 }

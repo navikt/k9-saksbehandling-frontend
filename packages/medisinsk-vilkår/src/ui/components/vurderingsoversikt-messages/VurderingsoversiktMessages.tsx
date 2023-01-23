@@ -1,8 +1,8 @@
 import { Box, Margin } from '@navikt/ft-plattform-komponenter';
-import { getHumanReadablePeriodString } from '@k9-saksbehandling-frontend/period-utils';
+import { getHumanReadablePeriodString } from '@navikt/k9-period-utils';
 import Alertstripe from 'nav-frontend-alertstriper';
 import React from 'react';
-import { addYearsToDate } from '@k9-saksbehandling-frontend/date-utils';
+import { addYearsToDate } from '@navikt/k9-date-utils';
 import Vurderingsoversikt from '../../../types/Vurderingsoversikt';
 import Vurderingstype from '../../../types/Vurderingstype';
 import IngenPerioderÅVurdereMelding from '../ingen-perioder-å-vurdere-melding/IngenPerioderÅVurdereMelding';
