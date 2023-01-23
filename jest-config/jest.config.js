@@ -14,4 +14,5 @@ module.exports = {
         'node_modules/(?!(@navikt/k9-date-utils|@navikt/k9-period-utils|@navikt/k9-array-utils|@navikt/k9-http-utils|@navikt/k9-bem-utils|@navikt/k9-form-utils)/)',
     ],
     testTimeout: 200000,
+    preset: 'ts-jest',
 };
