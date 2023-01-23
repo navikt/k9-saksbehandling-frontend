@@ -30,11 +30,11 @@ jobs:
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
             - name: Kjøre linter
-              run: lerna run lint --scope ${package-name}
+              run: lerna run lint --scope ${{env.package-name}}
             - name: Valider typescript
-              run: lerna run ts-check --scope ${package-name}
+              run: lerna run ts-check --scope ${{env.package-name}}
             - name: Kjøre enhetstester
-              run: lerna run test --scope ${package-name}
+              run: lerna run test --scope ${{env.package-name}}
             - name: Laster opp screenshots dersom de visuelle regresjonstestene feiler
               uses: actions/upload-artifact@v3
               if: failure()
@@ -48,7 +48,7 @@ jobs:
                   NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
               with:
                   project: ./packages/medisinsk-vilkår
-                  start: lerna run start:e2e --scope ${package-name}
+                  start: lerna run start:e2e --scope ${{env.package-name}}
                   wait-on: 'http://localhost:8081'
                   wait-on-timeout: 60
                   headless: true
@@ -60,4 +60,4 @@ jobs:
                   path: cypress/screenshots
                   working-directory: ./packages/medisinsk-vilkår
             - name: Kjøre bygg
-              run: lerna run build --scope ${package-name}
+              run: lerna run build --scope ${{env.package-name}}
