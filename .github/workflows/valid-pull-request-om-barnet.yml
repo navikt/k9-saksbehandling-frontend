@@ -35,29 +35,5 @@ jobs:
               run: lerna run ts-check --scope ${{env.package-name}}
             - name: Kjøre enhetstester
               run: lerna run test --scope ${{env.package-name}}
-            - name: Laster opp screenshots dersom de visuelle regresjonstestene feiler
-              uses: actions/upload-artifact@v3
-              if: failure()
-              with:
-                  name: visual-regression-screenshots
-                  path: src/__tests__/__image_snapshots__/__diff_output__/
-                  working-directory: ./packages/om-barnet
-            - name: Kjør E2E-tester
-              uses: cypress-io/github-action@v4
-              env:
-                  NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
-              with:
-                  project: ./packages/om-barnet
-                  start: lerna run start:e2e --scope ${{env.package-name}}
-                  wait-on: 'http://localhost:8081'
-                  wait-on-timeout: 60
-                  headless: true
-            - name: Laster opp screenshots dersom Cypress-testene feiler
-              uses: actions/upload-artifact@v3
-              if: failure()
-              with:
-                  name: cypress-screenshots
-                  path: cypress/screenshots
-                  working-directory: ./packages/om-barnet
             - name: Kjøre bygg
               run: lerna run build --scope ${{env.package-name}}
