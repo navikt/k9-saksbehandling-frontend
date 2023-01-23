@@ -19,14 +19,12 @@ module.exports = {
         rules: [
             {
                 test: /\.(ts|js)x?$/,
-                exclude: /(node_modules)/,
                 use: {
                     loader: 'babel-loader',
                     options: {
                         rootMode: 'upward',
                     }
                 },
-                include: [SRC_DIR],
             },
             {
                 test: /\.(css)?$/,
