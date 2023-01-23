@@ -1,6 +1,6 @@
 import React from 'react';
 import { InfoPanel } from '@navikt/ft-plattform-komponenter';
-import { Period, prettifyPeriodList } from '@k9-saksbehandling-frontend/period-utils';
+import { Period, prettifyPeriodList } from '@navikt/k9-period-utils';
 import { Normaltekst } from 'nav-frontend-typografi';
 import { Knapp } from 'nav-frontend-knapper';
 

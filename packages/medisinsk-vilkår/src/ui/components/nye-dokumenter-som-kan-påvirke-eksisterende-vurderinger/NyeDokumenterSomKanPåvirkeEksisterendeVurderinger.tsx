@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, DocumentIcon, Margin } from '@navikt/ft-plattform-komponenter';
-import { prettifyDateString } from '@k9-saksbehandling-frontend/date-utils';
+import { prettifyDateString } from '@navikt/k9-date-utils';
 import { Hovedknapp } from 'nav-frontend-knapper';
 import { Element } from 'nav-frontend-typografi';
 import Dokument, { Dokumenttype } from '../../../types/Dokument';

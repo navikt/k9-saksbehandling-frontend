@@ -1,7 +1,7 @@
 import { render, waitFor } from '@testing-library/react';
 import React from 'react';
 import axios from 'axios';
-import * as httpUtils from '@k9-saksbehandling-frontend/http-utils';
+import * as httpUtils from '@navikt/k9-http-utils';
 import ContainerContext from '../../../context/ContainerContext';
 import StruktureringAvDokumentasjon from '../StruktureringAvDokumentasjon';
 

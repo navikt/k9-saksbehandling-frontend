@@ -5,7 +5,7 @@ import {
     InfoIcon,
     WarningIcon,
 } from '@navikt/ft-plattform-komponenter';
-import { Period, sortPeriodsByFomDate } from '@k9-saksbehandling-frontend/period-utils';
+import { Period, sortPeriodsByFomDate } from '@navikt/k9-period-utils';
 import React, { useEffect } from 'react';
 import { EtikettInfo } from 'nav-frontend-etiketter';
 import { Element, Undertittel } from 'nav-frontend-typografi';

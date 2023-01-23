@@ -1,4 +1,4 @@
-import { post } from '@k9-saksbehandling-frontend/http-utils';
+import { post } from '@navikt/k9-http-utils';
 import { Box, Margin } from '@navikt/ft-plattform-komponenter';
 import axios from 'axios';
 import { AlertStripeFeil } from 'nav-frontend-alertstriper';

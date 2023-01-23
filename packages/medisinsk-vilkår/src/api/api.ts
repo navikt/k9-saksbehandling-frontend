@@ -1,5 +1,5 @@
-import { post } from '@k9-saksbehandling-frontend/http-utils';
-import { Period } from '@k9-saksbehandling-frontend/period-utils';
+import { post } from '@navikt/k9-http-utils';
+import { Period } from '@navikt/k9-period-utils';
 import { CancelToken } from 'axios';
 import { Vurderingsversjon } from '../types/Vurdering';
 import Vurderingstype from '../types/Vurderingstype';

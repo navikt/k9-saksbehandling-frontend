@@ -1,4 +1,4 @@
-import * as httpUtils from '@k9-saksbehandling-frontend/http-utils';
+import * as httpUtils from '@navikt/k9-http-utils';
 import { render, waitFor, screen } from '@testing-library/react';
 import React from 'react';
 import ContainerContext from '../../../context/ContainerContext';

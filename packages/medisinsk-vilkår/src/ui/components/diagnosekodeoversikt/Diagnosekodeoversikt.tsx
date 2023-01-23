@@ -1,4 +1,4 @@
-import { get, post } from '@k9-saksbehandling-frontend/http-utils';
+import { get, post } from '@navikt/k9-http-utils';
 import { Box, Margin, TitleWithUnderline, WarningIcon } from '@navikt/ft-plattform-komponenter';
 import Modal from 'nav-frontend-modal';
 import Spinner from 'nav-frontend-spinner';
