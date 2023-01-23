@@ -24,7 +24,8 @@ jobs:
               scope: '@navikt'
               cache: 'yarn'
           - run: yarn install --ignore-optional --no-progress --frozen-lockfile
-              env: NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
+              env: 
+                NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
           - run: yarn test
           - run: yarn lint && yarn lint:css
             
