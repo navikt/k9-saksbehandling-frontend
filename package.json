@@ -3,7 +3,9 @@
     "version": "1.0.0",
     "private": true,
     "scripts": {
-        "build": "lerna run build --stream"
+        "build": "lerna run build --stream",
+        "test:all": "lerna run test --stream",
+        "test:changed": "lerna run test --stream --since origin/main"
     },
     "keywords": [],
     "author": "NAV IT",
