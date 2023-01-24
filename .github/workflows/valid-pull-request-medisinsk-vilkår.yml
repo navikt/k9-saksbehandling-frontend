@@ -26,9 +26,24 @@ jobs:
                   scope: '@navikt'
                   cache: 'yarn'
             - name: Installere dependencies
-              run: yarn
+              run: yarn install --ignore-scripts --prefer-offline --frozen-lockfile
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
+            - name: Get installed Puppeteer version
+              id: puppeteer-version
+              run: |
+                  puppeteerversion=="$(yarn info puppeteer version)"
+                  echo "PUPPETEER_VERSION=$puppeteerversion" >> $GITHUB_ENV
+            - name: Setup cache for Chromium binary
+              uses: actions/cache@v3
+              with:
+                  path: ~/.cache/puppeteer/chrome
+                  key: ${{ runner.os }}-puppeteer-${{ env.PUPPETEER_VERSION }}
+            - name: Install Chromium
+              run: yarn install --prefer-offline --frozen-lockfile
+            - name: Install linux dependencies.
+              if: ${{ matrix.os == 'ubuntu-latest' }}
+              run: sudo apt-get install xvfb
             - name: Kjøre linter
               run: lerna run lint --scope ${{env.package-name}}
             - name: Valider typescript
