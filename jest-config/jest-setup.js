@@ -2,6 +2,7 @@ import '@testing-library/jest-dom';
 import 'expect-puppeteer';
 import { configureToMatchImageSnapshot } from 'jest-image-snapshot';
 
+
 const toMatchImageSnapshot = configureToMatchImageSnapshot({
     diffDirection: 'vertical',
     comparisonMethod: 'ssim',
