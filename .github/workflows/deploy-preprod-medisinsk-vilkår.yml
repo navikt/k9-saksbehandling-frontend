@@ -1,4 +1,5 @@
 name: Deploy preprod Medisinsk vilkår
+on: [workflow_dispatch]
 env:
     IMAGE_BASE: docker.pkg.github.com/${{ github.repository }}/medisinsk-vilkar-frontend
     package-name: medisinsk-vilkar-frontend
