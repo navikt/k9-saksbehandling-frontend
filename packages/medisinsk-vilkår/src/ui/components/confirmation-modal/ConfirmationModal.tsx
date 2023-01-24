@@ -27,8 +27,8 @@ const ConfirmationModal = ({
                 disabled={isSubmitting}
                 type="hoved"
                 htmlType="button"
-                data-testid="modal-confirm-button"
                 mini
+                data-testid="modal-confirm-button"
             >
                 Bekreft
             </Knapp>

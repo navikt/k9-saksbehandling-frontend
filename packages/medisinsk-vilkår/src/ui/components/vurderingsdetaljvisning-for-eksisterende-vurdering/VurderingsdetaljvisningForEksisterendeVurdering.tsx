@@ -1,24 +1,25 @@
-import { addYearsToDate } from '@navikt/k9-date-utils';
 import React from 'react';
-import LinkRel from '../../../constants/LinkRel';
-import InnleggelsesperiodeVurdering from '../../../types/InnleggelsesperiodeVurdering';
-import ManuellVurdering from '../../../types/ManuellVurdering';
 import Vurderingselement from '../../../types/Vurderingselement';
-import Vurderingsoversikt from '../../../types/Vurderingsoversikt';
-import Vurderingstype from '../../../types/Vurderingstype';
+import VurderingsoppsummeringForKontinuerligTilsynOgPleie from '../vurderingsoppsummering-for-kontinuerlig-tilsyn-og-pleie/VurderingsoppsummeringForKontinuerligTilsynOgPleie';
+import VurderingsdetaljerFetcher from '../vurderingsdetaljer-fetcher/VurderingsdetaljerFetcher';
+import LinkRel from '../../../constants/LinkRel';
 import { findHrefByRel, findLinkByRel } from '../../../util/linkUtils';
+import ManuellVurdering from '../../../types/ManuellVurdering';
+import buildInitialFormStateForEdit from '../vilkårsvurdering-av-tilsyn-og-pleie/initialFormStateUtil';
+import VurderingAvTilsynsbehovForm from '../vurdering-av-tilsynsbehov-form/VurderingAvTilsynsbehovForm';
+import Vurderingsoversikt from '../../../types/Vurderingsoversikt';
+import EndreVurderingController from '../endre-vurdering-controller/EndreVurderingController';
 import ContainerContext from '../../context/ContainerContext';
 import VurderingContext from '../../context/VurderingContext';
-import EndreVurderingController from '../endre-vurdering-controller/EndreVurderingController';
-import buildInitialFormStateForEdit from '../vilkårsvurdering-av-tilsyn-og-pleie/initialFormStateUtil';
-import VurderingAvLivetsSluttfaseForm from '../vurdering-av-livets-sluttfase-form/VurderingAvLivetsSluttfaseForm';
-import VurderingAvTilsynsbehovForm from '../vurdering-av-tilsynsbehov-form/VurderingAvTilsynsbehovForm';
+import Vurderingstype from '../../../types/Vurderingstype';
 import VurderingAvToOmsorgspersonerForm from '../vurdering-av-to-omsorgspersoner-form/VurderingAvToOmsorgspersonerForm';
-import VurderingsdetaljerFetcher from '../vurderingsdetaljer-fetcher/VurderingsdetaljerFetcher';
-import VurderingsoppsummeringForInnleggelsesperiode from '../vurderingsoppsummering-for-innleggelsesperiode/VurderingsoppsummeringForInnleggelsesperiode';
-import VurderingsoppsummeringForKontinuerligTilsynOgPleie from '../vurderingsoppsummering-for-kontinuerlig-tilsyn-og-pleie/VurderingsoppsummeringForKontinuerligTilsynOgPleie';
-import VurderingsoppsummeringForSluttfase from '../vurderingsoppsummering-for-livets-sluttfase/VurderingsoppsummeringForSluttfase';
 import VurderingsoppsummeringForToOmsorgspersoner from '../vurderingsoppsummering-for-to-omsorgspersoner/VurderingsoppsummeringForToOmsorgspersoner';
+import VurderingsoppsummeringForInnleggelsesperiode from '../vurderingsoppsummering-for-innleggelsesperiode/VurderingsoppsummeringForInnleggelsesperiode';
+import InnleggelsesperiodeVurdering from '../../../types/InnleggelsesperiodeVurdering';
+import VurderingAvLivetsSluttfaseForm from '../vurdering-av-livets-sluttfase-form/VurderingAvLivetsSluttfaseForm';
+import VurderingsoppsummeringForSluttfase from '../vurderingsoppsummering-for-livets-sluttfase/VurderingsoppsummeringForSluttfase';
+import VurderingsoppsummeringLangvarigSykdom from '../vurderingsoppsummering-for-langvarig-sykdom/VurderingsoppsummeringLangvarigSykdom';
+import VurderingLangvarigSykdomForm from '../vurdering-av-langvarig-sykdom-form/VurderingLangvarigSykdomForm';
 
 interface VurderingsdetaljvisningForEksisterendeProps {
     vurderingsoversikt: Vurderingsoversikt;
@@ -39,6 +40,9 @@ const getFormComponent = (vurderingstype: Vurderingstype) => {
     if (vurderingstype === Vurderingstype.LIVETS_SLUTTFASE) {
         return VurderingAvLivetsSluttfaseForm;
     }
+    if (vurderingstype === Vurderingstype.LANGVARIG_SYKDOM) {
+        return VurderingLangvarigSykdomForm;
+    }
     return null;
 };
 
@@ -51,6 +55,9 @@ const getSummaryComponent = (vurderingstype: Vurderingstype) => {
     }
     if (vurderingstype === Vurderingstype.LIVETS_SLUTTFASE) {
         return VurderingsoppsummeringForSluttfase;
+    }
+    if (vurderingstype === Vurderingstype.LANGVARIG_SYKDOM) {
+        return VurderingsoppsummeringLangvarigSykdom;
     }
     return null;
 };
@@ -122,14 +129,6 @@ const VurderingsdetaljvisningForEksisterendeVurdering = ({
                                         onSubmit={onSubmit}
                                         onAvbryt={onAvbrytClick}
                                         isSubmitting={isSubmitting}
-                                        harPerioderDerPleietrengendeErOver18år={
-                                            vurderingsoversikt.harPerioderDerPleietrengendeErOver18år
-                                        }
-                                        barnetsAttenårsdag={
-                                            vurderingsoversikt.harPerioderDerPleietrengendeErOver18år
-                                                ? addYearsToDate(vurderingsoversikt.pleietrengendesFødselsdato, 18)
-                                                : undefined
-                                        }
                                     />
                                 );
                             }}

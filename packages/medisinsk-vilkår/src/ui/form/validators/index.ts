@@ -1,5 +1,6 @@
 import { Period } from '@navikt/k9-period-utils';
 import { initializeDate, dateConstants } from '@navikt/k9-date-utils';
+import { Dayjs } from 'dayjs';
 import { finnHullIPerioder } from '../../../util/periodUtils';
 
 type InputValue = string | number;
@@ -12,7 +13,7 @@ export function required(v: InputValue): string | boolean {
 }
 
 export function dateIsNotInTheFuture(dateString: string): string | boolean {
-    const date = initializeDate(dateString);
+    const date: Dayjs = initializeDate(dateString);
     if (date.isSame(dateConstants.tomorrow) || date.isAfter(dateConstants.tomorrow)) {
         return 'Datoen kan ikke settes senere enn dagens dato';
     }
