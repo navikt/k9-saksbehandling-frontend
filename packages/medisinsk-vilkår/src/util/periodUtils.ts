@@ -137,5 +137,6 @@ export const finnMaksavgrensningerForPerioder = (perioder: Period[]): Period => 
         }
     });
 
+
     return maksimalSøknadsperiode;
 };
