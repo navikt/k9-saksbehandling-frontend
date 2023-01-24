@@ -10,6 +10,8 @@ import scrollUp from '../../../util/viewUtils';
 import ContainerContext from '../../context/ContainerContext';
 import StrukturerDokumentForm from '../strukturer-dokument-form/StrukturerDokumentForm';
 import StrukturerDokumentSluttfaseForm from '../strukturer-dokument-sluttfase-form/StrukturerDokumentSluttfaseForm';
+import StrukturerDokumentOpplaeringspengerForm from '../strukturer-dokument-opplaeringspenger-form/StrukturerDokumentOpplaeringspengerForm';
+import { erFagsakOLPEllerPLS } from '../../../util/utils';
 
 interface StrukturerDokumentControllerProps {
     strukturerDokumentLink: Link;
@@ -61,16 +63,16 @@ const StrukturerDokumentController = ({
     const getErrorMessage = () => {
         if (submitDocumentError?.response?.data?.feilkode) {
             const { feilkode } = submitDocumentError.response.data;
-            if (feilkode === '@k9-saksbehandling-frontend/6701') {
+            if (feilkode === 'K9-6701') {
                 return 'Kan ikke sette at et dokument er duplikat av et annet duplikat dokument.';
             }
-            if (feilkode === '@k9-saksbehandling-frontend/6702') {
+            if (feilkode === 'K9-6702') {
                 return 'Kan ikke sette duplikatdokumenter på tvers av pleietrengende.';
             }
-            if (feilkode === '@k9-saksbehandling-frontend/6703') {
+            if (feilkode === 'K9-6703') {
                 return 'Kan ikke sette som duplikat siden dokumentet har blitt brukt i en vurdering.';
             }
-            if (feilkode === '@k9-saksbehandling-frontend/6704') {
+            if (feilkode === 'K9-6704') {
                 return 'Kan ikke sette som duplikat siden andre dokumenter er duplikat av dette dokumentet.';
             }
         }
@@ -84,7 +86,7 @@ const StrukturerDokumentController = ({
                     <AlertStripeFeil>{getErrorMessage()}</AlertStripeFeil>
                 </Box>
             )}
-            {fagsakYtelseType !== FagsakYtelseType.PLEIEPENGER_SLUTTFASE && (
+            {!erFagsakOLPEllerPLS(fagsakYtelseType) && (
                 <StrukturerDokumentForm
                     key={dokument.id}
                     dokument={dokument}
@@ -96,6 +98,16 @@ const StrukturerDokumentController = ({
             )}
             {fagsakYtelseType === FagsakYtelseType.PLEIEPENGER_SLUTTFASE && (
                 <StrukturerDokumentSluttfaseForm
+                    key={dokument.id}
+                    dokument={dokument}
+                    onSubmit={strukturerDokument}
+                    editMode={editMode}
+                    isSubmitting={isSubmitting}
+                    strukturerteDokumenter={strukturerteDokumenter}
+                />
+            )}
+            {fagsakYtelseType === FagsakYtelseType.OPPLÆRINGSPENGER && (
+                <StrukturerDokumentOpplaeringspengerForm
                     key={dokument.id}
                     dokument={dokument}
                     onSubmit={strukturerDokument}

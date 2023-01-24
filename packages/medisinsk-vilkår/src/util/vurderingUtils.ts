@@ -15,6 +15,10 @@ import Vurderingsresultat from '../types/Vurderingsresultat';
 import Dokument from '../types/Dokument';
 import { Vurderingsversjon } from '../types/Vurdering';
 import { finnBenyttedeDokumenter } from './dokumentUtils';
+import {
+    FieldName as LangvarigSykdomFieldName,
+    VurderingLangvarigSykdomFormState,
+} from '../ui/components/vurdering-av-langvarig-sykdom-form/VurderingLangvarigSykdomForm';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type AnyType = any;
@@ -68,6 +72,25 @@ export const lagSluttfaseVurdering = (
     const tekst = formState[LivetsSluttfaseFieldName.VURDERING_AV_LIVETS_SLUTTFASE];
     const dokumenter = finnBenyttedeDokumenter(formState[LivetsSluttfaseFieldName.DOKUMENTER], alleDokumenter);
     const perioder = formState[LivetsSluttfaseFieldName.PERIODER].map(
+        (periodeWrapper) => new Period((periodeWrapper as AnyType).period.fom, (periodeWrapper as AnyType).period.tom)
+    );
+
+    return {
+        resultat,
+        tekst,
+        perioder,
+        dokumenter,
+    };
+};
+
+export const lagLangvarigSykdomVurdering = (
+    formState: VurderingLangvarigSykdomFormState,
+    alleDokumenter: Dokument[]
+): Partial<Vurderingsversjon> => {
+    const resultat = formState[LangvarigSykdomFieldName.HAR_LANGVARIG_SYKDOM];
+    const tekst = formState[LangvarigSykdomFieldName.VURDERING_LANGVARIG_SYKDOM];
+    const dokumenter = finnBenyttedeDokumenter(formState[LangvarigSykdomFieldName.DOKUMENTER], alleDokumenter);
+    const perioder = formState[LangvarigSykdomFieldName.PERIODER].map(
         (periodeWrapper) => new Period((periodeWrapper as AnyType).period.fom, (periodeWrapper as AnyType).period.tom)
     );
 
