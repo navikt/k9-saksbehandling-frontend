@@ -1,0 +1,39 @@
+name: Validere pull request Omsorgen for
+on:
+    pull_request:
+        types: [opened, synchronize]
+        paths:
+            - 'packages/omsorgen-for/**/*'
+env:
+    package-name: omsorgen-for-frontend
+jobs:
+    valid-pull-request:
+        name: Validere pull request
+        runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: ./packages/omsorgen-for
+        steps:
+            - name: Hente kode
+              uses: actions/checkout@v3
+              with:
+                  fetch-depth: 0
+            - name: Sette opp Node
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 16.x
+                  registry-url: https://npm.pkg.github.com/
+                  scope: '@navikt'
+                  cache: 'yarn'
+            - name: Installere dependencies
+              run: yarn
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
+            - name: Kjøre linter
+              run: lerna run lint --scope ${{env.package-name}}
+            - name: Valider typescript
+              run: lerna run ts-check --scope ${{env.package-name}}
+            - name: Kjøre enhetstester
+              run: lerna run test --scope ${{env.package-name}}
+            - name: Kjøre bygg
+              run: lerna run build --scope ${{env.package-name}}
