@@ -1,0 +1,72 @@
+name: Deploy preprod Medisinsk vilkår
+env:
+    IMAGE_BASE: docker.pkg.github.com/${{ github.repository }}/medisinsk-vilkar-frontend
+    package-name: medisinsk-vilkar-frontend
+
+jobs:
+    deploy-docker-image:
+        name: Deploy Docker image
+        runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: ./packages/medisinsk-vilkår
+        steps:
+            - name: Hente kode
+              uses: actions/checkout@v3
+              with:
+                  fetch-depth: 0
+            - name: Sette opp Node
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 16.x
+                  registry-url: https://npm.pkg.github.com/
+                  scope: '@navikt'
+                  cache: 'yarn'
+            - name: Installere dependencies
+              run: yarn
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
+            - name: Kjøre linter
+              run: lerna run lint --scope ${{env.package-name}}
+            - name: Valider typescript
+              run: lerna run ts-check --scope ${{env.package-name}}
+            - name: Kjøre enhetstester
+              run: lerna run test --scope ${{env.package-name}}
+            - name: Laster opp screenshots dersom de visuelle regresjonstestene feiler
+              uses: actions/upload-artifact@v3
+              if: failure()
+              with:
+                  name: visual-regression-screenshots
+                  path: src/__tests__/__image_snapshots__/__diff_output__/
+                  working-directory: ./packages/medisinsk-vilkår
+            - name: Kjør E2E-tester
+              uses: cypress-io/github-action@v4
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
+              with:
+                  project: ./packages/medisinsk-vilkår
+                  start: lerna run start:e2e --scope ${{env.package-name}}
+                  wait-on: 'http://localhost:8081'
+                  wait-on-timeout: 60
+                  headless: true
+            - name: Laster opp screenshots dersom Cypress-testene feiler
+              uses: actions/upload-artifact@v3
+              if: failure()
+              with:
+                  name: cypress-screenshots
+                  path: cypress/screenshots
+                  working-directory: ./packages/medisinsk-vilkår
+            - name: Kjøre bygg
+              run: lerna run build --scope ${{env.package-name}}
+            - name: Sette versjon
+              run: |
+                  echo "MAJOR_VERSION=$(npm run majorVersion --silent)" >> $GITHUB_ENV
+            - name: Sette tag
+              run: |
+                  echo "TAG=$(date "+%Y.%m.%d-%m")-$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+            - name: Sette miljøvariabler
+              run: |
+                  echo "IMAGE=${IMAGE_BASE}:${TAG}" >> $GITHUB_ENV
+                  echo "LATEST=${IMAGE_BASE}:latest" >> $GITHUB_ENV
+                  echo "CSS_HASH=$(shasum -b -a 384 build/${MAJOR_VERSION}/styles.css | awk '{ print $1 }' | xxd -r -p | base64)" >> $GITHUB_ENV
+                  echo "JS_HASH=$(shasum -b -a 384 build/${MAJOR_VERSION}/app.js | awk '{ print $1 }' | xxd -r -p | base64)" >> $GITHUB_ENV
