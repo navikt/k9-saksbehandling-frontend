@@ -34,7 +34,7 @@
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
         "import/no-extraneous-dependencies": [
             "error",
-            { "devDependencies": ["**/*.test.ts", "**/*.test.tsx", "**/*.stories.tsx"] }
+            { "devDependencies": ["**/*.test.ts", "**/*.test.tsx", "**/*.spec.tsx", "**/*.stories.tsx"] }
         ],
         "import/extensions": [
             "error",
