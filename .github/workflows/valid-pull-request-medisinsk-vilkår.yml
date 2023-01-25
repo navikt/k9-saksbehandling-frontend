@@ -26,11 +26,15 @@ jobs:
                   scope: '@navikt'
                   cache: 'yarn'
             - name: Installere dependencies
-              run: yarn
+              run: yarn install --prefer-offline --frozen-lockfile
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
             - name: Kjøre linter
-              run: lerna run lint --scope ${{env.package-name}}
+              uses: ./.github/workflows/lint.yml
+              secrets:
+                  READER_TOKEN: ${{ secrets.READER_TOKEN }}
+              inputs:
+                  package-name: ${{env.package-name}}
             - name: Valider typescript
               run: lerna run ts-check --scope ${{env.package-name}}
             - name: Kjøre enhetstester
