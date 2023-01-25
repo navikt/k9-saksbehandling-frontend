@@ -9,6 +9,10 @@ on:
             package-name:
                 required: true
                 type: string
+            upload-artifact:
+                required: false
+                type: boolean
+                default: false
 
 jobs:
     build:
@@ -30,6 +34,8 @@ jobs:
             - name: Kjøre bygg
               run: lerna run build --scope ${{inputs.package-name}}
             - uses: actions/upload-artifact@v3
+              working-directory: ./packages/medisinsk-vilkår
+              if: ${{inputs.upload-artifact}}
               with:
                   name: build
                   path: build/

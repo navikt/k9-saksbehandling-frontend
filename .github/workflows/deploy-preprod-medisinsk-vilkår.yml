@@ -15,6 +15,7 @@ jobs:
         secrets: inherit
         with:
             package-name: medisinsk-vilkar-frontend
+            upload-artifact: true
     test:
         uses: ./.github/workflows/test.yml
         secrets: inherit
@@ -32,6 +33,7 @@ jobs:
         needs: [lint, build, test, cypress-test]
         steps:
             - uses: actions/download-artifact@v3
+              working-directory: ./packages/medisinsk-vilkår
               with:
                   name: build
                   path: ./build
@@ -42,6 +44,7 @@ jobs:
               run: |
                   echo "TAG=$(date "+%Y.%m.%d-%m")-$(git rev-parse --short HEAD)" >> $GITHUB_ENV
             - name: Sette miljøvariabler
+              working-directory: ./packages/medisinsk-vilkår
               run: |
                   echo "IMAGE=${IMAGE_BASE}:${TAG}" >> $GITHUB_ENV
                   echo "LATEST=${IMAGE_BASE}:latest" >> $GITHUB_ENV
