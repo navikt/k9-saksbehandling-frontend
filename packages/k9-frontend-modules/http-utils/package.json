@@ -14,7 +14,7 @@
     "scripts": {
         "build": "rollup -c rollup.config.mjs",
         "clean": "rm -rf ./dist ./node_modules",
-        "test": "jest --passWithNoTests",
+        "test": "jest --passWithNoTests --maxWorkers=2",
         "test-watch": "jest --watch"
     },
     "devDependencies": {

@@ -1,4 +1,4 @@
-name: Lint
+name: Test
 
 on:
     workflow_call:
@@ -27,7 +27,11 @@ jobs:
               run: yarn install --prefer-offline --frozen-lockfile
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
-            - name: Sjekke opp mot Lint-regler
-              run: lerna run lint --scope ${{ inputs.package-name }}
-            - name: Valider typescript
-              run: lerna run ts-check --scope ${{inputs.package-name}}
+            - name: Kjøre enhetstester
+              run: lerna run test --scope ${{inputs.package-name}}
+            - name: Laster opp screenshots dersom de visuelle regresjonstestene feiler
+              uses: actions/upload-artifact@v3
+              if: failure()
+              with:
+                  name: visual-regression-screenshots
+                  path: packages/**/__image_snapshots__/__diff_output__/
