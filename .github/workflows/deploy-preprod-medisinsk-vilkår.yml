@@ -16,6 +16,7 @@ jobs:
         with:
             package-name: medisinsk-vilkar-frontend
             upload-artifact: true
+            artifact-path: ./packages/medisinsk-vilkår/build/
     test:
         uses: ./.github/workflows/test.yml
         secrets: inherit

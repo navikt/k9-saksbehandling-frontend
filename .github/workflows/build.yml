@@ -13,6 +13,10 @@ on:
                 required: false
                 type: boolean
                 default: false
+            artifact-path:
+                required: false
+                type: string
+                default: ./build
 
 jobs:
     build:
@@ -36,6 +40,5 @@ jobs:
             - uses: actions/upload-artifact@v3
               if: ${{inputs.upload-artifact}}
               with:
-                  working-directory: ./packages/medisinsk-vilkår
                   name: build
-                  path: build/
+                  path: ${{ inputs.artifact-path }}
