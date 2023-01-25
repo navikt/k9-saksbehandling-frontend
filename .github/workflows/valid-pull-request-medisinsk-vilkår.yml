@@ -59,9 +59,9 @@ jobs:
                   working-directory: ./packages/medisinsk-vilkår
             - name: Kjøre bygg
               run: lerna run build --scope ${{env.package-name}}
-      lint:
+    lint:
         uses: ./.github/workflows/lint.yml
         secrets:
-          READER_TOKEN: ${{ secrets.READER_TOKEN }}
+            READER_TOKEN: ${{ secrets.READER_TOKEN }}
         inputs:
-          package-name: ${{env.package-name}}
+            package-name: ${{env.package-name}}
