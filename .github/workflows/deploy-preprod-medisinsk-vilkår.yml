@@ -33,11 +33,21 @@ jobs:
         runs-on: ubuntu-latest
         needs: [lint, build, test, cypress-test]
         steps:
+            - name: Hente kode
+              uses: actions/checkout@v3
+            - name: Sette opp Node
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 16.x
+                  registry-url: https://npm.pkg.github.com/
+                  scope: '@navikt'
+                  cache: 'yarn'
             - uses: actions/download-artifact@v3
               with:
                   name: build
                   path: ./build
             - name: Sette versjon
+              working-directory: ./packages/medisinsk-vilkår
               run: |
                   echo "MAJOR_VERSION=$(npm run majorVersion --silent)" >> $GITHUB_ENV
             - name: Sette tag
