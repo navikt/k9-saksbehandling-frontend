@@ -7,33 +7,18 @@ on:
 env:
     package-name: psb-uttak-frontend
 jobs:
-    valid-pull-request:
-        name: Validere pull request
-        runs-on: ubuntu-latest
-        defaults:
-            run:
-                working-directory: ./packages/uttak
-        steps:
-            - name: Hente kode
-              uses: actions/checkout@v3
-              with:
-                  fetch-depth: 0
-            - name: Sette opp Node
-              uses: actions/setup-node@v3
-              with:
-                  node-version: 16.x
-                  registry-url: https://npm.pkg.github.com/
-                  scope: '@navikt'
-                  cache: 'yarn'
-            - name: Installere dependencies
-              run: yarn
-              env:
-                  NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
-            - name: Kjøre linter
-              run: lerna run lint --scope ${{env.package-name}}
-            - name: Valider typescript
-              run: lerna run ts-check --scope ${{env.package-name}}
-            - name: Kjøre enhetstester
-              run: lerna run test --scope ${{env.package-name}}
-            - name: Kjøre bygg
-              run: lerna run build --scope ${{env.package-name}}
+    lint:
+        uses: ./.github/workflows/lint.yml
+        secrets: inherit
+        with:
+            package-name: psb-uttak-frontend
+    build:
+        uses: ./.github/workflows/build.yml
+        secrets: inherit
+        with:
+            package-name: psb-uttak-frontend
+    test:
+        uses: ./.github/workflows/test.yml
+        secrets: inherit
+        with:
+            package-name: psb-uttak-frontend

@@ -1,0 +1,37 @@
+name: Test
+
+on:
+    workflow_call:
+        secrets:
+            READER_TOKEN:
+                required: true
+        inputs:
+            package-name:
+                required: true
+                type: string
+
+jobs:
+    enhetstester:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Hente kode
+              uses: actions/checkout@v3
+            - name: Sette opp Node
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 16.x
+                  registry-url: https://npm.pkg.github.com/
+                  scope: '@navikt'
+                  cache: 'yarn'
+            - name: Installere moduler
+              run: yarn install --prefer-offline --frozen-lockfile
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
+            - name: Kjøre enhetstester
+              run: lerna run test --scope ${{inputs.package-name}}
+            - name: Laster opp screenshots dersom de visuelle regresjonstestene feiler
+              uses: actions/upload-artifact@v3
+              if: failure()
+              with:
+                  name: visual-regression-screenshots
+                  path: packages/**/__image_snapshots__/__diff_output__/
