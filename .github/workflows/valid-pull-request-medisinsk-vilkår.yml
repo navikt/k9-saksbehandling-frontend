@@ -63,4 +63,4 @@ jobs:
         uses: ./.github/workflows/lint.yml
         secrets: inherit
         with:
-            package-name: ${{env.package-name}}
+            package-name: medisinsk-vilkar-frontend
