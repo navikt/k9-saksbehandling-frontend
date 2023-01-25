@@ -61,7 +61,6 @@ jobs:
               run: lerna run build --scope ${{env.package-name}}
     lint:
         uses: ./.github/workflows/lint.yml
-        secrets:
-            READER_TOKEN: ${{ secrets.READER_TOKEN }}
-        inputs:
+        secrets: inherit
+        with:
             package-name: ${{env.package-name}}
