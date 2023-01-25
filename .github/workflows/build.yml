@@ -34,8 +34,8 @@ jobs:
             - name: Kjøre bygg
               run: lerna run build --scope ${{inputs.package-name}}
             - uses: actions/upload-artifact@v3
-              working-directory: ./packages/medisinsk-vilkår
               if: ${{inputs.upload-artifact}}
               with:
+                  working-directory: ./packages/medisinsk-vilkår
                   name: build
                   path: build/
