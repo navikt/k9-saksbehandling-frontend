@@ -39,7 +39,7 @@ jobs:
                   path: src/__tests__/__image_snapshots__/__diff_output__/
                   working-directory: ./packages/medisinsk-vilkår
             - name: Kjør E2E-tester
-              uses: cypress-io/github-action@v4
+              uses: cypress-io/github-action@v5
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
               with:
