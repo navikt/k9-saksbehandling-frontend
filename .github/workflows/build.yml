@@ -29,3 +29,7 @@ jobs:
                   NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
             - name: Kjøre bygg
               run: lerna run build --scope ${{inputs.package-name}}
+            - uses: actions/upload-artifact@v3
+              with:
+                  name: build
+                  path: build/
