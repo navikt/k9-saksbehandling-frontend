@@ -21,6 +21,9 @@
     "keywords": [],
     "author": "NAV IT",
     "license": "MIT",
+    "devDependencies": {
+        "postcss-loader": "^7.0.2"
+    },
     "dependencies": {
         "@hookform/error-message": "^2.0.1",
         "@navikt/ds-css": "2.0.12",
