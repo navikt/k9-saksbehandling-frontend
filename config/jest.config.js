@@ -4,5 +4,5 @@ module.exports = {
         '^.+\\.(ts|js)x?$': 'ts-jest',
     },
     collectCoverage: false,
-    modulePathIgnorePatterns: ['<rootDir>/dist'],
+    modulePathIgnorePatterns: ['<rootDir>/build'],
 };

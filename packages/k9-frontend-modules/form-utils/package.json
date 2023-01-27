@@ -3,16 +3,16 @@
     "version": "2.0.0",
     "scripts": {
         "build": "rollup -c rollup.config.mjs",
-        "clean": "rm -rf ./dist ./node_modules",
+        "clean": "rm -rf ./build ./node_modules",
         "storybook": "start-storybook -p 7003 --ci",
         "test": "jest --passWithNoTests --maxWorkers=2"
     },
     "author": "NAV IT",
     "license": "MIT",
-    "main": "./dist/index.js",
-    "types": "./dist/index.d.ts",
+    "main": "./build/index.js",
+    "types": "./build/index.d.ts",
     "files": [
-        "dist",
+        "build",
         "index.ts",
         "package.json"
     ],
@@ -76,7 +76,7 @@
         "url": "https://github.com/navikt/k9-saksbehandling-frontend"
     },
     "exports": {
-        "require": "./dist/index.cjs.js",
-        "import": "./dist/index.js"
+        "require": "./build/index.cjs.js",
+        "import": "./build/index.js"
     }
 }
