@@ -1,0 +1,17 @@
+name: Validere pull request K9 frontend modules
+on:
+    pull_request:
+        types: [opened, synchronize]
+        paths:
+            - 'packages/k9-frontend-modules/**/*'
+jobs:
+    build:
+        uses: ./.github/workflows/build.yml
+        secrets: inherit
+        with:
+            package-name: '{@navikt/k9-array-utils,@navikt/k9-bem-utils,@navikt/k9-date-utils,@navikt/k9-form-utils,@navikt/k9-http-utils,@navikt/k9-period-utils}'
+    test:
+        uses: ./.github/workflows/test.yml
+        secrets: inherit
+        with:
+            package-name: '{@navikt/k9-array-utils,@navikt/k9-bem-utils,@navikt/k9-date-utils,@navikt/k9-form-utils,@navikt/k9-http-utils,@navikt/k9-period-utils}'
