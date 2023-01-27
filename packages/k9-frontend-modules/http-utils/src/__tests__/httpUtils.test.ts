@@ -13,7 +13,7 @@ describe('httpUtils', () => {
     });
 
     afterEach(() => {
-        jest.restoreAllMocks();
+        jest.resetAllMocks();
     });
 
     describe('get', () => {
