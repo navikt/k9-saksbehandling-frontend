@@ -13,7 +13,7 @@
     },
     "targetDefaults": {
         "test": {
-            "inputs": ["default", "^prod", "{workspaceRoot}/jest-config/jest.config.ts"]
+            "inputs": ["default", "^prod", "{workspaceRoot}/jest-config/jest.config.js"]
         },
         "ts-check": {
             "inputs": ["default", "{workspaceRoot}/tsconfig.json", "{projectRoot}/tsconfig.json"]
