@@ -12,5 +12,5 @@
         "moduleResolution": "node"
     },
     "include": ["packages/**/*", "jest-config/**/*"],
-    "exclude": ["node_modules", "build", "**/*.test.ts", "**/*.spec.ts", "**/*.test.tsx", "dist"]
+    "exclude": ["node_modules", "build", "**/*.spec.ts", "**/*.spec.tsx", "dist"]
 }

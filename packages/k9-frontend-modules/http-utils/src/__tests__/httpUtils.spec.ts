@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { get, post } from './../httpUtils';
-import * as responseHelpers from './../responseHelpers';
+import { get, post } from '../httpUtils';
+import * as responseHelpers from '../responseHelpers';
 
 jest.mock('axios');
 const axiosMock = axios as jest.Mocked<typeof axios>;

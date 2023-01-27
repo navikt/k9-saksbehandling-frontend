@@ -4,7 +4,7 @@ import {
     httpErrorShouldBeHandledExternally,
     isForbidden,
     isUnauthorized,
-} from './../responseHelpers';
+} from '../responseHelpers';
 
 describe('responseHelpers', () => {
     it('isUnauthorized should return true if provided code is 401', () => {
