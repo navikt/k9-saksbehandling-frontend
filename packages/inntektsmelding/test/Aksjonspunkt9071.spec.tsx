@@ -7,7 +7,7 @@ import { composeStories } from '@storybook/testing-react';
 import { render, screen, waitFor, cleanup } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { getWorker } from 'msw-storybook-addon';
-import { SetupServer } from 'msw/lib/node';
+import { SetupServerApi } from 'msw/lib/node';
 import * as stories from '../src/stories/MainComponent.stories';
 import MainComponent from '../src/ui/MainComponent';
 
@@ -16,7 +16,7 @@ describe('9071 - Mangler inntektsmelding', () => {
         cleanup();
     });
 
-    afterAll(() => (getWorker() as SetupServer).close());
+    afterAll(() => (getWorker() as SetupServerApi).close());
 
     const { Mangler9071, AlleInntektsmeldingerMottatt } = composeStories(stories) as {
         [key: string]: Story<Partial<typeof MainComponent>>;

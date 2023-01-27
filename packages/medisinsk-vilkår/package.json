@@ -24,7 +24,11 @@
     "devDependencies": {
         "@testing-library/react": "^13.4.0",
         "@testing-library/user-event": "^14.4.3",
+        "@types/expect-puppeteer": "^5.0.1",
+        "@types/jest-environment-puppeteer": "^5.0.2",
+        "@types/puppeteer": "^7.0.4",
         "jest-puppeteer": "^6.2.0",
+        "expect-puppeteer": "^6.1.1",
         "puppeteer": "^19.5.2"
     },
     "dependencies": {
