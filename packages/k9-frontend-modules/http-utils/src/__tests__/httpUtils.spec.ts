@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { get, post } from './../httpUtils';
-import * as responseHelpers from './../responseHelpers';
+import { get, post } from '../httpUtils';
+import * as responseHelpers from '../responseHelpers';
 
 jest.mock('axios');
 const axiosMock = axios as jest.Mocked<typeof axios>;
@@ -8,11 +8,18 @@ const axiosMock = axios as jest.Mocked<typeof axios>;
 describe('httpUtils', () => {
     const mockedErrorHandler = () => null;
 
-    beforeAll(() => {
+    beforeEach(() => {
         jest.spyOn(console, 'error').mockImplementation(() => null);
     });
 
+    afterEach(() => {
+        jest.resetAllMocks();
+    });
+
     describe('get', () => {
+        afterEach(() => {
+            axiosMock.get.mockClear();
+        });
         const goodResponseMock = { data: 'mockedData' };
         const badRequestResponseMock = { response: { status: 400, headers: {} } };
 
@@ -39,7 +46,6 @@ describe('httpUtils', () => {
             const error = get('', mockedErrorHandler);
             await expect(error).rejects.toThrow('');
             expect(httpErrorHandlerCaller).toHaveBeenCalledWith(badRequestResponseMock, mockedErrorHandler);
-            httpErrorHandlerCaller.mockReset();
         });
 
         it('should avoid calling function triggering httpErrorHandler when unneccessary', async () => {
@@ -51,11 +57,13 @@ describe('httpUtils', () => {
 
             await expect(get('', mockedErrorHandler)).rejects.toThrow('');
             expect(httpErrorHandlerCaller).not.toHaveBeenCalled();
-            httpErrorHandlerCaller.mockReset();
         });
     });
 
     describe('post', () => {
+        afterEach(() => {
+            axiosMock.post.mockClear();
+        });
         const goodResponseMock = { data: 'mockedData' };
         const badRequestResponseMock = { response: { status: 400, headers: {} } };
 
@@ -82,7 +90,6 @@ describe('httpUtils', () => {
             const error = post('', null, mockedErrorHandler);
             await expect(error).rejects.toEqual(badRequestResponseMock);
             expect(httpErrorHandlerCaller).toHaveBeenCalledWith(badRequestResponseMock, mockedErrorHandler);
-            httpErrorHandlerCaller.mockReset();
         });
 
         it('should avoid calling function triggering httpErrorHandler when unneccessary', async () => {
@@ -94,7 +101,6 @@ describe('httpUtils', () => {
 
             await expect(post('', null, mockedErrorHandler)).rejects.toEqual(badRequestResponseMock);
             expect(httpErrorHandlerCaller).not.toHaveBeenCalled();
-            httpErrorHandlerCaller.mockReset();
         });
     });
 });

@@ -2,9 +2,9 @@ const commonJestConfig = require('./../../jest-config/jest.config');
 
 module.exports = {
   ...commonJestConfig,
-  preset: 'jest-puppeteer',
+  // preset: 'jest-puppeteer',
   setupFilesAfterEnv: ['<rootDir>/../../jest-config/jest-setup.js'],
-  globalSetup: '<rootDir>/../../jest-config/jest.global-setup.ts',
+  // globalSetup: '<rootDir>/../../jest-config/jest.global-setup.ts',
   moduleNameMapper: {
     '\\.(css|jpg|png|svg|less)$': '<rootDir>/../../styleMock.js',
     'nav-(.*)-style': '<rootDir>/../../styleMock.js',

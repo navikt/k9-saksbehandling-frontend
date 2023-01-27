@@ -4,24 +4,24 @@
     "license": "MIT",
     "version": "1.0.2",
     "description": "A collection of HTTP utils",
-    "main": "./dist/index.js",
-    "types": "./dist/index.d.ts",
+    "main": "./build/index.js",
+    "types": "./build/index.d.ts",
     "files": [
-        "dist",
+        "build",
         "index.ts",
         "package.json"
     ],
     "scripts": {
         "build": "rollup -c rollup.config.mjs",
-        "clean": "rm -rf ./dist ./node_modules",
+        "clean": "rm -rf ./build ./node_modules",
         "test": "jest --passWithNoTests --maxWorkers=2",
         "test-watch": "jest --watch"
     },
     "devDependencies": {
-        "axios": "1.2.2"
+        "axios": "1.2.5"
     },
     "peerDependencies": {
-        "axios": "1.2.2"
+        "axios": "1.2.5"
     },
     "publishConfig": {
         "registry": "https://npm.pkg.github.com"

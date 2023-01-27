@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import 'expect-puppeteer';
+// import 'expect-puppeteer';
 import { configureToMatchImageSnapshot } from 'jest-image-snapshot';
 
 

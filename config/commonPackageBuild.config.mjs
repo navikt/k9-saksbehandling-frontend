@@ -7,9 +7,9 @@ export default {
         {
             sourcemap: true,
             format: 'cjs',
-            file: './dist/index.cjs.js',
+            file: './build/index.cjs.js',
         },
-        { sourcemap: true, file: './dist/index.js' },
+        { sourcemap: true, file: './build/index.js' },
     ],
     plugins: [
         peerDepsExternal(),
