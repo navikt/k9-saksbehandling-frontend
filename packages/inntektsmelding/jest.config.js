@@ -1,8 +1,8 @@
 module.exports = {
     moduleNameMapper: {
-        '\\.(css|jpg|png|svg|less)$': '<rootDir>/../../node_modules/jest-css-modules',
-        'nav-(.*)-style': '<rootDir>/../../node_modules/jest-css-modules',
-        '@navikt/ds-css': '<rootDir>/../../node_modules/jest-css-modules',
+        '\\.(css|jpg|png|svg|less)$': '<rootDir>/../../styleMock.js',
+        'nav-(.*)-style': '<rootDir>/../../styleMock.js',
+        '@navikt/ds-css': '<rootDir>/../../styleMock.js',
         '\\.\\/userContent': '<rootDir>/../../node_modules/jest-css-modules',
         '\\.\\/systemsStyles': '<rootDir>/../../node_modules/jest-css-modules',
         '\\.\\/header': '<rootDir>/../../node_modules/jest-css-modules',
