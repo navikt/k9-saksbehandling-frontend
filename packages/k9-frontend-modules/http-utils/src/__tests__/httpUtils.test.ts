@@ -12,7 +12,14 @@ describe('httpUtils', () => {
         jest.spyOn(console, 'error').mockImplementation(() => null);
     });
 
+    afterEach(() => {
+        jest.clearAllMocks();
+    });
+
     describe('get', () => {
+        afterEach(() => {
+            axiosMock.get.mockClear();
+        });
         const goodResponseMock = { data: 'mockedData' };
         const badRequestResponseMock = { response: { status: 400, headers: {} } };
 
@@ -56,6 +63,9 @@ describe('httpUtils', () => {
     });
 
     describe('post', () => {
+        afterEach(() => {
+            axiosMock.post.mockClear();
+        });
         const goodResponseMock = { data: 'mockedData' };
         const badRequestResponseMock = { response: { status: 400, headers: {} } };
 
