@@ -30,12 +30,12 @@ const StrukturerDokumentController = ({
 }: StrukturerDokumentControllerProps): JSX.Element => {
     const { httpErrorHandler, fagsakYtelseType } = React.useContext(ContainerContext);
     const [isSubmitting, setIsSubmitting] = React.useState<boolean>(false);
-    const httpCanceler = useMemo(() => axios.CancelToken.source(), []);
+    const controller = useMemo(() => new AbortController(), []);
     const [submitDocumentError, setSubmitDocumentError] = React.useState(null);
 
     React.useEffect(
         () => () => {
-            httpCanceler.cancel();
+            controller.abort();
         },
         []
     );
@@ -44,7 +44,7 @@ const StrukturerDokumentController = ({
         setIsSubmitting(true);
         setSubmitDocumentError(null);
         post(href, { ...requestPayload, ...strukturertDokument }, httpErrorHandler, {
-            cancelToken: httpCanceler.token,
+            signal: controller.signal,
         }).then(
             () => {
                 setIsSubmitting(false);

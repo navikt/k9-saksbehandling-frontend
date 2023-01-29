@@ -26,11 +26,11 @@ const MainComponent = ({ data }: MainComponentProps): JSX.Element => {
 
     const { omsorgsperiodeoversikt, isLoading, omsorgsperiodeoversiktHarFeilet } = state;
 
-    const httpCanceler = React.useMemo(() => axios.CancelToken.source(), []);
+    const controller = React.useMemo(() => new AbortController(), []);
 
     const getOmsorgsperioder = () =>
         get<OmsorgsperioderResponse>(data.endpoints.omsorgsperioder, data.httpErrorHandler, {
-            cancelToken: httpCanceler.token,
+            signal: controller.signal,
         });
 
     const handleError = () => {
@@ -49,7 +49,7 @@ const MainComponent = ({ data }: MainComponentProps): JSX.Element => {
             .catch(handleError);
         return () => {
             isMounted = false;
-            httpCanceler.cancel();
+            controller.abort();
         };
     }, []);
 

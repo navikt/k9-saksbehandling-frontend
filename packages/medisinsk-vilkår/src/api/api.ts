@@ -1,6 +1,5 @@
 import { post } from '@navikt/k9-http-utils';
 import { Period } from '@navikt/k9-period-utils';
-import { CancelToken } from 'axios';
 import { Vurderingsversjon } from '../types/Vurdering';
 import Vurderingstype from '../types/Vurderingstype';
 import { PerioderMedEndringResponse } from '../types/PeriodeMedEndring';
@@ -19,7 +18,7 @@ export async function postNyVurdering(
     behandlingUuid: string,
     vurderingsversjonMedType: VurderingsversjonMedType,
     httpErrorHandler: HttpErrorHandler,
-    cancelToken?: CancelToken,
+    signal?: AbortSignal,
     dryRun?: boolean
 ): Promise<AnyType> {
     try {
@@ -36,7 +35,7 @@ export async function postNyVurdering(
                 dryRun: dryRun || false,
             },
             httpErrorHandler,
-            { cancelToken }
+            { signal }
         );
     } catch (error) {
         throw new Error(error);
@@ -48,9 +47,9 @@ export async function postNyVurderingDryRun(
     behandlingUuid: string,
     vurderingsversjonMedType: VurderingsversjonMedType,
     httpErrorHandler: HttpErrorHandler,
-    cancelToken?: CancelToken
+    signal?: AbortSignal
 ): Promise<PerioderMedEndringResponse> {
-    return postNyVurdering(href, behandlingUuid, vurderingsversjonMedType, httpErrorHandler, cancelToken, true);
+    return postNyVurdering(href, behandlingUuid, vurderingsversjonMedType, httpErrorHandler, signal, true);
 }
 
 export async function postEndreVurdering(
@@ -59,7 +58,7 @@ export async function postEndreVurdering(
     vurderingsid: string,
     vurderingsversjon: Partial<Vurderingsversjon>,
     httpErrorHandler: HttpErrorHandler,
-    cancelToken?: CancelToken,
+    signal?: AbortSignal,
     dryRun?: boolean
 ): Promise<AnyType> {
     try {
@@ -77,7 +76,7 @@ export async function postEndreVurdering(
                 dryRun: dryRun || false,
             },
             httpErrorHandler,
-            { cancelToken }
+            { signal }
         );
     } catch (error) {
         throw new Error(error);
@@ -90,17 +89,9 @@ export async function postEndreVurderingDryRun(
     vurderingsid: string,
     vurderingsversjon: Vurderingsversjon,
     httpErrorHandler: HttpErrorHandler,
-    cancelToken?: CancelToken
+    signal?: AbortSignal
 ): Promise<PerioderMedEndringResponse> {
-    return postEndreVurdering(
-        href,
-        behandlingUuid,
-        vurderingsid,
-        vurderingsversjon,
-        httpErrorHandler,
-        cancelToken,
-        true
-    );
+    return postEndreVurdering(href, behandlingUuid, vurderingsid, vurderingsversjon, httpErrorHandler, signal, true);
 }
 
 interface InnleggelsesperioderRequestBody extends RequestPayload {
@@ -115,17 +106,17 @@ export async function postInnleggelsesperioder(
     href: string,
     body: InnleggelsesperioderRequestBody,
     httpErrorHandler: HttpErrorHandler,
-    cancelToken?: CancelToken,
+    signal?: AbortSignal,
     dryRun?: boolean
 ): Promise<AnyType> {
-    return post(href, { ...body, dryRun: dryRun || false }, httpErrorHandler, { cancelToken });
+    return post(href, { ...body, dryRun: dryRun || false }, httpErrorHandler, { signal });
 }
 
 export async function postInnleggelsesperioderDryRun(
     href: string,
     body: InnleggelsesperioderRequestBody,
     httpErrorHandler: HttpErrorHandler,
-    cancelToken?: CancelToken
+    signal?: AbortSignal
 ): Promise<InnleggelsesperiodeDryRunResponse> {
-    return postInnleggelsesperioder(href, body, httpErrorHandler, cancelToken, true);
+    return postInnleggelsesperioder(href, body, httpErrorHandler, signal, true);
 }

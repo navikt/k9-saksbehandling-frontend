@@ -27,7 +27,7 @@ const VilkårsvurderingAvToOmsorgspersoner = ({
     sykdomsstegStatus,
 }: VilkårsvurderingAvToOmsorgspersonerProps): JSX.Element => {
     const { endpoints, onFinished, httpErrorHandler, readOnly } = React.useContext(ContainerContext);
-    const httpCanceler = useMemo(() => axios.CancelToken.source(), []);
+    const controller = useMemo(() => new AbortController(), []);
 
     const [state, dispatch] = React.useReducer(vilkårsvurderingReducer, {
         visVurderingDetails: false,
@@ -52,7 +52,7 @@ const VilkårsvurderingAvToOmsorgspersoner = ({
 
     const getVurderingsoversikt = () =>
         get<Vurderingsoversikt>(endpoints.vurderingsoversiktBehovForToOmsorgspersoner, httpErrorHandler, {
-            cancelToken: httpCanceler.token,
+            signal: controller.signal,
         });
 
     const visVurderingsoversikt = (nyVurderingsoversikt: Vurderingsoversikt) => {
@@ -93,7 +93,7 @@ const VilkårsvurderingAvToOmsorgspersoner = ({
             .catch(handleError);
         return () => {
             isMounted = false;
-            httpCanceler.cancel();
+            controller.abort();
         };
     }, []);
 

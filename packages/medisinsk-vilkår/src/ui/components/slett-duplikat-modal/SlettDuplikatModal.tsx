@@ -21,13 +21,13 @@ interface SlettDuplikatModalProps {
 
 const SlettDuplikatModal = ({ handleCloseModal, selectedDocument, onRemove }: SlettDuplikatModalProps): JSX.Element => {
     const { httpErrorHandler } = React.useContext(ContainerContext);
-    const httpCanceler = useMemo(() => axios.CancelToken.source(), []);
+    const controller = useMemo(() => new AbortController(), []);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [removeDuplikatFeilet, setRemoveDuplikatFeilet] = useState(false);
 
     React.useEffect(
         () => () => {
-            httpCanceler.cancel();
+            controller.abort();
         },
         []
     );
@@ -42,7 +42,7 @@ const SlettDuplikatModal = ({ handleCloseModal, selectedDocument, onRemove }: Sl
         setRemoveDuplikatFeilet(false);
         setIsSubmitting(true);
         post(href, { ...requestPayload, ...dokumentUtenDuplikat }, httpErrorHandler, {
-            cancelToken: httpCanceler.token,
+            signal: controller.signal,
         }).then(
             () => {
                 setIsSubmitting(false);

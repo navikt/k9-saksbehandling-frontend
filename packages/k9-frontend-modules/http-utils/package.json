@@ -18,10 +18,10 @@
         "test-watch": "jest --watch"
     },
     "devDependencies": {
-        "axios": "1.2.5"
+        "axios": "1.2.6"
     },
     "peerDependencies": {
-        "axios": "1.2.5"
+        "axios": "1.2.6"
     },
     "publishConfig": {
         "registry": "https://npm.pkg.github.com"
