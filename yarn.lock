@@ -2529,6 +2529,11 @@
     "@navikt/k9-bem-utils" "1.0.1"
     "@navikt/k9-period-utils" "0.0.12"
 
+"@navikt/k9-http-utils@1.0.2":
+  version "1.0.2"
+  resolved "https://npm.pkg.github.com/download/@navikt/k9-http-utils/1.0.2/a03b6a16f89c988f5c311762a3e7f43b9f63b5ca#a03b6a16f89c988f5c311762a3e7f43b9f63b5ca"
+  integrity sha512-f8WrOtTLyE+WAmQNlj2EbOJ2G3zMTCymDYt6mhbhN/hmALiLYnI+of244d9anSMPOdxbwCfd3+ccwlhndFtu3A==
+
 "@navikt/k9-period-utils@0.0.12", "@navikt/k9-period-utils@^0.0.12":
   version "0.0.12"
   resolved "https://npm.pkg.github.com/download/@navikt/k9-period-utils/0.0.12/202131c700503cfa3cab8e9be348cf10d60d5349#202131c700503cfa3cab8e9be348cf10d60d5349"
@@ -7114,10 +7119,10 @@ cyclist@^1.0.1:
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-1.0.1.tgz#596e9698fd0c80e12038c2b82d6eb1b35b6224d9"
   integrity sha512-NJGVKPS81XejHcLhaLJS7plab0fK3slPh11mESeeDq2W4ZI5kUKK/LRRdVDvjJseojbPB7ZwjnyOybg3Igea/A==
 
-cypress@12.4.0:
-  version "12.4.0"
-  resolved "https://registry.yarnpkg.com/cypress/-/cypress-12.4.0.tgz#de695bc51aec9d995456077a9c3e0ddadfb105c6"
-  integrity sha512-//h93K/yGC/7pxv1KamlkADbKHLp5h3f9rZDE2McRjXZDagMETH0sXowOOanvhsH8cFt/JWspIcK+p9cuaoAqg==
+cypress@12.4.1:
+  version "12.4.1"
+  resolved "https://registry.yarnpkg.com/cypress/-/cypress-12.4.1.tgz#6121b49fd7d833d1f4a0f486034f063467f433af"
+  integrity sha512-IFMPzc1RJ22Fac+YbdqywtpcuqZXqQJh+JqZDXn+A15zG/dw99njfv8f0bTvD+WAHhP118+xWG/VwilkFg1rnA==
   dependencies:
     "@cypress/request" "^2.88.10"
     "@cypress/xvfb" "^1.2.4"
@@ -14912,10 +14917,10 @@ rollup-pluginutils@^2.8.2:
   dependencies:
     estree-walker "^0.6.1"
 
-rollup@3.11.0:
-  version "3.11.0"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-3.11.0.tgz#89c487441b18b7c689a0c9aa4221e03b87535461"
-  integrity sha512-+uWPPkpWQ2H3Qi7sNBcRfhhHJyUNgBYhG4wKe5wuGRj2m55kpo+0p5jubKNBjQODyPe6tSBE3tNpdDwEisQvAQ==
+rollup@3.12.0:
+  version "3.12.0"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-3.12.0.tgz#813d88ec11e36108da788fc471b3c81b365a7c29"
+  integrity sha512-4MZ8kA2HNYahIjz63rzrMMRvDqQDeS9LoriJvMuV0V6zIGysP36e9t4yObUfwdT9h/szXoHQideICftcdZklWg==
   optionalDependencies:
     fsevents "~2.3.2"
 

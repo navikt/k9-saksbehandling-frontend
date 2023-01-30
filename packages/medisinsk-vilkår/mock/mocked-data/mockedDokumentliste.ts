@@ -17,7 +17,7 @@ export default [
         behandlet: true,
         links: createMockedDokumentelementLinks('1'),
         mottattDato: '2021-03-05',
-        mottattTidspunkt: '2021-03-05T10:23:13.309267',
+        mottattTidspunkt: '2021-03-05T10:23:13.309266',
     },
     {
         id: '2',
