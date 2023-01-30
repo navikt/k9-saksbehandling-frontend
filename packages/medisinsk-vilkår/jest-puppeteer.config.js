@@ -1,7 +1,7 @@
 module.exports = {
     server: {
         // How you build your bundle. If you use Rollup, add the plugin rollup-plugin-serve with the configuration serve({ contentBase: ‘dist’, port: 10002 })
-        command: `npm run start:e2e`,
+        command: `npm run dev`,
         port: 8081,
         // if default or tcp, the test starts right await whereas the dev server is not available on http
         protocol: 'http',

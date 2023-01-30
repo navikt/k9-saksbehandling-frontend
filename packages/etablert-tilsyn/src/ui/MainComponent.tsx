@@ -77,18 +77,18 @@ const MainComponent = ({ data }: MainComponentProps) => {
     const [activeTab, setActiveTab] = React.useState(setDefaultActiveTabIndex(data));
     const [innleggelsesperioder, setInnleggelsesperioder] = React.useState<Period[]>([]);
     const [innleggelserFeilet, setInnleggelserFeilet] = React.useState(false);
-    const httpCanceler = useMemo(() => axios.CancelToken.source(), []);
+    const controller = useMemo(() => new AbortController(), []);
     const getTilsyn = () =>
         get<TilsynResponse>(endpoints.tilsyn, httpErrorHandler, {
-            cancelToken: httpCanceler.token,
+            signal: controller.signal,
         });
     const getSykdom = () =>
         get<SykdomResponse>(endpoints.sykdom, httpErrorHandler, {
-            cancelToken: httpCanceler.token,
+            signal: controller.signal,
         });
     const getInnleggelser = () =>
         get<InnleggelsesperiodeResponse>(endpoints.sykdomInnleggelse, httpErrorHandler, {
-            cancelToken: httpCanceler.token,
+            signal: controller.signal,
         });
 
     React.useEffect(() => {
@@ -123,7 +123,7 @@ const MainComponent = ({ data }: MainComponentProps) => {
             });
         return () => {
             isMounted = false;
-            httpCanceler.cancel();
+            controller.abort();
         };
     }, []);
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import * as httpUtils from '@navikt/k9-http-utils';
 import { render, fireEvent, waitFor, screen } from '@testing-library/react';
 import VilkårsvurderingAvToOmsorgspersoner from '../VilkårsvurderingAvToOmsorgspersoner';
@@ -12,7 +11,7 @@ const vurderingsoversiktEndpoint = 'vurderingsoversikt-mock';
 const vurderingsopprettelseEndpoint = 'vurderingsopprettelse-mock';
 
 const httpErrorHandlerMock = () => null;
-const cancelTokenMock = { cancelToken: 'foo' };
+const abortControllerMock = { signal: new AbortController().signal };
 
 jest.mock('nav-frontend-modal');
 
@@ -118,15 +117,6 @@ describe('VilkårsvurderingAvToOmsorgspersoner', () => {
     beforeAll(() => {
         httpGetSpy = jest.spyOn(httpUtils, 'get');
         httpPostSpy = jest.spyOn(httpUtils, 'post');
-
-        const mock = jest.spyOn(axios.CancelToken, 'source');
-        mock.mockImplementation(
-            () =>
-                ({
-                    token: cancelTokenMock.cancelToken,
-                    cancel: () => null,
-                } as any)
-        );
 
         sykdomsstegFerdigStatusSpy = jest.spyOn(sykdomsstegFerdigStatusMock, 'fn');
         sykdomsstegDokumentUferdigStatusSpy = jest.spyOn(sykdomsstegDokumentUferdigStatusMock, 'fn');
@@ -307,7 +297,7 @@ describe('VilkårsvurderingAvToOmsorgspersoner', () => {
                 expect(httpGetSpy).toHaveBeenCalledWith(
                     vurderingsoversiktEndpoint,
                     httpErrorHandlerMock,
-                    cancelTokenMock
+                    abortControllerMock
                 );
             });
         });

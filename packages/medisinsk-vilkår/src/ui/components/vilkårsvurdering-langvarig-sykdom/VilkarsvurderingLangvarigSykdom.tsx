@@ -30,7 +30,7 @@ const VilkårsvurderingLangvarigSykdom = ({
     sykdomsstegStatus,
 }: VilkårsvurderingLangvarigSykdomProps): JSX.Element => {
     const { endpoints, httpErrorHandler, fagsakYtelseType, behandlingType } = React.useContext(ContainerContext);
-    const httpCanceler = useMemo(() => axios.CancelToken.source(), []);
+    const controller = useMemo(() => new AbortController(), []);
 
     const [state, dispatch] = React.useReducer(vilkårsvurderingReducer, {
         visVurderingDetails: false,
@@ -55,7 +55,7 @@ const VilkårsvurderingLangvarigSykdom = ({
 
     const getVurderingsoversikt = () =>
         get<Vurderingsoversikt>(endpoints.vurderingsoversiktLangvarigSykdom, httpErrorHandler, {
-            cancelToken: httpCanceler.token,
+            signal: controller.signal,
         });
 
     const visVurderingsoversikt = (nyVurderingsoversikt: Vurderingsoversikt) => {
@@ -93,7 +93,7 @@ const VilkårsvurderingLangvarigSykdom = ({
             .catch(handleError);
         return () => {
             isMounted = false;
-            httpCanceler.cancel();
+            controller.abort();
         };
     }, []);
 

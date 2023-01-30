@@ -1,6 +1,5 @@
 import { render, waitFor } from '@testing-library/react';
 import React from 'react';
-import axios from 'axios';
 import * as httpUtils from '@navikt/k9-http-utils';
 import ContainerContext from '../../../context/ContainerContext';
 import StruktureringAvDokumentasjon from '../StruktureringAvDokumentasjon';
@@ -13,7 +12,6 @@ const dokumentoversiktMock = {
 };
 
 const httpErrorHandlerMock = () => null;
-const cancelTokenMock = { cancelToken: 'foo' };
 
 const contextWrapper = (ui) =>
     render(
@@ -82,15 +80,6 @@ describe('StruktureringAvDokumentasjon', () => {
 
     beforeAll(() => {
         httpGetSpy = jest.spyOn(httpUtils, 'get');
-
-        const mock = jest.spyOn(axios.CancelToken, 'source');
-        mock.mockImplementation(
-            () =>
-                ({
-                    token: cancelTokenMock.cancelToken,
-                    cancel: () => null,
-                } as any)
-        );
     });
 
     const mockResolvedGetApiCallOnce = (data) => {

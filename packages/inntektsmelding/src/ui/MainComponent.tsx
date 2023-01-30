@@ -40,13 +40,13 @@ function MainComponent({ data }: MainComponentProps): JSX.Element {
         kompletthetsoversiktResponse: null,
     });
 
-    const httpCanceler = React.useMemo(() => axios.CancelToken.source(), []);
+    const controller = React.useMemo(() => new AbortController(), []);
     const { kompletthetsoversiktResponse, isLoading, kompletthetsoversiktHarFeilet } = state;
     const { endpoints, onFinished, httpErrorHandler } = data;
 
     const getKompletthetsoversikt = () =>
         get<KompletthetResponse>(endpoints.kompletthetBeregning, httpErrorHandler, {
-            cancelToken: httpCanceler.token,
+            signal: controller.signal,
         });
 
     const handleError = () => {
@@ -64,7 +64,7 @@ function MainComponent({ data }: MainComponentProps): JSX.Element {
             .catch(handleError);
         return () => {
             isMounted = false;
-            httpCanceler.cancel();
+            controller.abort();
         };
     }, []);
     return (
