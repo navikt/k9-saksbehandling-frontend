@@ -2502,7 +2502,7 @@
   resolved "https://npm.pkg.github.com/download/@navikt/k9-array-utils/0.0.1/05d7fa6a8e8194f121667cf9c945e7f2d325b088#05d7fa6a8e8194f121667cf9c945e7f2d325b088"
   integrity sha512-6plTd1GHq6bIBDMf5SnMoSOaKPqLBSm698vP4v+JnDwtnSggjlHnS57x5sJbf/QYc6tOmdDyf7q3qwz8kSJx3A==
 
-"@navikt/k9-date-utils@0.0.10", "@navikt/k9-date-utils@^0.0.10":
+"@navikt/k9-date-utils@^0.0.10":
   version "0.0.10"
   resolved "https://npm.pkg.github.com/download/@navikt/k9-date-utils/0.0.10/e9c0a38f7ec2b90193af950602e90ac5b222160d#e9c0a38f7ec2b90193af950602e90ac5b222160d"
   integrity sha512-8csB0fk5yhA7FolGL2S4EUAyIpc/Ubc88y3GVoa9KajLqRCLaBQ7ek53u207OUvxSqKjzcBH/nL+GPKRW2ol2A==
