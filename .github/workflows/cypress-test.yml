@@ -32,10 +32,8 @@ jobs:
                   NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
               with:
                   project: ${{inputs.project}}
+                  build: yarn build
                   start: lerna run dev --scope ${{inputs.package-name}}
-                  wait-on: 'http://localhost:8081'
-                  wait-on-timeout: 60
-                  headless: true
             - name: Laster opp screenshots dersom Cypress-testene feiler
               uses: actions/upload-artifact@v3
               if: failure()
