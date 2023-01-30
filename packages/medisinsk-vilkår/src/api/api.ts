@@ -1,10 +1,9 @@
-import { post } from '@navikt/k9-http-utils';
+import { post, HttpErrorHandler } from '@navikt/k9-http-utils';
 import { Period } from '@navikt/k9-period-utils';
 import { Vurderingsversjon } from '../types/Vurdering';
 import Vurderingstype from '../types/Vurderingstype';
 import { PerioderMedEndringResponse } from '../types/PeriodeMedEndring';
 import { RequestPayload } from '../types/RequestPayload';
-import { HttpErrorHandler } from '../types/HttpErrorHandler';
 
 type VurderingsversjonMedType = Partial<Vurderingsversjon> & {
     type: Vurderingstype;

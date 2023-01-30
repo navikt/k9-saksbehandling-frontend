@@ -1,6 +1,6 @@
+import { HttpErrorHandler } from '@navikt/k9-http-utils';
 import BehandlingType from '../constants/BehandlingType';
 import FagsakYtelseType from '../constants/FagsakYtelseType';
-import { HttpErrorHandler } from './HttpErrorHandler';
 
 interface ContainerContract {
     endpoints: {
