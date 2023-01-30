@@ -36,7 +36,7 @@ jobs:
                   NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
               with:
                   project: ${{inputs.project}}
-                  start: lerna run start:e2e --scope ${{inputs.package-name}}
+                  start: lerna run dev --scope ${{inputs.package-name}}
                   wait-on: 'http://localhost:8081'
                   wait-on-timeout: 60
                   headless: true

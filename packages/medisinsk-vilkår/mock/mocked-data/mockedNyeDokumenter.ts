@@ -10,14 +10,14 @@ export default [
         id: '1',
         type: Dokumenttype.LEGEERKLÆRING,
         navn: 'Bar.pdf',
-        datert: dayjs('01-01-2039').utc(true).toISOString(),
+        datert: dayjs('2039-01-01').utc(true).toISOString(),
         links: createMockedDokumentelementLinks('1'),
     },
     {
         id: '2',
         type: Dokumenttype.LEGEERKLÆRING,
         navn: 'Baz.pdf',
-        datert: dayjs('01-01-2039').utc(true).toISOString(),
+        datert: dayjs('2039-01-01').utc(true).toISOString(),
         links: createMockedDokumentelementLinks('2'),
     },
 ];
