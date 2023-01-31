@@ -9,6 +9,10 @@ on:
             package-name:
                 required: true
                 type: string
+            run-cypress:
+                required: false
+                type: boolean
+                default: false
 
 jobs:
     enhetstester:
@@ -29,9 +33,20 @@ jobs:
                   NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
             - name: Kjøre enhetstester
               run: lerna run test --scope ${{inputs.package-name}}
-            - name: Laster opp screenshots dersom de visuelle regresjonstestene feiler
-              uses: actions/upload-artifact@v3
-              if: failure()
+            - name: Cypress run
+              uses: cypress-io/github-action@v5
+              if: ${{inputs.run-cypress}}
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
               with:
-                  name: visual-regression-screenshots
-                  path: packages/**/__image_snapshots__/__diff_output__/
+                  project: ${{inputs.project}}
+                  build: lerna run build --scope '{@navikt/k9-array-utils,@navikt/k9-bem-utils,@navikt/k9-date-utils,@navikt/k9-form-utils,@navikt/k9-http-utils,@navikt/k9-period-utils}'
+                  start: lerna run dev --scope ${{inputs.package-name}}
+                  wait-on-timeout: 60
+                  headless: true
+            - name: Laster opp screenshots dersom Cypress-testene feiler
+              uses: actions/upload-artifact@v3
+              if: ${{inputs.run-cypress}} && failure()
+              with:
+                  name: cypress-screenshots
+                  path: packages/**/cypress/screenshots
