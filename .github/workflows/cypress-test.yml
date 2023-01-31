@@ -26,7 +26,7 @@ jobs:
               with:
                   project: ${{inputs.project}}
                   build: lerna run build --scope '{@navikt/k9-array-utils,@navikt/k9-bem-utils,@navikt/k9-date-utils,@navikt/k9-form-utils,@navikt/k9-http-utils,@navikt/k9-period-utils}'
-                  start: lerna run dev --scope medisinsk-vilkar-frontend
+                  start: lerna run dev --scope ${{inputs.package-name}}
                   wait-on-timeout: 60
                   headless: true
             - name: Laster opp screenshots dersom Cypress-testene feiler
