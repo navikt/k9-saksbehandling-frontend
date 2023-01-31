@@ -8,7 +8,7 @@ interface DeleteButtonProps {
 
 const DeleteButton = ({ onClick }: DeleteButtonProps): JSX.Element => (
     <div className={styles.deleteButton__container}>
-        <button className={styles.deleteButton__button} onClick={onClick} aria-label="Fjern periode" type="button">
+        <button className={styles.deleteButton__button} onClick={onClick} type="button" aria-label="Fjern periode">
             <BucketIcon />
         </button>
     </div>
