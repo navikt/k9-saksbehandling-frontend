@@ -10,9 +10,6 @@ jobs:
     valid-pull-request:
         name: Validere pull request
         runs-on: ubuntu-latest
-        defaults:
-            run:
-                working-directory: ./packages/medisinsk-vilkår
         steps:
             - name: Hente kode
               uses: actions/checkout@v3
