@@ -18,10 +18,10 @@ const VurderingsdetaljerFetcher = ({ url, contentRenderer }: VurderingsdetaljerF
     const [vurdering, setVurdering] = React.useState<Vurdering>(null);
     const [hentVurderingHarFeilet, setHentVurderingHarFeilet] = React.useState<boolean>(false);
 
-    const httpCanceler = useMemo(() => axios.CancelToken.source(), [url]);
+    const controller = useMemo(() => new AbortController(), [url]);
 
     function hentVurderingsdetaljer(): Promise<Vurdering> {
-        return get(url, httpErrorHandler, { cancelToken: httpCanceler.token });
+        return get(url, httpErrorHandler, { signal: controller.signal });
     }
 
     const handleError = () => {
@@ -45,7 +45,7 @@ const VurderingsdetaljerFetcher = ({ url, contentRenderer }: VurderingsdetaljerF
 
         return () => {
             isMounted = false;
-            httpCanceler.cancel();
+            controller.abort();
         };
     }, [url]);
 

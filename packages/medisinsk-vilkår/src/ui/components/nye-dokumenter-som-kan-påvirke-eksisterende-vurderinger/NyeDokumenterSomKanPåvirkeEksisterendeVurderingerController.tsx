@@ -16,7 +16,7 @@ const NyeDokumenterSomKanPåvirkeEksisterendeVurderingerController = ({
     afterEndringerRegistrert,
 }: NyeDokumenterSomKanPåvirkeEksisterendeVurderingerControllerProps): JSX.Element => {
     const { endpoints, httpErrorHandler, behandlingUuid } = React.useContext(ContainerContext);
-    const httpCanceler = useMemo(() => axios.CancelToken.source(), []);
+    const controller = useMemo(() => new AbortController(), []);
     const [isSubmitting, setIsSubmitting] = React.useState(false);
     const [httpErrorHasOccured, setHttpErrorHasOccured] = React.useState(false);
 
@@ -27,7 +27,7 @@ const NyeDokumenterSomKanPåvirkeEksisterendeVurderingerController = ({
 
     const bekreftAtEndringerErRegistrert = () =>
         post(endpoints.nyeDokumenter, createRegistrerNyeDokumenterRequestPayload(), httpErrorHandler, {
-            cancelToken: httpCanceler.token,
+            signal: controller.signal,
         });
 
     const onEndringerRegistrertClick = async () => {

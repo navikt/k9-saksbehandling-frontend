@@ -3,10 +3,18 @@ describe('Sykdom', () => {
         cy.visit('/');
     });
     it('skal kunne håndtere dokumentasjon av sykdom', () => {
-        cy.contains('Ja, legeerklæring fra sykehus/spesialisthelsetjenesten').should('exist').click();
+        cy.contains('Ja, legeerklæring fra sykehus/spesialisthelsetjenesten').click();
         cy.findByLabelText(/Hvilken dato er dokumentet datert?/).type('101021');
-        cy.contains('Bekreft').should('exist').click();
-        cy.contains('Fortsett').should('exist').click();
+        cy.contains('Bekreft').click();
+    });
+    it('skal kunne legge inn innleggelsesperioder', () => {
+        cy.contains('Dokumentasjon av sykdom').click();
+        cy.contains('Rediger liste').click();
+        cy.contains('Legg til innleggelsesperiode').click();
+        cy.get('input[id="innleggelsesperioder[3].fom"]').type('010123');
+        cy.get('input[id="innleggelsesperioder[3].tom"]').type('300123');
+        cy.get('div[role="dialog"]').contains('Bekreft').click();
+        cy.contains('Fortsett').click();
     });
     it('skal kunne håndtere tilsyn og pleie', () => {
         cy.get('[type="checkbox"]').first().check({ force: true });
@@ -30,16 +38,16 @@ describe('Sykdom', () => {
         cy.contains(
             'Du har ikke vurdert alle periodene som må vurderes. Resterende perioder vurderer du etter at du har lagret denne.'
         ).should('not.exist');
-        cy.contains('Bekreft').should('exist').click();
-        cy.get('.ReactModalPortal').find('button').contains('Bekreft').should('exist').click();
-        cy.contains('Eventuelle endringer er registrert').should('exist').click();
+        cy.contains('Bekreft').click();
+        cy.get('.ReactModalPortal').find('button').contains('Bekreft').click();
+        cy.contains('Eventuelle endringer er registrert').click();
     });
     it('skal kunne håndtere to omsorgspersoner', () => {
         cy.get('[type="checkbox"]').first().check({ force: true });
         cy.get('[name="vurderingAvToOmsorgspersoner"]').type('test');
         cy.get('input[id="harBehovForToOmsorgspersonerYES"]').check({ force: true });
-        cy.contains('Bekreft').should('exist').click();
-        cy.get('.ReactModalPortal').find('button').contains('Bekreft').should('exist').click();
+        cy.contains('Bekreft').click();
+        cy.get('.ReactModalPortal').find('button').contains('Bekreft').click();
         cy.contains('Sykdom er ferdig vurdert og du kan gå videre i behandlingen.').should('exist');
     });
 });

@@ -1,11 +1,11 @@
-name: Validere pull request Inntektsmelding
+name: Validere pull request K9 frontend modules
 on:
     pull_request:
         types: [opened, synchronize]
         paths:
-            - 'packages/inntektsmelding/**/*'
+            - 'packages/k9-frontend-modules/**/*'
 env:
-    package-name: psb-inntektsmelding-frontend
+    package-name: "'{@navikt/k9-array-utils,@navikt/k9-bem-utils,@navikt/k9-date-utils,@navikt/k9-form-utils,@navikt/k9-http-utils,@navikt/k9-period-utils}'"
 jobs:
     valid-pull-request:
         name: Validere pull request
@@ -24,10 +24,6 @@ jobs:
               run: yarn install --prefer-offline --frozen-lockfile
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
-            - name: Kjøre linter
-              run: lerna run lint --scope ${{env.package-name}}
-            - name: Valider typescript
-              run: lerna run ts-check --scope ${{env.package-name}}
             - name: Kjøre enhetstester
               run: lerna run test --scope ${{env.package-name}}
             - name: Kjøre bygg

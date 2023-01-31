@@ -99,7 +99,7 @@ const MedisinskVilkår = (): JSX.Element => {
         }
     };
 
-    const httpCanceler = useMemo(() => axios.CancelToken.source(), []);
+    const controller = useMemo(() => new AbortController(), []);
 
     const hentDiagnosekoder = () =>
         get<DiagnosekodeResponse>(endpoints.diagnosekoder, httpErrorHandler).then(
@@ -118,7 +118,7 @@ const MedisinskVilkår = (): JSX.Element => {
     const hentSykdomsstegStatus = async () => {
         try {
             const status = await get<SykdomsstegStatusResponse>(endpoints.status, httpErrorHandler, {
-                cancelToken: httpCanceler.token,
+                signal: controller.signal,
             });
             const nesteSteg = finnNesteStegFn(status);
             dispatch({
@@ -139,7 +139,7 @@ const MedisinskVilkår = (): JSX.Element => {
         new Promise((resolve, reject) => {
             if (status.nyttDokumentHarIkkekontrollertEksisterendeVurderinger) {
                 get<NyeDokumenterResponse>(endpoints.nyeDokumenter, httpErrorHandler, {
-                    cancelToken: httpCanceler.token,
+                    signal: controller.signal,
                 }).then(
                     (dokumenter) => resolve([status, dokumenter]),
                     (error) => reject(error)
@@ -170,7 +170,7 @@ const MedisinskVilkår = (): JSX.Element => {
             });
 
         return () => {
-            httpCanceler.cancel();
+            controller.abort();
         };
     }, []);
 

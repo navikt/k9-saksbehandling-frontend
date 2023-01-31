@@ -62,7 +62,7 @@ const EndreVurderingController = ({
         vurderingsversjonTilLagringFraModal,
     } = state;
 
-    const httpCanceler = useMemo(() => axios.CancelToken.source(), []);
+    const controller = useMemo(() => new AbortController(), []);
 
     function endreVurdering(nyVurderingsversjon: Partial<Vurderingsversjon>) {
         dispatch({ type: ActionType.LAGRING_AV_VURDERING_PÅBEGYNT });
@@ -72,7 +72,7 @@ const EndreVurderingController = ({
             vurderingsid,
             nyVurderingsversjon,
             httpErrorHandler,
-            httpCanceler.token
+            controller.signal
         ).then(
             () => {
                 onVurderingLagret();
@@ -95,7 +95,7 @@ const EndreVurderingController = ({
             vurderingsid,
             nyVurderingsversjon,
             httpErrorHandler,
-            httpCanceler.token
+            controller.signal
         );
 
     const advarOmEksisterendeVurderinger = (
@@ -138,7 +138,7 @@ const EndreVurderingController = ({
         if (!dataTilVurderingUrl) {
             return new Promise((resolve) => resolve([]));
         }
-        return get(dataTilVurderingUrl, httpErrorHandler, { cancelToken: httpCanceler.token });
+        return get(dataTilVurderingUrl, httpErrorHandler, { signal: controller.signal });
     }
 
     const handleHentDataTilVurderingError = () => {
@@ -158,7 +158,7 @@ const EndreVurderingController = ({
 
         return () => {
             isMounted = false;
-            httpCanceler.cancel();
+            controller.abort();
         };
     }, []);
 

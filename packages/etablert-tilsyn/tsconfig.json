@@ -10,5 +10,5 @@
         "esModuleInterop": true,
         "allowJs": true
     },
-    "exclude": ["node_modules", "build", "**/*.test.ts", "**/*.spec.ts", "**/*.spec.tsx", "**/*.test.tsx"]
+    "exclude": ["node_modules", "build", "**/*.spec.ts", "**/*.spec.tsx"]
 }

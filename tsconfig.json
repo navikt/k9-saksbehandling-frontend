@@ -11,6 +11,6 @@
         "module": "es2020",
         "moduleResolution": "node"
     },
-    "include": ["packages/**/*", "dist", "jest-config/**/*"],
-    "exclude": ["node_modules", "build", "**/*.test.ts", "**/*.spec.ts", "**/*.test.tsx", "dist"]
+    "include": ["packages/**/*", "jest-config/**/*"],
+    "exclude": ["node_modules", "build", "**/*.spec.ts", "**/*.spec.tsx", "dist"]
 }

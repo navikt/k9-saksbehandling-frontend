@@ -1,18 +1,17 @@
 import React from 'react';
-import axios from 'axios';
 import * as httpUtils from '@navikt/k9-http-utils';
 import { render, fireEvent, waitFor, screen } from '@testing-library/react';
-import VilkårsvurderingAvTilsynOgPleie from '../VilkårsvurderingAvTilsynOgPleie';
+import VilkårsvurderingAvToOmsorgspersoner from '../VilkårsvurderingAvToOmsorgspersoner';
 import ContainerContext from '../../../context/ContainerContext';
 import VurderingContext from '../../../context/VurderingContext';
 import Vurderingstype from '../../../../types/Vurderingstype';
-import { dokumentSteg, toOmsorgspersonerSteg } from '../../../../types/Step';
+import { dokumentSteg } from '../../../../types/Step';
 
 const vurderingsoversiktEndpoint = 'vurderingsoversikt-mock';
 const vurderingsopprettelseEndpoint = 'vurderingsopprettelse-mock';
 
 const httpErrorHandlerMock = () => null;
-const cancelTokenMock = { cancelToken: 'foo' };
+const abortControllerMock = { signal: new AbortController().signal };
 
 jest.mock('nav-frontend-modal');
 
@@ -35,18 +34,23 @@ const vurderingsoversiktMock = {
 
 window.scroll = () => null;
 
+const onFinishedMock = {
+    fn: () => null,
+};
+
 const contextWrapper = (ui) =>
     render(
         <ContainerContext.Provider
             value={
                 {
-                    endpoints: { vurderingsoversiktKontinuerligTilsynOgPleie: vurderingsoversiktEndpoint },
+                    endpoints: { vurderingsoversiktBehovForToOmsorgspersoner: vurderingsoversiktEndpoint },
                     httpErrorHandler: httpErrorHandlerMock,
                     readOnly: false,
+                    onFinished: onFinishedMock.fn,
                 } as any
             }
         >
-            <VurderingContext.Provider value={{ vurderingstype: Vurderingstype.KONTINUERLIG_TILSYN_OG_PLEIE }}>
+            <VurderingContext.Provider value={{ vurderingstype: Vurderingstype.TO_OMSORGSPERSONER }}>
                 {ui}
             </VurderingContext.Provider>
         </ContainerContext.Provider>
@@ -66,18 +70,18 @@ const sykdomsstegDokumentUferdigStatusMock = {
     fn: getFunctionThatReturnsAResolvedPromise({ kanLøseAksjonspunkt: false, harUklassifiserteDokumenter: true }),
 };
 
-const sykdomsstegKTPUferdigStatusMock = {
+const sykdomsstegToOmsorgspersonerUferdigStatusMock = {
     fn: getFunctionThatReturnsAResolvedPromise({
         kanLøseAksjonspunkt: false,
         harUklassifiserteDokumenter: false,
-        manglerVurderingAvKontinuerligTilsynOgPleie: true,
+        manglerVurderingAvToOmsorgspersoner: true,
     }),
 };
 
 const renderVilkårsvurderingComponent = (
     kanLøseAksjonspunkt?: boolean,
     harUklassifiserteDokumenter?: boolean,
-    manglerKTPVurdering?: boolean
+    manglerToOmsorgspersonerVurdering?: boolean
 ) => {
     let hentSykdomsstegStatusMock = sykdomsstegFerdigStatusMock;
     if (kanLøseAksjonspunkt) {
@@ -86,12 +90,12 @@ const renderVilkårsvurderingComponent = (
     if (harUklassifiserteDokumenter) {
         hentSykdomsstegStatusMock = sykdomsstegDokumentUferdigStatusMock;
     }
-    if (manglerKTPVurdering) {
-        hentSykdomsstegStatusMock = sykdomsstegKTPUferdigStatusMock;
+    if (manglerToOmsorgspersonerVurdering) {
+        hentSykdomsstegStatusMock = sykdomsstegToOmsorgspersonerUferdigStatusMock;
     }
 
     return contextWrapper(
-        <VilkårsvurderingAvTilsynOgPleie
+        <VilkårsvurderingAvToOmsorgspersoner
             navigerTilNesteSteg={navigerTilNesteStegMock.fn}
             sykdomsstegStatus={{ manglerGodkjentLegeerklæring: false } as any}
             hentSykdomsstegStatus={hentSykdomsstegStatusMock.fn as any}
@@ -99,34 +103,27 @@ const renderVilkårsvurderingComponent = (
     );
 };
 
-describe('VilkårsvurderingAvTilsynOgPleie', () => {
+describe('VilkårsvurderingAvToOmsorgspersoner', () => {
     let httpGetSpy = null;
     let httpPostSpy = null;
 
     let sykdomsstegFerdigStatusSpy = null;
     let sykdomsstegDokumentUferdigStatusSpy = null;
-    let sykdomsstegKTPUferdigStatusSpy = null;
+    let sykdomsstegToOmsorgspersonerUferdigStatusSpy = null;
 
     let navigerTilNesteStegSpy = null;
+    let onFinishedSpy = null;
 
     beforeAll(() => {
         httpGetSpy = jest.spyOn(httpUtils, 'get');
         httpPostSpy = jest.spyOn(httpUtils, 'post');
 
-        const mock = jest.spyOn(axios.CancelToken, 'source');
-        mock.mockImplementation(
-            () =>
-                ({
-                    token: cancelTokenMock.cancelToken,
-                    cancel: () => null,
-                } as any)
-        );
-
         sykdomsstegFerdigStatusSpy = jest.spyOn(sykdomsstegFerdigStatusMock, 'fn');
         sykdomsstegDokumentUferdigStatusSpy = jest.spyOn(sykdomsstegDokumentUferdigStatusMock, 'fn');
-        sykdomsstegKTPUferdigStatusSpy = jest.spyOn(sykdomsstegKTPUferdigStatusMock, 'fn');
+        sykdomsstegToOmsorgspersonerUferdigStatusSpy = jest.spyOn(sykdomsstegToOmsorgspersonerUferdigStatusMock, 'fn');
 
         navigerTilNesteStegSpy = jest.spyOn(navigerTilNesteStegMock, 'fn');
+        onFinishedSpy = jest.spyOn(onFinishedMock, 'fn');
     });
 
     const mockResolvedGetApiCallOnce = (data) => {
@@ -185,7 +182,7 @@ describe('VilkårsvurderingAvTilsynOgPleie', () => {
             await waitFor(() => {
                 expect(screen.getByText(/Perioden må vurderes/i)).toBeInTheDocument();
                 expect(
-                    screen.getByText(/Vurder behov for tilsyn og pleie for 01.01.2028 - 01.01.2028/i)
+                    screen.getByText(/Vurder behov for to omsorgspersoner for 01.01.2028 - 01.01.2028/i)
                 ).toBeInTheDocument();
                 expect(screen.queryByText('Ny vurdering')).toBeNull();
             });
@@ -203,11 +200,11 @@ describe('VilkårsvurderingAvTilsynOgPleie', () => {
         it('should open vurdering-form when Ny vurdering-button is clicked, and form should be closeable by clicking Avbryt button', async () => {
             const { getByText, queryByText } = renderVilkårsvurderingComponent();
             await waitFor(() => {
-                expect(queryByText(/Vurdering av tilsyn og pleie/)).toBeNull();
+                expect(queryByText(/Vurdering av to omsorgspersoner/)).toBeNull();
                 fireEvent.click(screen.getByText('Ny vurdering'));
-                expect(getByText(/Vurdering av tilsyn og pleie/i)).toBeInTheDocument();
+                expect(getByText(/Vurdering av to omsorgspersoner/i)).toBeInTheDocument();
                 fireEvent.click(screen.getByText(/Avbryt/i));
-                expect(queryByText(/Vurdering av tilsyn og pleie/)).toBeNull();
+                expect(queryByText(/Vurdering av to omsorgspersoner/)).toBeNull();
             });
         });
     });
@@ -227,7 +224,7 @@ describe('VilkårsvurderingAvTilsynOgPleie', () => {
             navigerTilNesteStegSpy.mockClear();
         });
 
-        it('should get new sykdomsstatus after successfully posting vurdering, and when it responds with kanLøseAksjonspunkt=true, it should navigate user to to omsorgspersoner', async () => {
+        it('should get new sykdomsstatus after successfully posting vurdering, and when it responds with kanLøseAksjonspunkt=true, it call onFinished()', async () => {
             renderVilkårsvurderingComponent(true);
             await waitFor(async () => {
                 const textarea = screen.getByLabelText(/Gjør en vurdering av/i);
@@ -246,7 +243,7 @@ describe('VilkårsvurderingAvTilsynOgPleie', () => {
                 // one post with dryRun=true, another with dryRun=false
                 expect(httpPostSpy).toHaveBeenCalledTimes(2);
                 expect(sykdomsstegFerdigStatusSpy).toHaveBeenCalledTimes(1);
-                expect(navigerTilNesteStegSpy).toHaveBeenCalledWith(toOmsorgspersonerSteg, true);
+                expect(onFinishedSpy).toHaveBeenCalledTimes(1);
             });
         });
 
@@ -269,11 +266,11 @@ describe('VilkårsvurderingAvTilsynOgPleie', () => {
                 // one post with dryRun=true, another with dryRun=false
                 expect(httpPostSpy).toHaveBeenCalledTimes(2);
                 expect(sykdomsstegDokumentUferdigStatusSpy).toHaveBeenCalledTimes(1);
-                expect(navigerTilNesteStegSpy).toHaveBeenCalledWith(dokumentSteg, false);
+                expect(navigerTilNesteStegSpy).toHaveBeenCalledWith(dokumentSteg);
             });
         });
 
-        it('should get new sykdomsstatus after successfully posting vurdering, and if still not done with tilsyn & pleie, it should get an updated version of vurderingsoversikt data', async () => {
+        it('should get new sykdomsstatus after successfully posting vurdering, and if still not done with to omsorgspersoner, it should get an updated version of vurderingsoversikt data', async () => {
             renderVilkårsvurderingComponent(false, false, true);
             await waitFor(async () => {
                 const textarea = screen.getByLabelText(/Gjør en vurdering av/i);
@@ -294,13 +291,13 @@ describe('VilkårsvurderingAvTilsynOgPleie', () => {
             await waitFor(() => {
                 // one post with dryRun=true, another with dryRun=false
                 expect(httpPostSpy).toHaveBeenCalledTimes(2);
-                expect(sykdomsstegKTPUferdigStatusSpy).toHaveBeenCalledTimes(1);
+                expect(sykdomsstegToOmsorgspersonerUferdigStatusSpy).toHaveBeenCalledTimes(1);
 
                 expect(httpGetSpy).toHaveBeenCalledTimes(1);
                 expect(httpGetSpy).toHaveBeenCalledWith(
                     vurderingsoversiktEndpoint,
                     httpErrorHandlerMock,
-                    cancelTokenMock
+                    abortControllerMock
                 );
             });
         });

@@ -37,14 +37,14 @@ const Innleggelsesperiodeoversikt = ({
     const [isLoading, setIsLoading] = React.useState(true);
     const [hentInnleggelsesperioderFeilet, setHentInnleggelsesperioderFeilet] = React.useState(false);
     const [lagreInnleggelsesperioderFeilet, setLagreInnleggelsesperioderFeilet] = React.useState(false);
-    const httpCanceler = useMemo(() => axios.CancelToken.source(), []);
+    const controller = useMemo(() => new AbortController(), []);
 
     const innleggelsesperioder = innleggelsesperioderResponse.perioder;
     const innleggelsesperioderDefault = innleggelsesperioder?.length > 0 ? innleggelsesperioder : [new Period('', '')];
 
     const hentInnleggelsesperioder = () =>
         get(`${endpoints.innleggelsesperioder}`, httpErrorHandler, {
-            cancelToken: httpCanceler.token,
+            signal: controller.signal,
         });
 
     const initializeInnleggelsesperiodeData = (response: InnleggelsesperiodeResponse) => ({
@@ -79,7 +79,7 @@ const Innleggelsesperiodeoversikt = ({
             href,
             { behandlingUuid, versjon, perioder: nyeInnleggelsesperioder },
             httpErrorHandler,
-            httpCanceler.token
+            controller.signal
         )
             .then(() => {
                 onInnleggelsesperioderUpdated();
@@ -105,7 +105,7 @@ const Innleggelsesperiodeoversikt = ({
             });
         return () => {
             isMounted = false;
-            httpCanceler.cancel();
+            controller.abort();
         };
     }, []);
 
@@ -177,7 +177,7 @@ const Innleggelsesperiodeoversikt = ({
                             href,
                             { ...requestPayload, perioder: nyeInnleggelsesperioder },
                             httpErrorHandler,
-                            httpCanceler.token
+                            controller.signal
                         );
                     }}
                 />
