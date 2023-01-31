@@ -5,33 +5,9 @@ env:
     package-name: medisinsk-vilkar-frontend
 
 jobs:
-    lint:
-        uses: ./.github/workflows/lint.yml
-        secrets: inherit
-        with:
-            package-name: medisinsk-vilkar-frontend
-    build:
-        uses: ./.github/workflows/build.yml
-        secrets: inherit
-        with:
-            package-name: medisinsk-vilkar-frontend
-            upload-artifact: true
-            artifact-path: ./packages/medisinsk-vilkår/build/
-    test:
-        uses: ./.github/workflows/test.yml
-        secrets: inherit
-        with:
-            package-name: medisinsk-vilkar-frontend
-    cypress-test:
-        uses: ./.github/workflows/cypress-test.yml
-        secrets: inherit
-        with:
-            package-name: medisinsk-vilkar-frontend
-            project: ./packages/medisinsk-vilkår
     deploy-docker-image:
         name: Deploy Docker image
         runs-on: ubuntu-latest
-        needs: [lint, build, test, cypress-test]
         steps:
             - name: Hente kode
               uses: actions/checkout@v3
@@ -42,10 +18,37 @@ jobs:
                   registry-url: https://npm.pkg.github.com/
                   scope: '@navikt'
                   cache: 'yarn'
-            - uses: actions/download-artifact@v3
+            - name: Installere dependencies
+              run: yarn install --prefer-offline --frozen-lockfile
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
+            - name: Kjøre linter
+              run: lerna run lint --scope ${{env.package-name}}
+            - name: Valider typescript
+              run: lerna run ts-check --scope ${{env.package-name}}
+            - name: Kjøre enhetstester
+              run: lerna run test --scope ${{env.package-name}}
+            - name: Kjør E2E-tester
+              uses: cypress-io/github-action@v5
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
               with:
-                  name: build
-                  path: ./build
+                  install: false
+                  project: ./packages/medisinsk-vilkår
+                  build: lerna run build --scope '{@navikt/k9-array-utils,@navikt/k9-bem-utils,@navikt/k9-date-utils,@navikt/k9-form-utils,@navikt/k9-http-utils,@navikt/k9-period-utils}'
+                  start: lerna run dev --scope medisinsk-vilkar-frontend
+                  wait-on: 'http://localhost:8081'
+                  wait-on-timeout: 60
+                  headless: true
+            - name: Laster opp screenshots dersom Cypress-testene feiler
+              uses: actions/upload-artifact@v3
+              if: failure()
+              with:
+                  name: cypress-screenshots
+                  path: cypress/screenshots
+                  working-directory: ./packages/medisinsk-vilkår
+            - name: Kjøre bygg
+              run: lerna run build --scope ${{env.package-name}}
             - name: Sette versjon
               working-directory: ./packages/medisinsk-vilkår
               run: |
