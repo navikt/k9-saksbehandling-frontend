@@ -2,19 +2,26 @@ import { ErrorMessage } from '@navikt/ds-react';
 import { Box, Margin } from '@navikt/ft-plattform-komponenter';
 import '@navikt/ft-plattform-komponenter/dist/style.css';
 import { Period } from '@navikt/k9-period-utils';
-import { CalendarPlacement, DatepickerLimitations } from 'nav-datovelger';
 import React from 'react';
 import { Controller, useFieldArray, useFormContext } from 'react-hook-form';
+import { DatepickerLimitations } from '../pure/DatepickerLimitations';
 import PureDatepicker from '../pure/PureDatepicker';
-import styles from './periodpickerList.less';
+import styles from './periodpickerList.css';
 
 interface DatepickerProps {
     label?: string;
     ariaLabel?: string;
+    fromDate?: Date;
+    toDate?: Date;
+    initialMonth?: Date;
+    /**
+     * @deprecated Bruk disabledDays, fromDate og toDate istedet.
+     */
     limitations?: DatepickerLimitations;
-    calendarSettings?: {
-        position?: CalendarPlacement;
-    };
+    disabledDays?: {
+        from: Date;
+        to?: Date;
+    }[];
 }
 interface PeriodpickerListProps {
     name: string;
