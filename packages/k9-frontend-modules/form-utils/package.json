@@ -2,6 +2,7 @@
     "name": "@navikt/k9-form-utils",
     "version": "2.0.0",
     "scripts": {
+        "dev": "rollup -w -c rollup.config.mjs",
         "build": "rollup -c rollup.config.mjs",
         "clean": "rm -rf ./build ./node_modules",
         "storybook": "start-storybook -p 7003 --ci",
