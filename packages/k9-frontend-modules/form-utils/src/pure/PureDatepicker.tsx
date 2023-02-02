@@ -53,6 +53,7 @@ const PureDatepicker = ({
     disabledDays,
 }: PureDatepickerProps): JSX.Element => {
     const stringToDate = (date: string | Date): Date => new Date(date);
+    const [ugyldigDatoError, setUgyldigDatoError] = React.useState(false);
 
     const { datepickerProps, inputProps } = UNSAFE_useDatepicker({
         fromDate: limitations && limitations.minDate ? new Date(limitations.minDate) : fromDate,
@@ -67,11 +68,13 @@ const PureDatepicker = ({
                   }))
                 : disabledDays,
         onDateChange: (date) => {
-            if (date !== undefined) {
-                const verdi = dayjs(date).format(ISO_DATE_FORMAT);
-                onChange(verdi);
-            }
+            const verdi = dayjs(date).format(ISO_DATE_FORMAT);
+            onChange(verdi);
         },
+        onValidate: (date) => {
+            setUgyldigDatoError(date.isBefore || date.isAfter);
+        },
+        openOnFocus: false,
     });
 
     return (
@@ -83,7 +86,10 @@ const PureDatepicker = ({
                     id={inputId}
                     disabled={disabled}
                     size="small"
-                    error={errorMessage}
+                    error={
+                        errorMessage ||
+                        (ugyldigDatoError ? 'Du har valgt en dato som er utenfor gyldig periode.' : undefined)
+                    }
                 />
             </UNSAFE_DatePicker>
         </div>

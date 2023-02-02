@@ -2395,10 +2395,20 @@
   resolved "https://npm.pkg.github.com/download/@navikt/ds-css/2.1.5/f8240fe3a34f5696c4cd79227abe7a63b3cc13db#f8240fe3a34f5696c4cd79227abe7a63b3cc13db"
   integrity sha512-Lek7H2jQeqGEFqDMYrJ1gMD8MTSYrrUQW4V76WWKOEC8bhhgfBDXhVrw3Bn8TxmvV1Xzq+xQAKZIfYdC2TmR4A==
 
+"@navikt/ds-css@2.1.6":
+  version "2.1.6"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-css/2.1.6/9f179ef75c62f8ee8a81189106ed536272fef3d1#9f179ef75c62f8ee8a81189106ed536272fef3d1"
+  integrity sha512-svT9gB9EAq59M3CiaWSuVMCfYLIB2oCRXyMZSqbTSFo7oQHxRuXDPfdioRkKB+Ez/eEQwhN+UZXK1g2m0tkOvw==
+
 "@navikt/ds-icons@2.1.5", "@navikt/ds-icons@^2.1.5":
   version "2.1.5"
   resolved "https://npm.pkg.github.com/download/@navikt/ds-icons/2.1.5/7ed06e53d93dfa514ffaa324df96c0650eba701b#7ed06e53d93dfa514ffaa324df96c0650eba701b"
   integrity sha512-klzs6ub3a8Y4iQ6PqenQzTApWwtBwZwQNc3TNPryvIiSfkHx1emDv9PUPNyxBXySAknI4jHVKOUosgf11giOhg==
+
+"@navikt/ds-icons@2.1.6", "@navikt/ds-icons@^2.1.6":
+  version "2.1.6"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-icons/2.1.6/9a7caae8f6c1696dc4199917d75c3043ade6cbae#9a7caae8f6c1696dc4199917d75c3043ade6cbae"
+  integrity sha512-a6dwPPu3yAJTBB31kXS2OvFdVNUZNjaON2DiQkQppnfDZC82AdhCKE8/NEFaQ3dUZSmbEbGy/e1IHNpFI2kKRg==
 
 "@navikt/ds-react@2.1.5":
   version "2.1.5"
@@ -2407,6 +2417,20 @@
   dependencies:
     "@floating-ui/react" "0.17.0"
     "@navikt/ds-icons" "^2.1.5"
+    "@radix-ui/react-tabs" "1.0.0"
+    "@radix-ui/react-toggle-group" "1.0.0"
+    clsx "^1.2.1"
+    date-fns "2.29.3"
+    react-day-picker "8.3.4"
+    react-modal "3.15.1"
+
+"@navikt/ds-react@2.1.6":
+  version "2.1.6"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-react/2.1.6/08b976a97fb98cc0f0ded2cb9b3c1708d564dcd2#08b976a97fb98cc0f0ded2cb9b3c1708d564dcd2"
+  integrity sha512-9n8sOCxV/4mmmZ4gyDSzlR8Z6tkGPW1Dcmrk+cZxRAgD5fPspPs2Ee0tHmxhAa4hd2ekqNoHgjR7Q5dWlxBK1g==
+  dependencies:
+    "@floating-ui/react" "0.17.0"
+    "@navikt/ds-icons" "^2.1.6"
     "@radix-ui/react-tabs" "1.0.0"
     "@radix-ui/react-toggle-group" "1.0.0"
     clsx "^1.2.1"
