@@ -39,6 +39,7 @@ jobs:
               with:
                   install: false
                   project: ./packages/medisinsk-vilkår
+                  build: lerna run build --scope '{@navikt/k9-array-utils,@navikt/k9-bem-utils,@navikt/k9-date-utils,@navikt/k9-form-utils,@navikt/k9-http-utils,@navikt/k9-period-utils}'
                   start: lerna run dev --scope medisinsk-vilkar-frontend
                   wait-on: 'http://localhost:8081'
                   wait-on-timeout: 60
