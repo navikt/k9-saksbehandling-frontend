@@ -83,11 +83,9 @@ const InnleggelsesperiodeFormModal = ({
                                 legend="Innleggelsesperioder"
                                 fromDatepickerProps={{
                                     ariaLabel: 'Fra',
-                                    calendarSettings: { position: 'fullscreen' },
                                 }}
                                 toDatepickerProps={{
                                     ariaLabel: 'Til',
-                                    calendarSettings: { position: 'fullscreen' },
                                 }}
                                 afterOnChange={() => {
                                     const initialiserteInnleggelsesperioder = getValues().innleggelsesperioder.map(
