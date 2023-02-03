@@ -74,10 +74,12 @@ const InnleggelsesperiodeFormModal = ({
                                     name="innleggelsesperioder"
                                     legend="Innleggelsesperioder"
                                     fromDatepickerProps={{
-                                        ariaLabel: 'Fra',
+                                        hideLabel: true,
+                                        label: 'Fra',
                                     }}
                                     toDatepickerProps={{
-                                        ariaLabel: 'Til',
+                                        hideLabel: true,
+                                        label: 'Til',
                                     }}
                                     afterOnChange={() => {
                                         const initialiserteInnleggelsesperioder = getValues().innleggelsesperioder.map(

@@ -1,6 +1,6 @@
 .innleggelsesperiodeFormModal {
     overflow: visible;
-    max-width: 475px;
+    max-width: 525px;
     color: #262626;
 }
 .innleggelsesperiodeFormModal form {
@@ -19,5 +19,5 @@
     display: flex;
 }
 .innleggelsesperiodeFormModal__firstLabel {
-    width: 192px;
+    width: 218px;
 }

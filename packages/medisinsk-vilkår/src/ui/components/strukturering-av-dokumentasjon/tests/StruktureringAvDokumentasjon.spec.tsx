@@ -4,8 +4,6 @@ import * as httpUtils from '@navikt/k9-http-utils';
 import ContainerContext from '../../../context/ContainerContext';
 import StruktureringAvDokumentasjon from '../StruktureringAvDokumentasjon';
 
-jest.mock('nav-frontend-modal');
-
 const dokumentoversiktEndpoint = 'mockedDokumentoversiktEndpoint';
 const dokumentoversiktMock = {
     dokumenter: [],
