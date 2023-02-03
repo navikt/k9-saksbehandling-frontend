@@ -1,6 +1,5 @@
-import { BodyShort } from '@navikt/ds-react';
+import { BodyShort, Label } from '@navikt/ds-react';
 import { Autocomplete, FieldError } from '@navikt/ft-plattform-komponenter';
-import { Label } from 'nav-frontend-skjema';
 import * as React from 'react';
 import Diagnosekode from '../../../types/Diagnosekode';
 import DeleteButton from '../../components/delete-button/DeleteButton';
@@ -66,7 +65,9 @@ const PureDiagnosekodeSelector = ({
     return (
         <div className={styles.diagnosekodeContainer}>
             <div className={hideLabel ? styles.diagnosekodeContainer__hideLabel : ''}>
-                <Label htmlFor={name}>{label}</Label>
+                <Label as="label" htmlFor={name}>
+                    {label}
+                </Label>
             </div>
             <div className={styles.diagnosekodeContainer__autocompleteContainer}>
                 <Autocomplete
