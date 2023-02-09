@@ -1,6 +1,6 @@
-import { get } from '@navikt/k9-http-utils';
+import { Alert } from '@navikt/ds-react';
 import { LinkButton, PageContainer } from '@navikt/ft-plattform-komponenter';
-import Alertstripe from 'nav-frontend-alertstriper';
+import { get } from '@navikt/k9-http-utils';
 import React, { useContext, useEffect, useMemo, useReducer } from 'react';
 import { RettVedDød } from '../../../types/RettVedDød';
 import ContainerContext from '../../context/ContainerContext';
@@ -68,15 +68,15 @@ const RettVedDødController = (): JSX.Element => {
 
         return (
             <>
-                <Alertstripe type="info" className="mb-8 max-w-screen-lg">
+                <Alert variant="info" className="mb-8 max-w-screen-lg">
                     Kontroller om søker har søkt om pleiepenger for en periode som varer minst seks uker etter barnets
                     dødsdato. Dersom det ikke er gjort, se unntaksrutinen ved barns død.
-                </Alertstripe>
+                </Alert>
                 {getHeading()}
                 <div className="mt-3 border-2 border-solid border-warning-yellow p-5 max-w-screen-lg">
-                    <Alertstripe type="advarsel">
+                    <Alert variant="warning">
                         Vurder hvor lang periode søker har rett på pleiepenger ved barnets død.
-                    </Alertstripe>
+                    </Alert>
                     <RettVedDødForm
                         rettVedDød={rettVedDød}
                         onCancelClick={() => dispatch({ type: ActionType.ABORT_EDIT })}
