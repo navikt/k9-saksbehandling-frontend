@@ -4187,13 +4187,6 @@
   resolved "https://registry.yarnpkg.com/@types/range-parser/-/range-parser-1.2.4.tgz#cd667bcfdd025213aafb7ca5915a932590acdcdc"
   integrity sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==
 
-"@types/react-collapse@^5.0.1":
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/@types/react-collapse/-/react-collapse-5.0.1.tgz#078ea1ad15e00ba2063f2e4d8d6760c9375a2023"
-  integrity sha512-Iq3OrqvzCIP0DmAawU4T2VKH6XAplbjo/D7Qk14mcfQ92plU+OrA2SF10r2XrcFg1Wvya/5f8w1vS29RVpdoLQ==
-  dependencies:
-    "@types/react" "*"
-
 "@types/react-dom@^18.0.0", "@types/react-dom@^18.0.10":
   version "18.0.10"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.0.10.tgz#3b66dec56aa0f16a6cc26da9e9ca96c35c0b4352"
@@ -10290,11 +10283,6 @@ is-potential-custom-element-name@^1.0.1:
   resolved "https://registry.yarnpkg.com/is-potential-custom-element-name/-/is-potential-custom-element-name-1.0.1.tgz#171ed6f19e3ac554394edf78caa05784a45bebb5"
   integrity sha512-bCYeRA2rVibKZd+s2625gGnGF/t7DSqDs4dP7CrLA1m7jKWz6pps0LpYLJN8Q64HtmPKJ1hrN3nzPNKFEKOUiQ==
 
-is-primitive@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/is-primitive/-/is-primitive-3.0.1.tgz#98c4db1abff185485a657fc2905052b940524d05"
-  integrity sha512-GljRxhWvlCNRfZyORiH77FwdFwGcMO620o37EOYC0ORWdq+WYNVqW0w2Juzew4M+L81l6/QS3t5gkkihyRqv9w==
-
 is-regex@^1.1.0, is-regex@^1.1.2, is-regex@^1.1.4:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/is-regex/-/is-regex-1.1.4.tgz#eef5663cd59fa4c0ae339505323df6854bb15958"
@@ -12345,12 +12333,12 @@ nav-frontend-spinner@^3.0.1:
   resolved "https://registry.yarnpkg.com/nav-frontend-spinner/-/nav-frontend-spinner-3.0.1.tgz#1bacd7810933a0bb1eb3bd2d2f917a4674dd6def"
   integrity sha512-aypBmm5ux6qknI69kW0fTn694mg2739DCPW0F5mcui1oIADuEhQpWSbUJVbQ+613X6u0SNxPeOSgxF1jHtuAuQ==
 
-nav-frontend-tabs-style@2.0.2, nav-frontend-tabs-style@^2.0.2:
+nav-frontend-tabs-style@2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/nav-frontend-tabs-style/-/nav-frontend-tabs-style-2.0.2.tgz#45f2767e5d695657b7ec6f090fcdb98a6bae6239"
   integrity sha512-xh6IcjiRE/b2pQ8OCwlMUYigbJLNuwzjJCTwSg5dEDllrU47ceEDEmlT1hegbjK5L9q0Wiv0Avze0WXoTcs5FA==
 
-nav-frontend-tabs@2.0.3, nav-frontend-tabs@^2.0.3:
+nav-frontend-tabs@2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/nav-frontend-tabs/-/nav-frontend-tabs-2.0.3.tgz#23e1e98d8842e7071e45ae604845810481c63d0b"
   integrity sha512-th06UEZ80Pzz8HKGAy5Hz8ZEI9PPtEXxwIEQtXAOdyaoxcHo1VU4ggYTgDV9r0wOZ6NDNyqKNNiNa6cVYpNADA==
@@ -15193,14 +15181,6 @@ set-value@^2.0.0, set-value@^2.0.1:
     is-extendable "^0.1.1"
     is-plain-object "^2.0.3"
     split-string "^3.0.1"
-
-set-value@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/set-value/-/set-value-4.1.0.tgz#aa433662d87081b75ad88a4743bd450f044e7d09"
-  integrity sha512-zTEg4HL0RwVrqcWs3ztF+x1vkxfm0lP+MQQFPiMJTKVceBwEV0A569Ou8l9IYQG8jOZdMVI1hGsc0tmeD2o/Lw==
-  dependencies:
-    is-plain-object "^2.0.4"
-    is-primitive "^3.0.1"
 
 setimmediate@^1.0.4:
   version "1.0.5"

@@ -1,9 +1,9 @@
 import { Box, Margin, TitleWithUnderline, WarningIcon } from '@navikt/ft-plattform-komponenter';
 import { get, post } from '@navikt/k9-http-utils';
 import axios from 'axios';
-import Modal from 'nav-frontend-modal';
-import Spinner from 'nav-frontend-spinner';
-import React, { useMemo } from 'react';
+
+import { Loader, Modal } from '@navikt/ds-react';
+import React, { useEffect, useMemo } from 'react';
 import { useMutation, useQueries, useQuery } from 'react-query';
 import LinkRel from '../../../constants/LinkRel';
 import Diagnosekode from '../../../types/Diagnosekode';
@@ -15,8 +15,6 @@ import DiagnosekodeModal from '../diagnosekode-modal/DiagnosekodeModal';
 import Diagnosekodeliste from '../diagnosekodeliste/Diagnosekodeliste';
 import IconWithText from '../icon-with-text/IconWithText';
 import WriteAccessBoundContent from '../write-access-bound-content/WriteAccessBoundContent';
-
-Modal.setAppElement('#app');
 
 const fetchDiagnosekoderByQuery = (queryString: string): Promise<Diagnosekode> =>
     axios
@@ -31,6 +29,10 @@ const Diagnosekodeoversikt = ({ onDiagnosekoderUpdated }: DiagnosekodeoversiktPr
     const { endpoints, httpErrorHandler } = React.useContext(ContainerContext);
     const [modalIsOpen, setModalIsOpen] = React.useState(false);
     const addButtonRef = React.useRef<HTMLButtonElement>();
+
+    useEffect(() => {
+        Modal.setAppElement(document.body);
+    }, []);
 
     const hentDiagnosekoder = () =>
         get<DiagnosekodeResponse>(endpoints.diagnosekoder, httpErrorHandler).then(
@@ -121,7 +123,7 @@ const Diagnosekodeoversikt = ({ onDiagnosekoderUpdated }: DiagnosekodeoversiktPr
                 Diagnosekoder
             </TitleWithUnderline>
             {isLoading ? (
-                <Spinner />
+                <Loader size="large" />
             ) : (
                 <Box marginTop={Margin.large}>
                     {diagnosekoder.length === 0 && (

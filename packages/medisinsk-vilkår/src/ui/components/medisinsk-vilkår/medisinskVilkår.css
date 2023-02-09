@@ -9,12 +9,7 @@
         min-height: 1250px;
     }
 }
-.medisinskVilkår :global .nav-frontend-tabs__tab-label {
-    padding-bottom: 0.1rem;
-}
-.medisinskVilkår :global .nav-frontend-tabs__tab-inner--aktiv .nav-frontend-tabs__tab-label {
-    border-bottom: 2px solid #0067c5;
-}
+
 .medisinskVilkår :global .navds-alert {
     padding-top: 0.4375rem;
     padding-bottom: 0.4375rem;

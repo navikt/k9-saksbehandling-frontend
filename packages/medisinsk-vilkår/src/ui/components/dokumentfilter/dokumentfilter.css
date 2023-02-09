@@ -1,6 +1,6 @@
 .dokumentfilter {
-    margin-right: -2.25rem;
-    min-width: 11.6875rem;
+    margin-right: -2.8125rem;
+    margin-top: -0.25rem;
 }
 .chevronDropdown__dropdown {
     position: absolute;
@@ -20,6 +20,7 @@
     border: none;
     background: none;
     padding: unset;
+    color: black;
 }
 .chevronDropdown__toggleButton__text {
     display: inline;

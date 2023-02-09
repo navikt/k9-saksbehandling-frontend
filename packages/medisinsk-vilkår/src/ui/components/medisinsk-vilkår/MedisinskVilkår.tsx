@@ -1,8 +1,7 @@
-import { get } from '@navikt/k9-http-utils';
+import { Tabs } from '@navikt/ds-react';
 import { Box, ChildIcon, Infostripe, Margin, PageContainer, WarningIcon } from '@navikt/ft-plattform-komponenter';
-import axios from 'axios';
+import { get } from '@navikt/k9-http-utils';
 import classnames from 'classnames';
-import { TabsPure } from 'nav-frontend-tabs';
 import React, { useMemo } from 'react';
 import { useQuery } from 'react-query';
 import FagsakYtelseType from '../../../constants/FagsakYtelseType';
@@ -19,11 +18,12 @@ import Step, {
 import SykdomsstegStatusResponse from '../../../types/SykdomsstegStatusResponse';
 import Vurderingstype from '../../../types/Vurderingstype';
 import {
-    finnNesteStegForPleiepenger,
     finnNesteStegForLivetsSluttfase,
-    stegForSakstype,
     finnNesteStegForOpplæringspenger,
+    finnNesteStegForPleiepenger,
+    stegForSakstype,
 } from '../../../util/statusUtils';
+import { erFagsakOLPEllerPLS } from '../../../util/utils';
 import ContainerContext from '../../context/ContainerContext';
 import VurderingContext from '../../context/VurderingContext';
 import AksjonspunktFerdigStripe from '../aksjonspunkt-ferdig-stripe/AksjonspunktFerdigStripe';
@@ -33,12 +33,11 @@ import UteståendeEndringerMelding from '../utestående-endringer-melding/Utest�
 import VilkarsvurderingAvLivetsSluttfase from '../vilkarsvurdering-av-livets-sluttfase/VilkarsvurderingAvLivetsSluttfase';
 import VilkårsvurderingAvTilsynOgPleie from '../vilkårsvurdering-av-tilsyn-og-pleie/VilkårsvurderingAvTilsynOgPleie';
 import VilkårsvurderingAvToOmsorgspersoner from '../vilkårsvurdering-av-to-omsorgspersoner/VilkårsvurderingAvToOmsorgspersoner';
+import VilkårsvurderingLangvarigSykdom from '../vilkårsvurdering-langvarig-sykdom/VilkarsvurderingLangvarigSykdom';
 import WriteAccessBoundContent from '../write-access-bound-content/WriteAccessBoundContent';
 import ActionType from './actionTypes';
 import styles from './medisinskVilkår.css';
 import medisinskVilkårReducer from './reducer';
-import VilkårsvurderingLangvarigSykdom from '../vilkårsvurdering-langvarig-sykdom/VilkarsvurderingLangvarigSykdom';
-import { erFagsakOLPEllerPLS } from '../../../util/utils';
 
 interface TabItemProps {
     label: string;
@@ -269,18 +268,28 @@ const MedisinskVilkår = (): JSX.Element => {
                         kanLøseAksjonspunkt && !!harDataSomIkkeHarBlittTattMedIBehandling && visFortsettknapp === false
                     }
                 />
-                <TabsPure
-                    kompakt
-                    tabs={steps.map((step) => ({
-                        label: (
-                            <TabItem label={step.title} showWarningIcon={step === markedStep && !kanLøseAksjonspunkt} />
-                        ),
-                        aktiv: step === activeStep,
-                    }))}
-                    onChange={(event, clickedIndex) => {
-                        dispatch({ type: ActionType.ACTIVATE_STEP, step: steps[clickedIndex] });
+
+                <Tabs
+                    value={activeStep?.id}
+                    onChange={(clickedId: string) => {
+                        dispatch({ type: ActionType.ACTIVATE_STEP, step: steps.find((step) => step.id === clickedId) });
                     }}
-                />
+                >
+                    <Tabs.List>
+                        {steps.map((step) => (
+                            <Tabs.Tab
+                                key={step.id}
+                                value={step.id}
+                                label={
+                                    <TabItem
+                                        label={step.title}
+                                        showWarningIcon={step === markedStep && !kanLøseAksjonspunkt}
+                                    />
+                                }
+                            />
+                        ))}
+                    </Tabs.List>
+                </Tabs>
                 <div style={{ marginTop: '1rem', maxWidth: '1204px' }}>
                     <div className={styles.medisinskVilkår__vilkårContentContainer}>
                         {activeStep === dokumentStegForSakstype && (

@@ -1,5 +1,5 @@
 import { Collapse, Expand, FilterFilled } from '@navikt/ds-icons';
-import { Checkbox, Label } from '@navikt/ds-react';
+import { Button, Checkbox, Label } from '@navikt/ds-react';
 import classNames from 'classnames';
 import React, { useState } from 'react';
 import OutsideClickHandler from 'react-outside-click-handler';
@@ -20,12 +20,17 @@ interface DokumentfilterProps {
 
 function ChevronWithText({ chevronDirection, onClick, text }: ChevronWithTextProps): JSX.Element {
     return (
-        <button type="button" className={styles.chevronDropdown__toggleButton} onClick={onClick}>
+        <Button
+            variant="tertiary"
+            className={styles.chevronDropdown__toggleButton}
+            onClick={onClick}
+            icon={chevronDirection === 'ned' ? <Expand /> : <Collapse />}
+            iconPosition="right"
+        >
             <Label size="small" className={styles.chevronDropdown__toggleButton__text}>
                 {text}
             </Label>
-            {chevronDirection === 'ned' ? <Expand /> : <Collapse />}
-        </button>
+        </Button>
     );
 }
 
