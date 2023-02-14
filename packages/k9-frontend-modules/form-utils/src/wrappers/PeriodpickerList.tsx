@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import { ErrorMessage } from '@navikt/ds-react';
 import { Box, Margin } from '@navikt/ft-plattform-komponenter';
 import '@navikt/ft-plattform-komponenter/dist/style.css';
@@ -22,6 +23,7 @@ interface DatepickerProps {
         from: Date;
         to?: Date;
     }[];
+    hideLabel?: boolean;
 }
 interface PeriodpickerListProps {
     name: string;

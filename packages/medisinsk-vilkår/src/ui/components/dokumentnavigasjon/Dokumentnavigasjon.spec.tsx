@@ -47,9 +47,9 @@ describe('Dokumentnavigasjon', () => {
             />
         );
 
-        expect(screen.queryByText(/ikke klassifisert/i)).toBeNull();
-        expect(screen.queryByText(/andre med. oppl./i)).toBeNull();
-        expect(screen.queryByText(/ikke med. oppl./i)).toBeNull();
+        expect(screen.queryByText(/ikke klassifisert/i)).not.toBeVisible();
+        expect(screen.queryByText(/andre med. oppl./i)).not.toBeVisible();
+        expect(screen.queryByText(/ikke med. oppl./i)).not.toBeVisible();
     });
 
     test('documents are filtered correctly', async () => {
