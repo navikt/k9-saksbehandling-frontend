@@ -1,7 +1,6 @@
-import { Loader } from '@navikt/ds-react';
+import { Loader, Modal } from '@navikt/ds-react';
 import { Box, LinkButton, Margin, TitleWithUnderline } from '@navikt/ft-plattform-komponenter';
 import { Period } from '@navikt/k9-period-utils';
-import Modal from 'nav-frontend-modal';
 import React, { useEffect, useMemo } from 'react';
 import { useQuery } from 'react-query';
 import { getInnleggelsesperioder } from '../../../api/api';
