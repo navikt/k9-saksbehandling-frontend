@@ -38,6 +38,7 @@
                     saksbehandlere: {},
                     fagsakYtelseType: '',
                     behandlingType: '',
+                    httpErrorHandler: (statusCode, locationHeader) => console.error(statusCode, locationHeader),
                 });
             });
         </script>

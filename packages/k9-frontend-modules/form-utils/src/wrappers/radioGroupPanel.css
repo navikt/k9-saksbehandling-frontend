@@ -1,0 +1,7 @@
+.horizontal :global(.navds-radio-buttons) {
+    display: flex;
+}
+
+.horizontal :global(.navds-radio) {
+    margin-right: 1rem;
+}

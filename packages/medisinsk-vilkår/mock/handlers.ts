@@ -191,7 +191,7 @@ export const handlers = [
         return res(ctx.status(200), ctx.json(mockedDokumentliste));
     }),
 
-    rest.get('http://localhost:8082/mock/diagnosekode-search', (req, res, ctx) => {
+    rest.get('http://localhost:8081/k9/diagnosekoder', (req, res, ctx) => {
         return res(ctx.status(200), ctx.json(mockedDiagnosekodeSearchResponse));
     }),
 
@@ -202,7 +202,7 @@ export const handlers = [
     rest.post('http://localhost:8082/mock/endre-diagnosekoder', async (req, res, ctx) => {
         const body = await req.json();
         mockedDiagnosekoderesponse.diagnosekoder = body.diagnosekoder || [];
-        return res(ctx.status(201), ctx.json({}));
+        return res(ctx.status(201));
     }),
 
     rest.get('http://localhost:8082/mock/innleggelsesperioder', (req, res, ctx) => {
