@@ -1,6 +1,5 @@
+import { Accordion, BodyShort, Label } from '@navikt/ds-react';
 import { InteractiveList } from '@navikt/ft-plattform-komponenter';
-import { EkspanderbartpanelBase } from 'nav-frontend-ekspanderbartpanel';
-import { Element, Normaltekst } from 'nav-frontend-typografi';
 import React from 'react';
 import { Dokument, Dokumenttype } from '../../../types/Dokument';
 import Dokumentfilter from '../dokumentfilter/Dokumentfilter';
@@ -42,8 +41,6 @@ const Dokumentnavigasjon = ({
             ? setDokumenttypeFilter(dokumenttypeFilter.filter((v) => v !== type))
             : setDokumenttypeFilter(dokumenttypeFilter.concat([type]));
 
-    const [listExpanded, setListExpanded] = React.useState(expandedByDefault || false);
-
     const filtrerteDokumenter = dokumenter.filter(
         (dokument) => dokumenttypeFilter.includes(dokument.type) && erIkkeDuplikat(dokument)
     );
@@ -52,41 +49,54 @@ const Dokumentnavigasjon = ({
 
     return (
         <div className={styles.dokumentnavigasjon}>
-            <EkspanderbartpanelBase tittel={tittel} apen={listExpanded} onClick={() => setListExpanded(!listExpanded)}>
-                <div className={styles.dokumentnavigasjon__container}>
-                    <div className={styles.dokumentnavigasjon__columnHeadings}>
-                        <Element className={styles['dokumentnavigasjon__columnHeading--first']}>Status</Element>
-                        {!displayFilterOption && (
-                            <Element className={styles['dokumentnavigasjon__columnHeading--second']}>Type</Element>
-                        )}
-                        {displayFilterOption && (
-                            <Dokumentfilter
-                                className={styles['dokumentnavigasjon__columnHeading--second']}
-                                text="Type"
-                                filters={dokumenttypeFilter}
-                                onFilterChange={updateDokumenttypeFilter}
+            <Accordion>
+                <Accordion.Item defaultOpen={expandedByDefault}>
+                    <Accordion.Header>{tittel}</Accordion.Header>
+                    <Accordion.Content>
+                        <div className={styles.dokumentnavigasjon__container}>
+                            <div className={styles.dokumentnavigasjon__columnHeadings}>
+                                <Label size="small" className={styles['dokumentnavigasjon__columnHeading--first']}>
+                                    Status
+                                </Label>
+                                {!displayFilterOption && (
+                                    <Label size="small" className={styles['dokumentnavigasjon__columnHeading--second']}>
+                                        Type
+                                    </Label>
+                                )}
+                                {displayFilterOption && (
+                                    <Dokumentfilter
+                                        className={styles['dokumentnavigasjon__columnHeading--second']}
+                                        text="Type"
+                                        filters={dokumenttypeFilter}
+                                        onFilterChange={updateDokumenttypeFilter}
+                                    />
+                                )}
+                                <Label size="small" className={styles['dokumentnavigasjon__columnHeading--third']}>
+                                    Datert
+                                </Label>
+                                <Label size="small" className={styles['dokumentnavigasjon__columnHeading--fourth']}>
+                                    Part
+                                </Label>
+                            </div>
+                            {dokumentElementer.length === 0 && (
+                                <div style={{ padding: '0.5rem 1rem 1rem 1rem' }}>
+                                    <BodyShort size="small">Ingen dokumenter å vise</BodyShort>
+                                </div>
+                            )}
+                            <InteractiveList
+                                elements={dokumentElementer
+                                    .filter((element) => dokumenttypeFilter.includes(element?.dokument?.type))
+                                    .map((element, currentIndex) => ({
+                                        content: element.renderer(),
+                                        active: element.dokument === valgtDokument,
+                                        key: `${currentIndex}`,
+                                        onClick: () => onDokumentValgt(element.dokument),
+                                    }))}
                             />
-                        )}
-                        <Element className={styles['dokumentnavigasjon__columnHeading--third']}>Datert</Element>
-                        <Element className={styles['dokumentnavigasjon__columnHeading--fourth']}>Part</Element>
-                    </div>
-                    {dokumentElementer.length === 0 && (
-                        <div style={{ padding: '0.5rem 1rem 1rem 1rem' }}>
-                            <Normaltekst>Ingen dokumenter å vise</Normaltekst>
                         </div>
-                    )}
-                    <InteractiveList
-                        elements={dokumentElementer
-                            .filter((element) => dokumenttypeFilter.includes(element?.dokument?.type))
-                            .map((element, currentIndex) => ({
-                                content: element.renderer(),
-                                active: element.dokument === valgtDokument,
-                                key: `${currentIndex}`,
-                                onClick: () => onDokumentValgt(element.dokument),
-                            }))}
-                    />
-                </div>
-            </EkspanderbartpanelBase>
+                    </Accordion.Content>
+                </Accordion.Item>
+            </Accordion>
         </div>
     );
 };

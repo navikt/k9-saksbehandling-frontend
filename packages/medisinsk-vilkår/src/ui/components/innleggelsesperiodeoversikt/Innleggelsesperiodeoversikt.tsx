@@ -1,9 +1,8 @@
+import { Loader } from '@navikt/ds-react';
 import { Box, LinkButton, Margin, TitleWithUnderline } from '@navikt/ft-plattform-komponenter';
-import { get } from '@navikt/k9-http-utils';
 import { Period } from '@navikt/k9-period-utils';
 import Modal from 'nav-frontend-modal';
-import Spinner from 'nav-frontend-spinner';
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useQuery } from 'react-query';
 import { getInnleggelsesperioder } from '../../../api/api';
 import { InnleggelsesperiodeResponse } from '../../../types/InnleggelsesperiodeResponse';
@@ -22,11 +21,13 @@ interface InnleggelsesperiodeoversiktProps {
     onInnleggelsesperioderUpdated: () => void;
 }
 
-Modal.setAppElement('#app');
 const Innleggelsesperiodeoversikt = ({
     onInnleggelsesperioderUpdated,
 }: InnleggelsesperiodeoversiktProps): JSX.Element => {
     const controller = useMemo(() => new AbortController(), []);
+    useEffect(() => {
+        Modal.setAppElement(document.body);
+    }, []);
     const { endpoints, httpErrorHandler } = React.useContext(ContainerContext);
     const [modalIsOpen, setModalIsOpen] = React.useState(false);
     const [innleggelsesperioderResponse, setInnleggelsesperioderResponse] = React.useState<InnleggelsesperiodeResponse>(
@@ -87,7 +88,7 @@ const Innleggelsesperiodeoversikt = ({
                 Innleggelsesperioder
             </TitleWithUnderline>
             {isLoading ? (
-                <Spinner />
+                <Loader size="large" />
             ) : (
                 <>
                     <Box marginTop={Margin.large}>

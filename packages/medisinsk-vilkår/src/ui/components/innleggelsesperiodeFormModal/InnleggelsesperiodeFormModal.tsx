@@ -1,5 +1,5 @@
+import { Modal } from '@navikt/ds-react';
 import { Period } from '@navikt/k9-period-utils';
-import Modal from 'nav-frontend-modal';
 import React from 'react';
 import InnleggelsesperiodeForm from '../innleggelsesperiodeForm/InnleggelsesperiodeForm';
 import { FieldName } from '../innleggelsesperiodeoversikt/Innleggelsesperiodeoversikt';
@@ -28,20 +28,16 @@ const InnleggelsesperiodeFormModal = ({
     };
 
     return (
-        <Modal
-            isOpen
-            closeButton
-            onRequestClose={handleCloseModal}
-            contentLabel="Legg til innleggelsesperiode"
-            className={styles.innleggelsesperiodeFormModal}
-        >
-            <InnleggelsesperiodeForm
-                setModalIsOpen={setModalIsOpen}
-                handleCloseModal={handleCloseModal}
-                setIsFormDirty={setIsFormDirty}
-                onInnleggelsesperioderUpdated={onInnleggelsesperioderUpdated}
-                defaultValues={defaultValues}
-            />
+        <Modal open closeButton onClose={handleCloseModal} className={styles.innleggelsesperiodeFormModal}>
+            <Modal.Content>
+                <InnleggelsesperiodeForm
+                    setModalIsOpen={setModalIsOpen}
+                    handleCloseModal={handleCloseModal}
+                    setIsFormDirty={setIsFormDirty}
+                    onInnleggelsesperioderUpdated={onInnleggelsesperioderUpdated}
+                    defaultValues={defaultValues}
+                />
+            </Modal.Content>
         </Modal>
     );
 };

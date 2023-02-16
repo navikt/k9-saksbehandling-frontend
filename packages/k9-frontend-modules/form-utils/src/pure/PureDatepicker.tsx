@@ -37,6 +37,7 @@ interface PureDatepickerProps {
     limitations?: DatepickerLimitations;
     onChange?: (value: any) => void;
     value: string | Date;
+    hideLabel?: boolean;
 }
 
 const PureDatepicker = ({
@@ -51,6 +52,8 @@ const PureDatepicker = ({
     fromDate,
     toDate,
     disabledDays,
+    ariaLabel,
+    hideLabel,
 }: PureDatepickerProps): JSX.Element => {
     const stringToDate = (date: string | Date): Date => new Date(date);
     const [ugyldigDatoError, setUgyldigDatoError] = React.useState(false);
@@ -82,6 +85,7 @@ const PureDatepicker = ({
             <UNSAFE_DatePicker {...datepickerProps}>
                 <UNSAFE_DatePicker.Input
                     {...inputProps}
+                    hideLabel={hideLabel || !label}
                     label={label}
                     id={inputId}
                     disabled={disabled}
@@ -90,6 +94,7 @@ const PureDatepicker = ({
                         errorMessage ||
                         (ugyldigDatoError ? 'Du har valgt en dato som er utenfor gyldig periode.' : undefined)
                     }
+                    aria-label={ariaLabel}
                 />
             </UNSAFE_DatePicker>
         </div>

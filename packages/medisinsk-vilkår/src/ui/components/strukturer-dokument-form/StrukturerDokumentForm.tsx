@@ -1,10 +1,9 @@
+import { Alert, Label } from '@navikt/ds-react';
 import { Box, DetailView, Form, Margin } from '@navikt/ft-plattform-komponenter';
 import { dateConstants } from '@navikt/k9-date-utils';
 import { Datepicker, PeriodpickerList, RadioGroupPanel } from '@navikt/k9-form-utils';
 import { get, post } from '@navikt/k9-http-utils';
 import { Period } from '@navikt/k9-period-utils';
-import { AlertStripeAdvarsel } from 'nav-frontend-alertstriper';
-import { Element } from 'nav-frontend-typografi';
 import React, { useEffect, useMemo, useState } from 'react';
 import { FormProvider, useForm, useWatch } from 'react-hook-form';
 import { useMutation, useQuery } from 'react-query';
@@ -354,13 +353,16 @@ const StrukturerDokumentForm = ({
                                             </Box>
                                             <Box marginTop={Margin.medium}>
                                                 <div className={styles.innleggelsesperiodeForm__pickerLabels}>
-                                                    <Element
-                                                        className={styles.innleggelsesperiodeForm__firstLabel}
+                                                    <Label
+                                                        size="small"
+                                                        className={styles.innleggelsesperiodeFormModal__firstLabel}
                                                         aria-hidden
                                                     >
                                                         Fra
-                                                    </Element>
-                                                    <Element aria-hidden>Til</Element>
+                                                    </Label>
+                                                    <Label size="small" aria-hidden>
+                                                        Til
+                                                    </Label>
                                                 </div>
                                             </Box>
                                         </>
@@ -373,10 +375,10 @@ const StrukturerDokumentForm = ({
 
                             {showInnleggelsesperioderWarningMessage && (
                                 <Box marginTop={Margin.large}>
-                                    <AlertStripeAdvarsel>
+                                    <Alert size="small" variant="warning">
                                         Endringene du har gjort på innleggelsesperiodene vil føre til en ny revurdering
                                         av en annen behandling. Påvirker alle søkere.
-                                    </AlertStripeAdvarsel>
+                                    </Alert>
                                 </Box>
                             )}
                         </Box>

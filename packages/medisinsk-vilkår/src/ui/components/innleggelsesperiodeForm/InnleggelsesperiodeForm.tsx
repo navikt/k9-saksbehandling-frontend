@@ -1,10 +1,8 @@
 /* eslint-disable react/jsx-props-no-spreading */
+import { Alert, Button, Label } from '@navikt/ds-react';
 import { Box, Form, Margin, PageError } from '@navikt/ft-plattform-komponenter';
 import { PeriodpickerList } from '@navikt/k9-form-utils';
 import { Period } from '@navikt/k9-period-utils';
-import { AlertStripeAdvarsel } from 'nav-frontend-alertstriper';
-import { Hovedknapp, Knapp } from 'nav-frontend-knapper';
-import { Element } from 'nav-frontend-typografi';
 import React, { useEffect, useMemo } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useMutation, useQuery } from 'react-query';
@@ -190,13 +188,16 @@ const InnleggelsesperiodeForm = ({
                                         </Box>
                                         <Box marginTop={Margin.medium}>
                                             <div className={styles.innleggelsesperiodeForm__pickerLabels}>
-                                                <Element
-                                                    className={styles.innleggelsesperiodeForm__firstLabel}
+                                                <Label
+                                                    size="small"
+                                                    className={styles.innleggelsesperiodeFormModal__firstLabel}
                                                     aria-hidden
                                                 >
                                                     Fra
-                                                </Element>
-                                                <Element aria-hidden>Til</Element>
+                                                </Label>
+                                                <Label size="small" aria-hidden>
+                                                    Til
+                                                </Label>
                                             </div>
                                         </Box>
                                     </>
@@ -207,28 +208,28 @@ const InnleggelsesperiodeForm = ({
                             />
                             {showWarningMessage && (
                                 <Box marginTop={Margin.large}>
-                                    <AlertStripeAdvarsel>
+                                    <Alert size="small" variant="warning">
                                         Endringene du har gjort på innleggelsesperiodene vil føre til en ny revurdering
                                         av en annen behandling. Påvirker alle søkere.
-                                    </AlertStripeAdvarsel>
+                                    </Alert>
                                 </Box>
                             )}
                         </Box>
                         {!!handleCloseModal && (
                             <Box marginTop={Margin.xLarge}>
                                 <div style={{ display: 'flex' }}>
-                                    <Hovedknapp spinner={isLoading} disabled={isLoading} autoDisableVedSpinner mini>
+                                    <Button loading={isLoading} disabled={isLoading} size="small">
                                         Bekreft
-                                    </Hovedknapp>
-                                    <Knapp
-                                        mini
+                                    </Button>
+                                    <Button
+                                        size="small"
                                         style={{ marginLeft: '1rem' }}
-                                        htmlType="button"
+                                        variant="secondary"
                                         onClick={handleCloseModal}
                                         disabled={isLoading}
                                     >
                                         Avbryt
-                                    </Knapp>
+                                    </Button>
                                 </div>
                             </Box>
                         )}
