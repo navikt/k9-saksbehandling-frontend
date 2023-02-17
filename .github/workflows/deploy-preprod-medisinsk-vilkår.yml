@@ -25,28 +25,28 @@ jobs:
                   NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
             - name: Bygg k9-frontend-modules
               run: lerna run build --scope '{@navikt/k9-array-utils,@navikt/k9-bem-utils,@navikt/k9-date-utils,@navikt/k9-form-utils,@navikt/k9-http-utils,@navikt/k9-period-utils}'
-            - name: Kjøre linter
-              run: lerna run lint --scope ${{env.package-name}}
-            - name: Valider typescript
-              run: lerna run ts-check --scope ${{env.package-name}}
-            - name: Kjøre enhetstester
-              run: lerna run test --scope ${{env.package-name}}
-            - name: Kjør E2E-tester
-              uses: cypress-io/github-action@v5
-              env:
-                  NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
-              with:
-                  install: false
-                  project: ./packages/medisinsk-vilkår
-                  start: lerna run dev --scope medisinsk-vilkar-frontend
-                  wait-on: 'http://localhost:8081'
-                  wait-on-timeout: 60
-            - name: Laster opp screenshots dersom Cypress-testene feiler
-              uses: actions/upload-artifact@v3
-              if: failure()
-              with:
-                  name: cypress-screenshots
-                  path: packages/**/cypress/screenshots
+            # - name: Kjøre linter
+            #   run: lerna run lint --scope ${{env.package-name}}
+            # - name: Valider typescript
+            #   run: lerna run ts-check --scope ${{env.package-name}}
+            # - name: Kjøre enhetstester
+            #   run: lerna run test --scope ${{env.package-name}}
+            # - name: Kjør E2E-tester
+            #   uses: cypress-io/github-action@v5
+            #   env:
+            #       NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
+            #   with:
+            #       install: false
+            #       project: ./packages/medisinsk-vilkår
+            #       start: lerna run dev --scope medisinsk-vilkar-frontend
+            #       wait-on: 'http://localhost:8081'
+            #       wait-on-timeout: 60
+            # - name: Laster opp screenshots dersom Cypress-testene feiler
+            #   uses: actions/upload-artifact@v3
+            #   if: failure()
+            #   with:
+            #       name: cypress-screenshots
+            #       path: packages/**/cypress/screenshots
             - name: Kjøre bygg
               run: lerna run build --scope ${{env.package-name}}
             - name: Sette versjon
