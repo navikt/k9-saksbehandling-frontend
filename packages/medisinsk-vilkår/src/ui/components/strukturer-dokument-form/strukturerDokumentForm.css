@@ -1,21 +1,3 @@
 .diagnosekodeSelectorContainer :global(.navds-search__wrapper-inner) {
     width: auto;
 }
-
-.innleggelsesperioder legend,
-.innleggelsesperioder :global(.navds-label) {
-    clip: rect(0 0 0 0);
-    clip-path: inset(50%);
-    height: 1px;
-    overflow: hidden;
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
-}
-
-.innleggelsesperiodeForm__pickerLabels {
-    display: flex;
-}
-.innleggelsesperiodeForm__firstLabel {
-    width: 192px;
-}

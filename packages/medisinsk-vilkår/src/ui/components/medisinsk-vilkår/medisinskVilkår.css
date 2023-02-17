@@ -15,7 +15,6 @@
     padding-bottom: 0.4375rem;
 }
 .medisinskVilkår :global .navds-alert__wrapper {
-    display: flex;
     max-width: 47rem;
 }
 .medisinskVilkår :global .navigationWithDetailView__navigationSection {

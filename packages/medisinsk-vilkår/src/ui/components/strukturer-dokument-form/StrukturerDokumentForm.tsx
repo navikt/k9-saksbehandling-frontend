@@ -1,17 +1,12 @@
-import { Alert, Label } from '@navikt/ds-react';
 import { Box, DetailView, Form, Margin } from '@navikt/ft-plattform-komponenter';
 import { dateConstants } from '@navikt/k9-date-utils';
-import { Datepicker, PeriodpickerList, RadioGroupPanel } from '@navikt/k9-form-utils';
+import { Datepicker, RadioGroupPanel } from '@navikt/k9-form-utils';
 import { get, post } from '@navikt/k9-http-utils';
 import { Period } from '@navikt/k9-period-utils';
 import React, { useEffect, useMemo, useState } from 'react';
 import { FormProvider, useForm, useWatch } from 'react-hook-form';
 import { useMutation, useQuery } from 'react-query';
-import {
-    endringerPåvirkerAndreBehandlinger,
-    getInnleggelsesperioder,
-    lagreInnleggelsesperioder,
-} from '../../../api/api';
+import { getInnleggelsesperioder, lagreInnleggelsesperioder } from '../../../api/api';
 import LinkRel from '../../../constants/LinkRel';
 import { DiagnosekodeResponse } from '../../../types/DiagnosekodeResponse';
 import { Dokumenttype } from '../../../types/Dokument';
@@ -25,10 +20,9 @@ import { findLinkByRel } from '../../../util/linkUtils';
 import ContainerContext from '../../context/ContainerContext';
 import PureDiagnosekodeSelector from '../../form/pure/PureDiagnosekodeSelector';
 import { dateIsNotInTheFuture, required } from '../../form/validators';
-import AddButton from '../add-button/AddButton';
-import DeleteButton from '../delete-button/DeleteButton';
 import DokumentKnapp from '../dokument-knapp/DokumentKnapp';
 import DuplikatRadiobuttons from '../duplikat-radiobuttons/DuplikatRadiobuttons';
+import InnleggelsesperiodeForm from '../innleggelsesperiodeForm/InnleggelsesperiodeForm';
 import { InnleggelsesperiodeFormState } from '../innleggelsesperiodeForm/InnleggelsesperiodeFormState';
 import styles from './strukturerDokumentForm.css';
 
@@ -43,7 +37,6 @@ const StrukturerDokumentForm = ({
 }: StrukturerDokumentFormProps): JSX.Element => {
     const { endpoints, httpErrorHandler, readOnly } = React.useContext(ContainerContext);
     const [selectedDiagnosekoder, setSelectedDiagnosekoder] = useState([]);
-    const [showInnleggelsesperioderWarningMessage, setShowInnleggelsesperioderWarningMessage] = React.useState(false);
     const formMethods = useForm<StrukturerDokumentFormState>({
         defaultValues: editMode && {
             [FieldName.INNEHOLDER_MEDISINSKE_OPPLYSNINGER]: dokument.type,
@@ -56,10 +49,14 @@ const StrukturerDokumentForm = ({
 
     const buttonLabel = editMode === true ? 'Oppdater' : 'Bekreft';
 
-    const inneholderMedisinskeOpplysninger = useWatch({
+    const inneholderMedisinskeOpplysningerFieldValue = useWatch({
         control: formMethods.control,
         name: FieldName.INNEHOLDER_MEDISINSKE_OPPLYSNINGER,
     });
+
+    const inneholderMedisinskeOpplysninger =
+        inneholderMedisinskeOpplysningerFieldValue === Dokumenttype.LEGEERKLÆRING ||
+        inneholderMedisinskeOpplysningerFieldValue === Dokumenttype.ANDRE_MEDISINSKE_OPPLYSNINGER;
 
     const inneholderNyeDiagnosekoder =
         useWatch({
@@ -78,7 +75,6 @@ const StrukturerDokumentForm = ({
             formMethods.setValue(FieldName.INNLEGGELSESPERIODER, [{ period: new Period('', '') }]);
         } else {
             formMethods.setValue(FieldName.INNLEGGELSESPERIODER, []);
-            setShowInnleggelsesperioderWarningMessage(false);
         }
     }, [inneholderNyeInnleggelsesperioder]);
 
@@ -148,10 +144,10 @@ const StrukturerDokumentForm = ({
     }, [inneholderNyeDiagnosekoder]);
 
     const lagNyttStrukturertDokument = async (formState: StrukturerDokumentFormState) => {
-        if (selectedDiagnosekoder.length > 0) {
+        if (selectedDiagnosekoder.length > 0 && inneholderNyeDiagnosekoder) {
             await lagreDiagnosekodeMutation.mutateAsync(selectedDiagnosekoder);
         }
-        if (formState.innleggelsesperioder.length > 0) {
+        if (formState.innleggelsesperioder.length > 0 && inneholderNyeInnleggelsesperioder) {
             await lagreInnleggelsesperioderMutation.mutateAsync({
                 innleggelsesperioder: formState.innleggelsesperioder,
             });
@@ -271,116 +267,11 @@ const StrukturerDokumentForm = ({
                     )}
                     {inneholderNyeInnleggelsesperioder && (
                         <Box marginTop={Margin.medium}>
-                            <div className={styles.innleggelsesperioder}>
-                                <PeriodpickerList
-                                    name="innleggelsesperioder"
-                                    legend="Innleggelsesperioder"
-                                    fromDatepickerProps={{
-                                        ariaLabel: 'Fra',
-                                    }}
-                                    toDatepickerProps={{
-                                        ariaLabel: 'Til',
-                                    }}
-                                    afterOnChange={() => {
-                                        const initialiserteInnleggelsesperioder = formMethods
-                                            .getValues()
-                                            .innleggelsesperioder.map(
-                                                ({ period }: any) => new Period(period.fom, period.tom)
-                                            );
-                                        const erAllePerioderGyldige = initialiserteInnleggelsesperioder.every(
-                                            (periode) => periode.isValid()
-                                        );
-                                        if (erAllePerioderGyldige) {
-                                            const { href, requestPayload } = findLinkByRel(
-                                                LinkRel.ENDRE_INNLEGGELSESPERIODER,
-                                                innleggelsesperioderResponse.data.links
-                                            );
-                                            endringerPåvirkerAndreBehandlinger(
-                                                initialiserteInnleggelsesperioder,
-                                                href,
-                                                requestPayload,
-                                                httpErrorHandler,
-                                                controller
-                                            ).then(({ førerTilRevurdering }) =>
-                                                setShowInnleggelsesperioderWarningMessage(førerTilRevurdering)
-                                            );
-                                        }
-                                    }}
-                                    defaultValues={[]}
-                                    validators={{
-                                        overlaps: (periodValue: Period) => {
-                                            const innleggelsesperioderFormValue = formMethods
-                                                .getValues()
-                                                .innleggelsesperioder.filter(
-                                                    (periodWrapper: any) => periodWrapper.period !== periodValue
-                                                )
-                                                .map(({ period }: any) => new Period(period.fom, period.tom));
-                                            const { fom, tom } = periodValue;
-                                            const period = new Period(fom, tom);
-                                            if (period.overlapsWithSomePeriodInList(innleggelsesperioderFormValue)) {
-                                                return 'Innleggelsesperiodene kan ikke overlappe';
-                                            }
-                                            return null;
-                                        },
-                                        hasEmptyPeriodInputs: (periodValue: Period) => {
-                                            const { fom, tom } = periodValue;
-                                            if (!fom) {
-                                                return 'Fra-dato er påkrevd';
-                                            }
-                                            if (!tom) {
-                                                return 'Til-dato er påkrevd';
-                                            }
-                                            return null;
-                                        },
-                                        fomIsBeforeOrSameAsTom: (periodValue: Period) => {
-                                            const { fom, tom } = periodValue;
-                                            const period = new Period(fom, tom);
-
-                                            if (period.fomIsBeforeOrSameAsTom() === false) {
-                                                return 'Fra-dato må være tidligere eller samme som til-dato';
-                                            }
-                                            return null;
-                                        },
-                                    }}
-                                    renderBeforeFieldArray={(fieldArrayMethods) => (
-                                        <>
-                                            <Box marginTop={Margin.large} marginBottom={Margin.medium}>
-                                                <AddButton
-                                                    label="Legg til innleggelsesperiode"
-                                                    onClick={() => fieldArrayMethods.append({ fom: '', tom: '' })}
-                                                    id="leggTilInnleggelsesperiodeKnapp"
-                                                />
-                                            </Box>
-                                            <Box marginTop={Margin.medium}>
-                                                <div className={styles.innleggelsesperiodeForm__pickerLabels}>
-                                                    <Label
-                                                        size="small"
-                                                        className={styles.innleggelsesperiodeFormModal__firstLabel}
-                                                        aria-hidden
-                                                    >
-                                                        Fra
-                                                    </Label>
-                                                    <Label size="small" aria-hidden>
-                                                        Til
-                                                    </Label>
-                                                </div>
-                                            </Box>
-                                        </>
-                                    )}
-                                    renderContentAfterElement={(index, numberOfItems, fieldArrayMethods) => (
-                                        <DeleteButton onClick={() => fieldArrayMethods.remove(index)} />
-                                    )}
-                                />
-                            </div>
-
-                            {showInnleggelsesperioderWarningMessage && (
-                                <Box marginTop={Margin.large}>
-                                    <Alert size="small" variant="warning">
-                                        Endringene du har gjort på innleggelsesperiodene vil føre til en ny revurdering
-                                        av en annen behandling. Påvirker alle søkere.
-                                    </Alert>
-                                </Box>
-                            )}
+                            <InnleggelsesperiodeForm
+                                links={innleggelsesperioderResponse.data.links}
+                                httpErrorHandler={httpErrorHandler}
+                                controller={controller}
+                            />
                         </Box>
                     )}
                 </Form>
