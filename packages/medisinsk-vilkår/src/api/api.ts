@@ -1,9 +1,11 @@
-import { post, HttpErrorHandler } from '@navikt/k9-http-utils';
+import { post, HttpErrorHandler, get } from '@navikt/k9-http-utils';
 import { Period } from '@navikt/k9-period-utils';
 import { Vurderingsversjon } from '../types/Vurdering';
 import Vurderingstype from '../types/Vurderingstype';
 import { PerioderMedEndringResponse } from '../types/PeriodeMedEndring';
 import { RequestPayload } from '../types/RequestPayload';
+import { InnleggelsesperiodeResponse } from '../types/InnleggelsesperiodeResponse';
+import { InnleggelsesperiodeFormState } from '../ui/components/innleggelsesperiodeForm/InnleggelsesperiodeFormState';
 
 type VurderingsversjonMedType = Partial<Vurderingsversjon> & {
     type: Vurderingstype;
@@ -119,3 +121,49 @@ export async function postInnleggelsesperioderDryRun(
 ): Promise<InnleggelsesperiodeDryRunResponse> {
     return postInnleggelsesperioder(href, body, httpErrorHandler, signal, true);
 }
+
+export const getInnleggelsesperioder = (
+    href: string,
+    httpErrorHandler: HttpErrorHandler,
+    controller: AbortController
+) =>
+    get(href, httpErrorHandler, {
+        signal: controller.signal,
+    }).then((response: InnleggelsesperiodeResponse) => response);
+
+export const endringerPåvirkerAndreBehandlinger = (
+    nyeInnleggelsesperioder,
+    href: string,
+    requestPayload,
+    httpErrorHandler: HttpErrorHandler,
+    controller: AbortController
+): Promise<InnleggelsesperiodeDryRunResponse> =>
+    postInnleggelsesperioderDryRun(
+        href,
+        { ...requestPayload, perioder: nyeInnleggelsesperioder },
+        httpErrorHandler,
+        controller.signal
+    );
+
+export const lagreInnleggelsesperioder = (
+    formState: InnleggelsesperiodeFormState,
+    href: string,
+    behandlingUuid,
+    versjon,
+    httpErrorHandler: HttpErrorHandler,
+    controller: AbortController
+) => {
+    let nyeInnleggelsesperioder = [];
+    if (formState.innleggelsesperioder?.length > 0) {
+        nyeInnleggelsesperioder = formState.innleggelsesperioder
+            .filter((periodeWrapper) => periodeWrapper.period?.fom && periodeWrapper.period?.tom)
+            .map((periodeWrapper) => new Period(periodeWrapper.period.fom, periodeWrapper.period.tom));
+    }
+
+    return postInnleggelsesperioder(
+        href,
+        { behandlingUuid, versjon, perioder: nyeInnleggelsesperioder },
+        httpErrorHandler,
+        controller.signal
+    );
+};

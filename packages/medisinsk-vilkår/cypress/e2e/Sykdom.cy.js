@@ -5,6 +5,8 @@ describe('Sykdom', () => {
     it('skal kunne håndtere dokumentasjon av sykdom', () => {
         cy.contains('Ja, legeerklæring fra sykehus/spesialisthelsetjenesten').click();
         cy.findByLabelText(/Hvilken dato er dokumentet datert?/).type('101021');
+        cy.get('input[id="inneholderNyeDiagnosekoderNei"]').check({ force: true });
+        cy.get('input[id="inneholderNyeInnleggelsesperioderNei"]').check({ force: true });
         cy.contains('Bekreft').click();
     });
     it('skal kunne legge inn innleggelsesperioder', () => {
