@@ -56,12 +56,14 @@ jobs:
               run: |
                   echo "TAG=$(date "+%Y.%m.%d-%m")-$(git rev-parse --short HEAD)" >> $GITHUB_ENV
             - name: Sette miljøvariabler
+              working-directory: ./packages/medisinsk-vilkår
               run: |
                   echo "IMAGE=${IMAGE_BASE}:${TAG}" >> $GITHUB_ENV
                   echo "LATEST=${IMAGE_BASE}:latest" >> $GITHUB_ENV
                   echo "CSS_HASH=$(shasum -b -a 384 build/${MAJOR_VERSION}/styles.css | awk '{ print $1 }' | xxd -r -p | base64)" >> $GITHUB_ENV
                   echo "JS_HASH=$(shasum -b -a 384 build/${MAJOR_VERSION}/app.js | awk '{ print $1 }' | xxd -r -p | base64)" >> $GITHUB_ENV
             - name: Bygg og laste opp docker-image
+              working-directory: ./packages/medisinsk-vilkår
               run: |
                   docker build --tag ${IMAGE} --tag ${LATEST} .
                   echo "$GITHUB_TOKEN" | docker login --username "x-access-token" --password-stdin https://docker.pkg.github.com
