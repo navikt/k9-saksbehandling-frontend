@@ -13,8 +13,6 @@ const vurderingsopprettelseEndpoint = 'vurderingsopprettelse-mock';
 const httpErrorHandlerMock = () => null;
 const abortControllerMock = { signal: new AbortController().signal };
 
-jest.mock('nav-frontend-modal');
-
 const vurderingsoversiktMock = {
     perioderSomKanVurderes: [],
     resterendeVurderingsperioder: [],

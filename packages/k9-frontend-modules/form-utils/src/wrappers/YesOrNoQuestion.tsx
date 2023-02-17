@@ -30,7 +30,7 @@ const YesOrNoQuestion = ({ question, name, validators, disabled }: YesOrNoQuesti
                         name={name}
                         onChange={onChange}
                         value={value}
-                        errorMessage={errors[name]?.message}
+                        errorMessage={errors[name]?.message as string}
                         disabled={disabled}
                     />
                 );

@@ -21,9 +21,9 @@
     "author": "NAV IT",
     "license": "MIT",
     "dependencies": {
-        "@navikt/ds-css": "2.0.12",
-        "@navikt/ds-react": "2.0.12",
-        "@navikt/ft-plattform-komponenter": "1.4.7",
+        "@navikt/ds-css": "2.1.6",
+        "@navikt/ds-react": "2.1.6",
+        "@navikt/ft-plattform-komponenter": "1.4.8",
         "@popperjs/core": "^2.11.6",
         "@types/react": "^18.0.27",
         "@types/react-dom": "^18.0.10",

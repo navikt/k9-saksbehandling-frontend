@@ -45,8 +45,7 @@ jobs:
               if: failure()
               with:
                   name: cypress-screenshots
-                  path: cypress/screenshots
-                  working-directory: ./packages/medisinsk-vilkår
+                  path: packages/**/cypress/screenshots
             - name: Kjøre bygg
               run: lerna run build --scope ${{env.package-name}}
             - name: Sette versjon

@@ -48,6 +48,8 @@ const TextArea = ({ label, name, validators, helptext, textareaClass, id, disabl
                                     autoComplete="off"
                                     disabled={disabled}
                                     size="small"
+                                    label={label}
+                                    hideLabel
                                 />
                             </Box>
                         </>

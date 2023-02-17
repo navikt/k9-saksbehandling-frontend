@@ -1,6 +1,6 @@
 import { prettifyDateString } from '@navikt/k9-date-utils';
 import { DocumentIcon } from '@navikt/ft-plattform-komponenter';
-import Lenke from 'nav-frontend-lenker';
+import { Link } from '@navikt/ds-react';
 import React from 'react';
 import LinkRel from '../../../constants/LinkRel';
 import Dokument, { dokumentLabel } from '../../../types/Dokument';
@@ -17,11 +17,11 @@ const DokumentLink = ({ dokument, etikett, visDokumentIkon }: DokumentLinkProps)
     const { type, datert, links } = dokument;
     const dokumentLink = findLinkByRel(LinkRel.DOKUMENT_INNHOLD, links);
     return (
-        <Lenke className={styles.dokumentLink} href={dokumentLink.href} target="_blank">
+        <Link className={styles.dokumentLink} href={dokumentLink.href} target="_blank">
             {visDokumentIkon && <DocumentIcon className={styles.dokumentLink__dokumentikon} />}
             {dokumentLabel[type]} {prettifyDateString(datert)}
             {etikett && <div className={styles.dokumentLink__etikett}>{etikett}</div>}
-        </Lenke>
+        </Link>
     );
 };
 

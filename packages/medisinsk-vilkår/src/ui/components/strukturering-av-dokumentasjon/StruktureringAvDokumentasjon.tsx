@@ -37,7 +37,7 @@ const StruktureringAvDokumentasjon = ({
     sykdomsstegStatus,
 }: StruktureringAvDokumentasjonProps): JSX.Element => {
     const { endpoints, httpErrorHandler, fagsakYtelseType } = React.useContext(ContainerContext);
-    const controller = useMemo(() => new AbortController(), []);
+    const httpCanceler = useMemo(() => axios.CancelToken.source(), []);
 
     const [state, dispatch] = React.useReducer(dokumentReducer, {
         visDokumentDetails: false,
@@ -76,7 +76,7 @@ const StruktureringAvDokumentasjon = ({
 
     const getDokumentoversikt = () =>
         get<DokumentoversiktResponse>(endpoints.dokumentoversikt, httpErrorHandler, {
-            signal: controller.signal,
+            cancelToken: httpCanceler.token,
         });
 
     const visDokumentoversikt = (nyDokumentoversikt: Dokumentoversikt) => {
@@ -119,7 +119,7 @@ const StruktureringAvDokumentasjon = ({
             .catch(handleError);
         return () => {
             isMounted = false;
-            controller.abort();
+            httpCanceler.cancel();
         };
     }, []);
 
