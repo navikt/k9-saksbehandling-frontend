@@ -61,19 +61,19 @@ jobs:
                   echo "LATEST=${IMAGE_BASE}:latest" >> $GITHUB_ENV
                   echo "CSS_HASH=$(shasum -b -a 384 build/${MAJOR_VERSION}/styles.css | awk '{ print $1 }' | xxd -r -p | base64)" >> $GITHUB_ENV
                   echo "JS_HASH=$(shasum -b -a 384 build/${MAJOR_VERSION}/app.js | awk '{ print $1 }' | xxd -r -p | base64)" >> $GITHUB_ENV
-            # - name: Bygg og laste opp docker-image
-            #   run: |
-            #       docker build --tag ${IMAGE} --tag ${LATEST} .
-            #       echo "$GITHUB_TOKEN" | docker login --username "x-access-token" --password-stdin https://docker.pkg.github.com
-            #       docker push ${IMAGE}
-            #       docker push ${LATEST}
-            #   env:
-            #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            # - name: Deploy til dev-fss
-            #   uses: nais/deploy/actions/deploy@v1
-            #   env:
-            #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            #       APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-            #       CLUSTER: dev-fss
-            #       RESOURCE: ./packages/medisinsk-vilkår/nais/naiserator.yml
-            #       VARS: ./packages/medisinsk-vilkår/nais/dev-fss.json
+            - name: Bygg og laste opp docker-image
+              run: |
+                  docker build --tag ${IMAGE} --tag ${LATEST} .
+                  echo "$GITHUB_TOKEN" | docker login --username "x-access-token" --password-stdin https://docker.pkg.github.com
+                  docker push ${IMAGE}
+                  docker push ${LATEST}
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            - name: Deploy til dev-fss
+              uses: nais/deploy/actions/deploy@v1
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+                  CLUSTER: dev-fss
+                  RESOURCE: ./packages/medisinsk-vilkår/nais/naiserator.yml
+                  VARS: ./packages/medisinsk-vilkår/nais/dev-fss.json
