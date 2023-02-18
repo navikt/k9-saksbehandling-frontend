@@ -1,8 +1,18 @@
-name: Deploy preprod Etablert tilsyn
-on: [workflow_dispatch]
+name: Deploy Medisinsk vilkår
+on:
+    workflow_dispatch:
+        inputs:
+            environment:
+                description: 'Hvilket miljø skal vi deploye til?'
+                required: true
+                default: 'Q1'
+                type: choice
+                options:
+                    - Q1
+                    - Prod
 env:
-    IMAGE_BASE: ghcr.io/${{ github.repository }}/psb-etablert-tilsyn-frontend
-    package-name: psb-etablert-tilsyn-frontend
+    IMAGE_BASE: ghcr.io/${{ github.repository }}/medisinsk-vilkar-frontend
+    package-name: medisinsk-vilkar-frontend
 
 jobs:
     deploy-docker-image:
@@ -31,17 +41,33 @@ jobs:
               run: lerna run ts-check --scope ${{env.package-name}}
             - name: Kjøre enhetstester
               run: lerna run test --scope ${{env.package-name}}
+            - name: Kjør E2E-tester
+              uses: cypress-io/github-action@v5
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
+              with:
+                  install: false
+                  project: ./packages/medisinsk-vilkår
+                  start: lerna run dev --scope medisinsk-vilkar-frontend
+                  wait-on: 'http://localhost:8081'
+                  wait-on-timeout: 60
+            - name: Laster opp screenshots dersom Cypress-testene feiler
+              uses: actions/upload-artifact@v3
+              if: failure()
+              with:
+                  name: cypress-screenshots
+                  path: packages/**/cypress/screenshots
             - name: Kjøre bygg
               run: lerna run build --scope ${{env.package-name}}
             - name: Sette versjon
-              working-directory: ./packages/etablert-tilsyn
+              working-directory: ./packages/medisinsk-vilkår
               run: |
                   echo "MAJOR_VERSION=$(npm run majorVersion --silent)" >> $GITHUB_ENV
             - name: Sette tag
               run: |
                   echo "TAG=$(date "+%Y.%m.%d-%m")-$(git rev-parse --short HEAD)" >> $GITHUB_ENV
             - name: Sette miljøvariabler
-              working-directory: ./packages/etablert-tilsyn
+              working-directory: ./packages/medisinsk-vilkår
               run: |
                   echo "IMAGE=${IMAGE_BASE}:${TAG}" >> $GITHUB_ENV
                   echo "LATEST=${IMAGE_BASE}:latest" >> $GITHUB_ENV
@@ -53,7 +79,7 @@ jobs:
                   username: ${{ github.actor }}
                   password: ${{ secrets.GITHUB_TOKEN }}
             - name: Bygg og laste opp docker-image
-              working-directory: ./packages/etablert-tilsyn
+              working-directory: ./packages/medisinsk-vilkår
               run: |
                   docker build --tag ${IMAGE} --tag ${LATEST} .
                   docker push ${IMAGE}
@@ -62,9 +88,10 @@ jobs:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             - name: Deploy til dev-fss
               uses: nais/deploy/actions/deploy@v1
+              if: ${{ github.event.inputs.environment == 'Q1' }}
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                   APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
                   CLUSTER: dev-fss
-                  RESOURCE: ./packages/etablert-tilsyn/nais/naiserator.yml
-                  VARS: ./packages/etablert-tilsyn/nais/dev-fss.json
+                  RESOURCE: ./packages/medisinsk-vilkår/nais/naiserator.yml
+                  VARS: ./packages/medisinsk-vilkår/nais/dev-fss.json
