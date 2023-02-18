@@ -1,5 +1,15 @@
 name: Deploy preprod Medisinsk vilkår
-on: [workflow_dispatch]
+on:
+    workflow_dispatch:
+        inputs:
+            environment:
+                description: 'Hvilket miljø skal vi deploye til?'
+                required: true
+                default: 'Q1'
+                type: choice
+                options:
+                    - Q1
+                    - Prod
 env:
     IMAGE_BASE: ghcr.io/${{ github.repository }}/medisinsk-vilkar-frontend
     package-name: medisinsk-vilkar-frontend
@@ -78,6 +88,7 @@ jobs:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             - name: Deploy til dev-fss
               uses: nais/deploy/actions/deploy@v1
+              if: ${{ github.event.inputs.environment == 'Q1' }}
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                   APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
