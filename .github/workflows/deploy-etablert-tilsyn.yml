@@ -79,3 +79,43 @@ jobs:
                   CLUSTER: dev-fss
                   RESOURCE: ./packages/etablert-tilsyn/nais/naiserator.yml
                   VARS: ./packages/etablert-tilsyn/nais/dev-fss.json
+            - name: Deploy til prod-fss
+              if: github.ref == 'refs/heads/main' && ${{ github.event.inputs.environment == 'Prod' }}
+              uses: nais/deploy/actions/deploy@v1
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+                  CLUSTER: prod-fss
+                  RESOURCE: nais/naiserator.yml
+                  VARS: nais/prod-fss.json
+            - name: Create Release
+              id: create_release
+              if: github.ref == 'refs/heads/main' && ${{ github.event.inputs.environment == 'Prod' }}
+              uses: actions/create-release@latest
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              with:
+                  tag_name: ${{ env.TAG }}
+                  release_name: ${{ env.TAG }}
+                  body: |
+                      For JS, add this to your app:
+                      ```
+                      <script
+                        type="text/javascript"
+                        src="https://psb-etablert-tilsyn-frontend.dev.adeo.no/${{ env.MAJOR_VERSION }}/app.js"
+                        integrity="sha384-${{ env.JS_HASH }}"
+                        crossorigin="anonymous"
+                      ></script>
+                      ```
+
+                      For CSS, add this to the `<head>` of your app:
+                      ```
+                      <link
+                        rel="stylesheet"
+                        href="https://psb-etablert-tilsyn-frontend.dev.adeo.no/${{ env.MAJOR_VERSION }}/styles.css"
+                        integrity="sha384-${{ env.CSS_HASH }}"
+                        crossorigin="anonymous"
+                      >
+                      ```
+                  draft: false
+                  prerelease: false
