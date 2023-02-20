@@ -1,15 +1,13 @@
 name: Deploy Medisinsk vilkår
 on:
-    workflow_dispatch:
+    workflow_call:
+        secrets:
+            READER_TOKEN:
+                required: true
         inputs:
             environment:
-                description: 'Hvilket miljø skal vi deploye til?'
                 required: true
-                default: 'Q1'
-                type: choice
-                options:
-                    - Q1
-                    - Prod
+                type: string
 env:
     IMAGE_BASE: ghcr.io/${{ github.repository }}/medisinsk-vilkar-frontend
     package-name: medisinsk-vilkar-frontend

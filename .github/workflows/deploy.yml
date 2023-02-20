@@ -1,0 +1,61 @@
+name: Deploy mikrofrontend
+on:
+    workflow_dispatch:
+        inputs:
+            microfrontend:
+                description: 'Hvilken mikrofrontend vil du deploye?'
+                required: true
+                default: 'etablert-tilsyn'
+                type: choice
+                options:
+                    - etablert-tilsyn
+                    - inntektsmelding
+                    - medisinsk-vilkar
+                    - om-barnet
+                    - omsorgen-for
+                    - uttak
+            environment:
+                description: 'Hvilket miljø skal vi deploye til?'
+                required: true
+                default: 'Q1'
+                type: choice
+                options:
+                    - Q1
+                    - Prod
+jobs:
+    etablert-tilsyn:
+        uses: ./.github/workflows/deploy-etablert-tilsyn.yml
+        if: ${{ github.event.inputs.microfrontend == 'etablert-tilsyn' }}
+        secrets: inherit
+        with:
+            environment: ${{ github.event.inputs.environment }}
+    inntektsmelding:
+        uses: ./.github/workflows/deploy-inntektsmelding.yml
+        if: ${{ github.event.inputs.microfrontend == 'inntektsmelding' }}
+        secrets: inherit
+        with:
+            environment: ${{ github.event.inputs.environment }}
+    medisinsk-vilkar:
+        uses: ./.github/workflows/deploy-medisinsk-vilkår.yml
+        if: ${{ github.event.inputs.microfrontend == 'medisinsk-vilkar' }}
+        secrets: inherit
+        with:
+            environment: ${{ github.event.inputs.environment }}
+    om-barnet:
+        uses: ./.github/workflows/deploy-om-barnet.yml
+        if: ${{ github.event.inputs.microfrontend == 'om-barnet' }}
+        secrets: inherit
+        with:
+            environment: ${{ github.event.inputs.environment }}
+    omsorgen-for:
+        uses: ./.github/workflows/deploy-omsorgen-for.yml
+        if: ${{ github.event.inputs.microfrontend == 'omsorgen-for' }}
+        secrets: inherit
+        with:
+            environment: ${{ github.event.inputs.environment }}
+    uttak:
+        uses: ./.github/workflows/deploy-uttak.yml
+        if: ${{ github.event.inputs.microfrontend == 'uttak' }}
+        secrets: inherit
+        with:
+            environment: ${{ github.event.inputs.environment }}
