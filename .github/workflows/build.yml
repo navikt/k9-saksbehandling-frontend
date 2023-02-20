@@ -9,6 +9,14 @@ on:
             package-name:
                 required: true
                 type: string
+            upload-artifact:
+                required: false
+                type: boolean
+                default: false
+            artifact-path:
+                required: false
+                type: string
+                default: ./build
 
 jobs:
     build:
@@ -29,3 +37,8 @@ jobs:
                   NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
             - name: Kjøre bygg
               run: lerna run build --scope ${{inputs.package-name}}
+            - uses: actions/upload-artifact@v3
+              if: ${{inputs.upload-artifact}}
+              with:
+                  name: build
+                  path: ${{ inputs.artifact-path }}
