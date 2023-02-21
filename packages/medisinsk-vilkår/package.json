@@ -21,8 +21,7 @@
     "license": "MIT",
     "devDependencies": {
         "@testing-library/react": "^13.4.0",
-        "@testing-library/user-event": "^14.4.3",
-        "webpack-bundle-analyzer": "4.8.0"
+        "@testing-library/user-event": "^14.4.3"
     },
     "dependencies": {
         "@navikt/k9-fe-array-utils": "*",
