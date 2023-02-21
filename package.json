@@ -78,5 +78,6 @@
     "workspaces": [
         "packages/*",
         "packages/k9-frontend-modules/*"
-    ]
+    ],
+    "packageManager": "yarn@3.4.1"
 }
