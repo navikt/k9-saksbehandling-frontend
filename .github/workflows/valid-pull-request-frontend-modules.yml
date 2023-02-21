@@ -13,18 +13,20 @@ jobs:
         steps:
             - name: Hente kode
               uses: actions/checkout@v3
+            - name: Setup .yarnrc.yml
+              run: |
+                  yarn config set npmScopes.navikt.npmRegistryServer "https://npm.pkg.github.com"
+                  yarn config set npmScopes.navikt.npmAlwaysAuth true
+                  yarn config set npmScopes.navikt.npmAuthToken $NPM_AUTH_TOKEN
+              env:
+                  NPM_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
             - name: Sette opp Node
               uses: actions/setup-node@v3
               with:
-                  node-version: 16.x
-                  registry-url: https://npm.pkg.github.com/
-                  scope: '@navikt'
                   cache: 'yarn'
             - name: Installere dependencies
-              run: yarn install --prefer-offline --frozen-lockfile
-              env:
-                  NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
+              run: yarn install --immutable
             - name: Kjøre enhetstester
-              run: lerna run test --scope ${{env.package-name}}
+              run: yarn lerna run test --scope ${{env.package-name}}
             - name: Kjøre bygg
-              run: lerna run build --scope ${{env.package-name}}
+              run: yarn lerna run build --scope ${{env.package-name}}
