@@ -84,8 +84,8 @@ jobs:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                   APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
                   CLUSTER: prod-fss
-                  RESOURCE: nais/naiserator.yml
-                  VARS: nais/prod-fss.json
+                  RESOURCE: ./packages/uttak/nais/naiserator.yml
+                  VARS: ./packages/uttak/nais/prod-fss.json
             - name: Create Release
               id: create_release
               if: github.ref == 'refs/heads/main' && ${{ github.event.inputs.environment == 'Prod' }}
