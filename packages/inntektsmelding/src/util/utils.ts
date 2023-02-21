@@ -1,4 +1,4 @@
-import { initializeDate } from '@navikt/k9-date-utils';
+import { initializeDate } from '@navikt/k9-fe-date-utils';
 import Aksjonspunkt from '../types/Aksjonspunkt';
 import { Kode, TilstandBeriket } from '../types/KompletthetData';
 import Status from '../types/TilstandStatus';
@@ -17,7 +17,8 @@ export const ikkePaakrevd = (tilstand: TilstandBeriket): boolean =>
 export const ingenInntektsmeldingMangler = (tilstand: TilstandBeriket): boolean =>
     !tilstand?.status.some((status) => [Status.MANGLER].includes(status.status));
 
-export const ingenTilstanderHarMangler = (tilstander: TilstandBeriket[]) => tilstander.every(ingenInntektsmeldingMangler);
+export const ingenTilstanderHarMangler = (tilstander: TilstandBeriket[]) =>
+    tilstander.every(ingenInntektsmeldingMangler);
 
 export const finnTilstanderSomVurderes = (tilstander: TilstandBeriket[]): TilstandBeriket[] =>
     tilstander.filter(skalVurderes);

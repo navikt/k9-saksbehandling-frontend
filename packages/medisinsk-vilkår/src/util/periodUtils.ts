@@ -1,5 +1,5 @@
-import { Period, sortPeriodsByFomDate } from '@navikt/k9-period-utils';
-import { initializeDate, isSameOrBefore } from '@navikt/k9-date-utils';
+import { Period, sortPeriodsByFomDate } from '@navikt/k9-fe-period-utils';
+import { initializeDate, isSameOrBefore } from '@navikt/k9-fe-date-utils';
 
 const checkIfPeriodsAreEdgeToEdge = (period, otherPeriod) => {
     const dayAfterPeriod = initializeDate(period.tom).add(1, 'day');
@@ -136,7 +136,6 @@ export const finnMaksavgrensningerForPerioder = (perioder: Period[]): Period => 
             }
         }
     });
-
 
     return maksimalSøknadsperiode;
 };

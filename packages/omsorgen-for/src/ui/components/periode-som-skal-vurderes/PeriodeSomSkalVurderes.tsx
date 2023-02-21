@@ -1,5 +1,5 @@
 import React from 'react';
-import { Period } from '@navikt/k9-period-utils';
+import { Period } from '@navikt/k9-fe-period-utils';
 import { ContentWithTooltip, WarningIcon } from '@navikt/ft-plattform-komponenter';
 import styles from './periodeSomSkalVurderes.css';
 

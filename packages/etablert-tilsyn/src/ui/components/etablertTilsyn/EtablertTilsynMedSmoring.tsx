@@ -3,8 +3,8 @@ import { Table } from '@navikt/ds-react';
 import dayjs from 'dayjs';
 import { uniq } from 'lodash';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { isDayAfter } from '@navikt/k9-date-utils';
-import { Period } from '@navikt/k9-period-utils';
+import { isDayAfter } from '@navikt/k9-fe-date-utils';
+import { Period } from '@navikt/k9-fe-period-utils';
 import EtablertTilsynType from '../../../types/EtablertTilsynType';
 import EtablertTilsynRowContent from './EtablertTilsynRowContent';
 import styles from './etablertTilsynMedSmoring.css';

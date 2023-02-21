@@ -1,5 +1,5 @@
-import { prettifyDateString } from '@navikt/k9-date-utils';
-import { RadioGroupPanel } from '@navikt/k9-form-utils';
+import { prettifyDateString } from '@navikt/k9-fe-date-utils';
+import { RadioGroupPanel } from '@navikt/k9-fe-form-utils';
 import { Box, Margin } from '@navikt/ft-plattform-komponenter';
 import { Link } from '@navikt/ds-react';
 import * as React from 'react';

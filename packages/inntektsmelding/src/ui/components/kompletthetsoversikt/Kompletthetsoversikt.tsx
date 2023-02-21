@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Period } from '@navikt/k9-period-utils';
+import { Period } from '@navikt/k9-fe-period-utils';
 import { Box, Margin } from '@navikt/ft-plattform-komponenter';
 import { Hovedknapp } from 'nav-frontend-knapper';
 import { useForm } from 'react-hook-form';
@@ -34,7 +34,7 @@ const Kompletthetsoversikt = ({ kompletthetsoversikt, onFormSubmit }: Kompletthe
     const forrigeAksjonspunkt = aksjonspunkter.sort((a, b) => Number(b.definisjon.kode) - Number(a.definisjon.kode))[0];
     const aktivtAksjonspunktKode = aktivtAksjonspunkt?.definisjon?.kode;
     const forrigeAksjonspunktKode = forrigeAksjonspunkt?.definisjon?.kode;
-    const aksjonspunktKode = aktivtAksjonspunktKode || forrigeAksjonspunktKode
+    const aksjonspunktKode = aktivtAksjonspunktKode || forrigeAksjonspunktKode;
 
     const tilstanderBeriket = tilstander.map((tilstand) => {
         const [redigeringsmodus, setRedigeringsmodus] = useState(false);
@@ -64,8 +64,6 @@ const Kompletthetsoversikt = ({ kompletthetsoversikt, onFormSubmit }: Kompletthe
         ...finnTilstanderSomVurderes(tilstanderBeriket),
         ...finnTilstanderSomRedigeres(tilstanderBeriket),
     ];
-
-
 
     const harFlereTilstanderTilVurdering = tilstanderTilVurdering.length > 1;
     const kanSendeInn = () => {

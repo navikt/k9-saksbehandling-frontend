@@ -1,5 +1,5 @@
 import { PageContainer } from '@navikt/ft-plattform-komponenter';
-import { get } from '@navikt/k9-http-utils';
+import { get } from '@navikt/k9-fe-http-utils';
 import React, { useContext, useEffect, useMemo, useState } from 'react';
 import Pleietrengende from '../../types/Pleietrengende';
 import PleietrengendeResponse from '../../types/PleietrengendeResponse';

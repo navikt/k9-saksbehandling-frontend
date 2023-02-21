@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { Form } from '@navikt/ft-plattform-komponenter';
-import { RadioGroupPanel, TextArea } from '@navikt/k9-form-utils';
+import { RadioGroupPanel, TextArea } from '@navikt/k9-fe-form-utils';
 import required from '../../../validators/required';
 import ContainerContext from '../../context/ContainerContext';
 import RettVedDødUtfallType from '../../../types/RettVedDødType';

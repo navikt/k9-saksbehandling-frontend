@@ -1,7 +1,7 @@
 import { Loader, Modal } from '@navikt/ds-react';
 import { Box, LinkButton, Margin, PageError, TitleWithUnderline } from '@navikt/ft-plattform-komponenter';
-import { get } from '@navikt/k9-http-utils';
-import { Period } from '@navikt/k9-period-utils';
+import { get } from '@navikt/k9-fe-http-utils';
+import { Period } from '@navikt/k9-fe-period-utils';
 import React, { useEffect, useMemo } from 'react';
 import { postInnleggelsesperioder, postInnleggelsesperioderDryRun } from '../../../api/api';
 import LinkRel from '../../../constants/LinkRel';

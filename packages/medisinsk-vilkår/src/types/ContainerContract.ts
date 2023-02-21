@@ -1,4 +1,4 @@
-import { HttpErrorHandler } from '@navikt/k9-http-utils';
+import { HttpErrorHandler } from '@navikt/k9-fe-http-utils';
 import BehandlingType from '../constants/BehandlingType';
 import FagsakYtelseType from '../constants/FagsakYtelseType';
 

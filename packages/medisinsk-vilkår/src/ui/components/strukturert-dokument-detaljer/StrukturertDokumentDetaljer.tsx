@@ -1,6 +1,6 @@
 import { Alert, Link } from '@navikt/ds-react';
 import { Box, DetailView, LabelledContent, LinkButton, Margin } from '@navikt/ft-plattform-komponenter';
-import { prettifyDateString } from '@navikt/k9-date-utils';
+import { prettifyDateString } from '@navikt/k9-fe-date-utils';
 import React from 'react';
 import FagsakYtelseType from '../../../constants/FagsakYtelseType';
 import LinkRel from '../../../constants/LinkRel';

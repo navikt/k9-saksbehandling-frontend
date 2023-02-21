@@ -1,6 +1,6 @@
 {
-    "name": "@navikt/k9-date-utils",
-    "version": "0.1.0",
+    "name": "@navikt/k9-fe-date-utils",
+    "version": "1.0.0",
     "description": "A collection of period utils",
     "main": "./build/index.js",
     "types": "./build/index.d.ts",

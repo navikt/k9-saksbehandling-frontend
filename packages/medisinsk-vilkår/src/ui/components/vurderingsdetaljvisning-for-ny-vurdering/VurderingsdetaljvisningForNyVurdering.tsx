@@ -1,5 +1,5 @@
 import React from 'react';
-import { Period } from '@navikt/k9-period-utils';
+import { Period } from '@navikt/k9-fe-period-utils';
 import Vurderingsoversikt from '../../../types/Vurderingsoversikt';
 import { findLinkByRel } from '../../../util/linkUtils';
 import LinkRel from '../../../constants/LinkRel';

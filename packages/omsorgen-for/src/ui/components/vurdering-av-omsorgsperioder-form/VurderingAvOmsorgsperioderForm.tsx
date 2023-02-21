@@ -1,6 +1,6 @@
-import { getPeriodDifference, Period } from '@navikt/k9-period-utils';
+import { getPeriodDifference, Period } from '@navikt/k9-fe-period-utils';
 import { Box, Margin, DetailView, Form, LabelledContent } from '@navikt/ft-plattform-komponenter';
-import { PeriodpickerList, RadioGroupPanel, TextArea } from '@navikt/k9-form-utils';
+import { PeriodpickerList, RadioGroupPanel, TextArea } from '@navikt/k9-fe-form-utils';
 import { AlertStripeInfo } from 'nav-frontend-alertstriper';
 import React from 'react';
 import { FormProvider, useForm, useWatch } from 'react-hook-form';

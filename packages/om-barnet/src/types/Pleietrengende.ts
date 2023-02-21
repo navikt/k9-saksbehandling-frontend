@@ -1,4 +1,4 @@
-import { initializeDate, prettifyDate } from '@navikt/k9-date-utils';
+import { initializeDate, prettifyDate } from '@navikt/k9-fe-date-utils';
 import PleietrengendeResponse from './PleietrengendeResponse';
 
 class Pleietrengende {

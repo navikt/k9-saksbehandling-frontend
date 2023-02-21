@@ -1,5 +1,5 @@
-import { get } from '@navikt/k9-http-utils';
-import { Period } from '@navikt/k9-period-utils';
+import { get } from '@navikt/k9-fe-http-utils';
+import { Period } from '@navikt/k9-fe-period-utils';
 import { NavigationWithDetailView, PageContainer, Box, Margin } from '@navikt/ft-plattform-komponenter';
 import React, { useMemo } from 'react';
 import axios from 'axios';

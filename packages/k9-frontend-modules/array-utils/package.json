@@ -1,6 +1,6 @@
 {
-    "name": "@navikt/k9-array-utils",
-    "version": "1.0.1",
+    "name": "@navikt/k9-fe-array-utils",
+    "version": "1.0.0",
     "description": "A collection of array utils",
     "main": "./build/index.js",
     "types": "./build/index.d.ts",

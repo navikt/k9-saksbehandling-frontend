@@ -1,8 +1,8 @@
 import { Close } from '@navikt/ds-icons';
 import { Alert, Label, Link } from '@navikt/ds-react';
 import { Box, ContentWithTooltip, Form, Margin, OnePersonOutlineGray } from '@navikt/ft-plattform-komponenter';
-import { CheckboxGroup, PeriodpickerList, TextArea, YesOrNoQuestion } from '@navikt/k9-form-utils';
-import { Period } from '@navikt/k9-period-utils';
+import { CheckboxGroup, PeriodpickerList, TextArea, YesOrNoQuestion } from '@navikt/k9-fe-form-utils';
+import { Period } from '@navikt/k9-fe-period-utils';
 import React, { useState } from 'react';
 import { FormProvider, useForm, useWatch } from 'react-hook-form';
 import Dokument from '../../../types/Dokument';
