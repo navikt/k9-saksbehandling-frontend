@@ -1,5 +1,5 @@
-import { post, HttpErrorHandler } from '@navikt/k9-http-utils';
-import { Period } from '@navikt/k9-period-utils';
+import { post, HttpErrorHandler } from '@navikt/k9-fe-http-utils';
+import { Period } from '@navikt/k9-fe-period-utils';
 import { Vurderingsversjon } from '../types/Vurdering';
 import Vurderingstype from '../types/Vurderingstype';
 import { PerioderMedEndringResponse } from '../types/PeriodeMedEndring';

@@ -1,4 +1,4 @@
-import { prettifyDateString } from '@navikt/k9-date-utils';
+import { prettifyDateString } from '@navikt/k9-fe-date-utils';
 import { DocumentIcon } from '@navikt/ft-plattform-komponenter';
 import { Link } from '@navikt/ds-react';
 import React from 'react';

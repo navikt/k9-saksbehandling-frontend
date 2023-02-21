@@ -1,6 +1,6 @@
 import { BodyShort, Button, Modal } from '@navikt/ds-react';
 import { Box, Margin, PageError } from '@navikt/ft-plattform-komponenter';
-import { post } from '@navikt/k9-http-utils';
+import { post } from '@navikt/k9-fe-http-utils';
 import React, { useMemo, useState } from 'react';
 import LinkRel from '../../../constants/LinkRel';
 import Dokument from '../../../types/Dokument';

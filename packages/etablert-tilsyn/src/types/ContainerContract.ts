@@ -1,4 +1,4 @@
-import { HttpErrorHandler } from '@navikt/k9-http-utils';
+import { HttpErrorHandler } from '@navikt/k9-fe-http-utils';
 import Saksbehandlere from './Saksbehandlere';
 
 interface ContainerContract {
@@ -6,7 +6,7 @@ interface ContainerContract {
     endpoints: {
         tilsyn: string;
         sykdom: string;
-        sykdomInnleggelse: string
+        sykdomInnleggelse: string;
     };
     httpErrorHandler: HttpErrorHandler;
     beredskapMåVurderes: boolean;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Period, getHumanReadablePeriodString } from '@navikt/k9-period-utils';
+import { Period, getHumanReadablePeriodString } from '@navikt/k9-fe-period-utils';
 import { Alert } from '@navikt/ds-react';
 
 interface VurderBehovForPerioderMeldingProps {

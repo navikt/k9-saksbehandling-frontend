@@ -1,4 +1,4 @@
-import { get } from '@navikt/k9-http-utils';
+import { get } from '@navikt/k9-fe-http-utils';
 import { ChildIcon, Infostripe, PageContainer, WarningIcon } from '@navikt/ft-plattform-komponenter';
 import axios from 'axios';
 import classnames from 'classnames';
@@ -6,7 +6,7 @@ import { TabsPure } from 'nav-frontend-tabs';
 import React, { useMemo } from 'react';
 import '@navikt/ft-plattform-komponenter/dist/style.css';
 import '@navikt/ds-css';
-import { Period } from '@navikt/k9-period-utils';
+import { Period } from '@navikt/k9-fe-period-utils';
 import ContainerContract from '../types/ContainerContract';
 import { InnleggelsesperiodeResponse, SykdomResponse, TilsynResponse } from '../types/TilsynResponse';
 import Alertstripe from './components/alertstripe/Alertstripe';

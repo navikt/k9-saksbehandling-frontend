@@ -1,5 +1,5 @@
-import { dateConstants } from '@navikt/k9-date-utils';
-import { Datepicker, RadioGroupPanel } from '@navikt/k9-form-utils';
+import { dateConstants } from '@navikt/k9-fe-date-utils';
+import { Datepicker, RadioGroupPanel } from '@navikt/k9-fe-form-utils';
 import { Box, DetailView, Form, Margin } from '@navikt/ft-plattform-komponenter';
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';

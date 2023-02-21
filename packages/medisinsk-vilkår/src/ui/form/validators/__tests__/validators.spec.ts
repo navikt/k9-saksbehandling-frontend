@@ -1,5 +1,5 @@
-import { dateConstants } from '@navikt/k9-date-utils';
-import { Period } from '@navikt/k9-period-utils';
+import { dateConstants } from '@navikt/k9-fe-date-utils';
+import { Period } from '@navikt/k9-fe-period-utils';
 import {
     dateIsNotInTheFuture,
     datoenInngårISøknadsperioden,

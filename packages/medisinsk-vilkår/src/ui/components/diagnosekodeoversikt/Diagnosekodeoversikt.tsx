@@ -1,5 +1,5 @@
 import { Box, Margin, TitleWithUnderline, WarningIcon } from '@navikt/ft-plattform-komponenter';
-import { get, post } from '@navikt/k9-http-utils';
+import { get, post } from '@navikt/k9-fe-http-utils';
 import axios from 'axios';
 
 import { Loader, Modal } from '@navikt/ds-react';

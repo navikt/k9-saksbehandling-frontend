@@ -1,4 +1,4 @@
-import { Period } from '@navikt/k9-period-utils';
+import { Period } from '@navikt/k9-fe-period-utils';
 import Kilde from './Kilde';
 import { Vurdering } from './TilsynResponse';
 import Vurderingsresultat from './Vurderingsresultat';
@@ -13,10 +13,10 @@ class Vurderingsperiode {
     begrunnelse: string;
 
     id: number;
-    
+
     opprettetAv: string;
 
-    opprettetTidspunkt: string
+    opprettetTidspunkt: string;
 
     constructor({ periode, kilde, resultat, begrunnelse, id, opprettetAv, opprettetTidspunkt }: Vurdering) {
         this.periode = new Period(periode.fom, periode.tom);

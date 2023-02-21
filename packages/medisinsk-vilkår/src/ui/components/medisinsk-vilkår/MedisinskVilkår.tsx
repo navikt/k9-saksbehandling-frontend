@@ -1,6 +1,6 @@
 import { Tabs } from '@navikt/ds-react';
 import { Box, ChildIcon, Infostripe, Margin, PageContainer, WarningIcon } from '@navikt/ft-plattform-komponenter';
-import { get } from '@navikt/k9-http-utils';
+import { get } from '@navikt/k9-fe-http-utils';
 import classnames from 'classnames';
 import React, { useMemo } from 'react';
 import { useQuery } from 'react-query';

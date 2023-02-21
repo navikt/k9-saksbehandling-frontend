@@ -1,5 +1,5 @@
 import React from 'react';
-import * as httpUtils from '@navikt/k9-http-utils';
+import * as httpUtils from '@navikt/k9-fe-http-utils';
 import { render, fireEvent, waitFor, screen } from '@testing-library/react';
 import VilkårsvurderingAvToOmsorgspersoner from '../VilkårsvurderingAvToOmsorgspersoner';
 import ContainerContext from '../../../context/ContainerContext';
