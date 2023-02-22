@@ -74,9 +74,5 @@
     },
     "msw": {
         "workerDirectory": "dist"
-    },
-    "workspaces": [
-        "packages/*",
-        "packages/k9-frontend-modules/*"
-    ]
+    }
 }
