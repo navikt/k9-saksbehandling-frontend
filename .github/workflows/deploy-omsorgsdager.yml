@@ -1,4 +1,4 @@
-name: Deploy omsorgsdager
+name: Deploy Omsorgsdager
 on:
     workflow_call:
         secrets:
@@ -10,7 +10,7 @@ on:
                 type: string
 
 env:
-    IMAGE_BASE: ghcr.io/${{ github.repository }}
+    IMAGE_BASE: ghcr.io/${{ github.repository }}/omsorgsdager-frontend
     package-name: omsorgsdager-frontend
 jobs:
     deploy-docker-image:
@@ -69,8 +69,8 @@ jobs:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                   APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
                   CLUSTER: dev-gcp
-                  RESOURCE: nais/naiserator.yml
-                  VARS: nais/dev-gcp.json
+                  RESOURCE: ./packages/omsorgsdager/nais/naiserator.yml
+                  VARS: ./packages/omsorgsdager/nais/dev-gcp.json
 
             - name: Deploy til prod-gcp
               if: github.ref == 'refs/heads/main' && github.event.inputs.environment == 'Prod'
@@ -79,8 +79,8 @@ jobs:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                   APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
                   CLUSTER: prod-gcp
-                  RESOURCE: nais/naiserator.yml
-                  VARS: nais/prod-gcp.json
+                  RESOURCE: ./packages/omsorgsdager/nais/naiserator.yml
+                  VARS: ./packages/omsorgsdager/nais/prod-gcp.json
 
             - name: Create Release
               id: create_release
