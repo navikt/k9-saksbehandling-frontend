@@ -14,7 +14,7 @@ import RadioButtonWithBooleanValue from '../react-hook-form-wrappers/RadioButton
 import TextArea from '../react-hook-form-wrappers/TextArea';
 import styles from './vilkarMidlertidigAlene.css';
 import styleLesemodus from '../lesemodus/lesemodusboks.css';
-import { tekst } from './vilkar-midlertidig-alene-tekst';
+import tekst from './vilkar-midlertidig-alene-tekst';
 import { VilkarMidlertidigAleneProps } from '../../../types/VilkarMidlertidigAleneProps';
 import VilkarMidlertidigAleneLesemodus from '../vilkar-midlertidig-alene-lesemodus/VilkarMidlertidigAleneLesemodus';
 import VilkarStatus from '../vilkar-status/VilkarStatus';
@@ -75,12 +75,8 @@ const VilkarMidlertidigAlene: React.FunctionComponent<VilkarMidlertidigAleneProp
     const sokerenMidlertidigAleneOmOmsorgen = watch('erSokerenMidlertidigAleneOmOmsorgen');
     const åpenForRedigering = watch('åpenForRedigering');
 
-    const {
-        erDatoFyltUt,
-        erDatoGyldig,
-        erAvslagsArsakErPeriodeErIkkeOverSeksMånGyldig,
-        erDatoSisteDagenIÅret,
-    } = valideringsFunksjoner(getValues, 'erSokerenMidlertidigAleneOmOmsorgen');
+    const { erDatoFyltUt, erDatoGyldig, erAvslagsArsakErPeriodeErIkkeOverSeksMånGyldig, erDatoSisteDagenIÅret } =
+        valideringsFunksjoner(getValues, 'erSokerenMidlertidigAleneOmOmsorgen');
 
     const mellomlagringFormState = useFormSessionStorage(
         formStateKey,

@@ -94,7 +94,7 @@ const KorrigerePerioder: React.FunctionComponent<KorrigerePerioderProps> = ({
         getValues
     );
 
-    const bekreftAksjonspunkt = data => {
+    const bekreftAksjonspunkt = (data) => {
         if (!errors.begrunnelse && !errors.fravaerGrunnetSmittevernhensynEllerStengt) {
             if (data.fravaerGrunnetSmittevernhensynEllerStengt === 'delvis') {
                 losAksjonspunkt(true, data.begrunnelse, Number(data.antallDagerDelvisInnvilget));
@@ -139,12 +139,13 @@ const KorrigerePerioder: React.FunctionComponent<KorrigerePerioderProps> = ({
                     )}{' '}
                 </p>
 
-                {informasjonTilLesemodus.vilkarOppfylt && informasjonTilLesemodus.antallDagerDelvisInnvilget !== null && (
-                    <>
-                        <p className={styleLesemodus.label}>{tekst.antallDagerInnvilget}</p>
-                        <p className={styleLesemodus.text}>{informasjonTilLesemodus.antallDagerDelvisInnvilget} </p>
-                    </>
-                )}
+                {informasjonTilLesemodus.vilkarOppfylt &&
+                    informasjonTilLesemodus.antallDagerDelvisInnvilget !== null && (
+                        <>
+                            <p className={styleLesemodus.label}>{tekst.antallDagerInnvilget}</p>
+                            <p className={styleLesemodus.text}>{informasjonTilLesemodus.antallDagerDelvisInnvilget} </p>
+                        </>
+                    )}
                 <p className={styleLesemodus.label}>
                     {konfliktMedArbeidsgiver ? tekstKonfliktMedArbeidsgiver.begrunnelse : tekst.begrunnelse}
                 </p>
@@ -201,7 +202,6 @@ const KorrigerePerioder: React.FunctionComponent<KorrigerePerioderProps> = ({
                             <InputField
                                 label="Hvor mange dager har søker rett på?"
                                 isMini={false}
-                                bredde="S"
                                 name="antallDagerDelvisInnvilget"
                                 valideringsFunksjoner={erAntallDagerDelvisInnvilgetFyltUt}
                                 feil={errors.antallDagerDelvisInnvilget !== undefined ? tekst.feilManglerDager : ''}

@@ -17,7 +17,7 @@ import TextArea from '../react-hook-form-wrappers/TextArea';
 import styleRadioknapper from '../styles/radioknapper/radioknapper.css';
 import styles from '../vilkar-midlertidig-alene/vilkarMidlertidigAlene.css';
 import VilkarStatus from '../vilkar-status/VilkarStatus';
-import { tekst } from './alene-om-omsorgen-tekst';
+import tekst from './alene-om-omsorgen-tekst';
 
 type FormData = {
     begrunnelse: string;
