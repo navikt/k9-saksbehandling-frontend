@@ -1,0 +1,22 @@
+.korrigerePerioder {
+    margin-bottom: 1rem;
+    width: max-content;
+}
+.korrigerePerioder > * {
+    margin-bottom: 1rem;
+}
+.korrigerePerioder input[type='radio'] + label::before {
+    box-sizing: border-box;
+}
+.korrigerePerioder legend {
+    margin-bottom: 0.5rem !important;
+}
+.korrigerePerioderAlertStripe {
+    max-width: 70rem;
+}
+.knapp {
+    margin-top: 1rem;
+}
+.antallDagerDelvisInnvilgetContainer {
+    margin-top: 0.5rem;
+}
