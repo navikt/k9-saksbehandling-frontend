@@ -33,7 +33,7 @@ jobs:
             - name: Installere dependencies
               run: yarn install --immutable
             - name: Bygg k9-frontend-modules
-              run: yarn yarn build-frontend-modules
+              run: yarn build-frontend-modules
             - name: Kjøre linter
               run: yarn lerna run lint --scope ${{env.package-name}}
             - name: Valider typescript
