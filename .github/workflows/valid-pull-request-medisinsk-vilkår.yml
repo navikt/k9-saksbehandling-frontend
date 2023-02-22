@@ -22,18 +22,14 @@ jobs:
                   node-version: 16.x
                   registry-url: https://npm.pkg.github.com/
                   scope: '@navikt'
-            - name: Get pnpm cache directory path
-              id: pnpm-cache-dir
-              run: echo "PNPM_STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-
+                  cache: 'pnpm'
             - name: Get cypress cache directory path
               id: cypress-cache-dir
               run: echo "CYPRESS_BIN_PATH=$(npx cypress cache path)" >> $GITHUB_OUTPUT
             - uses: actions/cache@v3
-              id: pnpm-cache
+              id: cypress-cache
               with:
                   path: |
-                      ${{ steps.pnpm-cache-dir.outputs.PNPM_STORE_PATH }}
                       ${{ steps.cypress-cache-dir.outputs.CYPRESS_BIN_PATH }}
                   key: ${{ runner.os }}-pnpm-cypress-${{ hashFiles('**/pnpm-lock.yaml') }}
                   restore-keys: |
