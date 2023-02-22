@@ -26,6 +26,7 @@ importers:
       cross-env: ^7.0.3
       css-loader: ^6.7.3
       css-minimizer-webpack-plugin: ^4.2.0
+      cypress: 12.4.1
       eslint: ^8.32.0
       eslint-config-airbnb: ^18.2.1
       eslint-config-prettier: ^8.6.0
@@ -73,7 +74,7 @@ importers:
       '@pmmmwh/react-refresh-webpack-plugin': 0.5.10_e764yt37rymiplqgpb7fiwcihu
       '@rollup/plugin-node-resolve': 15.0.1_rollup@3.12.0
       '@rollup/plugin-typescript': 11.0.0_tkwgik6422u3whqaozmypsnvni
-      '@testing-library/cypress': 9.0.0
+      '@testing-library/cypress': 9.0.0_cypress@12.4.1
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/react': 13.4.0
       '@testing-library/user-event': 14.4.3
@@ -85,6 +86,7 @@ importers:
       cross-env: 7.0.3
       css-loader: 6.7.3_webpack@5.75.0
       css-minimizer-webpack-plugin: 4.2.2_webpack@5.75.0
+      cypress: 12.4.1
       eslint: 8.33.0
       eslint-config-airbnb: 18.2.1_uhus6rimx3ujvztlky4xaizltu
       eslint-config-prettier: 8.6.0_eslint@8.33.0
@@ -447,7 +449,6 @@ importers:
       axios: 1.2.6
       classnames: ^2.3.2
       cors: ^2.8.5
-      cypress: 12.4.1
       dayjs: ^1.11.7
       express: ^4.18.2
       msw: 0.47.4
@@ -497,7 +498,6 @@ importers:
       '@types/jest': 29.4.0
       '@types/node': 18.14.0
       '@types/testing-library__jest-dom': 5.14.5
-      cypress: 12.4.1
 
   packages/om-barnet:
     specifiers:
@@ -2623,14 +2623,14 @@ packages:
       '@jest/test-result': 29.4.1
       '@jest/transform': 29.4.1
       '@jest/types': 29.4.1
-      '@types/node': 18.11.18
+      '@types/node': 18.14.0
       ansi-escapes: 4.3.2
       chalk: 4.1.2
       ci-info: 3.7.1
       exit: 0.1.2
       graceful-fs: 4.2.10
       jest-changed-files: 29.4.0
-      jest-config: 29.4.1_zfha7dvnw4nti6zkbsmhmn6xo4
+      jest-config: 29.4.1_lszm27wzplody5hzcr5ax274dy
       jest-haste-map: 29.4.1
       jest-message-util: 29.4.1
       jest-regex-util: 29.2.0
@@ -5643,7 +5643,7 @@ packages:
       resolve-from: 5.0.0
     dev: true
 
-  /@testing-library/cypress/9.0.0:
+  /@testing-library/cypress/9.0.0_cypress@12.4.1:
     resolution: {integrity: sha512-c1XiCGeHGGTWn0LAU12sFUfoX3qfId5gcSE2yHode+vsyHDWraxDPALjVnHd4/Fa3j4KBcc5k++Ccy6A9qnkMA==}
     engines: {node: '>=12', npm: '>=6'}
     peerDependencies:
@@ -5651,6 +5651,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.20.13
       '@testing-library/dom': 8.20.0
+      cypress: 12.4.1
     dev: true
 
   /@testing-library/dom/8.20.0:
@@ -5860,14 +5861,14 @@ packages:
     resolution: {integrity: sha512-ZUxbzKl0IfJILTS6t7ip5fQQM/J3TJYubDm3nMbgubNNYS62eXeUpoLUC8/7fJNiFYHTrGPQn7hspDUzIHX3UA==}
     dependencies:
       '@types/minimatch': 5.1.2
-      '@types/node': 18.14.0
+      '@types/node': 18.11.18
     dev: true
 
   /@types/glob/8.0.1:
     resolution: {integrity: sha512-8bVUjXZvJacUFkJXHdyZ9iH1Eaj5V7I8c4NdH5sQJsdXkqT4CA5Dhb4yb4VE/3asyx4L9ayZr1NIhTsWHczmMw==}
     dependencies:
       '@types/minimatch': 5.1.2
-      '@types/node': 18.14.0
+      '@types/node': 18.11.18
     dev: true
 
   /@types/graceful-fs/4.1.6:
@@ -5988,7 +5989,7 @@ packages:
   /@types/node-fetch/2.6.2:
     resolution: {integrity: sha512-DHqhlq5jeESLy19TYhLakJ07kNumXWjcDdxXsLUMJZ6ue8VZJj4kLPQVE/2mdHh3xZziNF1xppu5lwmS53HR+A==}
     dependencies:
-      '@types/node': 18.14.0
+      '@types/node': 18.11.18
       form-data: 3.0.1
     dev: true
 
@@ -6152,7 +6153,7 @@ packages:
   /@types/webpack-sources/3.2.0:
     resolution: {integrity: sha512-Ft7YH3lEVRQ6ls8k4Ff1oB4jN6oy/XmU6tQISKdhfh+1mR+viZFphS6WL0IrtDOzvefmJg5a0s7ZQoRXwqTEFg==}
     dependencies:
-      '@types/node': 18.14.0
+      '@types/node': 18.11.18
       '@types/source-list-map': 0.1.2
       source-map: 0.7.4
     dev: true
@@ -6160,7 +6161,7 @@ packages:
   /@types/webpack/4.41.33:
     resolution: {integrity: sha512-PPajH64Ft2vWevkerISMtnZ8rTs4YmRbs+23c402J0INmxDKCrhZNvwZYtzx96gY2wAtXdrK1BS2fiC8MlLr3g==}
     dependencies:
-      '@types/node': 18.14.0
+      '@types/node': 18.11.18
       '@types/tapable': 1.0.8
       '@types/uglify-js': 3.17.1
       '@types/webpack-sources': 3.2.0
@@ -12644,7 +12645,7 @@ packages:
       - supports-color
     dev: true
 
-  /jest-config/29.4.1_ts-node@10.9.1:
+  /jest-config/29.4.1_lszm27wzplody5hzcr5ax274dy:
     resolution: {integrity: sha512-g7p3q4NuXiM4hrS4XFATTkd+2z0Ml2RhFmFPM8c3WyKwVDNszbl4E7cV7WIx1YZeqqCtqbtTtZhGZWJlJqngzg==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     peerDependencies:
@@ -12659,6 +12660,7 @@ packages:
       '@babel/core': 7.20.12
       '@jest/test-sequencer': 29.4.1
       '@jest/types': 29.4.1
+      '@types/node': 18.14.0
       babel-jest: 29.4.1_@babel+core@7.20.12
       chalk: 4.1.2
       ci-info: 3.7.1
@@ -12683,7 +12685,7 @@ packages:
       - supports-color
     dev: true
 
-  /jest-config/29.4.1_zfha7dvnw4nti6zkbsmhmn6xo4:
+  /jest-config/29.4.1_ts-node@10.9.1:
     resolution: {integrity: sha512-g7p3q4NuXiM4hrS4XFATTkd+2z0Ml2RhFmFPM8c3WyKwVDNszbl4E7cV7WIx1YZeqqCtqbtTtZhGZWJlJqngzg==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     peerDependencies:
@@ -12698,7 +12700,6 @@ packages:
       '@babel/core': 7.20.12
       '@jest/test-sequencer': 29.4.1
       '@jest/types': 29.4.1
-      '@types/node': 18.11.18
       babel-jest: 29.4.1_@babel+core@7.20.12
       chalk: 4.1.2
       ci-info: 3.7.1
