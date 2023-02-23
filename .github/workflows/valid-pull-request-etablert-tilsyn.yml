@@ -22,7 +22,6 @@ jobs:
                   node-version: 16.x
                   registry-url: https://npm.pkg.github.com/
                   scope: '@navikt'
-                  cache: 'pnpm'
             - name: Installere dependencies
               run: pnpm install --frozen-lockfile
               env:
