@@ -10,7 +10,7 @@ on:
                 options:
                     - Q1
                     - Prod
-run-name: Deploy to ${{ inputs.environment }} by @${{ github.actor }}
+run-name: Deploy Inntektsmelding to ${{ inputs.environment }} by @${{ github.actor }}
 env:
     IMAGE_BASE: ghcr.io/${{ github.repository }}/psb-inntektsmelding-frontend
     package-name: psb-inntektsmelding-frontend
