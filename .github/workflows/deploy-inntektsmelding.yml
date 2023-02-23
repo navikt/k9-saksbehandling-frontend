@@ -1,13 +1,15 @@
 name: Deploy Inntektsmelding
 on:
-    workflow_call:
-        secrets:
-            READER_TOKEN:
-                required: true
+    workflow_dispatch:
         inputs:
             environment:
+                description: 'Hvilket miljø skal vi deploye til?'
                 required: true
-                type: string
+                default: 'Q1'
+                type: choice
+                options:
+                    - Q1
+                    - Prod
 env:
     IMAGE_BASE: ghcr.io/${{ github.repository }}/psb-inntektsmelding-frontend
     package-name: psb-inntektsmelding-frontend
