@@ -6,7 +6,8 @@
         "build": "lerna run build --stream",
         "test:all": "lerna run test --stream",
         "test:changed": "lerna run test --stream --since origin/main",
-        "lint": "lerna run lint --stream"
+        "lint": "lerna run lint --stream",
+        "preinstall": "npx only-allow pnpm"
     },
     "keywords": [],
     "author": "NAV IT",
