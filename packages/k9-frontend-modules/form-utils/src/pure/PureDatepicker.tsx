@@ -71,8 +71,10 @@ const PureDatepicker = ({
                   }))
                 : disabledDays,
         onDateChange: (date) => {
-            const verdi = dayjs(date).format(ISO_DATE_FORMAT);
-            onChange(verdi);
+            if (date) {
+                const verdi = dayjs(date).format(ISO_DATE_FORMAT);
+                onChange(verdi);
+            }
         },
         onValidate: (date) => {
             setUgyldigDatoError(date.isBefore || date.isAfter);
