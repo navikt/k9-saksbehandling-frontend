@@ -7,7 +7,8 @@
         "test:all": "lerna run test --stream",
         "test:changed": "lerna run test --stream --since origin/main",
         "lint": "lerna run lint --stream",
-        "preinstall": "npx only-allow pnpm"
+        "preinstall": "npx only-allow pnpm",
+        "ts-check": "lerna run ts-check --stream"
     },
     "keywords": [],
     "author": "NAV IT",

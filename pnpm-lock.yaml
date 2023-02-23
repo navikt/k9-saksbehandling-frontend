@@ -133,9 +133,9 @@ importers:
       '@navikt/ds-react': 2.1.7
       '@navikt/fnrvalidator': ^1.3.3
       '@navikt/ft-plattform-komponenter': 1.4.13
-      '@navikt/k9-fe-form-utils': ^1.0.0
-      '@navikt/k9-fe-http-utils': ^1.0.0
-      '@navikt/k9-fe-period-utils': ^1.0.0
+      '@navikt/k9-fe-form-utils': '*'
+      '@navikt/k9-fe-http-utils': '*'
+      '@navikt/k9-fe-period-utils': '*'
       '@popperjs/core': 2.11.6
       '@testing-library/jest-dom': ^5.16.5
       '@testing-library/react': ^13.4.0
@@ -245,10 +245,10 @@ importers:
       '@navikt/fnrvalidator': ^1.3.3
       '@navikt/ft-form-hooks': 3.3.5
       '@navikt/ft-plattform-komponenter': 1.4.13
-      '@navikt/k9-fe-array-utils': ^1.0.0
-      '@navikt/k9-fe-date-utils': ^1.0.0
-      '@navikt/k9-fe-http-utils': ^1.0.0
-      '@navikt/k9-fe-period-utils': ^1.0.0
+      '@navikt/k9-fe-array-utils': '*'
+      '@navikt/k9-fe-date-utils': '*'
+      '@navikt/k9-fe-http-utils': '*'
+      '@navikt/k9-fe-period-utils': '*'
       '@popperjs/core': ^2.11.6
       '@storybook/react': ^6.5.16
       '@storybook/testing-library': ^0.0.13
@@ -375,8 +375,8 @@ importers:
       '@navikt/ds-react': 2.1.7
       '@navikt/fnrvalidator': 1.3.3
       '@navikt/ft-plattform-komponenter': 1.4.13
-      '@navikt/k9-fe-bem-utils': ^1.0.0
-      '@navikt/k9-fe-period-utils': ^1.0.0
+      '@navikt/k9-fe-bem-utils': '*'
+      '@navikt/k9-fe-period-utils': '*'
       '@popperjs/core': 2.11.6
       '@storybook/react': 6.5.16
       classnames: 2.3.2
@@ -415,8 +415,8 @@ importers:
 
   packages/k9-frontend-modules/period-utils:
     specifiers:
-      '@navikt/k9-fe-array-utils': ^1.0.0
-      '@navikt/k9-fe-date-utils': ^1.0.0
+      '@navikt/k9-fe-array-utils': '*'
+      '@navikt/k9-fe-date-utils': '*'
       dayjs: 1.11.7
       jest: 29.3.1
     dependencies:
@@ -433,11 +433,11 @@ importers:
       '@navikt/ds-react': 2.1.7
       '@navikt/fnrvalidator': ^1.3.3
       '@navikt/ft-plattform-komponenter': 1.4.13
-      '@navikt/k9-fe-array-utils': ^1.0.0
-      '@navikt/k9-fe-date-utils': ^1.0.0
-      '@navikt/k9-fe-form-utils': ^1.0.0
-      '@navikt/k9-fe-http-utils': ^1.0.0
-      '@navikt/k9-fe-period-utils': ^1.0.0
+      '@navikt/k9-fe-array-utils': '*'
+      '@navikt/k9-fe-date-utils': '*'
+      '@navikt/k9-fe-form-utils': '*'
+      '@navikt/k9-fe-http-utils': '*'
+      '@navikt/k9-fe-period-utils': '*'
       '@popperjs/core': ^2.11.6
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/react': ^13.4.0
@@ -508,11 +508,11 @@ importers:
       '@navikt/ds-react': 2.1.7
       '@navikt/fnrvalidator': ^1.3.3
       '@navikt/ft-plattform-komponenter': 1.4.13
-      '@navikt/k9-fe-array-utils': ^1.0.0
-      '@navikt/k9-fe-date-utils': ^1.0.0
-      '@navikt/k9-fe-form-utils': ^1.0.0
-      '@navikt/k9-fe-http-utils': ^1.0.0
-      '@navikt/k9-fe-period-utils': ^1.0.0
+      '@navikt/k9-fe-array-utils': '*'
+      '@navikt/k9-fe-date-utils': '*'
+      '@navikt/k9-fe-form-utils': '*'
+      '@navikt/k9-fe-http-utils': '*'
+      '@navikt/k9-fe-period-utils': '*'
       '@popperjs/core': ^2.11.6
       '@types/react': ^18.0.28
       '@types/react-dom': ^18.0.11
@@ -568,11 +568,11 @@ importers:
       '@navikt/ds-react': 2.1.7
       '@navikt/fnrvalidator': ^1.3.3
       '@navikt/ft-plattform-komponenter': 1.4.13
-      '@navikt/k9-fe-array-utils': ^1.0.0
-      '@navikt/k9-fe-date-utils': ^1.0.0
-      '@navikt/k9-fe-form-utils': ^1.0.0
-      '@navikt/k9-fe-http-utils': ^1.0.0
-      '@navikt/k9-fe-period-utils': ^1.0.0
+      '@navikt/k9-fe-array-utils': '*'
+      '@navikt/k9-fe-date-utils': '*'
+      '@navikt/k9-fe-form-utils': '*'
+      '@navikt/k9-fe-http-utils': '*'
+      '@navikt/k9-fe-period-utils': '*'
       '@popperjs/core': ^2.11.6
       '@types/react': ^18.0.28
       '@types/react-dom': ^18.0.11
@@ -3045,6 +3045,9 @@ packages:
     peerDependencies:
       '@types/react': ^17.0.30 || ^18.0.0
       react: ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
     dependencies:
       '@types/react': 18.0.28
       react: 18.2.0
@@ -3055,6 +3058,9 @@ packages:
     peerDependencies:
       '@types/react': ^17.0.30 || ^18.0.0
       react: ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
     dependencies:
       react: 18.2.0
 
@@ -3063,6 +3069,9 @@ packages:
     peerDependencies:
       '@types/react': ^17.0.30 || ^18.0.0
       react: ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
     dependencies:
       '@floating-ui/react': 0.17.0_biqbaboplfbrettd7655fr4n2y
       '@navikt/ds-icons': 2.1.7_react@18.2.0
@@ -3081,6 +3090,9 @@ packages:
     peerDependencies:
       '@types/react': ^17.0.30 || ^18.0.0
       react: ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
     dependencies:
       '@floating-ui/react': 0.17.0_zula6vjvt3wdocc4mwcxqa6nzi
       '@navikt/ds-icons': 2.1.7_pmekkgnqduwlme35zpnqhenc34

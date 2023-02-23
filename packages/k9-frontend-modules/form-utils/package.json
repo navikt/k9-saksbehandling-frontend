@@ -52,8 +52,8 @@
         "react-popper": "2.3.0"
     },
     "dependencies": {
-        "@navikt/k9-fe-bem-utils": "^1.0.0",
-        "@navikt/k9-fe-period-utils": "^1.0.0"
+        "@navikt/k9-fe-bem-utils": "*",
+        "@navikt/k9-fe-period-utils": "*"
     },
     "publishConfig": {
         "registry": "https://npm.pkg.github.com"
