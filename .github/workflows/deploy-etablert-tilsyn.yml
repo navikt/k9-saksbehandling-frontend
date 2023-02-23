@@ -10,6 +10,7 @@ on:
                 options:
                     - Q1
                     - Prod
+run-name: Deploy to ${{ inputs.environment }} by @${{ github.actor }}
 env:
     IMAGE_BASE: ghcr.io/${{ github.repository }}/psb-etablert-tilsyn-frontend
     package-name: psb-etablert-tilsyn-frontend
