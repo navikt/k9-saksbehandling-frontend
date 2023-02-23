@@ -1,14 +1,16 @@
 name: Deploy Omsorgsdager
 on:
-    workflow_call:
-        secrets:
-            READER_TOKEN:
-                required: true
+    workflow_dispatch:
         inputs:
             environment:
+                description: 'Hvilket miljø skal vi deploye til?'
                 required: true
-                type: string
-
+                default: 'Q1'
+                type: choice
+                options:
+                    - Q1
+                    - Prod
+run-name: Deploy Omsorgsdager to ${{ inputs.environment }} by @${{ github.actor }}
 env:
     IMAGE_BASE: ghcr.io/${{ github.repository }}/omsorgsdager-frontend
     package-name: omsorgsdager-frontend
@@ -93,7 +95,7 @@ jobs:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:
                   tag_name: ${{ env.TAG }}
-                  release_name: ${{ env.TAG }}
+                  release_name: Omsorgsdager ${{ env.TAG }}
                   body: |
                       For JS, add this to your app:
                       ```
