@@ -35,7 +35,7 @@ jobs:
                   scope: '@navikt'
                   cache: 'pnpm'
             - name: Installere moduler
-              run: pnpm install --prefer-offline --frozen-lockfile
+              run: pnpm install --frozen-lockfile
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
             - name: Kjøre bygg
