@@ -11,7 +11,7 @@
         "lint": "eslint src/**/*.{ts,tsx,js,jsx}",
         "lint:css": "stylelint src/**/*.{less,css}",
         "ts-check": "tsc --pretty --noEmit",
-        "checkPackageUpgrade": "yarn test && yarn lint && yarn lint:css && yarn build"
+        "checkPackageUpgrade": "pnpm test && pnpm lint && pnpm lint:css && pnpm build"
     },
     "keywords": [],
     "author": "NAV IT",
