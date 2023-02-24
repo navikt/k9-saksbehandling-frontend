@@ -26,6 +26,7 @@
         "@testing-library/user-event": "^14.4.3",
         "@types/jest": "^29.4.0",
         "@types/node": "^18.14.1",
+        "@types/react": "^18.0.28",
         "@types/testing-library__jest-dom": "^5.14.5",
         "msw": "0.47.4",
         "msw-storybook-addon": "^1.7.0"
@@ -72,7 +73,6 @@
         "nav-frontend-spinner-style": "^1.0.2",
         "nav-frontend-typografi": "^4.0.2",
         "nav-frontend-typografi-style": "^2.0.2",
-        "prop-types": "^15.8.1",
         "react": "^18.2.0",
         "react-collapse": "^5.1.1",
         "react-day-picker": "^7.4.10",
