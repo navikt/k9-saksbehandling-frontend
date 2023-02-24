@@ -91,7 +91,7 @@ jobs:
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:
-                  tag_name: ${{ env.TAG }}
+                  tag_name: Omsorgsdager.${{ env.TAG }}
                   release_name: Omsorgsdager ${{ env.TAG }}
                   body: |
                       For JS, add this to your app:

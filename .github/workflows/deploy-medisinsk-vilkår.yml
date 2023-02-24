@@ -112,7 +112,7 @@ jobs:
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:
-                  tag_name: ${{ env.TAG }}
+                  tag_name: Medisinsk-vilkår.${{ env.TAG }}
                   release_name: Medisinsk vilkår ${{ env.TAG }}
                   body: |
                       For JS, add this to your app:
