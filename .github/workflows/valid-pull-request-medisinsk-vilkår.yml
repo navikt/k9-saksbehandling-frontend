@@ -13,15 +13,29 @@ jobs:
         steps:
             - name: Hente kode
               uses: actions/checkout@v3
+            - uses: pnpm/action-setup@v2
+              with:
+                  version: 7
             - name: Sette opp Node
               uses: actions/setup-node@v3
               with:
                   node-version: 16.x
                   registry-url: https://npm.pkg.github.com/
                   scope: '@navikt'
-                  cache: 'yarn'
+                  cache: 'pnpm'
+            - name: Get cypress cache directory path
+              id: cypress-cache-dir
+              run: echo "CYPRESS_BIN_PATH=$(npx cypress cache path)" >> $GITHUB_OUTPUT
+            - uses: actions/cache@v3
+              id: cypress-cache
+              with:
+                  path: |
+                      ${{ steps.cypress-cache-dir.outputs.CYPRESS_BIN_PATH }}
+                  key: ${{ runner.os }}-pnpm-cypress-${{ hashFiles('**/pnpm-lock.yaml') }}
+                  restore-keys: |
+                      ${{ runner.os }}-pnpm-cypress-
             - name: Installere dependencies
-              run: yarn install --prefer-offline --frozen-lockfile
+              run: pnpm install --frozen-lockfile
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
             - name: Bygg k9-frontend-modules

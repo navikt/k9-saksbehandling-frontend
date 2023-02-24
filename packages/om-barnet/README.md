@@ -4,29 +4,29 @@ Dette er en frontend for "om barnet" i saksbehandlingen av pleiepenger ved sykt 
 
 ## Komme i gang
 
-For å kjøre frontend-appen i utvikling, kjør `yarn` etterfulgt av `yarn dev` på rot av prosjektet.
+For å kjøre frontend-appen i utvikling, kjør `pnpm i` etterfulgt av `pnpm dev` på rot av prosjektet.
 
 Utviklingsmiljøet er konfigurert opp med en egen webpack-konfig som hoster `index.html` som ligger på rot.
 Denne index-filen er kun ment for utvikling.
 
 For enkelthet i utvikling ligger det et eget mockup-api under `/mock` som server mockede data, og som
 `index.html` på rot by default konfigurerer frontenden til å gjøre sine api-kall mot. Mockup-apiet kjøres
-opp ved å kjøre `yarn api-mock` på rot av prosjektet.
+opp ved å kjøre `pnpm api-mock` på rot av prosjektet.
 
 ### Kjøring av tester
 
-`yarn test` på rot av prosjektet
+`pnpm test` på rot av prosjektet
 
 ### Bygging av appen
 
-`yarn build` på rot av prosjektet
+`pnpm build` på rot av prosjektet
 
 Denne kommandoen vil se på `version` spesifisert i `package.json`, opprette en ny katalog under `build`
 som samsvarer med det versjonsnummeret, og legge de bygde filene der.
 
 ### Kjøring av bygg
 
-`yarn start` kjører opp en server som statisk hoster innholdet under `build`
+`pnpm start` kjører opp en server som statisk hoster innholdet under `build`
 
 ---
 

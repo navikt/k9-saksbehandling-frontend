@@ -11,23 +11,23 @@
         "lint": "eslint src/**/*.{ts,tsx,js,jsx}",
         "lint:css": "stylelint src/**/*.{less,css}",
         "ts-check": "tsc --pretty --noEmit",
-        "checkPackageUpgrade": "yarn test && yarn lint && yarn lint:css && yarn build"
+        "checkPackageUpgrade": "pnpm test && pnpm lint && pnpm lint:css && pnpm build"
     },
     "keywords": [],
     "author": "NAV IT",
     "license": "MIT",
     "devDependencies": {
         "@testing-library/react": "^13.4.0",
-        "jest-axe": "^6.0.0",
-        "string.prototype.replaceall": "^1.0.6"
+        "@types/react": "^18.0.28",
+        "@types/react-dom": "^18.0.11",
+        "jest-axe": "^6.0.1",
+        "string.prototype.replaceall": "^1.0.7"
     },
     "dependencies": {
-        "@navikt/fnrvalidator": "^1.3.0",
-        "@types/react": "^18.0.21",
-        "@types/react-dom": "^18.0.6",
+        "@navikt/fnrvalidator": "^1.3.3",
         "classnames": "^2.3.2",
         "cors": "^2.8.5",
-        "dayjs": "^1.11.5",
+        "dayjs": "^1.11.7",
         "express": "^4.18.2",
         "lodash": "^4.17.21",
         "lodash.throttle": "^4.1.1",
@@ -48,7 +48,6 @@
         "nav-frontend-spinner-style": "^1.0.2",
         "nav-frontend-typografi": "^4.0.2",
         "nav-frontend-typografi-style": "^2.0.2",
-        "prop-types": "^15.8.1",
         "react": "^18.2.0",
         "react-day-picker": "^7.4.10",
         "react-dom": "^18.2.0",
