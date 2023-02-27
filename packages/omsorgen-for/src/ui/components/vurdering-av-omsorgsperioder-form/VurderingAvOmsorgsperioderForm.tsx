@@ -59,7 +59,7 @@ const VurderingAvOmsorgsperioderForm = ({
     fosterbarn,
 }: VurderingAvOmsorgsperioderFormProps): JSX.Element => {
     const { onFinished, readOnly, sakstype } = React.useContext(ContainerContext);
-
+    const erOMP = sakstype === Ytelsestype.OMP;
     const intl = useIntl();
     const formMethods = useForm({
         defaultValues: {
@@ -73,7 +73,7 @@ const VurderingAvOmsorgsperioderForm = ({
         const { begrunnelse, perioder, harSøkerOmsorgenForIPeriode } = formState;
 
         let vurdertePerioder;
-        const fosterbarnForOmsorgspenger = sakstype === Ytelsestype.OMP ? fosterbarn : undefined;
+        const fosterbarnForOmsorgspenger = erOMP ? fosterbarn : undefined;
         if (harSøkerOmsorgenForIPeriode === RadioOptions.DELER) {
             vurdertePerioder = perioder.map(({ period }) => ({
                 periode: period,
@@ -114,7 +114,7 @@ const VurderingAvOmsorgsperioderForm = ({
 
     return (
         <div className={styles.vurderingAvOmsorgsperioderForm}>
-            <DetailView title="Vurdering">
+            <DetailView title={erOMP ? 'Vurdering' : 'Vurdering av omsorg'}>
                 {/* eslint-disable-next-line react/jsx-props-no-spreading */}
                 <FormProvider {...formMethods}>
                     {omsorgsperiode.relasjon && (
