@@ -23,6 +23,17 @@ jobs:
                   registry-url: https://npm.pkg.github.com/
                   scope: '@navikt'
                   cache: 'pnpm'
+            - name: Get cypress cache directory path
+              id: cypress-cache-dir
+              run: echo "CYPRESS_BIN_PATH=$(npx cypress cache path)" >> $GITHUB_OUTPUT
+            - uses: actions/cache@v3
+              id: cypress-cache
+              with:
+                  path: |
+                      ${{ steps.cypress-cache-dir.outputs.CYPRESS_BIN_PATH }}
+                  key: ${{ runner.os }}-pnpm-cypress-${{ hashFiles('**/pnpm-lock.yaml') }}
+                  restore-keys: |
+                      ${{ runner.os }}-pnpm-cypress-
             - name: Installere dependencies
               run: pnpm install
               env:
@@ -35,5 +46,21 @@ jobs:
               run: lerna run ts-check --scope ${{env.package-name}}
             - name: Kjøre enhetstester
               run: lerna run test --scope ${{env.package-name}}
+            - name: Kjør E2E-tester
+              uses: cypress-io/github-action@v5
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
+              with:
+                  install: false
+                  project: ./packages/etablert-tilsyn
+                  start: lerna run dev --scope psb-etablert-tilsyn-frontend
+                  wait-on: 'http://localhost:8484'
+                  wait-on-timeout: 60
+            - name: Laster opp screenshots dersom Cypress-testene feiler
+              uses: actions/upload-artifact@v3
+              if: failure()
+              with:
+                  name: cypress-screenshots
+                  path: packages/**/cypress/screenshots
             - name: Kjøre bygg
               run: lerna run build --scope ${{env.package-name}}

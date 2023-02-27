@@ -11,7 +11,7 @@
     <body>
         <div id="app" style="padding: 2.5rem"></div>
         <script type="text/javascript">
-            setTimeout(() => {
+            document.addEventListener('DOMContentLoaded', () => {
                 window.renderTilsynApp('app', {
                     readOnly: false,
                     endpoints: {
@@ -24,7 +24,7 @@
                     nattevåkMåVurderes: true,
                     saksbehandlere: [],
                 });
-            }, 300);
+            });
         </script>
     </body>
 </html>

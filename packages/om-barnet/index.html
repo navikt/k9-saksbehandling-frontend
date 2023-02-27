@@ -11,7 +11,7 @@
     <body>
         <div id="app" style="padding: 2.5rem"></div>
         <script type="text/javascript">
-            setTimeout(() => {
+            document.addEventListener('DOMContentLoaded', () => {
                 window.renderOmBarnetApp('app', {
                     readOnly: false,
                     endpoints: {
@@ -19,7 +19,7 @@
                         omPleietrengende: 'http://localhost:8082/mock/omPleietrengende',
                     },
                 });
-            }, 300);
+            });
         </script>
     </body>
 </html>
