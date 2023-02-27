@@ -43,7 +43,7 @@ jobs:
                   install: false
                   project: ./packages/etablert-tilsyn
                   start: lerna run dev --scope psb-etablert-tilsyn-frontend
-                  wait-on: 'http://localhost:8081'
+                  wait-on: 'http://localhost:8484'
                   wait-on-timeout: 60
             - name: Laster opp screenshots dersom Cypress-testene feiler
               uses: actions/upload-artifact@v3
