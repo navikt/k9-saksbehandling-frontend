@@ -24,7 +24,7 @@ jobs:
                   scope: '@navikt'
                   cache: 'pnpm'
             - name: Installere dependencies
-              run: pnpm install --frozen-lockfile
+              run: pnpm install
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
             - name: Bygg k9-frontend-modules
