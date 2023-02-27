@@ -23,15 +23,7 @@ const OmsorgsperiodeVurderingsdetaljer = ({
     const { sakstype } = useContext(ContainerContext);
     const erOMP = sakstype === Ytelsestype.OMP;
     const begrunnelseRenderer = () => {
-        let label = erOMP ? (
-            <>
-                {intl.formatMessage({ id: 'vurdering.hjemmel' })}
-                <br />
-                {intl.formatMessage({ id: 'vurdering.hjemmel.linje2' })}
-            </>
-        ) : (
-            <>{intl.formatMessage({ id: 'vurdering.hjemmel' })}</>
-        );
+        let label = intl.formatMessage({ id: 'vurdering.hjemmel' });
         let begrunnelse = '';
         if (omsorgsperiode.erManueltVurdert()) {
             begrunnelse = omsorgsperiode.begrunnelse;
@@ -41,7 +33,7 @@ const OmsorgsperiodeVurderingsdetaljer = ({
                     ? 'Søker er folkeregistrert forelder'
                     : 'Søker er ikke folkeregistrert forelder';
             }
-            label = <>Automatisk vurdert</>;
+            label = 'Automatisk vurdert';
         }
         return <LabelledContent label={label} content={begrunnelse} />;
     };
