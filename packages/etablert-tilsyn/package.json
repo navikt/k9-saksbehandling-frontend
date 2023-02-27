@@ -12,7 +12,8 @@
         "lint": "eslint 'src/**/*.{ts,tsx,js,jsx}'",
         "ts-check": "tsc --pretty --noEmit",
         "api-mock": "ts-node mock/api-mock.ts",
-        "start:e2e": "nodemon mock/api-mock.ts & node webpack/webpack-config.development.js"
+        "cypress:headless": "cypress open",
+        "test:e2e": "start-server-and-test dev http://localhost:8484 cypress:headless"
     },
     "keywords": [],
     "author": "NAV IT",
@@ -43,6 +44,7 @@
         "express": "^4.18.2",
         "lodash": "^4.17.21",
         "lodash.throttle": "^4.1.1",
+        "msw": "1.1.0",
         "nav-datovelger": "^12.6.0",
         "nav-frontend-alertstriper": "^4.0.2",
         "nav-frontend-alertstriper-style": "^3.0.2",
@@ -77,5 +79,8 @@
     },
     "resolutions": {
         "multicast-dns": "7.2.3"
+    },
+    "msw": {
+        "workerDirectory": "public"
     }
 }

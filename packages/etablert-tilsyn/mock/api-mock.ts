@@ -1,30 +1,16 @@
-import cors from 'cors';
-import express from 'express';
-import mockedTilsyn from './mocked-data/mockedTilsyn';
+import { rest } from 'msw';
 import mockedSykdom from './mocked-data/mockedSykdom';
+import mockedTilsyn from './mocked-data/mockedTilsyn';
 
-const app = express();
+export const handlers = [
+    rest.get('http://localhost:8082/mock/tilsyn', (req, res, ctx) => {
+        return res(ctx.status(200), ctx.json(mockedTilsyn));
+    }),
+    rest.get('http://localhost:8082/mock/sykdom', (req, res, ctx) => {
+        return res(ctx.status(200), ctx.json(mockedSykdom));
+    }),
 
-app.use(express.json());
-
-app.use(
-    cors({
-        origin: 'http://localhost:8484',
-    })
-);
-
-app.use('/mock/tilsyn', (req, res) => {
-    res.send(mockedTilsyn);
-});
-app.use('/mock/sykdom', (req, res) => {
-    res.send(mockedSykdom);
-});
-
-app.use('/mock/sykdomInnleggelse', (req, res) => {
-    res.send({ perioder: [] });
-});
-
-const port = 8082;
-app.listen(port, () => {
-    console.log('API-mock listening on port', port);
-});
+    rest.get('http://localhost:8082/mock/sykdomInnleggelse', (req, res, ctx) => {
+        return res(ctx.status(200), ctx.json({ perioder: [] }));
+    }),
+];

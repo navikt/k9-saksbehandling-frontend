@@ -18,7 +18,7 @@
     <body>
         <div id="app"></div>
         <script type="text/javascript">
-            setTimeout(() => {
+            document.addEventListener('DOMContentLoaded', () => {
                 window.renderUttakApp('app', {
                     aktivBehandlingUuid: '123456',
                     uttaksperioder: {
@@ -198,7 +198,7 @@
                         },
                     ],
                 });
-            }, 300);
+            });
         </script>
     </body>
 </html>

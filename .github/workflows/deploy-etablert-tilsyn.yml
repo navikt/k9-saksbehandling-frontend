@@ -45,6 +45,22 @@ jobs:
               run: lerna run ts-check --scope ${{env.package-name}}
             - name: Kjøre enhetstester
               run: lerna run test --scope ${{env.package-name}}
+            - name: Kjør E2E-tester
+              uses: cypress-io/github-action@v5
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
+              with:
+                  install: false
+                  project: ./packages/etablert-tilsyn
+                  start: lerna run dev --scope psb-etablert-tilsyn-frontend
+                  wait-on: 'http://localhost:8081'
+                  wait-on-timeout: 60
+            - name: Laster opp screenshots dersom Cypress-testene feiler
+              uses: actions/upload-artifact@v3
+              if: failure()
+              with:
+                  name: cypress-screenshots
+                  path: packages/**/cypress/screenshots
             - name: Kjøre bygg
               run: lerna run build --scope ${{env.package-name}}
             - name: Sette versjon
