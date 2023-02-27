@@ -4,7 +4,7 @@ Disse mikrofrontendene brukes i k9-sak-web i overnevnte ytelser.
 
 ## Komme i gang
 
-For å kjøre frontend-appen i utvikling, kjør `pnpm i` etterfulgt av `pnpm dev` i pakken (f.eks. i packages/om-barnet) du ønsker å kjøre opp.
+For å kjøre frontend-appen i utvikling, kjør `pnpm i` etterfulgt av `pnpm build-frontend-modules` på rot. Deretter kan du kjøre `pnpm dev` i pakken (f.eks. i packages/om-barnet) du ønsker å kjøre opp.
 
 Utviklingsmiljøet er konfigurert opp med en egen webpack-konfig som hoster `index.html` som ligger på rot i pakkene.
 Denne index-filen er kun ment for utvikling.
