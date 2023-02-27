@@ -23,6 +23,17 @@ jobs:
                   registry-url: https://npm.pkg.github.com/
                   scope: '@navikt'
                   cache: 'pnpm'
+            - name: Get cypress cache directory path
+              id: cypress-cache-dir
+              run: echo "CYPRESS_BIN_PATH=$(npx cypress cache path)" >> $GITHUB_OUTPUT
+            - uses: actions/cache@v3
+              id: cypress-cache
+              with:
+                  path: |
+                      ${{ steps.cypress-cache-dir.outputs.CYPRESS_BIN_PATH }}
+                  key: ${{ runner.os }}-pnpm-cypress-${{ hashFiles('**/pnpm-lock.yaml') }}
+                  restore-keys: |
+                      ${{ runner.os }}-pnpm-cypress-
             - name: Installere dependencies
               run: pnpm install
               env:
