@@ -114,7 +114,7 @@ const VurderingAvOmsorgsperioderForm = ({
 
     return (
         <div className={styles.vurderingAvOmsorgsperioderForm}>
-            <DetailView title="Vurdering av omsorg">
+            <DetailView title="Vurdering">
                 {/* eslint-disable-next-line react/jsx-props-no-spreading */}
                 <FormProvider {...formMethods}>
                     {omsorgsperiode.relasjon && (

@@ -22,7 +22,16 @@ const OmsorgsperiodeVurderingsdetaljer = ({
     const intl = useIntl();
     const { sakstype } = useContext(ContainerContext);
     const begrunnelseRenderer = () => {
-        let label = intl.formatMessage({ id: 'vurdering.hjemmel' });
+        let label =
+            sakstype === Ytelsestype.OMP ? (
+                <>
+                    {intl.formatMessage({ id: 'vurdering.hjemmel' })}
+                    <br />
+                    {intl.formatMessage({ id: 'vurdering.hjemmel.linje2' })}
+                </>
+            ) : (
+                <>{intl.formatMessage({ id: 'vurdering.hjemmel' })}</>
+            );
         let begrunnelse = '';
         if (omsorgsperiode.erManueltVurdert()) {
             begrunnelse = omsorgsperiode.begrunnelse;
@@ -32,7 +41,7 @@ const OmsorgsperiodeVurderingsdetaljer = ({
                     ? 'Søker er folkeregistrert forelder'
                     : 'Søker er ikke folkeregistrert forelder';
             }
-            label = 'Automatisk vurdert';
+            label = <>Automatisk vurdert</>;
         }
         return <LabelledContent label={label} content={begrunnelse} />;
     };
@@ -52,12 +61,12 @@ const OmsorgsperiodeVurderingsdetaljer = ({
 
     const harSøkerOmsorgenLabel =
         sakstype === Ytelsestype.OMP
-            ? 'Har søker omsorgen for et barn i denne perioden?'
+            ? 'Er vilkåret oppfylt for denne perioden?'
             : 'Har søker omsorgen for barnet i denne perioden?';
 
     return (
         <DetailView
-            title="Vurdering av omsorg"
+            title="Vurdering"
             contentAfterTitleRenderer={() => (
                 <WriteAccessBoundContent
                     contentRenderer={() => (
