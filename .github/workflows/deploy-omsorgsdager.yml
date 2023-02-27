@@ -33,7 +33,7 @@ jobs:
                   cache: 'pnpm'
                   always-auth: true
             - name: Installere dependencies
-              run: pnpm install --frozen-lockfile
+              run: pnpm install
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
             - name: Kjøre enhetstester

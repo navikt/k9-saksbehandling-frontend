@@ -27,7 +27,7 @@ jobs:
                   scope: '@navikt'
                   cache: 'pnpm'
             - name: Installere moduler
-              run: pnpm install --frozen-lockfile
+              run: pnpm install
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
             - name: Sjekke opp mot Lint-regler
