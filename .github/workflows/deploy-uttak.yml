@@ -1,13 +1,16 @@
 name: Deploy Uttak
 on:
-    workflow_call:
-        secrets:
-            READER_TOKEN:
-                required: true
+    workflow_dispatch:
         inputs:
             environment:
+                description: 'Hvilket miljø skal vi deploye til?'
                 required: true
-                type: string
+                default: 'Q1'
+                type: choice
+                options:
+                    - Q1
+                    - Prod
+run-name: Deploy Uttak to ${{ inputs.environment }} by @${{ github.actor }}
 env:
     IMAGE_BASE: ghcr.io/${{ github.repository }}/psb-uttak-frontend
     package-name: psb-uttak-frontend
@@ -94,8 +97,8 @@ jobs:
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:
-                  tag_name: ${{ env.TAG }}
-                  release_name: ${{ env.TAG }}
+                  tag_name: Uttak.${{ env.TAG }}
+                  release_name: Uttak ${{ env.TAG }}
                   body: |
                       For JS, add this to your app:
                       ```

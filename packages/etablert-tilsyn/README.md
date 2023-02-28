@@ -4,7 +4,7 @@ Dette er en frontend for "etablert tilsyn" i saksbehandlingen av pleiepenger ved
 
 ## Komme i gang
 
-For å kjøre frontend-appen i utvikling, kjør `yarn install` etterfulgt av `yarn dev` på rot av prosjektet.
+For å kjøre frontend-appen i utvikling, kjør `yarn` etterfulgt av `yarn dev` på rot av prosjektet.
 
 Utviklingsmiljøet er konfigurert opp med en egen webpack-konfig som hoster `index.html` som ligger på rot.
 Denne index-filen er kun ment for utvikling.

@@ -1,13 +1,16 @@
 name: Deploy Medisinsk vilkår
 on:
-    workflow_call:
-        secrets:
-            READER_TOKEN:
-                required: true
+    workflow_dispatch:
         inputs:
             environment:
+                description: 'Hvilket miljø skal vi deploye til?'
                 required: true
-                type: string
+                default: 'Q1'
+                type: choice
+                options:
+                    - Q1
+                    - Prod
+run-name: Deploy Medisinsk vilkår to ${{ inputs.environment }} by @${{ github.actor }}
 env:
     IMAGE_BASE: ghcr.io/${{ github.repository }}/medisinsk-vilkar-frontend
     package-name: medisinsk-vilkar-frontend
@@ -30,6 +33,17 @@ jobs:
               uses: actions/setup-node@v3
               with:
                   cache: 'yarn'
+            - name: Get cypress cache directory path
+              id: cypress-cache-dir
+              run: echo "CYPRESS_BIN_PATH=$(npx cypress cache path)" >> $GITHUB_OUTPUT
+            - uses: actions/cache@v3
+              id: cypress-cache
+              with:
+                  path: |
+                      ${{ steps.cypress-cache-dir.outputs.CYPRESS_BIN_PATH }}
+                  key: ${{ runner.os }}-yarn-cypress-${{ hashFiles('**/yarn.lock') }}
+                  restore-keys: |
+                      ${{ runner.os }}-yarn-cypress-
             - name: Installere dependencies
               run: yarn install --immutable
             - name: Bygg k9-frontend-modules
@@ -110,8 +124,8 @@ jobs:
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:
-                  tag_name: ${{ env.TAG }}
-                  release_name: ${{ env.TAG }}
+                  tag_name: Medisinsk-vilkår.${{ env.TAG }}
+                  release_name: Medisinsk vilkår ${{ env.TAG }}
                   body: |
                       For JS, add this to your app:
                       ```

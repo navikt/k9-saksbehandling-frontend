@@ -22,12 +22,12 @@ describe('Sykdom', () => {
         cy.get('input[id="harBehovForKontinuerligTilsynOgPleieYES"]').check({ force: true });
         cy.get('input[id="perioder[0].tom"]').clear().type('020322');
         cy.get('input[id="perioder[0].fom"]').click();
-        cy.contains('Perioden som vurderes må være innenfor en eller flere sammenhengede søknadsperioder').should(
+        cy.contains('Du har valgt en dato som er utenfor gyldig periode.').should(
             'exist'
         );
         cy.get('input[id="perioder[0].tom"]').clear().type('280222');
         cy.get('input[id="perioder[0].fom"]').click();
-        cy.contains('Perioden som vurderes må være innenfor en eller flere sammenhengede søknadsperioder').should(
+        cy.contains('Du har valgt en dato som er utenfor gyldig periode.').should(
             'not.exist'
         );
         cy.contains(

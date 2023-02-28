@@ -19,14 +19,16 @@
     ],
     "devDependencies": {
         "@hookform/error-message": "2.0.1",
-        "@navikt/ds-css": "2.1.6",
-        "@navikt/ds-react": "2.1.6",
+        "@navikt/ds-css": "2.1.7",
+        "@navikt/ds-react": "2.1.7",
         "@navikt/fnrvalidator": "1.3.3",
-        "@navikt/ft-plattform-komponenter": "1.4.8",
+        "@navikt/ft-plattform-komponenter": "1.4.13",
         "@popperjs/core": "2.11.6",
         "@storybook/react": "6.5.16",
+        "@types/react": "^18.0.28",
         "classnames": "2.3.2",
         "dayjs": "1.11.7",
+        "lodash.throttle": "^4.1.1",
         "react": "18.2.0",
         "react-collapse": "5.1.1",
         "react-day-picker": "7.4.10",
@@ -36,14 +38,15 @@
     },
     "peerDependencies": {
         "@hookform/error-message": "2.0.1",
-        "@navikt/ds-css": "2.1.6",
-        "@navikt/ds-react": "2.1.6",
+        "@navikt/ds-css": "2.1.7",
+        "@navikt/ds-react": "2.1.7",
         "@navikt/fnrvalidator": "1.3.3",
-        "@navikt/ft-plattform-komponenter": "1.4.8",
+        "@navikt/ft-plattform-komponenter": "1.4.13",
         "@popperjs/core": "2.11.6",
         "@storybook/react": "6.5.15",
         "classnames": "2.3.2",
         "dayjs": "1.11.7",
+        "lodash.throttle": "^4.1.1",
         "react": "18.2.0",
         "react-collapse": "5.1.1",
         "react-day-picker": "7.4.10",
@@ -52,8 +55,8 @@
         "react-popper": "2.3.0"
     },
     "dependencies": {
-        "@navikt/k9-fe-bem-utils": "*",
-        "@navikt/k9-fe-period-utils": "*"
+        "@navikt/k9-fe-bem-utils": "workspace:1.0.0",
+        "@navikt/k9-fe-period-utils": "workspace:1.0.0"
     },
     "publishConfig": {
         "registry": "https://npm.pkg.github.com"

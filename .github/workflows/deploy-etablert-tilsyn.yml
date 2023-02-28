@@ -1,13 +1,16 @@
 name: Deploy Etablert tilsyn
 on:
-    workflow_call:
-        secrets:
-            READER_TOKEN:
-                required: true
+    workflow_dispatch:
         inputs:
             environment:
+                description: 'Hvilket miljø skal vi deploye til?'
                 required: true
-                type: string
+                default: 'Q1'
+                type: choice
+                options:
+                    - Q1
+                    - Prod
+run-name: Deploy Etablert tilsyn to ${{ inputs.environment }} by @${{ github.actor }}
 env:
     IMAGE_BASE: ghcr.io/${{ github.repository }}/psb-etablert-tilsyn-frontend
     package-name: psb-etablert-tilsyn-frontend
@@ -30,6 +33,17 @@ jobs:
               uses: actions/setup-node@v3
               with:
                   cache: 'yarn'
+            - name: Get cypress cache directory path
+              id: cypress-cache-dir
+              run: echo "CYPRESS_BIN_PATH=$(npx cypress cache path)" >> $GITHUB_OUTPUT
+            - uses: actions/cache@v3
+              id: cypress-cache
+              with:
+                  path: |
+                      ${{ steps.cypress-cache-dir.outputs.CYPRESS_BIN_PATH }}
+                  key: ${{ runner.os }}-yarn-cypress-${{ hashFiles('**/yarn.lock') }}
+                  restore-keys: |
+                      ${{ runner.os }}-yarn-cypress-
             - name: Installere dependencies
               run: yarn install --immutable
             - name: Bygg k9-frontend-modules
@@ -40,6 +54,22 @@ jobs:
               run: yarn lerna run ts-check --scope ${{env.package-name}}
             - name: Kjøre enhetstester
               run: yarn lerna run test --scope ${{env.package-name}}
+            - name: Kjør E2E-tester
+              uses: cypress-io/github-action@v5
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
+              with:
+                  install: false
+                  project: ./packages/etablert-tilsyn
+                  start: lerna run dev --scope psb-etablert-tilsyn-frontend
+                  wait-on: 'http://localhost:8484'
+                  wait-on-timeout: 60
+            - name: Laster opp screenshots dersom Cypress-testene feiler
+              uses: actions/upload-artifact@v3
+              if: failure()
+              with:
+                  name: cypress-screenshots
+                  path: packages/**/cypress/screenshots
             - name: Kjøre bygg
               run: yarn lerna run build --scope ${{env.package-name}}
             - name: Sette versjon
@@ -94,8 +124,8 @@ jobs:
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:
-                  tag_name: ${{ env.TAG }}
-                  release_name: ${{ env.TAG }}
+                  tag_name: Etablert-tilsyn.${{ env.TAG }}
+                  release_name: Etablert tilsyn ${{ env.TAG }}
                   body: |
                       For JS, add this to your app:
                       ```
