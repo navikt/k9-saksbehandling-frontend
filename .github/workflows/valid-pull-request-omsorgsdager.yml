@@ -27,10 +27,10 @@ jobs:
             - name: Installere dependencies
               run: yarn install --immutable
             - name: Kjøre linter
-              run: lerna run lint --scope ${{env.package-name}}
+              run: yarn lerna run lint --scope ${{env.package-name}}
             - name: Valider typescript
-              run: lerna run ts-check --scope ${{env.package-name}}
+              run: yarn lerna run ts-check --scope ${{env.package-name}}
             - name: Kjøre enhetstester
-              run: lerna run test --scope ${{env.package-name}}
+              run: yarn lerna run test --scope ${{env.package-name}}
             - name: Kjøre bygg
-              run: lerna run build --scope ${{env.package-name}}
+              run: yarn lerna run build --scope ${{env.package-name}}
