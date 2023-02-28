@@ -8,7 +8,6 @@
         "test:all": "lerna run test --stream",
         "test:changed": "lerna run test --stream --since origin/main",
         "lint": "lerna run lint --stream",
-        "preinstall": "npx only-allow pnpm",
         "ts-check": "lerna run ts-check --stream"
     },
     "keywords": [],
@@ -61,7 +60,7 @@
         "pre-commit": "^1.2.2",
         "prettier": "^2.8.4",
         "react-refresh": "^0.14.0",
-        "rollup": "3.12.0",
+        "rollup": "^3.17.2",
         "rollup-plugin-peer-deps-external": "2.2.4",
         "rollup-plugin-postcss": "4.0.2",
         "rollup-plugin-terser": "7.0.2",
@@ -78,5 +77,10 @@
     },
     "msw": {
         "workerDirectory": "dist"
-    }
+    },
+    "workspaces": [
+        "packages/*",
+        "packages/k9-frontend-modules/*"
+    ],
+    "packageManager": "yarn@3.4.1"
 }

@@ -4,7 +4,7 @@ Dette er en frontend for uttak i saksbehandlingen av pleiepenger ved sykt barn.
 
 ## Komme i gang
 
-For å kjøre frontend-appen i utvikling, kjør `pnpm i` etterfulgt av `pnpm dev` på rot av prosjektet.
+For å kjøre frontend-appen i utvikling, kjør `yarn` etterfulgt av `yarn dev` på rot av prosjektet.
 
 Utviklingsmiljøet er konfigurert opp med en egen webpack-konfig som hoster `index.html` som ligger på rot.
 Denne index-filen er kun ment for utvikling.
@@ -15,14 +15,14 @@ Denne index-filen er kun ment for utvikling.
 
 ### Bygging av appen
 
-`pnpm build` på rot av prosjektet
+`yarn build` på rot av prosjektet
 
 Denne kommandoen vil se på `version` spesifisert i `package.json`, opprette en ny katalog under `build`
 som samsvarer med det versjonsnummeret, og legge de bygde filene der.
 
 ### Kjøring av bygg
 
-`pnpm start` kjører opp en server som statisk hoster innholdet under `build`
+`yarn start` kjører opp en server som statisk hoster innholdet under `build`
 
 ---
 
