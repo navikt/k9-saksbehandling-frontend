@@ -1,0 +1,17 @@
+{
+  "processors": ["stylelint-processor-styled-components"],
+  "customSyntax": "postcss-less",
+  "extends": [
+    "stylelint-config-recommended",
+    "stylelint-config-styled-components",
+  ],
+  "plugins": ["stylelint-order"],
+  "rules": {
+    "declaration-colon-space-after": "always",
+    "declaration-colon-space-before": "never",
+    "indentation": 2,
+    "max-empty-lines": 1,
+    "number-leading-zero": "always",
+    "order/properties-alphabetical-order": true
+  }
+}
