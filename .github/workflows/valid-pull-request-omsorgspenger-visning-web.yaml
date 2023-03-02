@@ -1,0 +1,36 @@
+name: Validere pull request Omsorgspenger visning web
+on:
+    pull_request:
+        types: [opened, synchronize]
+        paths:
+            - 'packages/omsorgspenger-frontend-web/**/*'
+env:
+    package-name: omsorgspenger-frontend-web
+jobs:
+    valid-pull-request:
+        name: Validere pull request
+        runs-on: ubuntu-latest
+        steps:
+            - name: Hente kode
+              uses: actions/checkout@v3
+            - name: Setup .yarnrc.yml
+              run: |
+                  yarn config set npmScopes.navikt.npmRegistryServer "https://npm.pkg.github.com"
+                  yarn config set npmScopes.navikt.npmAlwaysAuth true
+                  yarn config set npmScopes.navikt.npmAuthToken $NPM_AUTH_TOKEN
+              env:
+                  NPM_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
+            - name: Sette opp Node
+              uses: actions/setup-node@v3
+              with:
+                  cache: 'yarn'
+            - name: Installere dependencies
+              run: yarn install --immutable
+            - name: Kjøre linter
+              run: yarn lerna run lint --scope ${{env.package-name}}
+            - name: Valider typescript
+              run: yarn lerna run ts-check --scope ${{env.package-name}}
+            - name: Kjøre enhetstester
+              run: yarn lerna run test --scope ${{env.package-name}}
+            - name: Kjøre bygg
+              run: yarn lerna run build --scope ${{env.package-name}}
