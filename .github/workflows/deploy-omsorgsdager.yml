@@ -21,25 +21,23 @@ jobs:
         steps:
             - name: Hente kode
               uses: actions/checkout@v3
-            - uses: pnpm/action-setup@v2
-              with:
-                  version: 7
+            - name: Setup .yarnrc.yml
+              run: |
+                  yarn config set npmScopes.navikt.npmRegistryServer "https://npm.pkg.github.com"
+                  yarn config set npmScopes.navikt.npmAlwaysAuth true
+                  yarn config set npmScopes.navikt.npmAuthToken $NPM_AUTH_TOKEN
+              env:
+                  NPM_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
             - name: Sette opp Node
               uses: actions/setup-node@v3
               with:
-                  node-version: 16.x
-                  registry-url: https://npm.pkg.github.com/
-                  scope: '@navikt'
-                  cache: 'pnpm'
-                  always-auth: true
+                  cache: 'yarn'
             - name: Installere dependencies
-              run: pnpm install
-              env:
-                  NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
+              run: yarn install --immutable
             - name: Kjøre enhetstester
-              run: lerna run test --scope ${{env.package-name}}
+              run: yarn lerna run test --scope ${{env.package-name}}
             - name: Kjøre bygg
-              run: lerna run build --scope ${{env.package-name}}
+              run: yarn lerna run build --scope ${{env.package-name}}
             - name: Sette versjon
               working-directory: ./packages/omsorgsdager
               run: echo "MAJOR_VERSION=$(npm run majorVersion --silent)" >> $GITHUB_ENV
@@ -72,7 +70,7 @@ jobs:
               if: github.event.inputs.environment == 'Q1'
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+                  APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY_OMSORGSPENGER }}
                   CLUSTER: dev-gcp
                   RESOURCE: ./packages/omsorgsdager/nais/naiserator.yml
                   VARS: ./packages/omsorgsdager/nais/dev-gcp.json
@@ -82,7 +80,7 @@ jobs:
               uses: nais/deploy/actions/deploy@v1
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+                  APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY_OMSORGSPENGER }}
                   CLUSTER: prod-gcp
                   RESOURCE: ./packages/omsorgsdager/nais/naiserator.yml
                   VARS: ./packages/omsorgsdager/nais/prod-gcp.json

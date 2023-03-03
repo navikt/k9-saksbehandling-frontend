@@ -16,21 +16,20 @@ jobs:
         steps:
             - name: Hente kode
               uses: actions/checkout@v3
-            - uses: pnpm/action-setup@v2
-              with:
-                  version: 7
+            - name: Setup .yarnrc.yml
+              run: |
+                  yarn config set npmScopes.navikt.npmRegistryServer "https://npm.pkg.github.com"
+                  yarn config set npmScopes.navikt.npmAlwaysAuth true
+                  yarn config set npmScopes.navikt.npmAuthToken $NPM_AUTH_TOKEN
+              env:
+                  NPM_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
             - name: Sette opp Node
               uses: actions/setup-node@v3
               with:
-                  node-version: 16.x
-                  registry-url: https://npm.pkg.github.com/
-                  scope: '@navikt'
-                  cache: 'pnpm'
-            - name: Installere moduler
-              run: pnpm install
-              env:
-                  NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
+                  cache: 'yarn'
+            - name: Installere dependencies
+              run: yarn install --immutable
             - name: Sjekke opp mot Lint-regler
-              run: lerna run lint --scope ${{ inputs.package-name }}
+              run: yarn lerna run lint --scope ${{ inputs.package-name }}
             - name: Valider typescript
-              run: lerna run ts-check --scope ${{inputs.package-name}}
+              run: yarn lerna run ts-check --scope ${{inputs.package-name}}

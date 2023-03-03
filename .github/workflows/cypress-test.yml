@@ -25,8 +25,8 @@ jobs:
                   NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
               with:
                   project: ${{inputs.project}}
-                  build: lerna run build --scope '{@navikt/k9-fe-array-utils,@navikt/k9-fe-bem-utils,@navikt/k9-fe-date-utils,@navikt/k9-fe-form-utils,@navikt/k9-fe-http-utils,@navikt/k9-fe-period-utils}'
-                  start: lerna run dev --scope ${{inputs.package-name}}
+                  build: yarn build-frontend-modules
+                  start: yarn lerna run dev --scope ${{inputs.package-name}}
                   wait-on-timeout: 60
                   headless: true
             - name: Laster opp screenshots dersom Cypress-testene feiler
