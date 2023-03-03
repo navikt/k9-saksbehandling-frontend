@@ -1,10 +1,13 @@
+import React from 'react';
+import { useIntl } from 'react-intl';
+import { FormProvider, useForm, useWatch } from 'react-hook-form';
+
 import { getPeriodDifference, Period } from '@navikt/k9-fe-period-utils';
 import { Box, Margin, DetailView, Form, LabelledContent } from '@navikt/ft-plattform-komponenter';
 import { PeriodpickerList, RadioGroupPanel, TextArea } from '@navikt/k9-fe-form-utils';
+import { Label } from '@navikt/ds-react';
 import { AlertStripeInfo } from 'nav-frontend-alertstriper';
-import React from 'react';
-import { FormProvider, useForm, useWatch } from 'react-hook-form';
-import { useIntl } from 'react-intl';
+
 import Omsorgsperiode from '../../../types/Omsorgsperiode';
 import Relasjon from '../../../types/Relasjon';
 import Vurderingsresultat from '../../../types/Vurderingsresultat';
@@ -14,7 +17,6 @@ import AddButton from '../add-button/AddButton';
 import DeleteButton from '../delete-button/DeleteButton';
 import styles from './vurderingAvOmsorgsperioderForm.css';
 import Ytelsestype from '../../../types/Ytelsestype';
-import { Label } from '@navikt/ds-react';
 
 export enum FieldName {
     BEGRUNNELSE = 'begrunnelse',
