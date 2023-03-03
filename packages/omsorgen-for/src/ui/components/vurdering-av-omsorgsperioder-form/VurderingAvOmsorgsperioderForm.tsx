@@ -14,6 +14,7 @@ import AddButton from '../add-button/AddButton';
 import DeleteButton from '../delete-button/DeleteButton';
 import styles from './vurderingAvOmsorgsperioderForm.css';
 import Ytelsestype from '../../../types/Ytelsestype';
+import { Label } from '@navikt/ds-react';
 
 export enum FieldName {
     BEGRUNNELSE = 'begrunnelse',
@@ -137,8 +138,9 @@ const VurderingAvOmsorgsperioderForm = ({
                         shouldShowSubmitButton={!readOnly}
                     >
                         <Box marginTop={Margin.xLarge}>
+                            <Label htmlFor={FieldName.BEGRUNNELSE}>{intl.formatMessage({ id: 'vurdering.hjemmel' })}</Label>
+                            <p>{intl.formatMessage({ id: 'vurdering.hjemmel.hjelpetekst' })}</p>
                             <TextArea
-                                label={intl.formatMessage({ id: 'vurdering.hjemmel' })}
                                 name={FieldName.BEGRUNNELSE}
                                 validators={{ required }}
                                 disabled={readOnly}
