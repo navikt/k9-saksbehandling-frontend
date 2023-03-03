@@ -35,9 +35,9 @@ jobs:
             - name: Installere dependencies
               run: yarn install --immutable
             - name: Kjøre enhetstester
-              run: lerna run test --scope ${{env.package-name}}
+              run: yarn lerna run test --scope ${{env.package-name}}
             - name: Kjøre bygg
-              run: lerna run build --scope ${{env.package-name}}
+              run: yarn lerna run build --scope ${{env.package-name}}
             - name: Sette versjon
               working-directory: ./packages/omsorgsdager
               run: echo "MAJOR_VERSION=$(npm run majorVersion --silent)" >> $GITHUB_ENV
@@ -70,7 +70,7 @@ jobs:
               if: github.event.inputs.environment == 'Q1'
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+                  APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY_OMSORGSPENGER }}
                   CLUSTER: dev-gcp
                   RESOURCE: ./packages/omsorgsdager/nais/naiserator.yml
                   VARS: ./packages/omsorgsdager/nais/dev-gcp.json
@@ -80,7 +80,7 @@ jobs:
               uses: nais/deploy/actions/deploy@v1
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+                  APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY_OMSORGSPENGER }}
                   CLUSTER: prod-gcp
                   RESOURCE: ./packages/omsorgsdager/nais/naiserator.yml
                   VARS: ./packages/omsorgsdager/nais/prod-gcp.json
