@@ -141,7 +141,7 @@ const VurderingAvOmsorgsperioderForm = ({
                     >
                         <Box marginTop={Margin.xLarge}>
                             <Label htmlFor={FieldName.BEGRUNNELSE}>{intl.formatMessage({ id: 'vurdering.hjemmel' })}</Label>
-                            <p>{intl.formatMessage({ id: 'vurdering.hjemmel.hjelpetekst' })}</p>
+                            {erOMP && (<p>{intl.formatMessage({ id: 'vurdering.hjemmel.hjelpetekst' })}</p>)}
                             <TextArea
                                 name={FieldName.BEGRUNNELSE}
                                 validators={{ required }}
