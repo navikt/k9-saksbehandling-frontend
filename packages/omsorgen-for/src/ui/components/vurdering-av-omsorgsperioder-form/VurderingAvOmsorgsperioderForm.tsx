@@ -1,10 +1,13 @@
+import React from 'react';
+import { useIntl } from 'react-intl';
+import { FormProvider, useForm, useWatch } from 'react-hook-form';
+
 import { getPeriodDifference, Period } from '@navikt/k9-fe-period-utils';
 import { Box, Margin, DetailView, Form, LabelledContent } from '@navikt/ft-plattform-komponenter';
 import { PeriodpickerList, RadioGroupPanel, TextArea } from '@navikt/k9-fe-form-utils';
+import { Label } from '@navikt/ds-react';
 import { AlertStripeInfo } from 'nav-frontend-alertstriper';
-import React from 'react';
-import { FormProvider, useForm, useWatch } from 'react-hook-form';
-import { useIntl } from 'react-intl';
+
 import Omsorgsperiode from '../../../types/Omsorgsperiode';
 import Relasjon from '../../../types/Relasjon';
 import Vurderingsresultat from '../../../types/Vurderingsresultat';
@@ -59,7 +62,7 @@ const VurderingAvOmsorgsperioderForm = ({
     fosterbarn,
 }: VurderingAvOmsorgsperioderFormProps): JSX.Element => {
     const { onFinished, readOnly, sakstype } = React.useContext(ContainerContext);
-
+    const erOMP = sakstype === Ytelsestype.OMP;
     const intl = useIntl();
     const formMethods = useForm({
         defaultValues: {
@@ -73,7 +76,7 @@ const VurderingAvOmsorgsperioderForm = ({
         const { begrunnelse, perioder, harSøkerOmsorgenForIPeriode } = formState;
 
         let vurdertePerioder;
-        const fosterbarnForOmsorgspenger = sakstype === Ytelsestype.OMP ? fosterbarn : undefined;
+        const fosterbarnForOmsorgspenger = erOMP ? fosterbarn : undefined;
         if (harSøkerOmsorgenForIPeriode === RadioOptions.DELER) {
             vurdertePerioder = perioder.map(({ period }) => ({
                 periode: period,
@@ -114,7 +117,7 @@ const VurderingAvOmsorgsperioderForm = ({
 
     return (
         <div className={styles.vurderingAvOmsorgsperioderForm}>
-            <DetailView title="Vurdering av omsorg">
+            <DetailView title={erOMP ? 'Vurdering' : 'Vurdering av omsorg'}>
                 {/* eslint-disable-next-line react/jsx-props-no-spreading */}
                 <FormProvider {...formMethods}>
                     {omsorgsperiode.relasjon && (
@@ -137,8 +140,9 @@ const VurderingAvOmsorgsperioderForm = ({
                         shouldShowSubmitButton={!readOnly}
                     >
                         <Box marginTop={Margin.xLarge}>
+                            <Label htmlFor={FieldName.BEGRUNNELSE}>{intl.formatMessage({ id: 'vurdering.hjemmel' })}</Label>
+                            {erOMP && (<p>{intl.formatMessage({ id: 'vurdering.hjemmel.hjelpetekst' })}</p>)}
                             <TextArea
-                                label={intl.formatMessage({ id: 'vurdering.hjemmel' })}
                                 name={FieldName.BEGRUNNELSE}
                                 validators={{ required }}
                                 disabled={readOnly}
