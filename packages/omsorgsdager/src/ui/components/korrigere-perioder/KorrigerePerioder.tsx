@@ -180,6 +180,7 @@ const KorrigerePerioder: React.FunctionComponent<KorrigerePerioderProps> = ({
                                 ut fra hvor mange dager ektefelle/ samboer har ut over grunnretten.
                             </li>
                         </ul>
+                        For alle tilfeller sjekk også om det er utbetalt dager tidligere for samme år.
                     </HelpText>
                 )}
             </div>
