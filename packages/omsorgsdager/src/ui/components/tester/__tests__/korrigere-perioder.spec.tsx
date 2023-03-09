@@ -25,9 +25,9 @@ describe('<KorrigerePerioder>', () => {
         render(<KorrigerePerioder {...props} />);
 
         const aksjonspunkt =
-            'Se på nødvendig dokumentasjon og tidligere utbetalte perioder, og vurder om søker har rett på å få utbetalt flere dager.';
-        const begrunnelseTekst = 'Vurder om søker har rett på å få utbetalt flere dager';
-        const vilkarOppfyltTekst = 'Har søker rett på å få utbetalt flere dager?';
+            'Vurder om søker har rett til å få utbetalt dager.';
+        const begrunnelseTekst = 'Har søker rett på å få utbetalt dager?';
+        const vilkarOppfyltTekst = 'Har søker rett på å få utbetalt dager?';
 
         const hentetAksjonspunkt = screen.getByText(aksjonspunkt);
         expect(hentetAksjonspunkt).toBeInTheDocument();
@@ -85,7 +85,7 @@ describe('<KorrigerePerioder>', () => {
         render(<KorrigerePerioder {...props} />);
 
         const aksjonspunkt =
-            'Se på nødvendig dokumentasjon og tidligere utbetalte perioder, og vurder om søker har rett på å få utbetalt flere dager.';
+            'Har søker rett på å få utbetalt dager?';
 
         const hentetAksjonspunkt = screen.getByText(aksjonspunkt);
         expect(hentetAksjonspunkt).toBeInTheDocument();
@@ -124,7 +124,7 @@ describe('<KorrigerePerioder>', () => {
         render(<KorrigerePerioder {...props} />);
 
         const aksjonspunkt =
-            'Se på nødvendig dokumentasjon og tidligere utbetalte perioder, og vurder om søker har rett på å få utbetalt flere dager.';
+            'Har søker rett på å få utbetalt dager?';
 
         const hentetAksjonspunkt = screen.getByText(aksjonspunkt);
         expect(hentetAksjonspunkt).toBeInTheDocument();
