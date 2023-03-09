@@ -3988,7 +3988,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addons@npm:6.5.16, @storybook/addons@npm:^6.0.0":
+"@storybook/addons@npm:6.5.16":
   version: 6.5.16
   resolution: "@storybook/addons@npm:6.5.16"
   dependencies:
@@ -16737,14 +16737,13 @@ __metadata:
   linkType: hard
 
 "msw-storybook-addon@npm:^1.7.0":
-  version: 1.7.0
-  resolution: "msw-storybook-addon@npm:1.7.0"
+  version: 1.8.0
+  resolution: "msw-storybook-addon@npm:1.8.0"
   dependencies:
-    "@storybook/addons": ^6.0.0
     is-node-process: ^1.0.1
   peerDependencies:
-    msw: ">=0.35.0 <1.0.0"
-  checksum: 0becdc46d08aec6687b6600864d5f8ad6dc205ebbf35eda4c98cbb099b1a2bb202ef7ed38e2ac9bf1a6b3e448b5120714622efcc01fe0e558c43b23b938e8a8e
+    msw: ">=0.35.0 <2.0.0"
+  checksum: 14d7ab064fcc548fe8169f029a2f02184387bd85267ea3c36d8076e671a13dc36349123f2f66fbd2930cedac929cf3ecbe7d45221d72918a9e83321305f3072c
   languageName: node
   linkType: hard
 
