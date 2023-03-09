@@ -2816,6 +2816,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@navikt/ds-css@npm:^2.6.0":
+  version: 2.6.0
+  resolution: "@navikt/ds-css@npm:2.6.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Fds-css%2F2.6.0%2F6398a31d3a289deef89608262ba0ee5d18b719cf"
+  checksum: b0c2fa1fb6e91c9d390fd0c23d8909dd99e5ad91ab7d7b17cea111ef0bf0374ed165a6f5ef71ba17738b6f291141ce222c445deb5ecfdce615934c865c041d39
+  languageName: node
+  linkType: hard
+
 "@navikt/ds-icons@npm:2.1.7":
   version: 2.1.7
   resolution: "@navikt/ds-icons@npm:2.1.7::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Fds-icons%2F2.1.7%2F4c38de9400fff6502ce7ba0509e05f770af66921"
@@ -2836,6 +2843,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@navikt/ds-icons@npm:^2.6.0":
+  version: 2.6.0
+  resolution: "@navikt/ds-icons@npm:2.6.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Fds-icons%2F2.6.0%2F0b6155d61669d9817708bfb703c4b57b23e1754b"
+  peerDependencies:
+    "@types/react": ^17.0.30 || ^18.0.0
+    react: ^17.0.0 || ^18.0.0
+  checksum: 0f9920078903e392aa524d342122ac923b486d96a122c2538bf4da5c7adc96dfc5cd1c6edf36754c6e41745f4f2d24f6dec820fe7dc92e5e02554a6f8f58e103
+  languageName: node
+  linkType: hard
+
 "@navikt/ds-react@npm:2.1.7":
   version: 2.1.7
   resolution: "@navikt/ds-react@npm:2.1.7::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Fds-react%2F2.1.7%2F71ac60f7d929a34697b89874d03bd53d6b382691"
@@ -2852,6 +2869,25 @@ __metadata:
     "@types/react": ^17.0.30 || ^18.0.0
     react: ^17.0.0 || ^18.0.0
   checksum: bd862a1d81dd8a6f62246f272d721704c6b13ec7c605424ec7205e6730bd34d57e6d5afb3b2792d09e90e2b7fa3b6a454a34d89655bdb1689639d5d18578aec8
+  languageName: node
+  linkType: hard
+
+"@navikt/ds-react@npm:^2.6.0":
+  version: 2.6.0
+  resolution: "@navikt/ds-react@npm:2.6.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Fds-react%2F2.6.0%2Fe086a6763da9890fc99c69f14b9b80e1c964bf42"
+  dependencies:
+    "@floating-ui/react": 0.17.0
+    "@navikt/ds-icons": ^2.6.0
+    "@radix-ui/react-tabs": 1.0.0
+    "@radix-ui/react-toggle-group": 1.0.0
+    clsx: ^1.2.1
+    date-fns: 2.29.3
+    react-day-picker: 8.3.4
+    react-modal: 3.15.1
+  peerDependencies:
+    "@types/react": ^17.0.30 || ^18.0.0
+    react: ^17.0.0 || ^18.0.0
+  checksum: 32d899ad6e953fba08a2afae6e5a0947be8cb9a9803cb609547bbcb0ada366e13eee7a071e8e65033c1cc97586d08913dd3e714b175f005f1384f150c24322fe
   languageName: node
   linkType: hard
 
@@ -15319,6 +15355,7 @@ __metadata:
     "@babel/preset-env": ^7.20.2
     "@babel/preset-react": ^7.18.6
     "@babel/preset-typescript": ^7.21.0
+    "@navikt/ds-css": ^2.6.0
     "@pmmmwh/react-refresh-webpack-plugin": ^0.5.10
     "@rollup/plugin-node-resolve": 15.0.1
     "@rollup/plugin-typescript": 11.0.0
@@ -18026,6 +18063,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "omsorgsdager-frontend@workspace:packages/omsorgsdager"
   dependencies:
+    "@navikt/ds-css": ^2.6.0
+    "@navikt/ds-react": ^2.6.0
     "@navikt/fnrvalidator": ^1.3.3
     "@testing-library/react": ^13.4.0
     "@types/react": ^18.0.28

@@ -1,7 +1,11 @@
-import { Hovedknapp } from 'nav-frontend-knapper';
-import { RadioGruppe } from 'nav-frontend-skjema';
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
+
+import '@navikt/ds-css';
+import { HelpText } from '@navikt/ds-react';
+import { Hovedknapp } from 'nav-frontend-knapper';
+import { RadioGruppe } from 'nav-frontend-skjema';
+
 import { KorrigerePerioderProps } from '../../../types/KorrigerePerioderProps';
 import { booleanTilTekst } from '../../../util/stringUtils';
 import useFormSessionStorage from '../../../util/useFormSessionStorageUtils';
@@ -12,6 +16,7 @@ import InputField from '../react-hook-form-wrappers/InputField';
 import RadioButtonWithBooleanValue from '../react-hook-form-wrappers/RadioButton';
 import TextArea from '../react-hook-form-wrappers/TextArea';
 import styleRadioknapper from '../styles/radioknapper/radioknapper.css';
+
 import styles from './korrigerePerioder.css';
 
 type FormData = {
@@ -22,11 +27,10 @@ type FormData = {
 };
 
 const tekst = {
-    instruksjon:
-        'Se på nødvendig dokumentasjon og tidligere utbetalte perioder, og vurder om søker har rett på å få utbetalt flere dager.',
-    sporsmalErInnvilget: 'Har søker rett på å få utbetalt flere dager?',
+    instruksjon: 'Vurder om søker har rett til å få utbetalt dager.',
+    sporsmalErInnvilget: 'Har søker rett på å få utbetalt dager?',
     antallDagerInnvilget: 'Antall dager innvilget',
-    begrunnelse: 'Vurder om søker har rett på å få utbetalt flere dager',
+    begrunnelse: 'Vurdering',
     feilIngenVurdering: 'Resultat må oppgis.',
     feilManglerDager: 'Antall dager må oppgis.',
 };
@@ -139,13 +143,12 @@ const KorrigerePerioder: React.FunctionComponent<KorrigerePerioderProps> = ({
                     )}{' '}
                 </p>
 
-                {informasjonTilLesemodus.vilkarOppfylt &&
-                    informasjonTilLesemodus.antallDagerDelvisInnvilget !== null && (
-                        <>
-                            <p className={styleLesemodus.label}>{tekst.antallDagerInnvilget}</p>
-                            <p className={styleLesemodus.text}>{informasjonTilLesemodus.antallDagerDelvisInnvilget} </p>
-                        </>
-                    )}
+                {informasjonTilLesemodus.vilkarOppfylt && informasjonTilLesemodus.antallDagerDelvisInnvilget !== null && (
+                    <>
+                        <p className={styleLesemodus.label}>{tekst.antallDagerInnvilget}</p>
+                        <p className={styleLesemodus.text}>{informasjonTilLesemodus.antallDagerDelvisInnvilget} </p>
+                    </>
+                )}
                 <p className={styleLesemodus.label}>
                     {konfliktMedArbeidsgiver ? tekstKonfliktMedArbeidsgiver.begrunnelse : tekst.begrunnelse}
                 </p>
@@ -160,6 +163,25 @@ const KorrigerePerioder: React.FunctionComponent<KorrigerePerioderProps> = ({
                 <AlertStripeTrekantVarsel
                     text={konfliktMedArbeidsgiver ? tekstKonfliktMedArbeidsgiver.instruksjon : tekst.instruksjon}
                 />
+                {!konfliktMedArbeidsgiver && (
+                    <HelpText className={styles.korrigerePerioderHelpText} placement="right">
+                        Disse situasjonene kan gi rett til at det skal utbetales dager:
+                        <ul>
+                            <li>
+                                Omsorgen for er manuelt oppfylt etter § 9-5, gjelder også fosterbarn. Det kan gis dager
+                                ut fra søkers situasjon, ta hensyn til brukers grunnrett og eventuelle ekstra dager.
+                            </li>
+                            <li>
+                                Det er fordelt dager fra annen forelder etter § 9-6, femte ledd. Det kan gis dager ut
+                                fra hvor mange dager den andre forelderen har ut over grunnretten.
+                            </li>
+                            <li>
+                                Det er overført dager fra ektefelle/ samboer etter 9-6, sjette ledd. Det kan gis dager
+                                ut fra hvor mange dager ektefelle/ samboer har ut over grunnretten.
+                            </li>
+                        </ul>
+                    </HelpText>
+                )}
             </div>
 
             <FormProvider {...methods}>
