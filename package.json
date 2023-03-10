@@ -82,5 +82,8 @@
         "packages/*",
         "packages/k9-frontend-modules/*"
     ],
-    "packageManager": "yarn@3.4.1"
+    "packageManager": "yarn@3.4.1",
+    "dependencies": {
+        "@navikt/ds-css": "^2.6.0"
+    }
 }

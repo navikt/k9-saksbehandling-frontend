@@ -1,5 +1,5 @@
 .korrigerePerioder {
-    margin-bottom: 1rem;
+    margin: 1rem;
     width: max-content;
 }
 .korrigerePerioder > * {
@@ -13,6 +13,9 @@
 }
 .korrigerePerioderAlertStripe {
     max-width: 70rem;
+}
+.korrigerePerioderHelpText {
+    margin: 1rem 0.5rem;
 }
 .knapp {
     margin-top: 1rem;
