@@ -1,9 +1,14 @@
 {
     "name": "@navikt/k9-fe-array-utils",
-    "version": "1.0.1",
+    "version": "1.0.3",
     "description": "A collection of array utils",
     "main": "./build/index.js",
     "types": "./build/index.d.ts",
+    "files": [
+        "build",
+        "index.ts",
+        "package.json"
+    ],
     "scripts": {
         "build": "rollup -c rollup.config.mjs",
         "clean": "rm -rf ./build ./node_modules",
