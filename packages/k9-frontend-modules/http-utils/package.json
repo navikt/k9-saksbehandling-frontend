@@ -2,7 +2,7 @@
     "name": "@navikt/k9-fe-http-utils",
     "author": "NAV",
     "license": "MIT",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "A collection of HTTP utils",
     "main": "./build/index.js",
     "types": "./build/index.d.ts",
