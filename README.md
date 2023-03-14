@@ -1,3 +1,6 @@
+# Flyttet til https://github.com/navikt/k9-saksbehandling-frontend
+
+
 # Mikrofrontender for pleiepenger, omsorgspenger, opplæringspenger og pleiepenger i livets sluttfase
 
 Disse mikrofrontendene brukes i k9-sak-web i overnevnte ytelser.
