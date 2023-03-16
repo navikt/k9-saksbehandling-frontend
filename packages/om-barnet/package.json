@@ -28,7 +28,7 @@
         "@types/react-modal": "3.13.1",
         "@types/testing-library__jest-dom": "5.14.5",
         "msw": "1.1.0",
-        "postcss-loader": "7.0.2"
+        "postcss-loader": "7.1.0"
     },
     "dependencies": {
         "@hookform/error-message": "2.0.1",
