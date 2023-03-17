@@ -104,7 +104,7 @@ jobs:
                       ```
                       <script
                         type="text/javascript"
-                        src="https://omsorgen-for-frontend.intern.dev.nav.no/${{ env.MAJOR_VERSION }}/app.js"
+                        src="https://omsorgen-for-frontend.dev.adeo.no/${{ env.MAJOR_VERSION }}/app.js"
                         integrity="sha384-${{ env.JS_HASH }}"
                         crossorigin="anonymous"
                       ></script>
@@ -114,7 +114,7 @@ jobs:
                       ```
                       <link
                         rel="stylesheet"
-                        href="https://omsorgen-for-frontend.intern.dev.nav.no/${{ env.MAJOR_VERSION }}/styles.css"
+                        href="https://omsorgen-for-frontend.dev.adeo.no/${{ env.MAJOR_VERSION }}/styles.css"
                         integrity="sha384-${{ env.CSS_HASH }}"
                         crossorigin="anonymous"
                       >

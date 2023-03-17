@@ -5,5 +5,5 @@
     "team": "pleiepenger",
     "minReplicas": "1",
     "maxReplicas": "2",
-    "ingresses": ["https://psb-inntektsmelding-frontend.intern.dev.nav.no"]
+    "ingresses": ["https://psb-inntektsmelding-frontend.dev.adeo.no"]
 }
