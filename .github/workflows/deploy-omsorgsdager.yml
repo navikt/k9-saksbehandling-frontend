@@ -99,7 +99,7 @@ jobs:
                       ```
                       <script
                         type="text/javascript"
-                        src="https://omsorgsdager-frontend.dev.intern.nav.no/${{ env.MAJOR_VERSION }}/app.js"
+                        src="https://omsorgsdager-frontend.intern.dev.nav.no/${{ env.MAJOR_VERSION }}/app.js"
                         integrity="sha384-${{ env.JS_HASH }}"
                         crossorigin="anonymous"
                       ></script>
@@ -109,7 +109,7 @@ jobs:
                       ```
                       <link
                         rel="stylesheet"
-                        href="https://omsorgsdager-frontend.dev.intern.nav.no/${{ env.MAJOR_VERSION }}/styles.css"
+                        href="https://omsorgsdager-frontend.intern.dev.nav.no/${{ env.MAJOR_VERSION }}/styles.css"
                         integrity="sha384-${{ env.CSS_HASH }}"
                         crossorigin="anonymous"
                       >
