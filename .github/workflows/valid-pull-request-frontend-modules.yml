@@ -1,33 +1,33 @@
 name: Validere pull request K9 frontend modules
 on:
-    pull_request:
-        types: [opened, synchronize]
-        paths:
-            - 'packages/k9-frontend-modules/**/*'
+  pull_request:
+    types: [opened, synchronize]
+    paths:
+      - "packages/k9-frontend-modules/**/*"
 env:
-    package-name: "'{@navikt/k9-fe-array-utils,@navikt/k9-fe-bem-utils,@navikt/k9-fe-date-utils,@navikt/k9-fe-form-utils,@navikt/k9-fe-http-utils,@navikt/k9-fe-period-utils}'"
+  package-name: "'{@navikt/k9-fe-array-utils,@navikt/k9-fe-bem-utils,@navikt/k9-fe-date-utils,@navikt/k9-fe-form-utils,@navikt/k9-fe-http-utils,@navikt/k9-fe-period-utils}'"
 jobs:
-    valid-pull-request:
-        name: Validere pull request
-        runs-on: ubuntu-latest
-        steps:
-            - name: Hente kode
-              uses: actions/checkout@v3
-            - name: Setup .yarnrc.yml
-              run: |
-                  yarn config set npmScopes.navikt.npmRegistryServer "https://npm.pkg.github.com"
-                  yarn config set npmScopes.navikt.npmAlwaysAuth true
-                  yarn config set npmScopes.navikt.npmAuthToken $NPM_AUTH_TOKEN
-              env:
-                  NPM_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
-            - name: Sette opp Node
-              uses: actions/setup-node@v3
-              with:
-                  node-version: 16.x
-                  
-            - name: Installere dependencies
-              run: yarn install --immutable
-            - name: Kjøre enhetstester
-              run: yarn lerna run test --scope ${{env.package-name}}
-            - name: Kjøre bygg
-              run: yarn lerna run build --scope ${{env.package-name}}
+  valid-pull-request:
+    name: Validere pull request
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hente kode
+        uses: actions/checkout@v3
+      - name: Setup .yarnrc.yml
+        run: |
+          yarn config set npmScopes.navikt.npmRegistryServer "https://npm.pkg.github.com"
+          yarn config set npmScopes.navikt.npmAlwaysAuth true
+          yarn config set npmScopes.navikt.npmAuthToken $NPM_AUTH_TOKEN
+        env:
+          NPM_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
+      - name: Sette opp Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+
+      - name: Installere dependencies
+        run: yarn install --immutable
+      - name: Kjøre enhetstester
+        run: yarn lerna run test --scope ${{env.package-name}}
+      - name: Kjøre bygg
+        run: yarn lerna run build --scope ${{env.package-name}}

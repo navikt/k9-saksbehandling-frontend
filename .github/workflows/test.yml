@@ -29,7 +29,6 @@ jobs:
                   NPM_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
             - name: Sette opp Node
               uses: actions/setup-node@v3
-              with:
                   
             - name: Installere dependencies
               run: yarn install --immutable
