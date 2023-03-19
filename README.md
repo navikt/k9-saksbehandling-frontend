@@ -4,6 +4,17 @@ Disse mikrofrontendene brukes i k9-sak-web i overnevnte ytelser.
 
 ## Komme i gang
 
+### Installering av avhengigheter
+For å kunne installere @navikt-pakker og publisere pakkeoppdateringer må man opprette en GitHub PAT med kun `write:packages`-tilgang, enable SSO, og putte det i en egen .yarnrc.yml-fil. Legg den i ~/ eller en annen mappe som er høyere opp i mappestrukturen enn dette prosjektet. 
+```
+npmRegistries:
+  https://npm.pkg.github.com:
+    npmAlwaysAuth: true
+    npmAuthToken: HER_SKAL_DIN_GITHUB_PAT_LIGGE
+```
+
+
+### Kjøre apper lokalt
 For å kjøre frontend-appen i utvikling, kjør `yarn` etterfulgt av `yarn build-frontend-modules` på rot. Deretter kan du kjøre `yarn dev` i pakken (f.eks. i packages/om-barnet) du ønsker å kjøre opp.
 
 Utviklingsmiljøet er konfigurert opp med en egen webpack-konfig som hoster `index.html` som ligger på rot i pakkene.
