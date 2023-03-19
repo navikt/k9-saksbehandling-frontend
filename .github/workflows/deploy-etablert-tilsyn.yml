@@ -32,7 +32,7 @@ jobs:
             - name: Sette opp Node
               uses: actions/setup-node@v3
               with:
-                  cache: 'yarn'
+                  
             - name: Get cypress cache directory path
               id: cypress-cache-dir
               run: echo "CYPRESS_BIN_PATH=$(npx cypress cache path)" >> $GITHUB_OUTPUT

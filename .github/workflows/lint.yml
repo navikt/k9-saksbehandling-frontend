@@ -26,7 +26,7 @@ jobs:
             - name: Sette opp Node
               uses: actions/setup-node@v3
               with:
-                  cache: 'yarn'
+                  
             - name: Installere dependencies
               run: yarn install --immutable
             - name: Sjekke opp mot Lint-regler
