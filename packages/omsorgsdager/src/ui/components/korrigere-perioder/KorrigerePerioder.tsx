@@ -3,7 +3,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 
 import '@navikt/ds-css';
 import { HelpText } from '@navikt/ds-react';
-import { Hovedknapp } from 'nav-frontend-knapper';
+import { Hovedknapp, Knapp } from 'nav-frontend-knapper';
 import { RadioGruppe } from 'nav-frontend-skjema';
 
 import { KorrigerePerioderProps } from '../../../types/KorrigerePerioderProps';
@@ -108,6 +108,11 @@ const KorrigerePerioder: React.FunctionComponent<KorrigerePerioderProps> = ({
             setValue('åpenForRedigering', false);
             mellomlagringFormState.fjerneState();
         }
+    };
+
+    const avbrytRedigereInformasjon = () => {
+        setValue('åpenForRedigering', false);
+        mellomlagringFormState.fjerneState();
     };
 
     const erAntallDagerDelvisInnvilgetFyltUt = () => {
@@ -234,6 +239,9 @@ const KorrigerePerioder: React.FunctionComponent<KorrigerePerioderProps> = ({
                     <Hovedknapp className={styles.knapp} htmlType="submit">
                         Bekreft og fortsett
                     </Hovedknapp>
+                    <Knapp className={styles.knapp} htmlType="button" onClick={avbrytRedigereInformasjon}>
+                        Avbryt
+                    </Knapp>
                 </form>
             </FormProvider>
         </div>
