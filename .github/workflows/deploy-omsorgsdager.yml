@@ -69,7 +69,7 @@ jobs:
               if: github.event.inputs.environment == 'Q1'
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY_OMSORGSPENGER }}
+                  APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY_K9SAKSBEHANDLING }}
                   CLUSTER: dev-gcp
                   RESOURCE: ./packages/omsorgsdager/nais/naiserator.yml
                   VARS: ./packages/omsorgsdager/nais/dev-gcp.json
@@ -79,7 +79,7 @@ jobs:
               uses: nais/deploy/actions/deploy@v1
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY_OMSORGSPENGER }}
+                  APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY_K9SAKSBEHANDLING }}
                   CLUSTER: prod-gcp
                   RESOURCE: ./packages/omsorgsdager/nais/naiserator.yml
                   VARS: ./packages/omsorgsdager/nais/prod-gcp.json
