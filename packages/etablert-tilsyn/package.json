@@ -1,6 +1,7 @@
 {
     "name": "psb-etablert-tilsyn-frontend",
     "version": "1.0.3",
+    "private": true,
     "main": "index.js",
     "scripts": {
         "test": "jest --maxWorkers=2",

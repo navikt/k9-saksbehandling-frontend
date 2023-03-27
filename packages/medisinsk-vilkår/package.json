@@ -1,6 +1,7 @@
 {
     "name": "medisinsk-vilkar-frontend",
     "version": "1.0.1",
+    "private": true,
     "scripts": {
         "test": "cross-env DEBUG=test JEST_PUPPETEER_CONFIG=./jest-puppeteer.config.js jest --maxWorkers=2 --detectOpenHandles --config=./jest.config.js ",
         "test-watch": "jest --watch",

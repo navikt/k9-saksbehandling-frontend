@@ -1,6 +1,7 @@
 {
     "name": "psb-inntektsmelding-frontend",
     "version": "1.0.3",
+    "private": true,
     "scripts": {
         "test": "jest --passWithNoTests --maxWorkers=2",
         "test-watch": "jest --watch",

@@ -1,6 +1,7 @@
 {
     "name": "omsorgsdager-frontend",
     "version": "1.0.1",
+    "private": true,
     "main": "index.js",
     "scripts": {
         "test": "jest --maxWorkers=2 --detectOpenHandles --config=./jest.config.js",

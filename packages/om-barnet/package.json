@@ -1,6 +1,7 @@
 {
     "name": "psb-om-barnet-frontend",
     "version": "1.0.4",
+    "private": true,
     "main": "index.js",
     "scripts": {
         "test": "jest",
