@@ -1,6 +1,7 @@
 {
     "name": "psb-uttak-frontend",
-    "version": "1.0.3",
+    "version": "1.0.4",
+    "private": true,
     "main": "index.js",
     "scripts": {
         "test": "jest --passWithNoTests --maxWorkers=2",
@@ -21,17 +22,17 @@
     "author": "NAV IT",
     "license": "MIT",
     "devDependencies": {
-        "@types/jest": "29.4.0",
-        "@types/node": "18.15.1",
-        "@types/react": "18.0.28",
+        "@types/jest": "29.5.0",
+        "@types/node": "18.15.11",
+        "@types/react": "18.0.35",
         "@types/react-dom": "18.0.11",
         "@types/testing-library__jest-dom": "5.14.5"
     },
     "dependencies": {
-        "@navikt/ds-css": "2.7.6",
-        "@navikt/ds-react": "2.7.6",
-        "@navikt/ft-plattform-komponenter": "2.0.6",
-        "@popperjs/core": "2.11.6",
+        "@navikt/ds-css": "2.8.12",
+        "@navikt/ds-react": "2.8.12",
+        "@navikt/ft-plattform-komponenter": "2.0.14",
+        "@popperjs/core": "2.11.7",
         "classnames": "2.3.2",
         "cors": "2.8.5",
         "dayjs": "1.11.7",
