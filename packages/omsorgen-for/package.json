@@ -1,6 +1,6 @@
 {
     "name": "omsorgen-for-frontend",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "private": true,
     "main": "index.js",
     "scripts": {
@@ -31,8 +31,8 @@
         "@navikt/ft-plattform-komponenter": "2.0.19",
         "@navikt/k9-fe-array-utils": "^1.0.4",
         "@navikt/k9-fe-date-utils": "^1.0.2",
-        "@navikt/k9-fe-form-utils": "^1.0.4",
-        "@navikt/k9-fe-http-utils": "^1.0.2",
+        "@navikt/k9-fe-form-utils": "^1.0.5",
+        "@navikt/k9-fe-http-utils": "^1.0.3",
         "@navikt/k9-fe-period-utils": "^1.0.5",
         "@popperjs/core": "2.11.7",
         "@types/react": "18.0.38",
