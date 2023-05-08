@@ -12,7 +12,7 @@ on:
           - Prod
   repository_dispatch:
     types: [deploy-etablert-tilsyn]
-run-name: Deploy Etablert tilsyn to ${{ inputs.environment }} by @${{ github.actor }}
+run-name: Deploy Etablert tilsyn to ${{ inputs.environment || github.event.client_payload.environment }} by @${{ github.actor }}
 env:
   IMAGE_BASE: ghcr.io/${{ github.repository }}/psb-etablert-tilsyn-frontend
   package-name: psb-etablert-tilsyn-frontend

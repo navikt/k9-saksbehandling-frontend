@@ -12,7 +12,7 @@ on:
           - Prod
   repository_dispatch:
     types: ["deploy-om-barnet"]
-run-name: Deploy Om barnet to ${{ inputs.environment }} by @${{ github.actor }}
+run-name: Deploy Om barnet to ${{ inputs.environment || github.event.client_payload.environment }} by @${{ github.actor }}
 env:
   IMAGE_BASE: ghcr.io/${{ github.repository }}/psb-om-barnet-frontend
   package-name: psb-om-barnet-frontend

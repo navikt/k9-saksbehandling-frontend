@@ -12,7 +12,7 @@ on:
           - Prod
   repository_dispatch:
     types: ["deploy-omsorgen-for"]
-run-name: Deploy Omsorgen for to ${{ inputs.environment }} by @${{ github.actor }}
+run-name: Deploy Omsorgen for to ${{ inputs.environment || github.event.client_payload.environment }} by @${{ github.actor }}
 env:
   IMAGE_BASE: ghcr.io/${{ github.repository }}/omsorgen-for-frontend
   package-name: omsorgen-for-frontend
