@@ -110,7 +110,7 @@ jobs:
           RESOURCE: ./packages/etablert-tilsyn/nais/naiserator.yml
           VARS: ./packages/etablert-tilsyn/nais/dev-fss.json
       - name: Deploy til prod-fss
-        if: github.ref == 'refs/heads/main' && github.event.inputs.environment == 'Prod'
+        if: (github.ref == 'refs/heads/main' && github.event.inputs.environment == 'Prod') || (github.event.client_payload.ref == 'main' && github.event.client_payload.environment == 'Prod')
         uses: nais/deploy/actions/deploy@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -120,7 +120,7 @@ jobs:
           VARS: ./packages/etablert-tilsyn/nais/prod-fss.json
       - name: Create Release
         id: create_release
-        if: github.ref == 'refs/heads/main' && github.event.inputs.environment == 'Prod'
+        if: (github.ref == 'refs/heads/main' && github.event.inputs.environment == 'Prod') || (github.event.client_payload.ref == 'main' && github.event.client_payload.environment == 'Prod')
         uses: actions/create-release@latest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
