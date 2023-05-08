@@ -11,7 +11,7 @@ on:
           - Q1
           - Prod
   repository_dispatch:
-    types: ["deploy-medisinsk-vilkår"]
+    types: ["deploy-medisinsk-vilkar"]
 run-name: Deploy Medisinsk vilkår to ${{ inputs.environment }} by @${{ github.actor }}
 env:
   IMAGE_BASE: ghcr.io/${{ github.repository }}/medisinsk-vilkar-frontend
