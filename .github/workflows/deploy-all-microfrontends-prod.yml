@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Dispatch Deploy Omsorgsdager workflow
-        uses: peter-evans/repository-dispatch@v1
+        uses: peter-evans/repository-dispatch@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.repository }}
@@ -18,7 +18,7 @@ jobs:
           client-payload: '{"ref": "main", "environment": "Prod"}'
 
       - name: Dispatch Deploy Uttak workflow
-        uses: peter-evans/repository-dispatch@v1
+        uses: peter-evans/repository-dispatch@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.repository }}
@@ -26,7 +26,7 @@ jobs:
           client-payload: '{"ref": "main", "environment": "Prod"}'
 
       - name: Dispatch Deploy Etablert Tilsyn workflow
-        uses: peter-evans/repository-dispatch@v1
+        uses: peter-evans/repository-dispatch@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.repository }}
@@ -34,7 +34,7 @@ jobs:
           client-payload: '{"ref": "main", "environment": "Prod"}'
 
       - name: Dispatch Deploy Inntektsmelding workflow
-        uses: peter-evans/repository-dispatch@v1
+        uses: peter-evans/repository-dispatch@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.repository }}
@@ -42,7 +42,7 @@ jobs:
           client-payload: '{"ref": "main", "environment": "Prod"}'
 
       - name: Dispatch Deploy Medisinsk Vilkår workflow
-        uses: peter-evans/repository-dispatch@v1
+        uses: peter-evans/repository-dispatch@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.repository }}
@@ -50,7 +50,7 @@ jobs:
           client-payload: '{"ref": "main", "environment": "Prod"}'
 
       - name: Dispatch Deploy Om Barnet workflow
-        uses: peter-evans/repository-dispatch@v1
+        uses: peter-evans/repository-dispatch@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.repository }}
@@ -58,7 +58,7 @@ jobs:
           client-payload: '{"ref": "main", "environment": "Prod"}'
 
       - name: Dispatch Deploy Omsorgen For workflow
-        uses: peter-evans/repository-dispatch@v1
+        uses: peter-evans/repository-dispatch@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.repository }}
