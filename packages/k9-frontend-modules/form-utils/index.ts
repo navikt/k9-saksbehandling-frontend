@@ -4,3 +4,5 @@ export { default as PeriodpickerList } from './src/wrappers/PeriodpickerList';
 export { default as RadioGroupPanel } from './src/wrappers/RadioGroupPanel';
 export { default as YesOrNoQuestion } from './src/wrappers/YesOrNoQuestion';
 export { default as TextArea } from './src/wrappers/TextArea';
+export { default as SelectField } from './src/wrappers/SelectField';
+export { default as TextField } from './src/wrappers/TextField';

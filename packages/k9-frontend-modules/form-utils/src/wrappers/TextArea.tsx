@@ -13,9 +13,19 @@ interface TextAreaProps {
     textareaClass?: string;
     id?: string;
     disabled?: boolean;
+    resize?: boolean;
 }
 
-const TextArea = ({ label, name, validators, helptext, textareaClass, id, disabled }: TextAreaProps): JSX.Element => {
+const TextArea = ({
+    label,
+    name,
+    validators,
+    helptext,
+    textareaClass,
+    id,
+    disabled,
+    resize = false,
+}: TextAreaProps): JSX.Element => {
     const { control, formState } = useFormContext();
     const { errors } = formState;
     return (
@@ -50,6 +60,7 @@ const TextArea = ({ label, name, validators, helptext, textareaClass, id, disabl
                                     size="small"
                                     label={label}
                                     hideLabel
+                                    resize={resize}
                                 />
                             </Box>
                         </>
@@ -68,6 +79,7 @@ const TextArea = ({ label, name, validators, helptext, textareaClass, id, disabl
                         autoComplete="off"
                         disabled={disabled}
                         size="small"
+                        resize={resize}
                     />
                 );
             }}

@@ -10,6 +10,8 @@ interface ContainerContract {
     aksjonspunktkoder: string[];
     erFagytelsetypeLivetsSluttfase: boolean;
     kodeverkUtenlandsoppholdÅrsak: KodeverkMedNavn[];
+    handleOverstyringAksjonspunkt: (data: any) => Promise<any>;
+    featureToggles: { [key: string]: boolean }
 }
 
 export default ContainerContract;
