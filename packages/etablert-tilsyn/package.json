@@ -27,7 +27,7 @@
         "@types/react-dom": "18.2.4"
     },
     "dependencies": {
-        "@navikt/ds-css": "2.9.8",
+        "@navikt/ds-css": "4.1.7",
         "@navikt/ds-icons": "2.9.8",
         "@navikt/ds-react": "2.9.8",
         "@navikt/fnrvalidator": "1.3.3",
