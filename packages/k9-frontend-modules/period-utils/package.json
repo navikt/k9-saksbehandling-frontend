@@ -18,11 +18,11 @@
         "test-watch": "jest --watch"
     },
     "dependencies": {
-        "@navikt/k9-fe-array-utils": "^1.0.4",
-        "@navikt/k9-fe-date-utils": "^1.0.2"
+        "@navikt/k9-fe-array-utils": "1.0.4",
+        "@navikt/k9-fe-date-utils": "1.0.2"
     },
     "devDependencies": {
-        "dayjs": "1.11.7",
+        "dayjs": "1.11.8",
         "jest": "29.5.0"
     },
     "peerDependencies": {
