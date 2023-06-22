@@ -49,7 +49,7 @@
         "dayjs": "1.11.8",
         "express": "4.18.2",
         "lodash.throttle": "4.1.1",
-        "msw": "1.2.2",
+        "msw": "1.2.1",
         "react": "18.2.0",
         "react-collapse": "5.1.1",
         "react-day-picker": "7.4.10",

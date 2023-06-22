@@ -29,7 +29,7 @@
         "@types/node": "18.16.18",
         "@types/react": "18.2.13",
         "@types/testing-library__jest-dom": "5.14.6",
-        "msw": "1.2.2",
+        "msw": "1.2.1",
         "msw-storybook-addon": "1.8.0"
     },
     "dependencies": {
