@@ -24,7 +24,7 @@
         "jest": "29.5.0",
         "jest-axe": "7.0.1",
         "string.prototype.replaceall": "1.0.7",
-        "stylelint": "15.8.0"
+        "stylelint": "15.9.0"
     },
     "dependencies": {
         "@navikt/ds-css": "4.3.0",
