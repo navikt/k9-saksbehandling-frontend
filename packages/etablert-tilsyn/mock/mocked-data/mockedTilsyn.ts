@@ -343,7 +343,7 @@ export default {
                     tom: '2021-06-11',
                 },
                 begrunnelse: 'streng',
-                resultat: 'IKKE_OPPFYLT',
+                resultat: 'OPPFYLT',
                 kilde: 'ANNEN_PART',
             },
             {
@@ -353,7 +353,7 @@ export default {
                     tom: '2021-07-12',
                 },
                 begrunnelse: '',
-                resultat: 'IKKE_VURDERT',
+                resultat: 'OPPFYLT',
                 kilde: '',
             },
         ],
