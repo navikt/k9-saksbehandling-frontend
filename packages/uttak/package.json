@@ -29,7 +29,7 @@
         "@types/testing-library__jest-dom": "5.14.6"
     },
     "dependencies": {
-        "@navikt/ds-css": "4.3.0",
+        "@navikt/ds-css": "4.7.1",
         "@navikt/ds-react": "4.3.0",
         "@navikt/ft-plattform-komponenter": "2.2.7",
         "@popperjs/core": "2.11.8",
