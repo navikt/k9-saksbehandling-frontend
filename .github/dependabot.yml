@@ -15,6 +15,14 @@ updates:
         update-types: ["version-update:semver-patch"]
     registries:
       - npm-github
+    groups:
+      react:
+        patterns:
+          - "react"
+          - "react-dom"
+      babel:
+        patterns:
+          - "@babel*"
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
