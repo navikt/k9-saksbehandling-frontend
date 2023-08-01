@@ -22,7 +22,8 @@
             "inputs": ["default", "{workspaceRoot}/.eslintrc", "{projectRoot}/.eslintrc"]
         },
         "build": {
-            "outputs": ["{projectRoot}/build"]
+            "outputs": ["{projectRoot}/build"],
+            "dependsOn": ["^build"]
         }
     }
 }

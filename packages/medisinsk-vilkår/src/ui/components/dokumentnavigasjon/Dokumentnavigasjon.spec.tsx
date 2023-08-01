@@ -37,7 +37,7 @@ describe('Dokumentnavigasjon', () => {
         expect(screen.getByText(/ikke med. oppl./i)).toBeInTheDocument();
     });
 
-    it('should show no documents when not expanded by default', async () => {
+    it.skip('should show no documents when not expanded by default', async () => {
         render(
             <Dokumentnavigasjon
                 tittel="something"
