@@ -3846,17 +3846,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@navikt/ds-css@npm:4.10.2":
+  version: 4.10.2
+  resolution: "@navikt/ds-css@npm:4.10.2::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Fds-css%2F4.10.2%2F9821d9f979bfec1217e2191b41a0cbff3b9850c0"
+  checksum: 80b7747ecf0c7c25cd0c5d79469ecc53299a548da26a28e4b0438c9c47314f092bbf72782cbd3688528d3acf61f8904558cabb0ebbe2e91ad519fc8479de9e53
+  languageName: node
+  linkType: hard
+
 "@navikt/ds-css@npm:4.5.0":
   version: 4.5.0
   resolution: "@navikt/ds-css@npm:4.5.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Fds-css%2F4.5.0%2F77dc2d1ecc0d0516d28d1a76d98b42a50ce0ba92"
   checksum: 46ae8b70dedc6900fbfbcf8979061587d73d286adfa35f188ae7958cba746cd06020770cbe793570f0dd39ed5eed8bd258da9aa7a4b91b7e1519c43ce6392d38
-  languageName: node
-  linkType: hard
-
-"@navikt/ds-css@npm:4.9.1":
-  version: 4.9.1
-  resolution: "@navikt/ds-css@npm:4.9.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Fds-css%2F4.9.1%2F46615afd8d560ab03c99d52bac049235165578ac"
-  checksum: edef0adb1c5cbe91b8eecb1063e7e6c32ae7a255152f58263c0fd713e7481e3fae3f14e233aff1cf9adccc27dbcb1e8962636c75a07546313e48b2457a06fc4e
   languageName: node
   linkType: hard
 
@@ -4071,7 +4071,7 @@ __metadata:
   resolution: "@navikt/k9-fe-form-utils@workspace:packages/k9-frontend-modules/form-utils"
   dependencies:
     "@hookform/error-message": 2.0.1
-    "@navikt/ds-css": 4.9.1
+    "@navikt/ds-css": 4.10.2
     "@navikt/ds-react": 4.10.2
     "@navikt/fnrvalidator": 1.3.3
     "@navikt/ft-plattform-komponenter": 2.2.10
@@ -17363,7 +17363,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "medisinsk-vilkar-frontend@workspace:packages/medisinsk-vilkår"
   dependencies:
-    "@navikt/ds-css": 4.9.1
+    "@navikt/ds-css": 4.10.2
     "@navikt/ds-icons": 3.4.3
     "@navikt/ds-react": 4.10.2
     "@navikt/fnrvalidator": 1.3.3
@@ -19230,7 +19230,7 @@ __metadata:
   resolution: "omsorgen-for-frontend@workspace:packages/omsorgen-for"
   dependencies:
     "@hookform/error-message": 2.0.1
-    "@navikt/ds-css": 4.9.1
+    "@navikt/ds-css": 4.10.2
     "@navikt/ds-icons": 3.4.3
     "@navikt/ds-react": 4.10.2
     "@navikt/fnrvalidator": 1.3.3
@@ -19285,7 +19285,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "omsorgsdager-frontend@workspace:packages/omsorgsdager"
   dependencies:
-    "@navikt/ds-css": 4.9.1
+    "@navikt/ds-css": 4.10.2
     "@navikt/ds-react": 4.10.2
     "@navikt/fnrvalidator": 1.3.3
     "@testing-library/react": 14.0.0
@@ -21409,7 +21409,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "psb-etablert-tilsyn-frontend@workspace:packages/etablert-tilsyn"
   dependencies:
-    "@navikt/ds-css": 4.9.1
+    "@navikt/ds-css": 4.10.2
     "@navikt/ds-icons": 3.4.3
     "@navikt/ds-react": 4.10.2
     "@navikt/fnrvalidator": 1.3.3
@@ -21470,7 +21470,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "psb-inntektsmelding-frontend@workspace:packages/inntektsmelding"
   dependencies:
-    "@navikt/ds-css": 4.9.1
+    "@navikt/ds-css": 4.10.2
     "@navikt/ds-icons": 3.4.3
     "@navikt/ds-react": 4.10.2
     "@navikt/fnrvalidator": 1.3.3
@@ -21538,7 +21538,7 @@ __metadata:
   resolution: "psb-om-barnet-frontend@workspace:packages/om-barnet"
   dependencies:
     "@hookform/error-message": 2.0.1
-    "@navikt/ds-css": 4.9.1
+    "@navikt/ds-css": 4.10.2
     "@navikt/ds-react": 4.10.2
     "@navikt/fnrvalidator": 1.3.3
     "@navikt/ft-plattform-komponenter": 2.2.10
@@ -21577,7 +21577,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "psb-uttak-frontend@workspace:packages/uttak"
   dependencies:
-    "@navikt/ds-css": 4.9.1
+    "@navikt/ds-css": 4.10.2
     "@navikt/ds-react": 4.10.2
     "@navikt/ft-plattform-komponenter": 2.2.10
     "@popperjs/core": 2.11.8
