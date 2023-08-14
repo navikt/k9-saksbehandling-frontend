@@ -9,13 +9,11 @@ import ContainerContext from '../../context/ContainerContext';
 interface VurderingsoppsummeringLangvarigSykdom {
     vurdering: Vurdering;
     redigerVurdering: () => void;
-    erInnleggelsesperiode?: boolean;
 }
 
 const VurderingsoppsummeringLangvarigSykdom = ({
     vurdering,
     redigerVurdering,
-    erInnleggelsesperiode,
 }: VurderingsoppsummeringLangvarigSykdom): JSX.Element => {
     const gjeldendeVurdering = vurdering.versjoner[0];
     const { dokumenter, perioder, tekst, resultat } = gjeldendeVurdering;

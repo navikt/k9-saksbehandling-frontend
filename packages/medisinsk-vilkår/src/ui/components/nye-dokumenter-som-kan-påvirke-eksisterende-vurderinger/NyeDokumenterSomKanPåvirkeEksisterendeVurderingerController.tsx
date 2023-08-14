@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-import axios from 'axios';
 import { Box, Margin, PageContainer } from '@navikt/ft-plattform-komponenter';
 import { post } from '@navikt/k9-fe-http-utils';
 import Dokument from '../../../types/Dokument';
