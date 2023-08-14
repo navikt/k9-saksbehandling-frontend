@@ -2,7 +2,6 @@ import { get } from '@navikt/k9-fe-http-utils';
 import { Period } from '@navikt/k9-fe-period-utils';
 import { NavigationWithDetailView, PageContainer, Box, Margin } from '@navikt/ft-plattform-komponenter';
 import React, { useMemo } from 'react';
-import axios from 'axios';
 import Step, { StepId, toOmsorgspersonerSteg } from '../../../types/Step';
 import SykdomsstegStatusResponse from '../../../types/SykdomsstegStatusResponse';
 import Vurderingselement from '../../../types/Vurderingselement';

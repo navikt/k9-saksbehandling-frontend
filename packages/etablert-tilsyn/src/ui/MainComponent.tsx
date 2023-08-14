@@ -1,6 +1,5 @@
 import { get } from '@navikt/k9-fe-http-utils';
 import { ChildIcon, Infostripe, PageContainer, WarningIcon } from '@navikt/ft-plattform-komponenter';
-import axios from 'axios';
 import classnames from 'classnames';
 import { TabsPure } from 'nav-frontend-tabs';
 import React, { useMemo } from 'react';
@@ -118,7 +117,7 @@ const MainComponent = ({ data }: MainComponentProps) => {
                     setInnleggelsesperioder(innleggelserResponse.perioder.map((v) => new Period(v.fom, v.tom)));
                 }
             })
-            .catch((e) => {
+            .catch(() => {
                 setInnleggelserFeilet(true);
             });
         return () => {
