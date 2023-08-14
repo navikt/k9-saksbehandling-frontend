@@ -1,6 +1,6 @@
 {
     "name": "psb-inntektsmelding-frontend",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "private": true,
     "scripts": {
         "test": "jest --passWithNoTests --maxWorkers=2",
@@ -40,9 +40,9 @@
         "@navikt/ft-form-hooks": "4.1.10",
         "@navikt/ft-plattform-komponenter": "2.2.16",
         "@navikt/k9-fe-array-utils": "1.0.4",
-        "@navikt/k9-fe-date-utils": "^1.0.3",
+        "@navikt/k9-fe-date-utils": "^1.0.4",
         "@navikt/k9-fe-http-utils": "1.0.4",
-        "@navikt/k9-fe-period-utils": "^1.0.6",
+        "@navikt/k9-fe-period-utils": "^1.0.7",
         "@popperjs/core": "2.11.8",
         "axios": "1.4.0",
         "classnames": "2.3.2",
