@@ -39,8 +39,8 @@ const OmsorgsperiodeVurderingsdetaljer = ({
             <>
                 <LabelledContent label={label} content={begrunnelse} indentContent />
                 <AssessedBy
-                    name={saksbehandlere[omsorgsperiode.vurdertAv] || omsorgsperiode.vurdertAv}
-                    date={omsorgsperiode.vurdertTidspunkt}
+                    name={saksbehandlere[omsorgsperiode?.vurdertAv] || omsorgsperiode?.vurdertAv}
+                    date={omsorgsperiode?.vurdertTidspunkt}
                 />
             </>
         );
