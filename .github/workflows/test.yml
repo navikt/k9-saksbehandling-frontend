@@ -35,7 +35,7 @@ jobs:
             - name: Kjøre enhetstester
               run: yarn lerna run test --scope ${{inputs.package-name}}
             - name: Cypress run
-              uses: cypress-io/github-action@v5
+              uses: cypress-io/github-action@v6
               if: ${{inputs.run-cypress}}
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
