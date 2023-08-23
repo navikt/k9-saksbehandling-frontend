@@ -3914,6 +3914,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@navikt/aksel-icons@npm:^5.0.3":
+  version: 5.0.3
+  resolution: "@navikt/aksel-icons@npm:5.0.3::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Faksel-icons%2F5.0.3%2F26013b244ff878d6bd423761a397e752078e3064"
+  checksum: 855a025365fc2d2caf7f90acc29158b5b2e0ac58f6574af9ff0078568020766a1affa8317a4c1a092c2651e5757450d3880aa8639d4b041cc20017af39a8bd41
+  languageName: node
+  linkType: hard
+
 "@navikt/ds-css@npm:4.11.0":
   version: 4.11.0
   resolution: "@navikt/ds-css@npm:4.11.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Fds-css%2F4.11.0%2F0051c0e5497c9b94688d57cd81a3157d2b1dfd9d"
@@ -3947,6 +3954,24 @@ __metadata:
     "@types/react": ^17.0.30 || ^18.0.0
     react: ^17.0.0 || ^18.0.0
   checksum: 81074e38320bc9eb6faa688aca943b32959fd83e27655fa38409d18c2402c08fcfab235631e2193988e697265078861238015b7e658c6247f592f71f76c5eeda
+  languageName: node
+  linkType: hard
+
+"@navikt/ds-react@npm:5.0.3":
+  version: 5.0.3
+  resolution: "@navikt/ds-react@npm:5.0.3::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Fds-react%2F5.0.3%2F0a323bc38af95bca37f068b6caea828516fd8de5"
+  dependencies:
+    "@floating-ui/react": 0.24.1
+    "@navikt/aksel-icons": ^5.0.3
+    "@radix-ui/react-tabs": 1.0.0
+    "@radix-ui/react-toggle-group": 1.0.0
+    clsx: ^1.2.1
+    date-fns: 2.29.3
+    react-day-picker: 8.3.4
+  peerDependencies:
+    "@types/react": ^17.0.30 || ^18.0.0
+    react: ^17.0.0 || ^18.0.0
+  checksum: 118e70d567e7f4eccd7a59e5755ff56f05a98cfd583f354abaea8a5829da2e946e51892e552e13bdfaf32333a477b97a58b5278bde88df76ec8638f7418dfd42
   languageName: node
   linkType: hard
 
@@ -4114,7 +4139,7 @@ __metadata:
   dependencies:
     "@hookform/error-message": 2.0.1
     "@navikt/ds-css": 4.11.0
-    "@navikt/ds-react": 4.11.0
+    "@navikt/ds-react": 5.0.3
     "@navikt/fnrvalidator": 1.3.3
     "@navikt/ft-plattform-komponenter": 2.2.16
     "@navikt/k9-fe-bem-utils": 1.0.2
@@ -17508,7 +17533,7 @@ __metadata:
   dependencies:
     "@navikt/ds-css": 4.11.0
     "@navikt/ds-icons": 3.4.3
-    "@navikt/ds-react": 4.11.0
+    "@navikt/ds-react": 5.0.3
     "@navikt/fnrvalidator": 1.3.3
     "@navikt/ft-plattform-komponenter": 2.2.16
     "@navikt/k9-fe-array-utils": 1.0.4
@@ -19391,7 +19416,7 @@ __metadata:
     "@hookform/error-message": 2.0.1
     "@navikt/ds-css": 4.11.0
     "@navikt/ds-icons": 3.4.3
-    "@navikt/ds-react": 4.11.0
+    "@navikt/ds-react": 5.0.3
     "@navikt/fnrvalidator": 1.3.3
     "@navikt/ft-plattform-komponenter": 2.2.16
     "@navikt/k9-fe-array-utils": 1.0.4
@@ -19445,7 +19470,7 @@ __metadata:
   resolution: "omsorgsdager-frontend@workspace:packages/omsorgsdager"
   dependencies:
     "@navikt/ds-css": 4.11.0
-    "@navikt/ds-react": 4.11.0
+    "@navikt/ds-react": 5.0.3
     "@navikt/fnrvalidator": 1.3.3
     "@testing-library/react": 14.0.0
     "@types/react": 18.2.20
@@ -21598,7 +21623,7 @@ __metadata:
   dependencies:
     "@navikt/ds-css": 4.11.0
     "@navikt/ds-icons": 3.4.3
-    "@navikt/ds-react": 4.11.0
+    "@navikt/ds-react": 5.0.3
     "@navikt/fnrvalidator": 1.3.3
     "@navikt/ft-plattform-komponenter": 2.2.16
     "@navikt/k9-fe-date-utils": ^1.0.5
@@ -21659,7 +21684,7 @@ __metadata:
   dependencies:
     "@navikt/ds-css": 4.11.0
     "@navikt/ds-icons": 3.4.3
-    "@navikt/ds-react": 4.11.0
+    "@navikt/ds-react": 5.0.3
     "@navikt/fnrvalidator": 1.3.3
     "@navikt/ft-form-hooks": 4.1.10
     "@navikt/ft-plattform-komponenter": 2.2.16
@@ -21726,7 +21751,7 @@ __metadata:
   dependencies:
     "@hookform/error-message": 2.0.1
     "@navikt/ds-css": 4.11.0
-    "@navikt/ds-react": 4.11.0
+    "@navikt/ds-react": 5.0.3
     "@navikt/fnrvalidator": 1.3.3
     "@navikt/ft-plattform-komponenter": 2.2.16
     "@navikt/k9-fe-array-utils": 1.0.4
@@ -21765,7 +21790,7 @@ __metadata:
   resolution: "psb-uttak-frontend@workspace:packages/uttak"
   dependencies:
     "@navikt/ds-css": 4.11.0
-    "@navikt/ds-react": 4.11.0
+    "@navikt/ds-react": 5.0.3
     "@navikt/ft-plattform-komponenter": 2.2.16
     "@popperjs/core": 2.11.8
     "@types/jest": 29.5.3
