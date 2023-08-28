@@ -44,7 +44,7 @@
         "@navikt/k9-fe-http-utils": "1.0.4",
         "@navikt/k9-fe-period-utils": "^1.0.8",
         "@popperjs/core": "2.11.8",
-        "axios": "1.4.0",
+        "axios": "1.5.0",
         "classnames": "2.3.2",
         "cors": "2.8.5",
         "date-fns": "2.30.0",
