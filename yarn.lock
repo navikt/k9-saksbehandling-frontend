@@ -4022,7 +4022,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@navikt/ft-form-hooks@npm:^4.2.0":
+"@navikt/ft-form-hooks@npm:4.2.0":
   version: 4.2.0
   resolution: "@navikt/ft-form-hooks@npm:4.2.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Fft-form-hooks%2F4.2.0%2F023697f275004ee4c0bb6589d92ad6c8b4b7e3a0"
   dependencies:
@@ -21904,7 +21904,7 @@ __metadata:
   dependencies:
     "@navikt/ds-css": 4.11.0
     "@navikt/ds-react": 4.11.0
-    "@navikt/ft-form-hooks": ^4.2.0
+    "@navikt/ft-form-hooks": 4.2.0
     "@navikt/ft-plattform-komponenter": 2.2.16
     "@popperjs/core": 2.11.8
     "@types/jest": 29.5.3
@@ -21944,6 +21944,7 @@ __metadata:
     react: 18.2.0
     react-collapse: 5.1.1
     react-dom: 18.2.0
+    react-hook-form: ^7.45.4
     react-popper: 2.3.0
   languageName: unknown
   linkType: soft
@@ -22260,7 +22261,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-hook-form@npm:7.45.4":
+"react-hook-form@npm:7.45.4, react-hook-form@npm:^7.45.4":
   version: 7.45.4
   resolution: "react-hook-form@npm:7.45.4"
   peerDependencies:

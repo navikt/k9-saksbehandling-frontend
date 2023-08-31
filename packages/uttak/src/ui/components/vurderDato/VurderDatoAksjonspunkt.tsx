@@ -1,8 +1,9 @@
 import React from 'react';
-import { Button } from '@navikt/ds-react';
 import { useForm } from 'react-hook-form';
+import { Button } from '@navikt/ds-react';
+import { Datepicker, Form, TextAreaField } from '@navikt/ft-form-hooks';
+import styles from './VurderDatoAksjonspunkt.css';
 import ContainerContext from '../../context/ContainerContext';
-import { Datepicker, Form } from '@navikt/ft-form-hooks';
 
 interface FormData {
     virkningsdato: string;
@@ -12,7 +13,6 @@ interface FormData {
 const VurderDatoAksjonspunkt = () => {
     const { løsAksjonspunktVurderDatoNyRegelUttak } = React.useContext(ContainerContext);
     const formMethods = useForm<FormData>();
-    const { register } = formMethods;
 
     const onSubmit = (data: FormData) => {
         løsAksjonspunktVurderDatoNyRegelUttak(data);
@@ -20,11 +20,19 @@ const VurderDatoAksjonspunkt = () => {
 
     return (
         <Form formMethods={formMethods} onSubmit={onSubmit}>
-            <Datepicker name="virkningsdato" />
-            <label htmlFor="begrunnelse">Begrunnelse:</label>
-            <input type="text" id="begrunnelse" {...register('begrunnelse')} />
-
-            <Button type="submit">Submit</Button>
+            <div className={styles.vurderDatoAksjonspunktContainer}>
+                <Datepicker
+                    name="virkningsdato"
+                    label="Endringsdato"
+                    disabledDays={{
+                        fromDate: new Date('01.01.2019'),
+                    }}
+                />
+                <TextAreaField name="begrunnelse" label="Begrunnelse" size="small" />
+                <Button size="small" type="submit" className={styles.bekreft}>
+                    Bekreft og fortsett
+                </Button>
+            </div>
         </Form>
     );
 };
