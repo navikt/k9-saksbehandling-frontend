@@ -19,7 +19,7 @@ const VurderDato = () => (
                     Før endring:
                     <ol>
                         <li>Nye aktiviteter blir tatt med ved utregning av utbetalingsgrad og søkers uttaksgrad.</li>
-                        <li>"Ikke-yrkesaktiv" og "Kun ytelse" har samme utbetalingsgrad som andre aktiviteter.</li>
+                        <li>{`"Ikke-yrkesaktiv" og "Kun ytelse" har samme utbetalingsgrad som andre aktiviteter.`}</li>
                     </ol>
                     Etter endring:
                     <ol>
@@ -28,8 +28,8 @@ const VurderDato = () => (
                             De vil alltid stå med 0% utbetalingsgrad.
                         </li>
                         <li>
-                            "Ikke-yrkesaktiv" og "Kun ytelse" får alltid 100% som utbetalingsgrad, hvis det ikke er
-                            reduksjon grunnet tilsyn.
+                            {`"Ikke-yrkesaktiv" og "Kun ytelse" får alltid 100% som utbetalingsgrad, hvis det ikke er
+                            reduksjon grunnet tilsyn.`}
                         </li>
                     </ol>
                 </BodyShort>
