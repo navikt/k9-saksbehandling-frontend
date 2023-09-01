@@ -32,6 +32,7 @@
         "@navikt/ds-css": "4.12.3",
         "@navikt/ds-react": "4.12.1",
         "@navikt/ft-form-hooks": "4.2.0",
+        "@navikt/ft-form-validators": "2.1.0",
         "@navikt/ft-plattform-komponenter": "2.3.0",
         "@popperjs/core": "2.11.8",
         "classnames": "2.3.2",
