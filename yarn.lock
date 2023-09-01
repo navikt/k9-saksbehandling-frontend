@@ -4117,7 +4117,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@navikt/ft-form-validators@npm:^2.1.0":
+"@navikt/ft-form-validators@npm:2.1.0, @navikt/ft-form-validators@npm:^2.1.0":
   version: 2.1.0
   resolution: "@navikt/ft-form-validators@npm:2.1.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Fft-form-validators%2F2.1.0%2Fd6e8b70fa3069905226e9ebd1764e0f2a0bdcc12"
   dependencies:
@@ -22041,7 +22041,7 @@ __metadata:
     "@navikt/ds-css": 4.12.3
     "@navikt/ds-react": 4.12.1
     "@navikt/ft-form-hooks": 4.2.0
-    "@navikt/ft-form-validators": ^2.1.0
+    "@navikt/ft-form-validators": 2.1.0
     "@navikt/ft-plattform-komponenter": 2.3.0
     "@popperjs/core": 2.11.8
     "@types/jest": 29.5.4

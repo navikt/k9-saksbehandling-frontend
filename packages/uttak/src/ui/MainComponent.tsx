@@ -1,5 +1,6 @@
 import React from 'react';
-import { Heading } from '@navikt/ds-react';
+import dayjs from 'dayjs';
+import { Alert, BodyShort, Heading, Label } from '@navikt/ds-react';
 import ContainerContract from '../types/ContainerContract';
 import lagUttaksperiodeliste from '../util/uttaksperioder';
 import UttaksperiodeListe from './components/uttaksperiode-liste/UttaksperiodeListe';
@@ -15,7 +16,7 @@ interface MainComponentProps {
 }
 
 const MainComponent = ({ containerData }: MainComponentProps): JSX.Element => {
-    const { uttaksperioder, aksjonspunktkoder } = containerData;
+    const { uttaksperioder, aksjonspunktkoder, virkningsdatoUttakNyeRegler } = containerData;
     const aksjonspunktkodeVentAnnenPSBSak = '9290';
     const aksjonspunktVurderDato = '9291';
     const harVentAnnenPSBSakAksjonspunkt = aksjonspunktkoder?.some(
@@ -32,6 +33,15 @@ const MainComponent = ({ containerData }: MainComponentProps): JSX.Element => {
             <Infostripe harVentAnnenPSBSakAksjonspunkt={harVentAnnenPSBSakAksjonspunkt} />
             <UtsattePerioderStripe />
             {harAksjonspunktVurderDato && <VurderDato />}
+            {virkningsdatoUttakNyeRegler && (
+                <Alert variant="info" style={{ margin: '1rem 0' }}>
+                    <Label size="small">Endringsdato: {dayjs(virkningsdatoUttakNyeRegler).format('DD.MM.YYYY')}</Label>
+                    <BodyShort>
+                        Etter denne datoen er det endring i hvordan utbetalingsgrad settes for ikke yrkesaktiv, kun
+                        ytelse og ny arbeidsaktivitet.
+                    </BodyShort>
+                </Alert>
+            )}
             {!harVentAnnenPSBSakAksjonspunkt && (
                 <UttaksperiodeListe uttaksperioder={lagUttaksperiodeliste(uttaksperioder)} />
             )}

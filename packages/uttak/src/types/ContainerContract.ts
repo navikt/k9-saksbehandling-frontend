@@ -17,6 +17,7 @@ interface ContainerContract {
         begrunnelse: string;
         virkningsdato: string;
     }) => void;
+    virkningsdatoUttakNyeRegler: string;
 }
 
 export default ContainerContract;
