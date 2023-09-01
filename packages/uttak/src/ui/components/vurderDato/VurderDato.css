@@ -7,3 +7,8 @@
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
+
+.alertAccordion :global(.navds-accordion__header) {
+    box-shadow: none !important;
+    --a-spacing-3: 0;
+}
