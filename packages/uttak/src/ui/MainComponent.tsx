@@ -33,15 +33,6 @@ const MainComponent = ({ containerData }: MainComponentProps): JSX.Element => {
             <Infostripe harVentAnnenPSBSakAksjonspunkt={harVentAnnenPSBSakAksjonspunkt} />
             <UtsattePerioderStripe />
             {harAksjonspunktVurderDato && <VurderDato />}
-            {virkningsdatoUttakNyeRegler && (
-                <Alert variant="info" style={{ margin: '1rem 0' }}>
-                    <Label size="small">Endringsdato: {dayjs(virkningsdatoUttakNyeRegler).format('DD.MM.YYYY')}</Label>
-                    <BodyShort>
-                        Etter denne datoen er det endring i hvordan utbetalingsgrad settes for ikke yrkesaktiv, kun
-                        ytelse og ny arbeidsaktivitet.
-                    </BodyShort>
-                </Alert>
-            )}
             {!harVentAnnenPSBSakAksjonspunkt && (
                 <UttaksperiodeListe uttaksperioder={lagUttaksperiodeliste(uttaksperioder)} />
             )}
