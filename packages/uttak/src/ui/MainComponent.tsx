@@ -1,6 +1,5 @@
 import React from 'react';
-import dayjs from 'dayjs';
-import { Alert, BodyShort, Heading, Label } from '@navikt/ds-react';
+import { Heading } from '@navikt/ds-react';
 import ContainerContract from '../types/ContainerContract';
 import lagUttaksperiodeliste from '../util/uttaksperioder';
 import UttaksperiodeListe from './components/uttaksperiode-liste/UttaksperiodeListe';
@@ -16,7 +15,7 @@ interface MainComponentProps {
 }
 
 const MainComponent = ({ containerData }: MainComponentProps): JSX.Element => {
-    const { uttaksperioder, aksjonspunktkoder, virkningsdatoUttakNyeRegler } = containerData;
+    const { uttaksperioder, aksjonspunktkoder } = containerData;
     const aksjonspunktkodeVentAnnenPSBSak = '9290';
     const aksjonspunktVurderDato = '9291';
     const harVentAnnenPSBSakAksjonspunkt = aksjonspunktkoder?.some(
