@@ -78,7 +78,7 @@ const UttaksperiodeListe = (props: UttaksperiodeListeProps): JSX.Element => {
                 }
             >
                 <>
-                    {before.map((uttak, index) => (
+                    {afterOrCovering.map((uttak, index) => (
                         <Uttak
                             key={uttak.periode.prettifyPeriod()}
                             uttak={uttak}
