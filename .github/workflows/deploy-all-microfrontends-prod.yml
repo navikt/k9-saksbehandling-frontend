@@ -8,6 +8,8 @@ on:
 jobs:
   dispatch_workflows:
     runs-on: ubuntu-latest
+    permissions: 
+      contents: write
     steps:
       - name: Dispatch Deploy Omsorgsdager workflow
         uses: peter-evans/repository-dispatch@v2
