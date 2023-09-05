@@ -18,9 +18,9 @@ const InntektsmeldingManglerInfo = (): JSX.Element => (
             </Alert>
         </Box>
         <Box marginBottom={Margin.large}>
-            <Alert variant="info" size="medium">
-                <Accordion className={styles.alertAccordion}>
-                    <Accordion.Item>
+            <Accordion className={styles.alertAccordion}>
+                <Accordion.Item>
+                    <Alert variant="info" size="medium">
                         <Accordion.Header>
                             <Heading className={styles.alertAccordion__heading} spacing size="xsmall" level="3">
                                 Når kan du gå videre uten inntektsmelding?
@@ -62,9 +62,9 @@ const InntektsmeldingManglerInfo = (): JSX.Element => (
                                 </ul>
                             </Box>
                         </Accordion.Content>
-                    </Accordion.Item>
-                </Accordion>
-            </Alert>
+                    </Alert>
+                </Accordion.Item>
+            </Accordion>
         </Box>
     </>
 );
