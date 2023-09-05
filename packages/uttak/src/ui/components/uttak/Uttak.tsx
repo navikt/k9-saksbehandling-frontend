@@ -29,10 +29,9 @@ interface UttakProps {
     uttak: Uttaksperiode;
     erValgt: boolean;
     velgPeriode: () => void;
-    withBorderTop?: boolean;
 }
 
-const Uttak = ({ uttak, erValgt, velgPeriode, withBorderTop = false }: UttakProps): JSX.Element => {
+const Uttak = ({ uttak, erValgt, velgPeriode }: UttakProps): JSX.Element => {
     const { periode, uttaksgrad, inngangsvilkår, pleiebehov, årsaker, endringsstatus } = uttak;
     const { erFagytelsetypeLivetsSluttfase } = React.useContext(ContainerContext);
 
@@ -49,23 +48,23 @@ const Uttak = ({ uttak, erValgt, velgPeriode, withBorderTop = false }: UttakProp
 
     return (
         <>
-            <TableRow className={`${erValgt ? styles.uttak__expandedRow : ''}`} onClick={velgPeriode}>
-                <TableColumn className={`${withBorderTop ? styles.borderTop : ''}`}>
+            <TableRow className={erValgt ? styles.uttak__expandedRow : ''} onClick={velgPeriode}>
+                <TableColumn>
                     <Normaltekst>{periode.prettifyPeriod()}</Normaltekst>
                 </TableColumn>
-                <TableColumn className={`${withBorderTop ? styles.borderTop : ''}`}>
+                <TableColumn>
                     {harOppfyltAlleInngangsvilkår ? <GreenCheckIconFilled /> : <RedCrossIconFilled />}
                 </TableColumn>
                 {erFagytelsetypeLivetsSluttfase && (
                     <TableColumn>{uttaksgrad === 0 ? <RedCrossIconFilled /> : <GreenCheckIconFilled />}</TableColumn>
                 )}
-                <TableColumn className={`${withBorderTop ? styles.borderTop : ''}`}>
+                <TableColumn>
                     <div className={styles.uttak__iconContainer}>
                         {harPleiebehov ? <GreenCheckIconFilled /> : <RedCrossIconFilled />}
                     </div>
                     {harPleiebehov && !erFagytelsetypeLivetsSluttfase ? `${pleiebehov}%` : null}
                 </TableColumn>
-                <TableColumn className={`${withBorderTop ? styles.borderTop : ''}`}>
+                <TableColumn>
                     {uttak.annenPart === AnnenPart.ALENE && (
                         <ContentWithTooltip tooltipText="Søker">
                             <OnePersonIconGray />
@@ -78,11 +77,11 @@ const Uttak = ({ uttak, erValgt, velgPeriode, withBorderTop = false }: UttakProp
                     )}
                 </TableColumn>
 
-                <TableColumn className={`${styles.uttak__uttaksgrad} ${withBorderTop ? styles.borderTop : ''}`}>
+                <TableColumn className={styles.uttak__uttaksgrad}>
                     <p className={styles.uttak__uttaksgrad__tekst}>{`${uttaksgrad} %`}</p>
                     <div className={uttakGradIndikatorCls} />
                 </TableColumn>
-                <TableColumn className={`${withBorderTop ? styles.borderTop : ''}`}>
+                <TableColumn>
                     <div className={styles.uttak__lastColumn}>
                         <div className={styles.uttak__behandlerIcon}>
                             <Endringsstatus status={endringsstatus} />
