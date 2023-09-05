@@ -1,19 +1,53 @@
 import React from 'react';
+import { Alert, Label, BodyShort } from '@navikt/ds-react';
+import dayjs from 'dayjs';
 import { Uttaksperiode } from '../../../types/Uttaksperiode';
 import Table from '../table/Table';
 import TableColumn from '../table/TableColumn';
 import styles from './uttaksperiodeListe.css';
 import Uttak from '../uttak/Uttak';
 import ContainerContext from '../../context/ContainerContext';
+import FullWidthRow from '../table/FullWidthRow';
 
 interface UttaksperiodeListeProps {
     uttaksperioder: Uttaksperiode[];
 }
 
+const splitUttakByDate = (
+    uttaksperioder: Uttaksperiode[],
+    virkningsdatoUttakNyeRegler: string | null
+): [Uttaksperiode[], Uttaksperiode[]] => {
+    // If virkningsdatoUttakNyeRegler is null, consider all periods as before the date.
+    if (virkningsdatoUttakNyeRegler === null) {
+        return [uttaksperioder, []];
+    }
+
+    const virkningsdato = new Date(virkningsdatoUttakNyeRegler);
+
+    const beforeVirkningsdato = uttaksperioder.filter((uttak) => {
+        const uttakToDate = new Date(uttak.periode.tom);
+
+        // Check if the entire period is before the virkningsdato.
+        return uttakToDate < virkningsdato;
+    });
+
+    const afterOrCoveringVirkningsdato = uttaksperioder.filter((uttak) => {
+        const uttakFromDate = new Date(uttak.periode.fom);
+        const uttakToDate = new Date(uttak.periode.tom);
+
+        // Check if the period starts before and ends after virkningsdato, or if it entirely starts after the virkningsdato.
+        return uttakFromDate >= virkningsdato || (uttakFromDate < virkningsdato && uttakToDate >= virkningsdato);
+    });
+
+    return [beforeVirkningsdato, afterOrCoveringVirkningsdato];
+};
+
 const UttaksperiodeListe = (props: UttaksperiodeListeProps): JSX.Element => {
     const [valgtPeriodeIndex, velgPeriodeIndex] = React.useState<number>();
-    const { erFagytelsetypeLivetsSluttfase } = React.useContext(ContainerContext);
+    const { erFagytelsetypeLivetsSluttfase, virkningsdatoUttakNyeRegler } = React.useContext(ContainerContext);
     const { uttaksperioder } = props;
+
+    const [before, afterOrCovering] = splitUttakByDate(uttaksperioder, virkningsdatoUttakNyeRegler);
 
     const headers = erFagytelsetypeLivetsSluttfase
         ? ['Uttaksperiode', 'Inngangsvilkår', 'Pleie i hjemmet', 'Pleiebehov', 'Parter', 'Søkers uttaksgrad']
@@ -43,14 +77,40 @@ const UttaksperiodeListe = (props: UttaksperiodeListeProps): JSX.Element => {
                     </>
                 }
             >
-                {uttaksperioder.map((uttak, index) => (
-                    <Uttak
-                        key={uttak.periode.prettifyPeriod()}
-                        uttak={uttak}
-                        erValgt={valgtPeriodeIndex === index}
-                        velgPeriode={() => velgPeriode(index)}
-                    />
-                ))}
+                <>
+                    {afterOrCovering.map((uttak, index) => (
+                        <Uttak
+                            key={uttak.periode.prettifyPeriod()}
+                            uttak={uttak}
+                            erValgt={valgtPeriodeIndex === index}
+                            velgPeriode={() => velgPeriode(index)}
+                        />
+                    ))}
+                    {virkningsdatoUttakNyeRegler && (
+                        <FullWidthRow colSpan={12}>
+                            <div className={styles.alertRow}>
+                                <Alert variant="info">
+                                    <Label size="small">
+                                        Endringsdato: {dayjs(virkningsdatoUttakNyeRegler).format('DD.MM.YYYY')}
+                                    </Label>
+                                    <BodyShort>
+                                        Etter denne datoen er det endring i hvordan utbetalingsgrad settes for ikke
+                                        yrkesaktiv, kun ytelse og ny arbeidsaktivitet.
+                                    </BodyShort>
+                                </Alert>
+                            </div>
+                        </FullWidthRow>
+                    )}
+                    {before.map((uttak, index) => (
+                        <Uttak
+                            key={uttak.periode.prettifyPeriod()}
+                            uttak={uttak}
+                            erValgt={valgtPeriodeIndex === index}
+                            velgPeriode={() => velgPeriode(index)}
+                            withBorderTop={index === 0 && !!virkningsdatoUttakNyeRegler}
+                        />
+                    ))}
+                </>
             </Table>
         </div>
     );
