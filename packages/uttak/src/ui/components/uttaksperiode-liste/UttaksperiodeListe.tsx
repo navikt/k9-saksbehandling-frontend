@@ -18,11 +18,14 @@ const splitUttakByDate = (
     virkningsdatoUttakNyeRegler: string | null
 ): [Uttaksperiode[], Uttaksperiode[]] => {
     // If virkningsdatoUttakNyeRegler is null, consider all periods as before the date.
-    if (virkningsdatoUttakNyeRegler === null) {
+    if (!virkningsdatoUttakNyeRegler) {
         return [uttaksperioder, []];
     }
 
-    const virkningsdato = new Date(virkningsdatoUttakNyeRegler);
+    const virkningsdato =
+        virkningsdatoUttakNyeRegler && !Number.isNaN(new Date(virkningsdatoUttakNyeRegler).getTime())
+            ? new Date(virkningsdatoUttakNyeRegler)
+            : new Date();
 
     const beforeVirkningsdato = uttaksperioder.filter((uttak) => {
         const uttakToDate = new Date(uttak.periode.tom);
@@ -49,6 +52,7 @@ const UttaksperiodeListe = (props: UttaksperiodeListeProps): JSX.Element => {
 
     const [before, afterOrCovering] = splitUttakByDate(uttaksperioder, virkningsdatoUttakNyeRegler);
 
+    console.log(before);
     const headers = erFagytelsetypeLivetsSluttfase
         ? ['Uttaksperiode', 'Inngangsvilkår', 'Pleie i hjemmet', 'Pleiebehov', 'Parter', 'Søkers uttaksgrad']
         : ['Uttaksperiode', 'Inngangsvilkår', 'Pleiebehov', 'Parter', 'Søkers uttaksgrad'];
