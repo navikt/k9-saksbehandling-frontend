@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { axe } from 'jest-axe';
 import React from 'react';
 import { VilkarKroniskSyktBarnProps } from '../../../../types/VilkarKroniskSyktBarnProps';
-import VilkarKroniskSyktBarn, {AvslagskoderKroniskSyk} from '../../vilkar-kronisk-sykt-barn/VilkarKroniskSyktBarn';
+import VilkarKroniskSyktBarn from '../../vilkar-kronisk-sykt-barn/VilkarKroniskSyktBarn';
 import FormStateTilTest from '../dataTilTest/FormStateTilTest';
 
 describe('<VilkarKroniskSyktBarn>', () => {
@@ -15,7 +15,7 @@ describe('<VilkarKroniskSyktBarn>', () => {
             informasjonTilLesemodus: {
                 begrunnelse: '',
                 vilkarOppfylt: false,
-                avslagsårsakKode: AvslagskoderKroniskSyk.IKKE_KRONISK_SYK_ELLER_FUNKSJONSHEMMET,
+                avslagsArsakErIkkeRiskioFraFravaer: true,
                 fraDato: '2021-04-06',
             },
             losAksjonspunkt: (endreHarDokumentasjonOgFravaerRisiko, begrunnelse) =>
@@ -57,7 +57,7 @@ describe('<VilkarKroniskSyktBarn>', () => {
             informasjonTilLesemodus: {
                 begrunnelse: 'Begrunnelse til lesemodus',
                 vilkarOppfylt: false,
-                avslagsårsakKode: AvslagskoderKroniskSyk.IKKE_KRONISK_SYK_ELLER_FUNKSJONSHEMMET,
+                avslagsArsakErIkkeRiskioFraFravaer: true,
                 fraDato: '2021-04-06',
             },
             losAksjonspunkt: (endreHarDokumentasjonOgFravaerRisiko, begrunnelse) =>
@@ -87,7 +87,7 @@ describe('<VilkarKroniskSyktBarn>', () => {
             informasjonTilLesemodus: {
                 begrunnelse: 'Begrunnelse til lesemodus',
                 vilkarOppfylt: true,
-                avslagsårsakKode: AvslagskoderKroniskSyk.IKKE_KRONISK_SYK_ELLER_FUNKSJONSHEMMET,
+                avslagsArsakErIkkeRiskioFraFravaer: true,
                 fraDato: '2021-04-06',
             },
             losAksjonspunkt: (endreHarDokumentasjonOgFravaerRisiko, begrunnelse) =>
@@ -138,7 +138,7 @@ describe('<VilkarKroniskSyktBarn>', () => {
             informasjonTilLesemodus: {
                 begrunnelse: 'Begrunnelse til lesemodus',
                 vilkarOppfylt: false,
-                avslagsårsakKode: AvslagskoderKroniskSyk.IKKE_OKT_RISIKO_FRA_FRAVAER,
+                avslagsArsakErIkkeRiskioFraFravaer: true,
                 fraDato: '2021-04-06',
             },
             losAksjonspunkt: (endreHarDokumentasjonOgFravaerRisiko, begrunnelse) =>
@@ -171,7 +171,7 @@ describe('<VilkarKroniskSyktBarn>', () => {
             informasjonTilLesemodus: {
                 begrunnelse: 'Begrunnelse til lesemodus',
                 vilkarOppfylt: false,
-                avslagsårsakKode: AvslagskoderKroniskSyk.IKKE_KRONISK_SYK_ELLER_FUNKSJONSHEMMET,
+                avslagsArsakErIkkeRiskioFraFravaer: true,
                 fraDato: '2021-04-06',
             },
             losAksjonspunkt: (endreHarDokumentasjonOgFravaerRisiko, begrunnelse) =>
@@ -201,7 +201,7 @@ describe('<VilkarKroniskSyktBarn>', () => {
             informasjonTilLesemodus: {
                 begrunnelse: 'Begrunnelse til lesemodus',
                 vilkarOppfylt: false,
-                avslagsårsakKode: AvslagskoderKroniskSyk.IKKE_KRONISK_SYK_ELLER_FUNKSJONSHEMMET,
+                avslagsArsakErIkkeRiskioFraFravaer: true,
                 fraDato: '2021-04-06',
             },
             losAksjonspunkt: (endreHarDokumentasjonOgFravaerRisiko, begrunnelse) =>
@@ -240,7 +240,7 @@ describe('<VilkarKroniskSyktBarn>', () => {
             informasjonTilLesemodus: {
                 begrunnelse: 'Begrunnelse til lesemodus',
                 vilkarOppfylt: false,
-                avslagsårsakKode: AvslagskoderKroniskSyk.IKKE_KRONISK_SYK_ELLER_FUNKSJONSHEMMET,
+                avslagsArsakErIkkeRiskioFraFravaer: true,
                 fraDato: '2021-04-06',
             },
             losAksjonspunkt: (endreHarDokumentasjonOgFravaerRisiko, begrunnelse) =>
@@ -276,7 +276,7 @@ describe('<VilkarKroniskSyktBarn>', () => {
             informasjonTilLesemodus: {
                 begrunnelse: 'Begrunnelse til lesemodus',
                 vilkarOppfylt: false,
-                avslagsårsakKode: AvslagskoderKroniskSyk.IKKE_KRONISK_SYK_ELLER_FUNKSJONSHEMMET,
+                avslagsArsakErIkkeRiskioFraFravaer: true,
                 fraDato: '2021-04-06',
             },
             losAksjonspunkt: (endreHarDokumentasjonOgFravaerRisiko, begrunnelse) =>
