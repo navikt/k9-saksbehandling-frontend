@@ -33,7 +33,7 @@ const tekst = {
     arsak: 'Årsak',
     begrunnelse: 'Vurdering',
     velgArsak: 'Velg årsak',
-    arsakIkkeSyk: 'Barnet har ikke en kronisk sykdom eller funksjonshemming',
+    arsakIkkeSyk: 'Barnet har ikke en kronisk eller langvarig sykdom, eller funksjonshemming',
     arsakIkkeRisikoFraFravaer: 'Det er ikke økt risiko for fravær fra arbeid',
     feilOppgiÅrsak: 'Årsak må oppgis.',
     feilOppgiHvisDokumentasjonGirRett: 'Resultat må oppgis.',
