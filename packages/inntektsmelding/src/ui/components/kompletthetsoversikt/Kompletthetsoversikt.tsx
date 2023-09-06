@@ -96,7 +96,7 @@ const Kompletthetsoversikt = ({ kompletthetsoversikt, onFormSubmit }: Kompletthe
             {kanSendeInn() && (
                 <Box marginTop={Margin.large}>
                     <form
-                        onSubmit={handleSubmit((data) => {
+                        onSubmit={handleSubmit((data: any) => {
                             const perioder = tilstanderTilVurdering.map((tilstand) => {
                                 const skalViseBegrunnelse = !(
                                     aksjonspunktKode === '9069' && watch(tilstand.beslutningFieldName) !== Kode.FORTSETT

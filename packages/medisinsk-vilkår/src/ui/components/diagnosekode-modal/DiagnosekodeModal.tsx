@@ -1,7 +1,6 @@
 import { Button, Modal } from '@navikt/ds-react';
 import { Box, Margin } from '@navikt/ft-plattform-komponenter';
 import React from 'react';
-import Diagnosekode from '../../../types/Diagnosekode';
 import DiagnosekodeSelector from '../../form/pure/PureDiagnosekodeSelector';
 import styles from '../diagnosekodeoversikt/diagnosekodeoversikt.css';
 import ModalFormWrapper from '../modal-form-wrapper/ModalFormWrapper';

@@ -8,4 +8,5 @@ export interface ContainerContract {
     onFinished: (vurdering, fosterbarnForOmsorgspenger) => void;
     httpErrorHandler: HttpErrorHandler;
     sakstype: string;
+    saksbehandlere: { [key: string]: string };
 }

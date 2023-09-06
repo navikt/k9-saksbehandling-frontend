@@ -1,11 +1,9 @@
 {
     "app": "omsorgsdager-frontend",
     "cluster": "prod-gcp",
-    "namespace": "omsorgspenger",
-    "team": "omsorgspenger",
+    "namespace": "k9saksbehandling",
+    "team": "k9saksbehandling",
     "minReplicas": "1",
     "maxReplicas": "2",
-    "ingresses": [
-        "https://omsorgsdager-frontend.intern.nav.no"
-    ]
+    "ingresses": ["https://omsorgsdager-frontend.intern.nav.no"]
 }
