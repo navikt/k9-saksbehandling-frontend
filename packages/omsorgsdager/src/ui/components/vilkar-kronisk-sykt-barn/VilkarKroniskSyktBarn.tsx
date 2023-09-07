@@ -26,6 +26,7 @@ type FormData = {
 };
 
 export enum AvslagskoderKroniskSyk {
+    IKKE_UTVIDET_RETT = '1072',
     IKKE_KRONISK_SYK_ELLER_FUNKSJONSHEMMET = '1073',
     IKKE_OKT_RISIKO_FRA_FRAVAER = '1074',
     MANGLENDE_DOKUMENTASJON = '1019'
@@ -56,12 +57,15 @@ const mapTilAvslagstekst = (avslagsKode: string): string => {
     if (avslagsKode === AvslagskoderKroniskSyk.IKKE_OKT_RISIKO_FRA_FRAVAER) {
         return tekst.arsakIkkeRisikoFraFravaer
     }
-    if (avslagsKode === AvslagskoderKroniskSyk.IKKE_KRONISK_SYK_ELLER_FUNKSJONSHEMMET) {
+    if (avslagsKode === AvslagskoderKroniskSyk.IKKE_KRONISK_SYK_ELLER_FUNKSJONSHEMMET
+        // Brukes bare for bakoverkompatiblitet
+        || avslagsKode === AvslagskoderKroniskSyk.IKKE_UTVIDET_RETT) {
         return tekst.arsakIkkeSyk
     }
     if (avslagsKode === AvslagskoderKroniskSyk.MANGLENDE_DOKUMENTASJON) {
         return tekst.arsakManglerDokumentasjon
     }
+
     return ''
 }
 
@@ -129,7 +133,7 @@ const VilkarKroniskSyktBarn: React.FunctionComponent<VilkarKroniskSyktBarnProps>
             !errors.harDokumentasjonOgFravaerRisiko
         ) {
             losAksjonspunkt(
-                tekstTilBoolean(data.harDokumentasjonOgFravaerRisiko),
+                data.harDokumentasjonOgFravaerRisiko,
                 data.begrunnelse,
                 data.avslagsårsakKode,
                 tekstTilBoolean(harDokumentasjonOgFravaerRisiko) ? data.fraDato.replaceAll('.', '-') : ''
@@ -249,12 +253,12 @@ const VilkarKroniskSyktBarn: React.FunctionComponent<VilkarKroniskSyktBarnProps>
                                                 name="avslagsårsakKode"
                                                 valideringsFunksjoner={erArsakErIkkeRiskioFraFravaer}
                                             />
-                                            <RadioButtonWithBooleanValue
-                                                label={tekst.arsakManglerDokumentasjon}
-                                                value={AvslagskoderKroniskSyk.MANGLENDE_DOKUMENTASJON}
-                                                name="avslagsårsakKode"
-                                                valideringsFunksjoner={erArsakErIkkeRiskioFraFravaer}
-                                            />
+                                            {/* <RadioButtonWithBooleanValue */}
+                                            {/*     label={tekst.arsakManglerDokumentasjon} */}
+                                            {/*     value={AvslagskoderKroniskSyk.MANGLENDE_DOKUMENTASJON} */}
+                                            {/*     name="avslagsårsakKode" */}
+                                            {/*     valideringsFunksjoner={erArsakErIkkeRiskioFraFravaer} */}
+                                            {/* /> */}
                                         </RadioGruppe>
                                         {errors.avslagsårsakKode && (
                                             <p className="typo-feilmelding">{tekst.feilOppgiÅrsak}</p>
