@@ -33,7 +33,7 @@
         "msw-storybook-addon": "1.8.0"
     },
     "dependencies": {
-        "@navikt/ds-css": "4.11.0",
+        "@navikt/ds-css": "5.4.0",
         "@navikt/ds-icons": "3.4.3",
         "@navikt/ds-react": "4.11.0",
         "@navikt/fnrvalidator": "1.3.3",
