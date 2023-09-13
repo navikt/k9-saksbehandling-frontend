@@ -10,6 +10,14 @@ interface ContainerContract {
     aksjonspunktkoder: string[];
     erFagytelsetypeLivetsSluttfase: boolean;
     kodeverkUtenlandsoppholdÅrsak: KodeverkMedNavn[];
+    løsAksjonspunktVurderDatoNyRegelUttak: ({
+        begrunnelse,
+        virkningsdato,
+    }: {
+        begrunnelse: string;
+        virkningsdato: string;
+    }) => void;
+    virkningsdatoUttakNyeRegler: string;
 }
 
 export default ContainerContract;
