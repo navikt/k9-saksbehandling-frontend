@@ -9,20 +9,22 @@ import UtsattePerioderStripe from './components/utsattePerioderStripe/UtsattePer
 import VurderDato from './components/vurderDato/VurderDato';
 import '@navikt/ds-css';
 import '@navikt/ft-plattform-komponenter/dist/style.css';
+import { aksjonspunktVurderDatoKode, aksjonspunktkodeVentAnnenPSBSakKode } from '../constants/Aksjonspunkter';
 
 interface MainComponentProps {
     containerData: ContainerContract;
 }
 
 const MainComponent = ({ containerData }: MainComponentProps): JSX.Element => {
-    const { uttaksperioder, aksjonspunktkoder } = containerData;
-    const aksjonspunktkodeVentAnnenPSBSak = '9290';
-    const aksjonspunktVurderDato = '9291';
+    const { uttaksperioder, aksjonspunktkoder, aksjonspunkter, virkningsdatoUttakNyeRegler } = containerData;
+    const [redigerVirkningsdato, setRedigervirkningsdato] = React.useState<boolean>(false);
+    const aksjonspunktVurderDato = aksjonspunkter?.find((ap) => ap.definisjon.kode === aksjonspunktVurderDatoKode);
+
     const harVentAnnenPSBSakAksjonspunkt = aksjonspunktkoder?.some(
-        (aksjonspunktkode) => aksjonspunktkode === aksjonspunktkodeVentAnnenPSBSak
+        (aksjonspunktkode) => aksjonspunktkode === aksjonspunktkodeVentAnnenPSBSakKode
     );
-    const harAksjonspunktVurderDato = aksjonspunktkoder?.some(
-        (aksjonspunktkode) => aksjonspunktkode === aksjonspunktVurderDato
+    const harAksjonspunktVurderDatoMedStatusOpprettet = aksjonspunktkoder?.some(
+        (aksjonspunktkode) => aksjonspunktkode === aksjonspunktVurderDatoKode
     );
     return (
         <ContainerContext.Provider value={containerData}>
@@ -31,9 +33,22 @@ const MainComponent = ({ containerData }: MainComponentProps): JSX.Element => {
             </Heading>
             <Infostripe harVentAnnenPSBSakAksjonspunkt={harVentAnnenPSBSakAksjonspunkt} />
             <UtsattePerioderStripe />
-            {harAksjonspunktVurderDato && <VurderDato />}
+            {harAksjonspunktVurderDatoMedStatusOpprettet && <VurderDato />}
+            {virkningsdatoUttakNyeRegler && redigerVirkningsdato && (
+                <VurderDato
+                    avbryt={() => setRedigervirkningsdato(false)}
+                    initialValues={{
+                        begrunnelse: aksjonspunktVurderDato?.begrunnelse,
+                        virkningsdato: virkningsdatoUttakNyeRegler,
+                    }}
+                />
+            )}
             {!harVentAnnenPSBSakAksjonspunkt && (
-                <UttaksperiodeListe uttaksperioder={lagUttaksperiodeliste(uttaksperioder)} />
+                <UttaksperiodeListe
+                    uttaksperioder={lagUttaksperiodeliste(uttaksperioder)}
+                    redigerVirkningsdatoFunc={() => setRedigervirkningsdato(true)}
+                    redigerVirkningsdato={redigerVirkningsdato}
+                />
             )}
         </ContainerContext.Provider>
     );
