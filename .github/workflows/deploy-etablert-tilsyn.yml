@@ -26,7 +26,7 @@ jobs:
       contents: write
     steps:
       - name: Hente kode
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Setup .yarnrc.yml
         run: |
           yarn config set npmScopes.navikt.npmRegistryServer "https://npm.pkg.github.com"
@@ -59,7 +59,7 @@ jobs:
       - name: Kjøre enhetstester
         run: yarn lerna run test --scope ${{env.package-name}}
       - name: Kjør E2E-tester
-        uses: cypress-io/github-action@v5
+        uses: cypress-io/github-action@v6
         env:
           NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
         with:
@@ -90,7 +90,7 @@ jobs:
           echo "LATEST=${IMAGE_BASE}:latest" >> $GITHUB_ENV
           echo "CSS_HASH=$(shasum -b -a 384 build/${MAJOR_VERSION}/styles.css | awk '{ print $1 }' | xxd -r -p | base64)" >> $GITHUB_ENV
           echo "JS_HASH=$(shasum -b -a 384 build/${MAJOR_VERSION}/app.js | awk '{ print $1 }' | xxd -r -p | base64)" >> $GITHUB_ENV
-      - uses: docker/login-action@v2
+      - uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
