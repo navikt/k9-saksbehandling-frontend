@@ -4,6 +4,7 @@ import * as React from 'react';
 import Diagnosekode from '../../../types/Diagnosekode';
 import DeleteButton from '../../components/delete-button/DeleteButton';
 import styles from './diagnosekodeSelector.css';
+import initDiagnosekodeSearcher, {toLegacyDiagnosekode} from "../../../util/diagnosekodeSearcher";
 
 interface Suggestion {
     key: string;
@@ -20,8 +21,15 @@ interface DiagnosekodeSelectorProps {
     selectedDiagnosekoder: string[];
 }
 
-const fetchDiagnosekoderByQuery = (queryString: string) =>
-    fetch(`/k9/diagnosekoder/?query=${queryString}&max=8`).then((response) => response.json());
+// Start loading the searcher immediately
+// TODO De-duplicate this init with the one in Diagnosekodeoversikt.tsx, we can use the same instance for both of these searches (there is no paging)
+const diagnosekodeSearcherPromise = initDiagnosekodeSearcher(8)
+
+const fetchDiagnosekoderByQuery = async (queryString: string): Promise<Diagnosekode[]> => {
+    const searcher = await diagnosekodeSearcherPromise;
+    const searchResult = searcher.search(queryString, 1);
+    return searchResult.diagnosekoder.map(toLegacyDiagnosekode)
+}
 
 const PureDiagnosekodeSelector = ({
     label,
