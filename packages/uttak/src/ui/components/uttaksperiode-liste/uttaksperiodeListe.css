@@ -14,3 +14,8 @@
 .alertRow:global(.navds-alert) {
     padding: 0.5rem 1rem !important;
 }
+
+.redigerDato {
+    margin-left: auto !important;
+    margin-bottom: 1rem !important;
+}

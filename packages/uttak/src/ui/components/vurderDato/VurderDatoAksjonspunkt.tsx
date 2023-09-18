@@ -11,9 +11,19 @@ interface FormData {
     begrunnelse: string;
 }
 
-const VurderDatoAksjonspunkt = () => {
+interface Props {
+    avbryt?: () => void;
+    initialValues?: {
+        virkningsdato: string;
+        begrunnelse: string;
+    };
+}
+
+const VurderDatoAksjonspunkt = ({ avbryt, initialValues }: Props) => {
     const { løsAksjonspunktVurderDatoNyRegelUttak } = React.useContext(ContainerContext);
-    const formMethods = useForm<FormData>();
+    const formMethods = useForm<FormData>({
+        defaultValues: initialValues,
+    });
 
     const onSubmit = (data: FormData) => {
         løsAksjonspunktVurderDatoNyRegelUttak(data);
@@ -39,9 +49,16 @@ const VurderDatoAksjonspunkt = () => {
                     maxLength={1500}
                     validate={[required, minLength(5), maxLength(1500)]}
                 />
-                <Button size="small" type="submit" className={styles.bekreft}>
-                    Bekreft og fortsett
-                </Button>
+                <div className={styles.knapper}>
+                    <Button size="small" type="submit" className={styles.bekreft}>
+                        Bekreft og fortsett
+                    </Button>
+                    {avbryt && (
+                        <Button variant="secondary" type="button" size="small" onClick={avbryt}>
+                            Avbryt
+                        </Button>
+                    )}
+                </div>
             </div>
         </Form>
     );
