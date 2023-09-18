@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, Label, BodyShort } from '@navikt/ds-react';
+import { Alert, Label, BodyShort, Button } from '@navikt/ds-react';
 import dayjs from 'dayjs';
 import { Uttaksperiode } from '../../../types/Uttaksperiode';
 import Table from '../table/Table';
@@ -11,6 +11,8 @@ import FullWidthRow from '../table/FullWidthRow';
 
 interface UttaksperiodeListeProps {
     uttaksperioder: Uttaksperiode[];
+    redigerVirkningsdatoFunc: () => void;
+    redigerVirkningsdato: boolean;
 }
 
 const splitUttakByDate = (
@@ -48,11 +50,10 @@ const splitUttakByDate = (
 const UttaksperiodeListe = (props: UttaksperiodeListeProps): JSX.Element => {
     const [valgtPeriodeIndex, velgPeriodeIndex] = React.useState<number>();
     const { erFagytelsetypeLivetsSluttfase, virkningsdatoUttakNyeRegler } = React.useContext(ContainerContext);
-    const { uttaksperioder } = props;
+    const { uttaksperioder, redigerVirkningsdatoFunc, redigerVirkningsdato } = props;
 
     const [before, afterOrCovering] = splitUttakByDate(uttaksperioder, virkningsdatoUttakNyeRegler);
 
-    console.log(before);
     const headers = erFagytelsetypeLivetsSluttfase
         ? ['Uttaksperiode', 'Inngangsvilkår', 'Pleie i hjemmet', 'Pleiebehov', 'Parter', 'Søkers uttaksgrad']
         : ['Uttaksperiode', 'Inngangsvilkår', 'Pleiebehov', 'Parter', 'Søkers uttaksgrad'];
@@ -90,13 +91,23 @@ const UttaksperiodeListe = (props: UttaksperiodeListeProps): JSX.Element => {
                             velgPeriode={() => velgPeriode(index)}
                         />
                     ))}
-                    {virkningsdatoUttakNyeRegler && (
+                    {virkningsdatoUttakNyeRegler && !redigerVirkningsdato && (
                         <FullWidthRow colSpan={12}>
                             <div className={styles.alertRow}>
                                 <Alert variant="info">
-                                    <Label size="small">
-                                        Endringsdato: {dayjs(virkningsdatoUttakNyeRegler).format('DD.MM.YYYY')}
-                                    </Label>
+                                    <div style={{display: 'flex'}}>
+                                        <Label size="small">
+                                            Endringsdato: {dayjs(virkningsdatoUttakNyeRegler).format('DD.MM.YYYY')}
+                                        </Label>
+                                        <Button
+                                            variant="secondary"
+                                            size="small"
+                                            className={styles.redigerDato}
+                                            onClick={redigerVirkningsdatoFunc}
+                                        >
+                                            Rediger
+                                        </Button>
+                                    </div>
                                     <BodyShort>
                                         Etter denne datoen er det endring i hvordan utbetalingsgrad settes for ikke
                                         yrkesaktiv, kun ytelse og ny arbeidsaktivitet.
