@@ -4,7 +4,7 @@ import * as React from 'react';
 import Diagnosekode from '../../../types/Diagnosekode';
 import DeleteButton from '../../components/delete-button/DeleteButton';
 import styles from './diagnosekodeSelector.css';
-import initDiagnosekodeSearcher, {toLegacyDiagnosekode} from "../../../util/diagnosekodeSearcher";
+import {type DiagnosekodeSearcherPromise, toLegacyDiagnosekode} from "../../../util/diagnosekodeSearcher";
 
 interface Suggestion {
     key: string;
@@ -19,16 +19,7 @@ interface DiagnosekodeSelectorProps {
     initialDiagnosekodeValue: string;
     hideLabel?: boolean;
     selectedDiagnosekoder: string[];
-}
-
-// Start loading the searcher immediately
-// TODO De-duplicate this init with the one in Diagnosekodeoversikt.tsx, we can use the same instance for both of these searches (there is no paging)
-const diagnosekodeSearcherPromise = initDiagnosekodeSearcher(8)
-
-const fetchDiagnosekoderByQuery = async (queryString: string): Promise<Diagnosekode[]> => {
-    const searcher = await diagnosekodeSearcherPromise;
-    const searchResult = searcher.search(queryString, 1);
-    return searchResult.diagnosekoder.map(toLegacyDiagnosekode)
+    searcherPromise: DiagnosekodeSearcherPromise;
 }
 
 const PureDiagnosekodeSelector = ({
@@ -39,6 +30,7 @@ const PureDiagnosekodeSelector = ({
     initialDiagnosekodeValue,
     hideLabel,
     selectedDiagnosekoder,
+    searcherPromise,
 }: DiagnosekodeSelectorProps): JSX.Element => {
     const [suggestions, setSuggestions] = React.useState([]);
     const [inputValue, setInputValue] = React.useState('');
@@ -48,7 +40,8 @@ const PureDiagnosekodeSelector = ({
     const getUpdatedSuggestions = async (queryString: string) => {
         if (queryString.length >= 3) {
             setIsLoading(true);
-            const diagnosekoder: Diagnosekode[] = await fetchDiagnosekoderByQuery(queryString);
+            const searcher = await searcherPromise;
+            const diagnosekoder: Diagnosekode[] = (await searcher.search(queryString, 1)).diagnosekoder.map(toLegacyDiagnosekode);
             setIsLoading(false);
             return diagnosekoder.map(({ kode, beskrivelse }) => ({
                 key: kode,

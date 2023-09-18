@@ -16,7 +16,9 @@ import IconWithText from '../icon-with-text/IconWithText';
 import WriteAccessBoundContent from '../write-access-bound-content/WriteAccessBoundContent';
 import initDiagnosekodeSearcher, {toLegacyDiagnosekode} from "../../../util/diagnosekodeSearcher";
 
-const diagnosekodeSearcherPromise = initDiagnosekodeSearcher(1)
+// Start initializing diagnosekode searcher instance, with pagesize 8, so that it can be used both here and in the DiagnosekodeModal.
+// This reuse is possible since we don't use the paging functionality in the instance anyways.
+const diagnosekodeSearcherPromise = initDiagnosekodeSearcher(8)
 
 const fetchDiagnosekoderByQuery = async (queryString: string): Promise<Diagnosekode> => {
     const searcher = await diagnosekodeSearcherPromise
@@ -148,6 +150,7 @@ const Diagnosekodeoversikt = ({ onDiagnosekoderUpdated }: DiagnosekodeoversiktPr
                 isOpen={modalIsOpen}
                 onSaveClick={lagreDiagnosekodeMutation.mutateAsync}
                 onRequestClose={() => setModalIsOpen(false)}
+                searcherPromise={diagnosekodeSearcherPromise}
             />
         </div>
     );
