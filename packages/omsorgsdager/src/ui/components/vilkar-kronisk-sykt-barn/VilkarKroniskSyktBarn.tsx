@@ -65,7 +65,6 @@ const mapTilAvslagstekst = (avslagsKode: string): string => {
     if (avslagsKode === AvslagskoderKroniskSyk.MANGLENDE_DOKUMENTASJON) {
         return tekst.arsakManglerDokumentasjon
     }
-
     return ''
 }
 
@@ -133,7 +132,7 @@ const VilkarKroniskSyktBarn: React.FunctionComponent<VilkarKroniskSyktBarnProps>
             !errors.harDokumentasjonOgFravaerRisiko
         ) {
             losAksjonspunkt(
-                data.harDokumentasjonOgFravaerRisiko,
+                tekstTilBoolean(data.harDokumentasjonOgFravaerRisiko),
                 data.begrunnelse,
                 data.avslagsårsakKode,
                 tekstTilBoolean(harDokumentasjonOgFravaerRisiko) ? data.fraDato.replaceAll('.', '-') : ''
@@ -253,12 +252,12 @@ const VilkarKroniskSyktBarn: React.FunctionComponent<VilkarKroniskSyktBarnProps>
                                                 name="avslagsårsakKode"
                                                 valideringsFunksjoner={erArsakErIkkeRiskioFraFravaer}
                                             />
-                                            {/* <RadioButtonWithBooleanValue */}
-                                            {/*     label={tekst.arsakManglerDokumentasjon} */}
-                                            {/*     value={AvslagskoderKroniskSyk.MANGLENDE_DOKUMENTASJON} */}
-                                            {/*     name="avslagsårsakKode" */}
-                                            {/*     valideringsFunksjoner={erArsakErIkkeRiskioFraFravaer} */}
-                                            {/* /> */}
+                                            <RadioButtonWithBooleanValue
+                                                label={tekst.arsakManglerDokumentasjon}
+                                                value={AvslagskoderKroniskSyk.MANGLENDE_DOKUMENTASJON}
+                                                name="avslagsårsakKode"
+                                                valideringsFunksjoner={erArsakErIkkeRiskioFraFravaer}
+                                            />
                                         </RadioGruppe>
                                         {errors.avslagsårsakKode && (
                                             <p className="typo-feilmelding">{tekst.feilOppgiÅrsak}</p>
