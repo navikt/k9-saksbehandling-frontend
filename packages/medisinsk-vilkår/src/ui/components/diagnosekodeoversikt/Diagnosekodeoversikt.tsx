@@ -14,21 +14,21 @@ import DiagnosekodeModal from '../diagnosekode-modal/DiagnosekodeModal';
 import Diagnosekodeliste from '../diagnosekodeliste/Diagnosekodeliste';
 import IconWithText from '../icon-with-text/IconWithText';
 import WriteAccessBoundContent from '../write-access-bound-content/WriteAccessBoundContent';
-import initDiagnosekodeSearcher, {toLegacyDiagnosekode} from "../../../util/diagnosekodeSearcher";
+import initDiagnosekodeSearcher, { toLegacyDiagnosekode } from '../../../util/diagnosekodeSearcher';
 
 // Start initializing diagnosekode searcher instance, with pagesize 8, so that it can be used both here and in the DiagnosekodeModal.
 // This reuse is possible since we don't use the paging functionality in the instance anyways.
-const diagnosekodeSearcherPromise = initDiagnosekodeSearcher(8)
+const diagnosekodeSearcherPromise = initDiagnosekodeSearcher(8);
 
 const fetchDiagnosekoderByQuery = async (queryString: string): Promise<Diagnosekode> => {
-    const searcher = await diagnosekodeSearcherPromise
-    const searchResult = searcher.search(queryString, 1)
+    const searcher = await diagnosekodeSearcherPromise;
+    const searchResult = searcher.search(queryString, 1);
     // This function only returns the found diagnosecode if there is exactly one diagnosecode found.
-    if(searchResult.diagnosekoder.length === 1 && !searchResult.hasMore) {
-        return toLegacyDiagnosekode(searchResult.diagnosekoder[0])
+    if (searchResult.diagnosekoder.length === 1 && !searchResult.hasMore) {
+        return toLegacyDiagnosekode(searchResult.diagnosekoder[0]);
     }
-    return {kode: queryString, beskrivelse: ''}
-}
+    return { kode: queryString, beskrivelse: '' };
+};
 
 interface DiagnosekodeoversiktProps {
     onDiagnosekoderUpdated: () => void;

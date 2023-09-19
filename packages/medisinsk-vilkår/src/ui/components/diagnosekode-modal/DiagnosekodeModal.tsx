@@ -4,7 +4,7 @@ import React from 'react';
 import DiagnosekodeSelector from '../../form/pure/PureDiagnosekodeSelector';
 import styles from '../diagnosekodeoversikt/diagnosekodeoversikt.css';
 import ModalFormWrapper from '../modal-form-wrapper/ModalFormWrapper';
-import type {DiagnosekodeSearcherPromise} from "../../../util/diagnosekodeSearcher";
+import type { DiagnosekodeSearcherPromise } from '../../../util/diagnosekodeSearcher';
 
 interface DiagnosekodeModalProps {
     isOpen: boolean;
@@ -13,7 +13,12 @@ interface DiagnosekodeModalProps {
     searcherPromise: DiagnosekodeSearcherPromise;
 }
 
-const DiagnosekodeModal = ({ isOpen, onRequestClose, onSaveClick, searcherPromise }: DiagnosekodeModalProps): JSX.Element => {
+const DiagnosekodeModal = ({
+    isOpen,
+    onRequestClose,
+    onSaveClick,
+    searcherPromise,
+}: DiagnosekodeModalProps): JSX.Element => {
     const [selectedDiagnosekoder, setSelectedDiagnosekoder] = React.useState([]);
     const [isSubmitting, setIsSubmitting] = React.useState(false);
 
