@@ -191,10 +191,6 @@ export const handlers = [
         return res(ctx.status(200), ctx.json(mockedDokumentliste));
     }),
 
-    rest.get('http://localhost:8081/k9/diagnosekoder', (req, res, ctx) => {
-        return res(ctx.status(200), ctx.json(mockedDiagnosekodeSearchResponse));
-    }),
-
     rest.get('http://localhost:8082/mock/diagnosekoder', (req, res, ctx) => {
         return res(ctx.status(200), ctx.json(mockedDiagnosekoderesponse));
     }),

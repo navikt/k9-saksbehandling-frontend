@@ -4,6 +4,8 @@ server {
 	location / {
             root   /usr/share/nginx/html;
             index  index.html index.htm;
+
+            gzip_static on;
         }
 
   # Health check for NAIS

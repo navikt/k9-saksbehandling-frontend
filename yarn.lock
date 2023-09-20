@@ -4016,6 +4016,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@navikt/diagnosekoder@npm:^1.2023.0":
+  version: 1.2023.0
+  resolution: "@navikt/diagnosekoder@npm:1.2023.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Fdiagnosekoder%2F1.2023.0%2F5a183052f0676e45a88cb9ebb8696d85452f54e6"
+  checksum: 8f98bc41c36801383532e258873e5b1f35eb6e1e45cf332db3178577c97aa77c7bffc18de8ea2c27f4a6b7bc2345a21a9a81b11d207ce543e3d26dce925e9649
+  languageName: node
+  linkType: hard
+
 "@navikt/ds-css@npm:4.12.3":
   version: 4.12.3
   resolution: "@navikt/ds-css@npm:4.12.3::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Fds-css%2F4.12.3%2F49e36eb3a1060bb5d4d73975accbdb4ec5a79f8b"
@@ -17804,6 +17811,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "medisinsk-vilkar-frontend@workspace:packages/medisinsk-vilkår"
   dependencies:
+    "@navikt/diagnosekoder": ^1.2023.0
     "@navikt/ds-css": 4.12.3
     "@navikt/ds-icons": 3.4.3
     "@navikt/ds-react": 4.12.1
