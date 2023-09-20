@@ -1,29 +1,45 @@
 import React from 'react';
 
-import { Story } from '@storybook/react';
-import { composeStories } from '@storybook/testing-react';
-
 import { cleanup, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { getWorker } from 'msw-storybook-addon';
-import { SetupServerApi } from 'msw/lib/node';
-import * as stories from '../src/stories/MainComponent.stories';
+import {rest} from "msw";
+import {setupServer} from 'msw/node';
 import MainComponent from '../src/ui/MainComponent';
+import inntektsmeldingPropsMock from "../mock/inntektsmeldingPropsMock";
+import ContainerContract from "../src/types/ContainerContract";
+import {manglerInntektsmelding} from "../mock/mockedKompletthetsdata";
 
 describe('9069 - Mangler inntektsmelding', () => {
+
+    const handlers = [
+        rest.get('/tilstand', (req, res, ctx) =>
+            res(ctx.json(manglerInntektsmelding))),
+    ]
+    const server = setupServer(...handlers)
+
+    beforeAll(() => {
+        server.listen()
+    })
+
     afterEach(() => {
+        server.resetHandlers()
         cleanup();
     });
 
-    afterAll(() => (getWorker() as SetupServerApi).close());
+    afterAll(() => {
+        server.close()
+    });
 
-    const { Mangler9069 } = composeStories(stories) as {
-        [key: string]: Story<Partial<typeof MainComponent>>;
+    const defaultData: ContainerContract = {
+        ...inntektsmeldingPropsMock,
+        onFinished: () => undefined,
     };
+
+    const renderMangler9069 = (data?: ContainerContract) => render(<MainComponent data={data || defaultData} />)
 
     test('Viser ikke knapp for å sende inn når beslutning ikke er valgt', async () => {
         // ARRANGE
-        render(<Mangler9069 />);
+        renderMangler9069();
         await waitFor(() => screen.getByText(/Når kan du gå videre uten inntektsmelding?/i));
 
         // ASSERT
@@ -34,7 +50,7 @@ describe('9069 - Mangler inntektsmelding', () => {
 
     test('Viser riktig knapp når purring er valgt', async () => {
         // ARRANGE
-        render(<Mangler9069 />);
+        renderMangler9069();
         await waitFor(() => screen.getByText(/Når kan du gå videre uten inntektsmelding?/i));
 
         // ACT
@@ -47,7 +63,7 @@ describe('9069 - Mangler inntektsmelding', () => {
 
     test('Må skrive begrunnelse når man har valgt A-inntekt', async () => {
         // ARRANGE
-        render(<Mangler9069 />);
+        renderMangler9069();
         await waitFor(() => screen.getByText(/Når kan du gå videre uten inntektsmelding?/i));
 
         // ACT
@@ -61,9 +77,8 @@ describe('9069 - Mangler inntektsmelding', () => {
     test('Kan sende purring med varsel om avslag', async () => {
         // ARRANGE
         const onClickSpy = jest.fn();
-        const data = { onFinished: onClickSpy };
         // eslint-disable-next-line react/jsx-props-no-spreading
-        render(<Mangler9069 {...data} />);
+        renderMangler9069({...defaultData, onFinished: onClickSpy});
 
         await waitFor(() => screen.getByText(/Når kan du gå videre uten inntektsmelding?/i));
 
@@ -91,9 +106,8 @@ describe('9069 - Mangler inntektsmelding', () => {
     test('Kan submitte begrunnelse når man har valgt A-inntekt', async () => {
         // ARRANGE
         const onClickSpy = jest.fn();
-        const data = { onFinished: onClickSpy };
         // eslint-disable-next-line react/jsx-props-no-spreading
-        render(<Mangler9069 {...data} />);
+        renderMangler9069({...defaultData, onFinished: onClickSpy});
 
         await waitFor(() => screen.getByText(/Når kan du gå videre uten inntektsmelding?/i));
 

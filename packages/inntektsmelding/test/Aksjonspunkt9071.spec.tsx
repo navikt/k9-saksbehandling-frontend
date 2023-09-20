@@ -1,30 +1,42 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 
-import { Story } from '@storybook/react';
-import { composeStories } from '@storybook/testing-react';
-
 import { render, screen, waitFor, cleanup } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { getWorker } from 'msw-storybook-addon';
-import { SetupServerApi } from 'msw/lib/node';
-import * as stories from '../src/stories/MainComponent.stories';
+import {rest} from "msw";
+import {setupServer} from 'msw/node';
 import MainComponent from '../src/ui/MainComponent';
+import {alleErMottatt, manglerInntektsmelding} from "../mock/mockedKompletthetsdata";
+import ContainerContract from "../src/types/ContainerContract";
+import {aksjonspunkt9071Props} from "../mock/inntektsmeldingPropsMock";
 
 describe('9071 - Mangler inntektsmelding', () => {
+
+    const mangler9071Handlers = [rest.get('/tilstand', (req, res, ctx) => res(ctx.json(manglerInntektsmelding)))]
+    const alleInntektsmeldingerMottattHandlers = [rest.get('/tilstand', (req, res, ctx) => res(ctx.json(alleErMottatt)))]
+
+    const server = setupServer(...mangler9071Handlers)
+
+    beforeAll(() => server.listen())
+
     afterEach(() => {
-        cleanup();
-    });
+        server.resetHandlers()
+        cleanup()
+    })
 
-    afterAll(() => (getWorker() as SetupServerApi).close());
+    afterAll(() => server.close());
 
-    const { Mangler9071, AlleInntektsmeldingerMottatt } = composeStories(stories) as {
-        [key: string]: Story<Partial<typeof MainComponent>>;
-    };
+    const renderMangler9071 = (onFinished = () => undefined) => {
+        const mangler9071Props: ContainerContract = {
+            ...aksjonspunkt9071Props,
+            onFinished,
+        }
+        return render(<MainComponent data={mangler9071Props} />)
+    }
 
     test('Viser ikke knapp for å sende inn når beslutning ikke er valgt', async () => {
         // ARRANGE
-        render(<Mangler9071 />);
+        renderMangler9071()
         await waitFor(() => screen.getByText(/Når kan du gå videre uten inntektsmelding?/i));
 
         // ASSERT
@@ -35,7 +47,7 @@ describe('9071 - Mangler inntektsmelding', () => {
 
     test('Viser riktig knapp når purring er valgt', async () => {
         // ARRANGE
-        render(<Mangler9071 />);
+        renderMangler9071()
         await waitFor(() => screen.getByText(/Når kan du gå videre uten inntektsmelding?/i));
 
         // ACT
@@ -48,7 +60,7 @@ describe('9071 - Mangler inntektsmelding', () => {
 
     test('Må skrive begrunnelse når man har valgt A-inntekt', async () => {
         // ARRANGE
-        render(<Mangler9071 />);
+        renderMangler9071()
         await waitFor(() => screen.getByText(/Når kan du gå videre uten inntektsmelding?/i));
 
         // ACT
@@ -62,8 +74,7 @@ describe('9071 - Mangler inntektsmelding', () => {
     test('Kan sende purring med varsel om avslag', async () => {
         // ARRANGE
         const onClickSpy = jest.fn();
-        const data = { onFinished: onClickSpy };
-        render(<Mangler9071 {...data} />);
+        renderMangler9071(onClickSpy)
 
         await waitFor(() => screen.getByText(/Når kan du gå videre uten inntektsmelding?/i));
 
@@ -91,8 +102,7 @@ describe('9071 - Mangler inntektsmelding', () => {
     test('Kan submitte begrunnelse når man har valgt A-inntekt', async () => {
         // ARRANGE
         const onClickSpy = jest.fn();
-        const data = { onFinished: onClickSpy };
-        render(<Mangler9071 {...data} />);
+        renderMangler9071(onClickSpy)
 
         await waitFor(() => screen.getByText(/Når kan du gå videre uten inntektsmelding?/i));
 
@@ -119,8 +129,9 @@ describe('9071 - Mangler inntektsmelding', () => {
     test('Hvis det tidligere er blitt gjort en vurdering og behandlingen har hoppet tilbake må man kunne løse aksjonspunktet', async () => {
         // ARRANGE
         const onClickSpy = jest.fn();
-        const data = { onFinished: onClickSpy };
-        render(<AlleInntektsmeldingerMottatt {...data} />);
+        // Replace the request handler that the other tests use
+        server.resetHandlers(...alleInntektsmeldingerMottattHandlers)
+        renderMangler9071(onClickSpy)
 
         await waitFor(() => screen.getByText(/Når kan du gå videre uten inntektsmelding?/i));
 
