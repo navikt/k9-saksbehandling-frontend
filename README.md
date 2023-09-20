@@ -26,7 +26,7 @@ opp ved å kjøre `yarn api-mock` på rot av pakken.
 
 ### Kjøring av alle tester
 
-`yarn test` på rot av prosjektet
+`yarn test:all` på rot av prosjektet
 
 ### Bygging av alle apper
 
