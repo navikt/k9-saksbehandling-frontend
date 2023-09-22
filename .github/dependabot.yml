@@ -27,6 +27,9 @@ updates:
       typescript-eslint:
         patterns:
           - "@typescript-eslint*"
+      aksel:
+        patterns:
+          - "@navikt/ds-*"
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
