@@ -39,10 +39,6 @@ const Diagnosekodeoversikt = ({ onDiagnosekoderUpdated }: DiagnosekodeoversiktPr
     const [modalIsOpen, setModalIsOpen] = React.useState(false);
     const addButtonRef = React.useRef<HTMLButtonElement>();
 
-    useEffect(() => {
-        Modal.setAppElement(document.body);
-    }, []);
-
     const hentDiagnosekoder = () =>
         get<DiagnosekodeResponse>(endpoints.diagnosekoder, httpErrorHandler).then(
             (response: DiagnosekodeResponse) => response

@@ -25,9 +25,6 @@ interface InnleggelsesperiodeoversiktProps {
 const Innleggelsesperiodeoversikt = ({
     onInnleggelsesperioderUpdated,
 }: InnleggelsesperiodeoversiktProps): JSX.Element => {
-    useEffect(() => {
-        Modal.setAppElement(document.body);
-    }, []);
     const { endpoints, httpErrorHandler } = React.useContext(ContainerContext);
 
     const [modalIsOpen, setModalIsOpen] = React.useState(false);

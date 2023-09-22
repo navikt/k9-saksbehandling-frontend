@@ -8,7 +8,6 @@ import { InnleggelsesperiodeDryRunResponse } from '../../../api/api';
 import AddButton from '../add-button/AddButton';
 import DeleteButton from '../delete-button/DeleteButton';
 import { FieldName } from '../innleggelsesperiodeoversikt/Innleggelsesperiodeoversikt';
-import ModalFormWrapper from '../modal-form-wrapper/ModalFormWrapper';
 import styles from './innleggelsesperiodeFormModal.css';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -63,12 +62,11 @@ const InnleggelsesperiodeFormModal = ({
     };
 
     return (
-        <Modal open closeButton onClose={handleCloseModal} className={styles.innleggelsesperiodeFormModal}>
-            <Modal.Content>
+        <Modal open onBeforeClose={handleCloseModal} header={{heading: "Innleggelsesperioder", closeButton: true}} className={styles.innleggelsesperiodeFormModal}>
+            <Modal.Body>
                 {/* eslint-disable-next-line react/jsx-props-no-spreading */}
                 <FormProvider {...formMethods}>
                     <Form onSubmit={formMethods.handleSubmit(handleSubmit)} shouldShowSubmitButton={false}>
-                        <ModalFormWrapper title="Innleggelsesperioder">
                             <Box marginTop={Margin.large}>
                                 <PeriodpickerList
                                     name="innleggelsesperioder"
@@ -183,10 +181,9 @@ const InnleggelsesperiodeFormModal = ({
                                     </Button>
                                 </div>
                             </Box>
-                        </ModalFormWrapper>
                     </Form>
                 </FormProvider>
-            </Modal.Content>
+            </Modal.Body>
         </Modal>
     );
 };

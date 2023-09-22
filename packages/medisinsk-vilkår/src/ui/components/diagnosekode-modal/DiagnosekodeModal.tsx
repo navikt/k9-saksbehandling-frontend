@@ -3,7 +3,6 @@ import { Box, Margin } from '@navikt/ft-plattform-komponenter';
 import React from 'react';
 import DiagnosekodeSelector from '../../form/pure/PureDiagnosekodeSelector';
 import styles from '../diagnosekodeoversikt/diagnosekodeoversikt.css';
-import ModalFormWrapper from '../modal-form-wrapper/ModalFormWrapper';
 import type { DiagnosekodeSearcherPromise } from '../../../util/diagnosekodeSearcher';
 
 interface DiagnosekodeModalProps {
@@ -28,8 +27,8 @@ const DiagnosekodeModal = ({
     };
 
     return (
-        <Modal open={isOpen} closeButton onClose={onRequestClose} className={styles.diagnosekodeoversikt__modal}>
-            <Modal.Content>
+        <Modal open={isOpen} header={{heading: "Legg til diagnosekoder", closeButton: true}} onClose={onRequestClose} className={styles.diagnosekodeoversikt__modal}>
+            <Modal.Body>
                 <form
                     onSubmit={(e) => {
                         e.preventDefault();
@@ -42,44 +41,42 @@ const DiagnosekodeModal = ({
                         setSelectedDiagnosekoder([]);
                     }}
                 >
-                    <ModalFormWrapper title="Legg til diagnosekoder">
-                        <Box marginTop={Margin.large}>
-                            <DiagnosekodeSelector
-                                initialDiagnosekodeValue=""
-                                name="diagnosekode"
-                                onChange={(diagnosekoder) => {
-                                    setSelectedDiagnosekoder(diagnosekoder);
-                                }}
-                                label="Diagnosekode"
-                                selectedDiagnosekoder={selectedDiagnosekoder}
-                                hideLabel
-                                searcherPromise={searcherPromise}
-                            />
-                        </Box>
-                        <Box marginTop={Margin.xLarge}>
-                            <div style={{ display: 'flex' }}>
-                                <Button
-                                    size="small"
-                                    disabled={isSubmitting}
-                                    loading={isSubmitting}
-                                    id="bekreftDiagnosekodeKnapp"
-                                >
-                                    Bekreft
-                                </Button>
-                                <Button
-                                    variant="secondary"
-                                    size="small"
-                                    style={{ marginLeft: '1rem' }}
-                                    onClick={handleClose}
-                                    disabled={isSubmitting}
-                                >
-                                    Avbryt
-                                </Button>
-                            </div>
-                        </Box>
-                    </ModalFormWrapper>
+                    <Box marginTop={Margin.large}>
+                        <DiagnosekodeSelector
+                            initialDiagnosekodeValue=""
+                            name="diagnosekode"
+                            onChange={(diagnosekoder) => {
+                                setSelectedDiagnosekoder(diagnosekoder);
+                            }}
+                            label="Diagnosekode"
+                            selectedDiagnosekoder={selectedDiagnosekoder}
+                            hideLabel
+                            searcherPromise={searcherPromise}
+                        />
+                    </Box>
+                    <Box marginTop={Margin.xLarge}>
+                        <div style={{ display: 'flex' }}>
+                            <Button
+                                size="small"
+                                disabled={isSubmitting}
+                                loading={isSubmitting}
+                                id="bekreftDiagnosekodeKnapp"
+                            >
+                                Bekreft
+                            </Button>
+                            <Button
+                                variant="secondary"
+                                size="small"
+                                style={{ marginLeft: '1rem' }}
+                                onClick={handleClose}
+                                disabled={isSubmitting}
+                            >
+                                Avbryt
+                            </Button>
+                        </div>
+                    </Box>
                 </form>
-            </Modal.Content>
+            </Modal.Body>
         </Modal>
     );
 };

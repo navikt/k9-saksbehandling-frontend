@@ -37,10 +37,6 @@ const OverlappendePeriodeModal = ({
     isOpen,
     isSubmitting,
 }: OverlappendePeriodeModalProps): JSX.Element => {
-    useEffect(() => {
-        Modal.setAppElement(document.body);
-    }, []);
-
     const overlappendePerioderISammeBehandling =
         perioderMedEndring.filter(({ endrerVurderingSammeBehandling }) => endrerVurderingSammeBehandling === true) ||
         [];
