@@ -1,7 +1,7 @@
-import { Alert, BodyShort, Heading, Modal } from '@navikt/ds-react';
-import { Box, Margin } from '@navikt/ft-plattform-komponenter';
-import React, { useEffect } from 'react';
-import { PeriodeMedEndring } from '../../../types/PeriodeMedEndring';
+import {Alert, BodyShort, Heading} from '@navikt/ds-react';
+import {Box, Margin} from '@navikt/ft-plattform-komponenter';
+import React from 'react';
+import {PeriodeMedEndring} from '../../../types/PeriodeMedEndring';
 import ConfirmationModal from '../confirmation-modal/ConfirmationModal';
 
 interface OverlappendePeriodeModalProps {
