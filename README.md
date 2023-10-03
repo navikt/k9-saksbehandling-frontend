@@ -13,6 +13,11 @@ npmRegistries:
     npmAuthToken: HER_SKAL_DIN_GITHUB_PAT_LIGGE
 ```
 
+### Spesielle hensyn
+
+Pakker i dette repo som har både _@navikt/ds-*_ og _@navikt/ft-*_ avhengigheter: Disse må ha samme versjon av _@navikt/ds-*_ avhengighet. 
+Så hvis feks _@navikt/ft-plattform-komponenter_ er brukt, og den er avhengig av _@navikt/ds-css versjon_ 5.5.0, så må pakken i dette repo også 
+deklarere versjon 5.5.0 av @navikt/ds-css hvis det er en avhengighet. Ellers kan det oppstå css feil.
 
 ### Kjøre apper lokalt
 For å kjøre frontend-appen i utvikling, kjør `yarn` etterfulgt av `yarn build-frontend-modules` på rot. Deretter kan du kjøre `yarn dev` i pakken (f.eks. i packages/om-barnet) du ønsker å kjøre opp.
@@ -22,7 +27,8 @@ Denne index-filen er kun ment for utvikling.
 
 For enkelthet i utvikling ligger det et eget mockup-api under `/mock` i pakkene som server mockede data, og som
 `index.html` på rot i pakken by default konfigurerer frontenden til å gjøre sine api-kall mot. Mockup-apiet kjøres
-opp ved å kjøre `yarn api-mock` på rot av pakken.
+opp ved å kjøre `yarn api-mock` på rot av pakken. I noen pakker blir _msw_ service worker brukt istedet, så man trenger
+bare kjøre `yarn dev`.
 
 ### Kjøring av alle tester
 
