@@ -1,12 +1,12 @@
-import {get} from '@navikt/k9-fe-http-utils';
-import {Period} from '@navikt/k9-fe-period-utils';
-import {Box, Margin, NavigationWithDetailView, PageContainer} from '@navikt/ft-plattform-komponenter';
-import React, {useMemo} from 'react';
-import Step, {langvarigSykdomSteg, StepId} from '../../../types/Step';
+import { get } from '@navikt/k9-fe-http-utils';
+import { Period } from '@navikt/k9-fe-period-utils';
+import { Box, Margin, NavigationWithDetailView, PageContainer } from '@navikt/ft-plattform-komponenter';
+import React, { useMemo } from 'react';
+import Step, { langvarigSykdomSteg, StepId } from '../../../types/Step';
 import SykdomsstegStatusResponse from '../../../types/SykdomsstegStatusResponse';
 import Vurderingselement from '../../../types/Vurderingselement';
 import Vurderingsoversikt from '../../../types/Vurderingsoversikt';
-import {finnNesteStegForOpplæringspenger} from '../../../util/statusUtils';
+import { finnNesteStegForOpplæringspenger } from '../../../util/statusUtils';
 import ContainerContext from '../../context/ContainerContext';
 import Vurderingsnavigasjon from '../vurderingsnavigasjon/Vurderingsnavigasjon';
 import ActionType from './actionTypes';

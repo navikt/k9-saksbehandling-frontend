@@ -1,20 +1,20 @@
-import {Box, Margin, TitleWithUnderline, WarningIcon} from '@navikt/ft-plattform-komponenter';
-import {get, post} from '@navikt/k9-fe-http-utils';
+import { Box, Margin, TitleWithUnderline, WarningIcon } from '@navikt/ft-plattform-komponenter';
+import { get, post } from '@navikt/k9-fe-http-utils';
 
-import {Loader} from '@navikt/ds-react';
-import React, {useMemo} from 'react';
-import {useMutation, useQueries, useQuery} from 'react-query';
+import { Loader } from '@navikt/ds-react';
+import React, { useMemo } from 'react';
+import { useMutation, useQueries, useQuery } from 'react-query';
 import LinkRel from '../../../constants/LinkRel';
 import Diagnosekode from '../../../types/Diagnosekode';
-import {DiagnosekodeResponse} from '../../../types/DiagnosekodeResponse';
-import {findLinkByRel} from '../../../util/linkUtils';
+import { DiagnosekodeResponse } from '../../../types/DiagnosekodeResponse';
+import { findLinkByRel } from '../../../util/linkUtils';
 import ContainerContext from '../../context/ContainerContext';
 import AddButton from '../add-button/AddButton';
 import DiagnosekodeModal from '../diagnosekode-modal/DiagnosekodeModal';
 import Diagnosekodeliste from '../diagnosekodeliste/Diagnosekodeliste';
 import IconWithText from '../icon-with-text/IconWithText';
 import WriteAccessBoundContent from '../write-access-bound-content/WriteAccessBoundContent';
-import initDiagnosekodeSearcher, {toLegacyDiagnosekode} from '../../../util/diagnosekodeSearcher';
+import initDiagnosekodeSearcher, { toLegacyDiagnosekode } from '../../../util/diagnosekodeSearcher';
 
 // Start initializing diagnosekode searcher instance, with pagesize 8, so that it can be used both here and in the DiagnosekodeModal.
 // This reuse is possible since we don't use the paging functionality in the instance anyways.
