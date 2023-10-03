@@ -1,5 +1,6 @@
 import React from 'react';
 import { Period } from '@navikt/k9-fe-period-utils';
+import { addYearsToDate } from '@navikt/k9-fe-date-utils';
 import Vurderingsoversikt from '../../../types/Vurderingsoversikt';
 import { findLinkByRel } from '../../../util/linkUtils';
 import LinkRel from '../../../constants/LinkRel';
@@ -123,6 +124,14 @@ const VurderingsdetaljvisningForNyVurdering = ({
                             onSubmit={onSubmit}
                             onAvbryt={radForNyVurderingVises ? () => onAvbryt() : undefined}
                             isSubmitting={isSubmitting}
+                            harPerioderDerPleietrengendeErOver18år={
+                                vurderingsoversikt.harPerioderDerPleietrengendeErOver18år
+                            }
+                            barnetsAttenårsdag={
+                                vurderingsoversikt.harPerioderDerPleietrengendeErOver18år
+                                    ? addYearsToDate(vurderingsoversikt.pleietrengendesFødselsdato, 18)
+                                    : undefined
+                            }
                         />
                     );
                 }
