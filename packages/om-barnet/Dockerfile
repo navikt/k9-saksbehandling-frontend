@@ -1,4 +1,4 @@
-FROM nginxinc/nginx-unprivileged:1.23.3-alpine
+FROM nginxinc/nginx-unprivileged:stable-alpine-slim
 
 RUN rm /etc/nginx/conf.d/default.conf
 ADD server.nginx /etc/nginx/conf.d/app.conf.template
