@@ -16,9 +16,9 @@ const ConfirmationModal = ({
     onCancel,
     isOpen,
     isSubmitting,
-}: ConfirmationModalProps): JSX.Element => isOpen ? (
+}: ConfirmationModalProps): JSX.Element => (
     <Modal open={isOpen} onClose={onCancel} className={styles.confirmationModal}>
-        <Modal.Body>
+        <Modal.Content>
             {children}
             <div className={styles.confirmationModal__buttonSection}>
                 <Button
@@ -40,8 +40,8 @@ const ConfirmationModal = ({
                     Avbryt
                 </Button>
             </div>
-        </Modal.Body>
+        </Modal.Content>
     </Modal>
-) : null;
+);
 
 export default ConfirmationModal;
