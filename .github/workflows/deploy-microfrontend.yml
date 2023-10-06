@@ -39,7 +39,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       packages: write
-      contents: write
+      contents: read
     outputs:
       image: ${{ steps.docker-push.outputs.image }}
     steps:
@@ -154,40 +154,10 @@ jobs:
           RESOURCE: ./packages/${{ github.event.inputs.application }}/nais/naiserator.yml
           VARS: ./packages/${{ github.event.inputs.application }}/nais/prod-fss.json
 
-      - name: Create Release
-        id: create_release
-        if: (github.ref == 'refs/heads/main' && github.event.inputs.environment == 'prod')
-        uses: actions/create-release@latest
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.event.inputs.application }}.${{ env.TAG }}
-          release_name: ${{ github.event.inputs.application }} ${{ env.TAG }}
-          body: |
-            For JS, add this to your app:
-            ```
-            <script
-              type="text/javascript"
-              src="https://${{ github.event.inputs.application }}.dev.adeo.no/${{ env.MAJOR_VERSION }}/app.js"
-              integrity="sha384-${{ env.JS_HASH }}"
-              crossorigin="anonymous"
-            ></script>
-            ```
-
-            For CSS, add this to the `<head>` of your app:
-            ```
-            <link
-              rel="stylesheet"
-              href="https://${{ github.event.inputs.application }}.dev.adeo.no/${{ env.MAJOR_VERSION }}/styles.css"
-              integrity="sha384-${{ env.CSS_HASH }}"
-              crossorigin="anonymous"
-            >
-            ```
-          draft: false
-          prerelease: false
   trivy:
     needs: [ deploy-docker-image ]
     uses: navikt/sif-gha-workflows/.github/workflows/trivy-ghcr.yml@main
+    if: (github.ref == 'refs/heads/main')
     permissions:
       contents: write
       security-events: write
