@@ -152,3 +152,13 @@ jobs:
             ```
           draft: false
           prerelease: false
+  trivy:
+    needs: [ deploy-docker-image ]
+    uses: navikt/sif-gha-workflows/.github/workflows/trivy-ghcr.yml@main
+    permissions:
+      contents: write
+      security-events: write
+      actions: read
+    secrets: inherit
+    with:
+      image: ${{ needs.deploy-docker-image.outputs.image }}
