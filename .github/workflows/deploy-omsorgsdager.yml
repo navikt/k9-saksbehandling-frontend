@@ -127,6 +127,7 @@ jobs:
   trivy:
     needs: [ deploy-docker-image ]
     uses: navikt/sif-gha-workflows/.github/workflows/trivy-ghcr.yml@main
+    if: (github.ref == 'refs/heads/main')
     permissions:
       contents: write
       security-events: write
