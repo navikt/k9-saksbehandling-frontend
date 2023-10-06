@@ -24,6 +24,8 @@ jobs:
     permissions:
       packages: write
       contents: write
+    outputs:
+      image: ${{ steps.docker-push.outputs.image }}
     steps:
       - name: Hente kode
         uses: actions/checkout@v4
@@ -63,6 +65,9 @@ jobs:
           echo "LATEST=${IMAGE_BASE}:latest" >> $GITHUB_ENV
           echo "CSS_HASH=$(shasum -b -a 384 build/${MAJOR_VERSION}/styles.css | awk '{ print $1 }' | xxd -r -p | base64)" >> $GITHUB_ENV
           echo "JS_HASH=$(shasum -b -a 384 build/${MAJOR_VERSION}/app.js | awk '{ print $1 }' | xxd -r -p | base64)" >> $GITHUB_ENV
+      - name: Set image output
+        id: docker-push
+        run: echo "IMAGE=$IMAGE_BASE:$TAG" >> $GITHUB_OUTPUT
       - uses: docker/login-action@v3
         with:
           registry: ghcr.io
