@@ -1,68 +1,26 @@
-name: Deploy all microfrontends prod
-
+name: Deploy all microfrontends to prod
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
-  dispatch_workflows:
+  deploy:
     runs-on: ubuntu-latest
-    permissions: 
-      contents: write
+    strategy:
+      matrix:
+        environment: [ prod ]
+        application: [
+          psb-etablert-tilsyn-frontend,
+          psb-inntektsmelding-frontend,
+          medisinsk-vilkar-frontend,
+          psb-om-barnet-frontend,
+          omsorgen-for-frontend,
+          omsorgsdager-frontend,
+          psb-uttak-frontend
+        ]
     steps:
-      - name: Dispatch Deploy Omsorgsdager workflow
-        uses: peter-evans/repository-dispatch@v2
+      - name: Deploy ${{ matrix.application }} to ${{ matrix.environment }}
+        uses: ./.github/workflows/deploy-microfrontend.yml
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          repository: ${{ github.repository }}
-          event-type: deploy-omsorgsdager
-          client-payload: '{"ref": "main", "environment": "Prod"}'
-
-      - name: Dispatch Deploy Uttak workflow
-        uses: peter-evans/repository-dispatch@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          repository: ${{ github.repository }}
-          event-type: deploy-uttak
-          client-payload: '{"ref": "main", "environment": "Prod"}'
-
-      - name: Dispatch Deploy Etablert Tilsyn workflow
-        uses: peter-evans/repository-dispatch@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          repository: ${{ github.repository }}
-          event-type: deploy-etablert-tilsyn
-          client-payload: '{"ref": "main", "environment": "Prod"}'
-
-      - name: Dispatch Deploy Inntektsmelding workflow
-        uses: peter-evans/repository-dispatch@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          repository: ${{ github.repository }}
-          event-type: deploy-inntektsmelding
-          client-payload: '{"ref": "main", "environment": "Prod"}'
-
-      - name: Dispatch Deploy Medisinsk Vilkår workflow
-        uses: peter-evans/repository-dispatch@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          repository: ${{ github.repository }}
-          event-type: deploy-medisinsk-vilkar
-          client-payload: '{"ref": "main", "environment": "Prod"}'
-
-      - name: Dispatch Deploy Om Barnet workflow
-        uses: peter-evans/repository-dispatch@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          repository: ${{ github.repository }}
-          event-type: deploy-om-barnet
-          client-payload: '{"ref": "main", "environment": "Prod"}'
-
-      - name: Dispatch Deploy Omsorgen For workflow
-        uses: peter-evans/repository-dispatch@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          repository: ${{ github.repository }}
-          event-type: deploy-omsorgen-for
-          client-payload: '{"ref": "main", "environment": "Prod"}'
+          environment: ${{ matrix.environment }}
+          application: ${{ matrix.application }}

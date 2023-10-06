@@ -3,7 +3,7 @@ on:
     pull_request:
         types: [opened, synchronize]
         paths:
-            - 'packages/om-barnet/**/*'
+            - 'packages/psb-om-barnet-frontend/**/*'
 env:
     package-name: psb-om-barnet-frontend
 jobs:
