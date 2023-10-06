@@ -3,7 +3,7 @@ on:
     pull_request:
         types: [opened, synchronize]
         paths:
-            - 'packages/omsorgsdager/**/*'
+            - 'packages/omsorgsdager-frontend/**/*'
 env:
     package-name: omsorgsdager-frontend
 jobs:

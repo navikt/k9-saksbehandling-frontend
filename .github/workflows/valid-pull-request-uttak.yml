@@ -3,7 +3,7 @@ on:
     pull_request:
         types: [opened, synchronize]
         paths:
-            - 'packages/uttak/**/*'
+            - 'packages/psb-uttak-frontend/**/*'
 env:
     package-name: psb-uttak-frontend
 jobs:

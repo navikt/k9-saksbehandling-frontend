@@ -3,7 +3,7 @@ on:
     pull_request:
         types: [opened, synchronize]
         paths:
-            - 'packages/medisinsk-vilkår/**/*'
+            - 'packages/medisinsk-vilkar-frontend/**/*'
 env:
     package-name: medisinsk-vilkar-frontend
 jobs:

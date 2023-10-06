@@ -3,7 +3,7 @@ on:
     pull_request:
         types: [opened, synchronize]
         paths:
-            - 'packages/inntektsmelding/**/*'
+            - 'packages/psb-inntektsmelding-frontend/**/*'
 env:
     package-name: psb-inntektsmelding-frontend
 jobs:

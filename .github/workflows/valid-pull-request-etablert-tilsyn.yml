@@ -3,7 +3,7 @@ on:
     pull_request:
         types: [opened, synchronize]
         paths:
-            - 'packages/etablert-tilsyn/**/*'
+            - 'packages/psb-etablert-tilsyn-frontend/**/*'
 env:
     package-name: psb-etablert-tilsyn-frontend
 jobs:

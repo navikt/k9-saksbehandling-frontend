@@ -17807,9 +17807,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"medisinsk-vilkar-frontend@workspace:packages/medisinsk-vilkår":
+"medisinsk-vilkar-frontend@workspace:packages/medisinsk-vilkar-frontend":
   version: 0.0.0-use.local
-  resolution: "medisinsk-vilkar-frontend@workspace:packages/medisinsk-vilkår"
+  resolution: "medisinsk-vilkar-frontend@workspace:packages/medisinsk-vilkar-frontend"
   dependencies:
     "@navikt/diagnosekoder": ^1.2023.0
     "@navikt/ds-css": 4.12.3
@@ -19683,9 +19683,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"omsorgen-for-frontend@workspace:packages/omsorgen-for":
+"omsorgen-for-frontend@workspace:packages/omsorgen-for-frontend":
   version: 0.0.0-use.local
-  resolution: "omsorgen-for-frontend@workspace:packages/omsorgen-for"
+  resolution: "omsorgen-for-frontend@workspace:packages/omsorgen-for-frontend"
   dependencies:
     "@hookform/error-message": 2.0.1
     "@navikt/ds-css": 4.12.3
@@ -19739,9 +19739,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"omsorgsdager-frontend@workspace:packages/omsorgsdager":
+"omsorgsdager-frontend@workspace:packages/omsorgsdager-frontend":
   version: 0.0.0-use.local
-  resolution: "omsorgsdager-frontend@workspace:packages/omsorgsdager"
+  resolution: "omsorgsdager-frontend@workspace:packages/omsorgsdager-frontend"
   dependencies:
     "@navikt/ds-css": 4.12.3
     "@navikt/ds-react": 4.12.1
@@ -21891,9 +21891,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"psb-etablert-tilsyn-frontend@workspace:packages/etablert-tilsyn":
+"psb-etablert-tilsyn-frontend@workspace:packages/psb-etablert-tilsyn-frontend":
   version: 0.0.0-use.local
-  resolution: "psb-etablert-tilsyn-frontend@workspace:packages/etablert-tilsyn"
+  resolution: "psb-etablert-tilsyn-frontend@workspace:packages/psb-etablert-tilsyn-frontend"
   dependencies:
     "@navikt/ds-css": 4.12.3
     "@navikt/ds-icons": 3.4.3
@@ -21952,9 +21952,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"psb-inntektsmelding-frontend@workspace:packages/inntektsmelding":
+"psb-inntektsmelding-frontend@workspace:packages/psb-inntektsmelding-frontend":
   version: 0.0.0-use.local
-  resolution: "psb-inntektsmelding-frontend@workspace:packages/inntektsmelding"
+  resolution: "psb-inntektsmelding-frontend@workspace:packages/psb-inntektsmelding-frontend"
   dependencies:
     "@navikt/ds-css": 4.12.3
     "@navikt/ds-icons": 3.4.3
@@ -22021,9 +22021,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"psb-om-barnet-frontend@workspace:packages/om-barnet":
+"psb-om-barnet-frontend@workspace:packages/psb-om-barnet-frontend":
   version: 0.0.0-use.local
-  resolution: "psb-om-barnet-frontend@workspace:packages/om-barnet"
+  resolution: "psb-om-barnet-frontend@workspace:packages/psb-om-barnet-frontend"
   dependencies:
     "@hookform/error-message": 2.0.1
     "@navikt/ds-css": 4.12.3
@@ -22061,9 +22061,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"psb-uttak-frontend@workspace:packages/uttak":
+"psb-uttak-frontend@workspace:packages/psb-uttak-frontend":
   version: 0.0.0-use.local
-  resolution: "psb-uttak-frontend@workspace:packages/uttak"
+  resolution: "psb-uttak-frontend@workspace:packages/psb-uttak-frontend"
   dependencies:
     "@navikt/ds-css": 4.12.3
     "@navikt/ds-react": 4.12.1
