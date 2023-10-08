@@ -13,7 +13,7 @@ describe('Sykdom', () => {
         cy.contains('Legg til innleggelsesperiode').click();
         cy.get('input[id="innleggelsesperioder[3].fom"]').type('010123');
         cy.get('input[id="innleggelsesperioder[3].tom"]').type('300123');
-        cy.get('dialog').contains('Bekreft').click();
+        cy.get('div[role="dialog"]').contains('Bekreft').click();
         cy.contains('Fortsett').click();
     });
     it('skal kunne håndtere tilsyn og pleie', () => {
@@ -39,7 +39,7 @@ describe('Sykdom', () => {
             'Du har ikke vurdert alle periodene som må vurderes. Resterende perioder vurderer du etter at du har lagret denne.'
         ).should('not.exist');
         cy.contains('Bekreft').click();
-        cy.get('dialog').find('button').contains('Bekreft').click();
+        cy.get('.ReactModalPortal').find('button').contains('Bekreft').click();
         cy.contains('Eventuelle endringer er registrert').click();
     });
     it('skal kunne håndtere to omsorgspersoner', () => {
@@ -47,7 +47,7 @@ describe('Sykdom', () => {
         cy.get('[name="vurderingAvToOmsorgspersoner"]').type('test');
         cy.get('input[id="harBehovForToOmsorgspersonerYES"]').check({ force: true });
         cy.contains('Bekreft').click();
-        cy.get('dialog').find('button').contains('Bekreft').click();
+        cy.get('.ReactModalPortal').find('button').contains('Bekreft').click();
         cy.contains('Sykdom er ferdig vurdert og du kan gå videre i behandlingen.').should('exist');
     });
 });
