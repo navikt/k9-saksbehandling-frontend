@@ -1,4 +1,4 @@
-FROM nginxinc/nginx-unprivileged:1.23.3-alpine
+FROM nginxinc/nginx-unprivileged:stable-alpine-slim
 
 ADD server.nginx /etc/nginx/conf.d/app.conf.template
 COPY build /usr/share/nginx/html
