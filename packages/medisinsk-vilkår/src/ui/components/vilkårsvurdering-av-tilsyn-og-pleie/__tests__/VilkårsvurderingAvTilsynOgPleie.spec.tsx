@@ -189,14 +189,13 @@ describe('VilkårsvurderingAvTilsynOgPleie', () => {
         });
 
         it('should open vurdering-form when Ny vurdering-button is clicked, and form should be closeable by clicking Avbryt button', async () => {
-            const { getByText, queryByText } = renderVilkårsvurderingComponent();
-            await waitFor(() => {
-                expect(queryByText(/Vurdering av tilsyn og pleie/)).toBeNull();
-                fireEvent.click(screen.getByText('Ny vurdering'));
-                expect(getByText(/Vurdering av tilsyn og pleie/i)).toBeInTheDocument();
-                fireEvent.click(screen.getByText(/Avbryt/i));
-                expect(queryByText(/Vurdering av tilsyn og pleie/)).toBeNull();
-            });
+            const res = renderVilkårsvurderingComponent();
+            expect(res.queryByText(/Vurdering av tilsyn og pleie/)).toBeNull()
+            fireEvent.click(await res.findByText('Ny vurdering'));
+            expect(res.getByText(/Vurdering av tilsyn og pleie/i)).toBeVisible()
+            const avbrytKnapp = await res.findByText(/^Avbryt$/i)
+            fireEvent.click(avbrytKnapp);
+            expect(res.queryByText(/Vurdering av tilsyn og pleie/)).toBeNull()
         });
     });
 
