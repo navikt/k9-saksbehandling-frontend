@@ -1,4 +1,4 @@
-import { Loader, Modal } from '@navikt/ds-react';
+import { Loader } from '@navikt/ds-react';
 import { Box, LinkButton, Margin, PageError, TitleWithUnderline } from '@navikt/ft-plattform-komponenter';
 import { get } from '@navikt/k9-fe-http-utils';
 import { Period } from '@navikt/k9-fe-period-utils';
@@ -25,9 +25,6 @@ interface InnleggelsesperiodeoversiktProps {
 const Innleggelsesperiodeoversikt = ({
     onInnleggelsesperioderUpdated,
 }: InnleggelsesperiodeoversiktProps): JSX.Element => {
-    useEffect(() => {
-        Modal.setAppElement(document.body);
-    }, []);
     const { endpoints, httpErrorHandler } = React.useContext(ContainerContext);
 
     const [modalIsOpen, setModalIsOpen] = React.useState(false);

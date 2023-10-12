@@ -7,7 +7,6 @@ import Dokument from '../../../types/Dokument';
 import { findLinkByRel } from '../../../util/linkUtils';
 import scrollUp from '../../../util/viewUtils';
 import ContainerContext from '../../context/ContainerContext';
-import ModalFormWrapper from '../modal-form-wrapper/ModalFormWrapper';
 import styles from './slettDuplikatModal.css';
 
 interface SlettDuplikatModalProps {
@@ -54,37 +53,35 @@ const SlettDuplikatModal = ({ handleCloseModal, selectedDocument, onRemove }: Sl
         );
     };
     return (
-        <Modal open closeButton onClose={handleCloseModal}>
-            <Modal.Content>
-                <ModalFormWrapper title="Fjern som duplikat">
-                    <BodyShort size="small">
-                        Når du fjerner et dokument som duplikat vil det bli lagt som et eget dokument i listen.
-                    </BodyShort>
-                    {removeDuplikatFeilet && (
-                        <Box marginTop={Margin.medium}>
-                            <PageError message="Noe gikk galt, vennligst prøv igjen senere" />
-                        </Box>
-                    )}
-                    <div className={styles.buttonContainer}>
-                        <Button
-                            id="submitButton"
-                            onClick={(e) => {
-                                e.preventDefault();
-                                removeDuplikatreferanse();
-                            }}
-                            loading={isSubmitting}
-                            disabled={isSubmitting}
-                        >
-                            Fjern som duplikat
+        <Modal open header={{heading: "Fjern som duplikat", closeButton: true}} onClose={handleCloseModal}>
+            <Modal.Body>
+                <BodyShort size="small">
+                    Når du fjerner et dokument som duplikat vil det bli lagt som et eget dokument i listen.
+                </BodyShort>
+                {removeDuplikatFeilet && (
+                    <Box marginTop={Margin.medium}>
+                        <PageError message="Noe gikk galt, vennligst prøv igjen senere" />
+                    </Box>
+                )}
+                <div className={styles.buttonContainer}>
+                    <Button
+                        id="submitButton"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            removeDuplikatreferanse();
+                        }}
+                        loading={isSubmitting}
+                        disabled={isSubmitting}
+                    >
+                        Fjern som duplikat
+                    </Button>
+                    <div className={styles.cancelButton}>
+                        <Button variant="secondary" onClick={handleCloseModal}>
+                            Avbryt
                         </Button>
-                        <div className={styles.cancelButton}>
-                            <Button variant="secondary" onClick={handleCloseModal}>
-                                Avbryt
-                            </Button>
-                        </div>
                     </div>
-                </ModalFormWrapper>
-            </Modal.Content>
+                </div>
+            </Modal.Body>
         </Modal>
     );
 };

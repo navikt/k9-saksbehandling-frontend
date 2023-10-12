@@ -9,7 +9,6 @@ import mockedDokumentoversikt from './mocked-data/mockedDokumentoversikt';
 import { createKontinuerligTilsynVurdering, createToOmsorgspersonerVurdering } from './apiUtils';
 import Vurderingstype from '../src/types/Vurderingstype';
 import mockedDiagnosekoderesponse from './mocked-data/mockedDiagnosekodeResponse';
-import mockedDiagnosekodeSearchResponse from './mocked-data/mockedDiagnosekodeSearchResponse';
 import createStrukturertDokument from './mocked-data/createStrukturertDokument';
 import mockedInnleggelsesperioder from './mocked-data/mockedInnleggelsesperioder';
 import { Dokumenttype } from '../src/types/Dokument';
