@@ -10,7 +10,6 @@ const rootNodeModules = path.resolve(__dirname, '../../../node_modules');
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
 module.exports = {
-    entry: path.resolve(__dirname, '../', 'src') + '/app.ts',
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.css'],
     },

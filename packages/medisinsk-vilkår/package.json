@@ -1,7 +1,7 @@
 {
-    "name": "medisinsk-vilkar-frontend",
-    "version": "1.0.6",
-    "private": true,
+    "name": "@navikt/k9-fe-medisinsk-vilkar",
+    "version": "0.0.1",
+    "main": "./build/index.js",
     "scripts": {
         "test": "cross-env DEBUG=test JEST_PUPPETEER_CONFIG=./jest-puppeteer.config.js jest --maxWorkers=2 --detectOpenHandles --config=./jest.config.js ",
         "test-watch": "jest --watch",
@@ -29,7 +29,8 @@
         "@types/react": "18.2.24",
         "@types/react-dom": "18.2.8",
         "@types/react-modal": "3.16.1",
-        "cross-env": "7.0.3"
+        "cross-env": "7.0.3",
+        "webpack-node-externals": "^3.0.0"
     },
     "dependencies": {
         "@navikt/diagnosekoder": "^1.2023.0",
