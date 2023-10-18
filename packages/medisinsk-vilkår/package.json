@@ -2,6 +2,11 @@
     "name": "@navikt/k9-fe-medisinsk-vilkar",
     "version": "0.0.1",
     "main": "./build/index.js",
+    "files": [
+        "build",
+        "index.ts",
+        "package.json"
+    ],
     "scripts": {
         "test": "cross-env DEBUG=test JEST_PUPPETEER_CONFIG=./jest-puppeteer.config.js jest --maxWorkers=2 --detectOpenHandles --config=./jest.config.js ",
         "test-watch": "jest --watch",
@@ -63,5 +68,12 @@
     },
     "msw": {
         "workerDirectory": "public"
+    },
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/navikt/k9-saksbehandling-frontend"
     }
 }
