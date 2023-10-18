@@ -3382,7 +3382,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@navikt/k9-fe-form-utils@^1.0.9, @navikt/k9-fe-form-utils@workspace:packages/k9-frontend-modules/form-utils":
+"@navikt/k9-fe-form-utils@^1.0.10, @navikt/k9-fe-form-utils@^1.0.9, @navikt/k9-fe-form-utils@workspace:packages/k9-frontend-modules/form-utils":
   version: 0.0.0-use.local
   resolution: "@navikt/k9-fe-form-utils@workspace:packages/k9-frontend-modules/form-utils"
   dependencies:
@@ -3445,7 +3445,7 @@ __metadata:
     "@navikt/ft-plattform-komponenter": 2.3.5
     "@navikt/k9-fe-array-utils": 1.0.4
     "@navikt/k9-fe-date-utils": ^1.0.5
-    "@navikt/k9-fe-form-utils": ^1.0.9
+    "@navikt/k9-fe-form-utils": ^1.0.10
     "@navikt/k9-fe-http-utils": 1.0.4
     "@navikt/k9-fe-period-utils": ^1.0.8
     "@popperjs/core": 2.11.8
