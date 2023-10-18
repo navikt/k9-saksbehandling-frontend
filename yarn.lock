@@ -3284,9 +3284,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@navikt/ft-plattform-komponenter@npm:2.3.5":
-  version: 2.3.5
-  resolution: "@navikt/ft-plattform-komponenter@npm:2.3.5::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Fft-plattform-komponenter%2F2.3.5%2Fb468dfd13067544398096cf0f7f60aff5cf73bdf"
+"@navikt/ft-plattform-komponenter@npm:2.3.6":
+  version: 2.3.6
+  resolution: "@navikt/ft-plattform-komponenter@npm:2.3.6::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Fft-plattform-komponenter%2F2.3.6%2F925cc74a1f9cc6e803886574f0a61718b75d67fa"
   dependencies:
     "@navikt/aksel-icons": 5.6.1
     "@navikt/ds-css": 5.6.1
@@ -3303,7 +3303,7 @@ __metadata:
     react-collapse: 5.1.1
     react-dom: 18.2.0
     react-popper: 2.3.0
-  checksum: f35e54c2ed3efe6452928deb47d959cf33db92c884864ec084aa51037153bcbfdb8fd3a8d57e4d04353c311fe7dd762f5f92944447ea88eb1494437bc16887c7
+  checksum: e57845233a1786bae17ac6cf949596199ce2a09e1bf8a45a3fad339d09953cbafee1ea3964be53c6e544e32e1e13004b5bd961cf9cae3480ed1ab70236d5f4b5
   languageName: node
   linkType: hard
 
@@ -3390,7 +3390,7 @@ __metadata:
     "@navikt/ds-css": 5.6.1
     "@navikt/ds-react": 5.6.1
     "@navikt/fnrvalidator": 1.3.3
-    "@navikt/ft-plattform-komponenter": 2.3.5
+    "@navikt/ft-plattform-komponenter": 2.3.6
     "@navikt/k9-fe-bem-utils": 1.0.2
     "@navikt/k9-fe-period-utils": ^1.0.8
     "@popperjs/core": 2.11.8
@@ -3442,7 +3442,7 @@ __metadata:
     "@navikt/ds-icons": 3.4.3
     "@navikt/ds-react": 5.6.1
     "@navikt/fnrvalidator": 1.3.3
-    "@navikt/ft-plattform-komponenter": 2.3.5
+    "@navikt/ft-plattform-komponenter": 2.3.6
     "@navikt/k9-fe-array-utils": 1.0.4
     "@navikt/k9-fe-date-utils": ^1.0.5
     "@navikt/k9-fe-form-utils": ^1.0.10
@@ -15362,7 +15362,7 @@ __metadata:
     "@navikt/ds-icons": 3.4.3
     "@navikt/ds-react": 5.6.1
     "@navikt/fnrvalidator": 1.3.3
-    "@navikt/ft-plattform-komponenter": 2.3.5
+    "@navikt/ft-plattform-komponenter": 2.3.6
     "@navikt/k9-fe-array-utils": 1.0.4
     "@navikt/k9-fe-date-utils": ^1.0.5
     "@navikt/k9-fe-form-utils": ^1.0.9
@@ -17245,7 +17245,7 @@ __metadata:
     "@navikt/ds-icons": 3.4.3
     "@navikt/ds-react": 5.6.1
     "@navikt/fnrvalidator": 1.3.3
-    "@navikt/ft-plattform-komponenter": 2.3.5
+    "@navikt/ft-plattform-komponenter": 2.3.6
     "@navikt/k9-fe-date-utils": ^1.0.5
     "@navikt/k9-fe-form-utils": ^1.0.9
     "@navikt/k9-fe-http-utils": 1.0.4
@@ -17305,7 +17305,7 @@ __metadata:
     "@navikt/ds-react": 5.6.1
     "@navikt/fnrvalidator": 1.3.3
     "@navikt/ft-form-hooks": 4.2.9
-    "@navikt/ft-plattform-komponenter": 2.3.5
+    "@navikt/ft-plattform-komponenter": 2.3.6
     "@navikt/k9-fe-array-utils": 1.0.4
     "@navikt/k9-fe-date-utils": ^1.0.5
     "@navikt/k9-fe-http-utils": 1.0.4
@@ -17370,7 +17370,7 @@ __metadata:
     "@navikt/ds-css": 5.6.1
     "@navikt/ds-react": 5.6.1
     "@navikt/fnrvalidator": 1.3.3
-    "@navikt/ft-plattform-komponenter": 2.3.5
+    "@navikt/ft-plattform-komponenter": 2.3.6
     "@navikt/k9-fe-array-utils": 1.0.4
     "@navikt/k9-fe-date-utils": ^1.0.5
     "@navikt/k9-fe-form-utils": ^1.0.9
@@ -17409,7 +17409,7 @@ __metadata:
     "@navikt/ds-react": 5.6.1
     "@navikt/ft-form-hooks": 4.2.9
     "@navikt/ft-form-validators": 2.1.3
-    "@navikt/ft-plattform-komponenter": 2.3.5
+    "@navikt/ft-plattform-komponenter": 2.3.6
     "@popperjs/core": 2.11.8
     "@types/jest": 29.5.5
     "@types/node": 20.8.0
