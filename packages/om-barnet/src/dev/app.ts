@@ -1,6 +1,8 @@
-import renderers from './util/renderers';
-import './styles.css';
-import ContainerContract from './types/ContainerContract';
+import renderers from '../util/renderers';
+import './devStyles.css';
+import '../styles.css';
+import ContainerContract from '../types/ContainerContract';
+import '@navikt/ft-plattform-komponenter/dist/style.css';
 
 interface ExtendedWindow extends Window {
     renderOmBarnetApp: (id: string, contract: ContainerContract) => void;
