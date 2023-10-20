@@ -4,6 +4,7 @@ on:
         types: [opened, synchronize]
         paths:
             - 'packages/omsorgsdager/**/*'
+            - 'yarn.lock'
 env:
     package-name: omsorgsdager-frontend
 jobs:
@@ -22,7 +23,7 @@ jobs:
                   NPM_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
             - name: Sette opp Node
               uses: actions/setup-node@v3
-                  
+
             - name: Installere dependencies
               run: yarn install --immutable
             - name: Kjøre linter

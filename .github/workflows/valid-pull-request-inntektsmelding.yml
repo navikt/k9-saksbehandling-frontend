@@ -4,6 +4,7 @@ on:
         types: [opened, synchronize]
         paths:
             - 'packages/inntektsmelding/**/*'
+            - 'yarn.lock'
 env:
     package-name: psb-inntektsmelding-frontend
 jobs:
@@ -22,7 +23,7 @@ jobs:
                   NPM_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
             - name: Sette opp Node
               uses: actions/setup-node@v3
-                  
+
             - name: Installere dependencies
               run: yarn install --immutable
             - name: Bygg k9-frontend-modules
