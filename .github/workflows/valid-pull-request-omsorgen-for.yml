@@ -4,6 +4,7 @@ on:
         types: [opened, synchronize]
         paths:
             - 'packages/omsorgen-for/**/*'
+            - 'yarn.lock'
 env:
     package-name: '@navikt/k9-fe-omsorgen-for'
 jobs:

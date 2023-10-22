@@ -4,6 +4,7 @@ on:
         types: [opened, synchronize]
         paths:
             - 'packages/omsorgsdager/**/*'
+            - 'yarn.lock'
 env:
     package-name: '@navikt/k9-fe-omsorgsdager'
 jobs:

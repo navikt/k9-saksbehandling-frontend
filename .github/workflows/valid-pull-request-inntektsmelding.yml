@@ -4,6 +4,7 @@ on:
         types: [opened, synchronize]
         paths:
             - 'packages/inntektsmelding/**/*'
+            - 'yarn.lock'
 env:
     package-name: '@navikt/k9-fe-inntektsmelding'
 jobs:

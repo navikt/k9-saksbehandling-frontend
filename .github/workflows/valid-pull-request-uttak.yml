@@ -4,6 +4,7 @@ on:
         types: [opened, synchronize]
         paths:
             - 'packages/uttak/**/*'
+            - 'yarn.lock'
 env:
     package-name: '@navikt/k9-fe-uttak'
 jobs:

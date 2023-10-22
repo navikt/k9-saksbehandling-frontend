@@ -4,6 +4,7 @@ on:
         types: [opened, synchronize]
         paths:
             - 'packages/om-barnet/**/*'
+            - 'yarn.lock'
 env:
     package-name: '@navikt/k9-fe-om-barnet'
 jobs:

@@ -4,6 +4,7 @@ on:
         types: [opened, synchronize]
         paths:
             - 'packages/medisinsk-vilkår/**/*'
+            - 'yarn.lock'
 env:
     package-name: '@navikt/k9-fe-medisinsk-vilkar'
 jobs:

@@ -4,6 +4,7 @@ on:
         types: [opened, synchronize]
         paths:
             - 'packages/etablert-tilsyn/**/*'
+            - 'yarn.lock'
 env:
     package-name: '@navikt/k9-fe-etablert-tilsyn'
 jobs:
