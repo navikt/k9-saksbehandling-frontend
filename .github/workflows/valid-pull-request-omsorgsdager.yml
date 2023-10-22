@@ -5,7 +5,7 @@ on:
         paths:
             - 'packages/omsorgsdager/**/*'
 env:
-    package-name: omsorgsdager-frontend
+    package-name: '@navikt/k9-fe-omsorgsdager'
 jobs:
     valid-pull-request:
         name: Validere pull request
@@ -22,7 +22,7 @@ jobs:
                   NPM_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
             - name: Sette opp Node
               uses: actions/setup-node@v3
-                  
+
             - name: Installere dependencies
               run: yarn install --immutable
             - name: Kjøre linter

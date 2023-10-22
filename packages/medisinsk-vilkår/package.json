@@ -11,7 +11,6 @@
         "test": "cross-env DEBUG=test JEST_PUPPETEER_CONFIG=./jest-puppeteer.config.js jest --maxWorkers=2 --detectOpenHandles --config=./jest.config.js ",
         "test-watch": "jest --watch",
         "test-update-snapshots": "cross-env DEBUG=test JEST_PUPPETEER_CONFIG=./jest-puppeteer.config.js jest --maxWorkers=2 --detectOpenHandles --config=./jest.config.js -u",
-        "start": "node ./server.js",
         "build": "cross-env NODE_ENV=production webpack --config webpack/webpack-config.production.js",
         "dev": "node webpack/webpack-config.development.js",
         "api-mock-ls": "nodemon mock/api-mock-livets-sluttfase.ts",

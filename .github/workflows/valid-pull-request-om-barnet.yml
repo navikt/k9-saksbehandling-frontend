@@ -5,7 +5,7 @@ on:
         paths:
             - 'packages/om-barnet/**/*'
 env:
-    package-name: psb-om-barnet-frontend
+    package-name: '@navikt/k9-fe-om-barnet'
 jobs:
     valid-pull-request:
         name: Validere pull request
@@ -22,7 +22,7 @@ jobs:
                   NPM_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
             - name: Sette opp Node
               uses: actions/setup-node@v3
-                  
+
             - name: Installere dependencies
               run: yarn install --immutable
             - name: Bygg k9-frontend-modules
