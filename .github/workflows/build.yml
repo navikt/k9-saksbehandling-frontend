@@ -1,45 +1,46 @@
 name: Build
 
 on:
-  workflow_call:
-    secrets:
-      READER_TOKEN:
-        required: true
-    inputs:
-      package-name:
-        required: true
-        type: string
-      upload-artifact:
-        required: false
-        type: boolean
-        default: false
-      artifact-path:
-        required: false
-        type: string
-        default: ./build
+    workflow_call:
+        secrets:
+            READER_TOKEN:
+                required: true
+        inputs:
+            package-name:
+                required: true
+                type: string
+            upload-artifact:
+                required: false
+                type: boolean
+                default: false
+            artifact-path:
+                required: false
+                type: string
+                default: ./build
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Hente kode
-        uses: actions/checkout@v4
-      - name: Setup .yarnrc.yml
-        run: |
-          yarn config set npmScopes.navikt.npmRegistryServer "https://npm.pkg.github.com"
-          yarn config set npmScopes.navikt.npmAlwaysAuth true
-          yarn config set npmScopes.navikt.npmAuthToken $NPM_AUTH_TOKEN
-        env:
-          NPM_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
-      - name: Sette opp Node
-        uses: actions/setup-node@v3
-
-      - name: Installere dependencies
-        run: yarn install --immutable
-      - name: Kjøre bygg
-        run: yarn lerna run build --scope ${{inputs.package-name}}
-      - uses: actions/upload-artifact@v3
-        if: ${{inputs.upload-artifact}}
-        with:
-          name: build
-          path: ${{ inputs.artifact-path }}
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Hente kode
+              uses: actions/checkout@v4
+            - name: Setup .yarnrc.yml
+              run: |
+                  yarn config set npmScopes.navikt.npmRegistryServer "https://npm.pkg.github.com"
+                  yarn config set npmScopes.navikt.npmAlwaysAuth true
+                  yarn config set npmScopes.navikt.npmAuthToken $NPM_AUTH_TOKEN
+              env:
+                  NPM_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
+            - name: Sette opp Node
+              uses: actions/setup-node@v3
+              with:
+                  cache: 'yarn'
+            - name: Installere dependencies
+              run: yarn install --immutable
+            - name: Kjøre bygg
+              run: yarn lerna run build --scope ${{inputs.package-name}}
+            - uses: actions/upload-artifact@v3
+              if: ${{inputs.upload-artifact}}
+              with:
+                  name: build
+                  path: ${{ inputs.artifact-path }}
