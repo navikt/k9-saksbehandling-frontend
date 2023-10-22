@@ -1,6 +1,4 @@
-import '@navikt/ds-css';
 import { Box, Margin, PageContainer } from '@navikt/ft-plattform-komponenter';
-import '@navikt/ft-plattform-komponenter/dist/style.css';
 import { get } from '@navikt/k9-fe-http-utils';
 import React from 'react';
 import { IntlProvider } from 'react-intl';
