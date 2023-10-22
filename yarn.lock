@@ -2622,7 +2622,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hookform/error-message@npm:2.0.1":
+"@hookform/error-message@npm:2.0.1, @hookform/error-message@npm:2.x":
   version: 2.0.1
   resolution: "@hookform/error-message@npm:2.0.1"
   peerDependencies:
@@ -3224,7 +3224,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@navikt/fnrvalidator@npm:1.3.3":
+"@navikt/fnrvalidator@npm:1.3.3, @navikt/fnrvalidator@npm:1.x":
   version: 1.3.3
   resolution: "@navikt/fnrvalidator@npm:1.3.3::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Ffnrvalidator%2F1.3.3%2F8414963a30e59e3056c9befea7bb022498a2a742"
   checksum: 49b2f481e1d5fdd107ba3cfd13a7a6fdb32371da2a634b97d5142d3940b73fe6cc90201c23381484def2859aecbd51b7e897ff3d69be483dafb13f1e2dd3060e
@@ -3372,7 +3372,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@navikt/k9-fe-date-utils@^1.0.5, @navikt/k9-fe-date-utils@workspace:packages/k9-frontend-modules/date-utils":
+"@navikt/k9-fe-date-utils@1.0.5, @navikt/k9-fe-date-utils@^1.0.5, @navikt/k9-fe-date-utils@workspace:packages/k9-frontend-modules/date-utils":
   version: 0.0.0-use.local
   resolution: "@navikt/k9-fe-date-utils@workspace:packages/k9-frontend-modules/date-utils"
   dependencies:
@@ -3382,7 +3382,112 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@navikt/k9-fe-form-utils@^1.0.10, @navikt/k9-fe-form-utils@^1.0.9, @navikt/k9-fe-form-utils@workspace:packages/k9-frontend-modules/form-utils":
+"@navikt/k9-fe-etablert-tilsyn@workspace:packages/etablert-tilsyn":
+  version: 0.0.0-use.local
+  resolution: "@navikt/k9-fe-etablert-tilsyn@workspace:packages/etablert-tilsyn"
+  dependencies:
+    "@navikt/ds-css": 5.6.1
+    "@navikt/ds-icons": 3.4.3
+    "@navikt/ds-react": 5.6.1
+    "@navikt/fnrvalidator": 1.x
+    "@navikt/ft-plattform-komponenter": 2.3.6
+    "@navikt/k9-fe-date-utils": 1.0.5
+    "@navikt/k9-fe-form-utils": 1.0.9
+    "@navikt/k9-fe-http-utils": 1.0.4
+    "@navikt/k9-fe-period-utils": ^1.0.8
+    "@popperjs/core": 2.x
+    "@testing-library/jest-dom": 6.1.3
+    "@testing-library/react": 14.0.0
+    "@testing-library/user-event": 14.5.1
+    "@types/react": 18.2.24
+    "@types/react-dom": 18.2.8
+    axios: 1.x
+    classnames: 2.x
+    cors: 2.8.5
+    dayjs: 1.x
+    express: 4.18.2
+    lodash: 4.x
+    lodash.throttle: 4.x
+    msw: 1.3.2
+    nav-frontend-alertstriper: 4.x
+    nav-frontend-alertstriper-style: 3.x
+    nav-frontend-chevron: 1.x
+    nav-frontend-chevron-style: 1.x
+    nav-frontend-core: 6.x
+    nav-frontend-etiketter: 3.x
+    nav-frontend-etiketter-style: 2.x
+    nav-frontend-ikoner-assets: 3.x
+    nav-frontend-ikonknapper: 2.x
+    nav-frontend-js-utils: 1.x
+    nav-frontend-knapper: 3.x
+    nav-frontend-knapper-style: 2.x
+    nav-frontend-lenker: 2.x
+    nav-frontend-lenker-style: 2.x
+    nav-frontend-paneler: 3.x
+    nav-frontend-paneler-style: 2.x
+    nav-frontend-skjema: 4.x
+    nav-frontend-skjema-style: 3.x
+    nav-frontend-spinner: 3.x
+    nav-frontend-spinner-style: 1.x
+    nav-frontend-tabs: 2.x
+    nav-frontend-tabs-style: 2.x
+    nav-frontend-typografi: 4.x
+    nav-frontend-typografi-style: 2.x
+    react: 18.x
+    react-collapse: 5.x
+    react-dom: 18.x
+    react-hook-form: 7.47.0
+    react-popper: 2.x
+    webpack-node-externals: ^3.0.0
+  peerDependencies:
+    "@navikt/ds-css": 5.6.1
+    "@navikt/ds-icons": 3.4.3
+    "@navikt/ds-react": 5.6.1
+    "@navikt/fnrvalidator": 1.x
+    "@navikt/ft-plattform-komponenter": 2.3.6
+    "@navikt/k9-fe-date-utils": 1.0.5
+    "@navikt/k9-fe-form-utils": 1.0.9
+    "@navikt/k9-fe-http-utils": 1.0.4
+    "@navikt/k9-fe-period-utils": ^1.0.8
+    "@popperjs/core": 2.x
+    axios: 1.x
+    classnames: 2.x
+    dayjs: 1.x
+    lodash: 4.x
+    lodash.throttle: 4.x
+    nav-frontend-alertstriper: 4.x
+    nav-frontend-alertstriper-style: 3.x
+    nav-frontend-chevron: 1.x
+    nav-frontend-chevron-style: 1.x
+    nav-frontend-core: 6.x
+    nav-frontend-etiketter: 3.x
+    nav-frontend-etiketter-style: 2.x
+    nav-frontend-ikoner-assets: 3.x
+    nav-frontend-ikonknapper: 2.x
+    nav-frontend-js-utils: 1.x
+    nav-frontend-knapper: 3.x
+    nav-frontend-knapper-style: 2.x
+    nav-frontend-lenker: 2.x
+    nav-frontend-lenker-style: 2.x
+    nav-frontend-paneler: 3.x
+    nav-frontend-paneler-style: 2.x
+    nav-frontend-skjema: 4.x
+    nav-frontend-skjema-style: 3.x
+    nav-frontend-spinner: 3.x
+    nav-frontend-spinner-style: 1.x
+    nav-frontend-tabs: 2.x
+    nav-frontend-tabs-style: 2.x
+    nav-frontend-typografi: 4.x
+    nav-frontend-typografi-style: 2.x
+    react: 18.x
+    react-collapse: 5.x
+    react-dom: 18.x
+    react-hook-form: 7.47.0
+    react-popper: 2.x
+  languageName: unknown
+  linkType: soft
+
+"@navikt/k9-fe-form-utils@1.0.10, @navikt/k9-fe-form-utils@^1.0.9, @navikt/k9-fe-form-utils@workspace:packages/k9-frontend-modules/form-utils":
   version: 0.0.0-use.local
   resolution: "@navikt/k9-fe-form-utils@workspace:packages/k9-frontend-modules/form-utils"
   dependencies:
@@ -3423,6 +3528,33 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@navikt/k9-fe-form-utils@npm:1.0.9":
+  version: 1.0.9
+  resolution: "@navikt/k9-fe-form-utils@npm:1.0.9::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Fk9-fe-form-utils%2F1.0.9%2F635932397cf4b9c07894a8b4c3bbfb6b97518704"
+  dependencies:
+    "@navikt/k9-fe-bem-utils": 1.0.2
+    "@navikt/k9-fe-period-utils": ^1.0.8
+  peerDependencies:
+    "@hookform/error-message": 2.0.1
+    "@navikt/ds-css": 2.1.7
+    "@navikt/ds-react": 2.1.7
+    "@navikt/fnrvalidator": 1.3.3
+    "@navikt/ft-plattform-komponenter": 1.4.13
+    "@popperjs/core": 2.11.6
+    "@storybook/react": 6.5.15
+    classnames: 2.3.2
+    dayjs: 1.11.7
+    lodash.throttle: 4.1.1
+    react: 18.2.0
+    react-collapse: 5.1.1
+    react-day-picker: 7.4.10
+    react-dom: 18.2.0
+    react-hook-form: 7.43.0
+    react-popper: 2.3.0
+  checksum: 382c76709f8235f9f5267e092007bcb534460345fc29d5da305e6723e76315a46b8199e24837eea3e19723be865c6719f870d2c99a889181ddc2e2b4b36398a4
+  languageName: node
+  linkType: hard
+
 "@navikt/k9-fe-http-utils@1.0.4, @navikt/k9-fe-http-utils@workspace:packages/k9-frontend-modules/http-utils":
   version: 0.0.0-use.local
   resolution: "@navikt/k9-fe-http-utils@workspace:packages/k9-frontend-modules/http-utils"
@@ -3441,14 +3573,14 @@ __metadata:
     "@navikt/ds-css": 5.6.1
     "@navikt/ds-icons": 3.4.3
     "@navikt/ds-react": 5.6.1
-    "@navikt/fnrvalidator": 1.3.3
+    "@navikt/fnrvalidator": 1.x
     "@navikt/ft-plattform-komponenter": 2.3.6
     "@navikt/k9-fe-array-utils": 1.0.4
-    "@navikt/k9-fe-date-utils": ^1.0.5
-    "@navikt/k9-fe-form-utils": ^1.0.10
+    "@navikt/k9-fe-date-utils": 1.0.5
+    "@navikt/k9-fe-form-utils": 1.0.10
     "@navikt/k9-fe-http-utils": 1.0.4
-    "@navikt/k9-fe-period-utils": ^1.0.8
-    "@popperjs/core": 2.11.8
+    "@navikt/k9-fe-period-utils": 1.0.8
+    "@popperjs/core": 2.x
     "@testing-library/jest-dom": 6.1.3
     "@testing-library/react": 14.0.0
     "@testing-library/user-event": 14.5.1
@@ -3457,51 +3589,46 @@ __metadata:
     "@types/react": 18.2.24
     "@types/react-dom": 18.2.8
     "@types/react-modal": 3.16.1
-    axios: 1.5.1
-    classnames: 2.3.2
-    cors: 2.8.5
+    axios: 1.x
+    classnames: 2.x
     cross-env: 7.0.3
-    dayjs: 1.11.10
-    express: 4.18.2
-    lodash.throttle: 4.1.1
+    dayjs: 1.x
+    lodash.throttle: 4.x
     msw: 1.3.2
-    react: 18.2.0
-    react-collapse: 5.1.1
-    react-dom: 18.2.0
+    react: 18.x
+    react-collapse: 5.x
+    react-dom: 18.x
     react-hook-form: 7.47.0
-    react-modal: 3.16.1
-    react-outside-click-handler: 1.3.0
-    react-popper: 2.3.0
-    react-query: 3.39.3
+    react-modal: 3.x
+    react-outside-click-handler: 1.x
+    react-popper: 2.x
+    react-query: 3.x
     webpack-node-externals: ^3.0.0
   peerDependencies:
     "@navikt/diagnosekoder": ^1.2023.0
     "@navikt/ds-css": 5.6.1
     "@navikt/ds-icons": 3.4.3
     "@navikt/ds-react": 5.6.1
-    "@navikt/fnrvalidator": 1.3.3
+    "@navikt/fnrvalidator": 1.x
     "@navikt/ft-plattform-komponenter": 2.3.6
     "@navikt/k9-fe-array-utils": 1.0.4
-    "@navikt/k9-fe-date-utils": ^1.0.5
-    "@navikt/k9-fe-form-utils": ^1.0.10
+    "@navikt/k9-fe-date-utils": 1.0.5
+    "@navikt/k9-fe-form-utils": 1.0.10
     "@navikt/k9-fe-http-utils": 1.0.4
-    "@navikt/k9-fe-period-utils": ^1.0.8
-    "@popperjs/core": 2.11.8
-    axios: 1.5.1
-    classnames: 2.3.2
-    cors: 2.8.5
-    dayjs: 1.11.10
-    express: 4.18.2
-    lodash.throttle: 4.1.1
-    msw: 1.3.2
-    react: 18.2.0
-    react-collapse: 5.1.1
-    react-dom: 18.2.0
+    "@navikt/k9-fe-period-utils": 1.0.8
+    "@popperjs/core": 2.x
+    axios: 1.x
+    classnames: 2.x
+    dayjs: 1.x
+    lodash.throttle: 4.x
+    react: 18.x
+    react-collapse: 5.x
+    react-dom: 18.x
     react-hook-form: 7.47.0
-    react-modal: 3.16.1
-    react-outside-click-handler: 1.3.0
-    react-popper: 2.3.0
-    react-query: 3.39.3
+    react-modal: 3.x
+    react-outside-click-handler: 1.x
+    react-popper: 2.x
+    react-query: 3.x
   languageName: unknown
   linkType: soft
 
@@ -3509,69 +3636,65 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@navikt/k9-fe-om-barnet@workspace:packages/om-barnet"
   dependencies:
-    "@hookform/error-message": 2.0.1
+    "@hookform/error-message": 2.x
     "@navikt/ds-css": 5.6.1
     "@navikt/ds-react": 5.6.1
-    "@navikt/fnrvalidator": 1.3.3
+    "@navikt/fnrvalidator": 1.x
     "@navikt/ft-plattform-komponenter": 2.3.6
     "@navikt/k9-fe-array-utils": 1.0.4
-    "@navikt/k9-fe-date-utils": ^1.0.5
-    "@navikt/k9-fe-form-utils": ^1.0.10
+    "@navikt/k9-fe-date-utils": 1.0.5
+    "@navikt/k9-fe-form-utils": 1.0.10
     "@navikt/k9-fe-http-utils": 1.0.4
-    "@navikt/k9-fe-period-utils": ^1.0.8
-    "@popperjs/core": 2.11.8
+    "@navikt/k9-fe-period-utils": 1.0.8
+    "@popperjs/core": 2.x
     "@types/jest": 29.5.5
     "@types/node": 20.8.0
     "@types/react": 18.2.24
     "@types/react-dom": 18.2.8
     "@types/react-modal": 3.16.1
     autoprefixer: 10.4.16
-    axios: 1.5.1
-    classnames: 2.3.2
-    cors: 2.8.5
-    dayjs: 1.11.10
+    axios: 1.x
+    classnames: 2.x
+    cors: 2.x
+    dayjs: 1.x
     express: 4.18.2
-    lodash.throttle: 4.1.1
+    lodash.throttle: 4.x
     msw: 1.3.2
     postcss: 8.4.31
     postcss-loader: 7.3.3
-    react: 18.2.0
-    react-collapse: 5.1.1
-    react-dom: 18.2.0
+    react: 18.x
+    react-collapse: 5.x
+    react-dom: 18.x
     react-hook-form: 7.47.0
-    react-popper: 2.3.0
-    tailwindcss: 3.3.3
+    react-popper: 2.x
+    tailwindcss: 3.x
     webpack-node-externals: ^3.0.0
   peerDependencies:
-    "@hookform/error-message": 2.0.1
+    "@hookform/error-message": 2.x
     "@navikt/ds-css": 5.6.1
     "@navikt/ds-react": 5.6.1
-    "@navikt/fnrvalidator": 1.3.3
+    "@navikt/fnrvalidator": 1.x
     "@navikt/ft-plattform-komponenter": 2.3.6
     "@navikt/k9-fe-array-utils": 1.0.4
-    "@navikt/k9-fe-date-utils": ^1.0.5
-    "@navikt/k9-fe-form-utils": ^1.0.10
+    "@navikt/k9-fe-date-utils": 1.0.5
+    "@navikt/k9-fe-form-utils": 1.0.10
     "@navikt/k9-fe-http-utils": 1.0.4
-    "@navikt/k9-fe-period-utils": ^1.0.8
-    "@popperjs/core": 2.11.8
-    autoprefixer: 10.4.16
-    axios: 1.5.1
-    classnames: 2.3.2
-    cors: 2.8.5
-    dayjs: 1.11.10
-    express: 4.18.2
-    lodash.throttle: 4.1.1
-    postcss: 8.4.31
-    react: 18.2.0
-    react-collapse: 5.1.1
-    react-dom: 18.2.0
+    "@navikt/k9-fe-period-utils": 1.0.8
+    "@popperjs/core": 2.x
+    axios: 1.x
+    classnames: 2.x
+    dayjs: 1.x
+    lodash.throttle: 4.x
+    react: 18.x
+    react-collapse: 5.x
+    react-dom: 18.x
     react-hook-form: 7.47.0
-    react-popper: 2.3.0
-    tailwindcss: 3.3.3
+    react-popper: 2.x
+    tailwindcss: 3.x
   languageName: unknown
   linkType: soft
 
-"@navikt/k9-fe-period-utils@^1.0.8, @navikt/k9-fe-period-utils@workspace:packages/k9-frontend-modules/period-utils":
+"@navikt/k9-fe-period-utils@1.0.8, @navikt/k9-fe-period-utils@^1.0.8, @navikt/k9-fe-period-utils@workspace:packages/k9-frontend-modules/period-utils":
   version: 0.0.0-use.local
   resolution: "@navikt/k9-fe-period-utils@workspace:packages/k9-frontend-modules/period-utils"
   dependencies:
@@ -4078,7 +4201,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@popperjs/core@npm:2.11.8":
+"@popperjs/core@npm:2.11.8, @popperjs/core@npm:2.x":
   version: 2.11.8
   resolution: "@popperjs/core@npm:2.11.8"
   checksum: e5c69fdebf52a4012f6a1f14817ca8e9599cb1be73dd1387e1785e2ed5e5f0862ff817f420a87c7fc532add1f88a12e25aeb010ffcbdc98eace3d55ce2139cf0
@@ -6427,7 +6550,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:1.5.1":
+"axios@npm:1.5.1, axios@npm:1.x":
   version: 1.5.1
   resolution: "axios@npm:1.5.1"
   dependencies:
@@ -7172,7 +7295,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"classnames@npm:2.3.2":
+"classnames@npm:2.3.2, classnames@npm:2.x":
   version: 2.3.2
   resolution: "classnames@npm:2.3.2"
   checksum: 2c62199789618d95545c872787137262e741f9db13328e216b093eea91c85ef2bfb152c1f9e63027204e2559a006a92eb74147d46c800a9f96297ae1d9f96f4e
@@ -7745,7 +7868,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cors@npm:2.8.5":
+"cors@npm:2.8.5, cors@npm:2.x":
   version: 2.8.5
   resolution: "cors@npm:2.8.5"
   dependencies:
@@ -8259,7 +8382,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dayjs@npm:1.11.10":
+"dayjs@npm:1.11.10, dayjs@npm:1.x":
   version: 1.11.10
   resolution: "dayjs@npm:1.11.10"
   checksum: a6b5a3813b8884f5cd557e2e6b7fa569f4c5d0c97aca9558e38534af4f2d60daafd3ff8c2000fed3435cfcec9e805bcebd99f90130c6d1c5ef524084ced588c4
@@ -13584,7 +13707,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash.throttle@npm:4.1.1, lodash.throttle@npm:^4.1.1":
+"lodash.throttle@npm:4.1.1, lodash.throttle@npm:4.x, lodash.throttle@npm:^4.1.1":
   version: 4.1.1
   resolution: "lodash.throttle@npm:4.1.1"
   checksum: 129c0a28cee48b348aef146f638ef8a8b197944d4e9ec26c1890c19d9bf5a5690fe11b655c77a4551268819b32d27f4206343e30c78961f60b561b8608c8c805
@@ -13612,7 +13735,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash@npm:4.17.21, lodash@npm:^4.17.15, lodash@npm:^4.17.20, lodash@npm:^4.17.21, lodash@npm:^4.17.4":
+"lodash@npm:4.17.21, lodash@npm:4.x, lodash@npm:^4.17.15, lodash@npm:^4.17.20, lodash@npm:^4.17.21, lodash@npm:^4.17.4":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: eb835a2e51d381e561e508ce932ea50a8e5a68f4ebdd771ea240d3048244a8d13658acbd502cd4829768c56f2e16bdd4340b9ea141297d472517b83868e677f7
@@ -14456,7 +14579,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nav-frontend-alertstriper-style@npm:3.0.2":
+"nav-frontend-alertstriper-style@npm:3.0.2, nav-frontend-alertstriper-style@npm:3.x":
   version: 3.0.2
   resolution: "nav-frontend-alertstriper-style@npm:3.0.2"
   peerDependencies:
@@ -14468,7 +14591,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nav-frontend-alertstriper@npm:4.0.2":
+"nav-frontend-alertstriper@npm:4.0.2, nav-frontend-alertstriper@npm:4.x":
   version: 4.0.2
   resolution: "nav-frontend-alertstriper@npm:4.0.2"
   peerDependencies:
@@ -14482,14 +14605,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nav-frontend-chevron-style@npm:1.0.4":
+"nav-frontend-chevron-style@npm:1.0.4, nav-frontend-chevron-style@npm:1.x":
   version: 1.0.4
   resolution: "nav-frontend-chevron-style@npm:1.0.4"
   checksum: c4c4e8c63a9d9802060fbc451f8d82fa48ced9763b2820c0ff6e0801b5e9c8624a92d83ccb8c914f65cb29ed78dedf7ed92ce8c42c91fc6ffe29421f1a788630
   languageName: node
   linkType: hard
 
-"nav-frontend-chevron@npm:1.0.30":
+"nav-frontend-chevron@npm:1.0.30, nav-frontend-chevron@npm:1.x":
   version: 1.0.30
   resolution: "nav-frontend-chevron@npm:1.0.30"
   peerDependencies:
@@ -14501,7 +14624,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nav-frontend-core@npm:6.0.1, nav-frontend-core@npm:^6.0.1":
+"nav-frontend-core@npm:6.0.1, nav-frontend-core@npm:6.x, nav-frontend-core@npm:^6.0.1":
   version: 6.0.1
   resolution: "nav-frontend-core@npm:6.0.1"
   checksum: 7673f42a2a93a08fa6952d2c32d8e5d424de437910b76d84363d7cb86a7c0691e5f475a3623c8964366b3bbd33a6defb8e3907bc61b41c3434b4619aab7567d2
@@ -14534,7 +14657,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nav-frontend-etiketter-style@npm:2.0.3":
+"nav-frontend-etiketter-style@npm:2.0.3, nav-frontend-etiketter-style@npm:2.x":
   version: 2.0.3
   resolution: "nav-frontend-etiketter-style@npm:2.0.3"
   peerDependencies:
@@ -14543,7 +14666,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nav-frontend-etiketter@npm:3.0.3":
+"nav-frontend-etiketter@npm:3.0.3, nav-frontend-etiketter@npm:3.x":
   version: 3.0.3
   resolution: "nav-frontend-etiketter@npm:3.0.3"
   peerDependencies:
@@ -14582,14 +14705,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nav-frontend-ikoner-assets@npm:3.0.1":
+"nav-frontend-ikoner-assets@npm:3.0.1, nav-frontend-ikoner-assets@npm:3.x":
   version: 3.0.1
   resolution: "nav-frontend-ikoner-assets@npm:3.0.1"
   checksum: 6d6bce01b95555d56333cd11cbadc715e5a4021a62a5981c30c4a8ba3d5807267cb04f6410bad2bc7804f377c0e020eb79e6d389c8bb19942a2b9d1f70b551d9
   languageName: node
   linkType: hard
 
-"nav-frontend-ikonknapper@npm:2.1.3":
+"nav-frontend-ikonknapper@npm:2.1.3, nav-frontend-ikonknapper@npm:2.x":
   version: 2.1.3
   resolution: "nav-frontend-ikonknapper@npm:2.1.3"
   peerDependencies:
@@ -14601,7 +14724,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nav-frontend-js-utils@npm:1.0.20":
+"nav-frontend-js-utils@npm:1.0.20, nav-frontend-js-utils@npm:1.x":
   version: 1.0.20
   resolution: "nav-frontend-js-utils@npm:1.0.20"
   dependencies:
@@ -14614,7 +14737,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nav-frontend-knapper-style@npm:2.1.2":
+"nav-frontend-knapper-style@npm:2.1.2, nav-frontend-knapper-style@npm:2.x":
   version: 2.1.2
   resolution: "nav-frontend-knapper-style@npm:2.1.2"
   peerDependencies:
@@ -14624,7 +14747,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nav-frontend-knapper@npm:3.1.3":
+"nav-frontend-knapper@npm:3.1.3, nav-frontend-knapper@npm:3.x":
   version: 3.1.3
   resolution: "nav-frontend-knapper@npm:3.1.3"
   peerDependencies:
@@ -14637,7 +14760,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nav-frontend-lenker-style@npm:2.0.2":
+"nav-frontend-lenker-style@npm:2.0.2, nav-frontend-lenker-style@npm:2.x":
   version: 2.0.2
   resolution: "nav-frontend-lenker-style@npm:2.0.2"
   peerDependencies:
@@ -14646,7 +14769,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nav-frontend-lenker@npm:2.0.2":
+"nav-frontend-lenker@npm:2.0.2, nav-frontend-lenker@npm:2.x":
   version: 2.0.2
   resolution: "nav-frontend-lenker@npm:2.0.2"
   peerDependencies:
@@ -14658,7 +14781,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nav-frontend-paneler-style@npm:2.0.2":
+"nav-frontend-paneler-style@npm:2.0.2, nav-frontend-paneler-style@npm:2.x":
   version: 2.0.2
   resolution: "nav-frontend-paneler-style@npm:2.0.2"
   peerDependencies:
@@ -14667,7 +14790,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nav-frontend-paneler@npm:3.0.2":
+"nav-frontend-paneler@npm:3.0.2, nav-frontend-paneler@npm:3.x":
   version: 3.0.2
   resolution: "nav-frontend-paneler@npm:3.0.2"
   peerDependencies:
@@ -14704,7 +14827,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nav-frontend-skjema-style@npm:3.0.3":
+"nav-frontend-skjema-style@npm:3.0.3, nav-frontend-skjema-style@npm:3.x":
   version: 3.0.3
   resolution: "nav-frontend-skjema-style@npm:3.0.3"
   peerDependencies:
@@ -14715,7 +14838,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nav-frontend-skjema@npm:4.0.6":
+"nav-frontend-skjema@npm:4.0.6, nav-frontend-skjema@npm:4.x":
   version: 4.0.6
   resolution: "nav-frontend-skjema@npm:4.0.6"
   peerDependencies:
@@ -14731,14 +14854,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nav-frontend-spinner-style@npm:1.0.2":
+"nav-frontend-spinner-style@npm:1.0.2, nav-frontend-spinner-style@npm:1.x":
   version: 1.0.2
   resolution: "nav-frontend-spinner-style@npm:1.0.2"
   checksum: 28e376811be644987470012a513d4c4a22231263631e8911355cc15080301a54334ac8163a45503146706bf76483b3243a3495b1272b1321b4535a0e5103977f
   languageName: node
   linkType: hard
 
-"nav-frontend-spinner@npm:3.0.1":
+"nav-frontend-spinner@npm:3.0.1, nav-frontend-spinner@npm:3.x":
   version: 3.0.1
   resolution: "nav-frontend-spinner@npm:3.0.1"
   peerDependencies:
@@ -14751,7 +14874,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nav-frontend-tabs-style@npm:2.0.2":
+"nav-frontend-tabs-style@npm:2.0.2, nav-frontend-tabs-style@npm:2.x":
   version: 2.0.2
   resolution: "nav-frontend-tabs-style@npm:2.0.2"
   peerDependencies:
@@ -14761,7 +14884,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nav-frontend-tabs@npm:2.0.3":
+"nav-frontend-tabs@npm:2.0.3, nav-frontend-tabs@npm:2.x":
   version: 2.0.3
   resolution: "nav-frontend-tabs@npm:2.0.3"
   peerDependencies:
@@ -14773,7 +14896,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nav-frontend-typografi-style@npm:2.0.2":
+"nav-frontend-typografi-style@npm:2.0.2, nav-frontend-typografi-style@npm:2.x":
   version: 2.0.2
   resolution: "nav-frontend-typografi-style@npm:2.0.2"
   dependencies:
@@ -14782,7 +14905,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nav-frontend-typografi@npm:4.0.2":
+"nav-frontend-typografi@npm:4.0.2, nav-frontend-typografi@npm:4.x":
   version: 4.0.2
   resolution: "nav-frontend-typografi@npm:4.0.2"
   peerDependencies:
@@ -17331,65 +17454,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"psb-etablert-tilsyn-frontend@workspace:packages/etablert-tilsyn":
-  version: 0.0.0-use.local
-  resolution: "psb-etablert-tilsyn-frontend@workspace:packages/etablert-tilsyn"
-  dependencies:
-    "@navikt/ds-css": 5.6.1
-    "@navikt/ds-icons": 3.4.3
-    "@navikt/ds-react": 5.6.1
-    "@navikt/fnrvalidator": 1.3.3
-    "@navikt/ft-plattform-komponenter": 2.3.6
-    "@navikt/k9-fe-date-utils": ^1.0.5
-    "@navikt/k9-fe-form-utils": ^1.0.9
-    "@navikt/k9-fe-http-utils": 1.0.4
-    "@navikt/k9-fe-period-utils": ^1.0.8
-    "@popperjs/core": 2.11.8
-    "@testing-library/jest-dom": 6.1.3
-    "@testing-library/react": 14.0.0
-    "@testing-library/user-event": 14.5.1
-    "@types/react": 18.2.24
-    "@types/react-dom": 18.2.8
-    axios: 1.5.1
-    classnames: 2.3.2
-    cors: 2.8.5
-    dayjs: 1.11.10
-    express: 4.18.2
-    lodash: 4.17.21
-    lodash.throttle: 4.1.1
-    msw: 1.3.2
-    nav-frontend-alertstriper: 4.0.2
-    nav-frontend-alertstriper-style: 3.0.2
-    nav-frontend-chevron: 1.0.30
-    nav-frontend-chevron-style: 1.0.4
-    nav-frontend-core: 6.0.1
-    nav-frontend-etiketter: 3.0.3
-    nav-frontend-etiketter-style: 2.0.3
-    nav-frontend-ikoner-assets: 3.0.1
-    nav-frontend-ikonknapper: 2.1.3
-    nav-frontend-js-utils: 1.0.20
-    nav-frontend-knapper: 3.1.3
-    nav-frontend-knapper-style: 2.1.2
-    nav-frontend-lenker: 2.0.2
-    nav-frontend-lenker-style: 2.0.2
-    nav-frontend-paneler: 3.0.2
-    nav-frontend-paneler-style: 2.0.2
-    nav-frontend-skjema: 4.0.6
-    nav-frontend-skjema-style: 3.0.3
-    nav-frontend-spinner: 3.0.1
-    nav-frontend-spinner-style: 1.0.2
-    nav-frontend-tabs: 2.0.3
-    nav-frontend-tabs-style: 2.0.2
-    nav-frontend-typografi: 4.0.2
-    nav-frontend-typografi-style: 2.0.2
-    react: 18.2.0
-    react-collapse: 5.1.1
-    react-dom: 18.2.0
-    react-hook-form: 7.47.0
-    react-popper: 2.3.0
-  languageName: unknown
-  linkType: soft
-
 "psb-inntektsmelding-frontend@workspace:packages/inntektsmelding":
   version: 0.0.0-use.local
   resolution: "psb-inntektsmelding-frontend@workspace:packages/inntektsmelding"
@@ -17642,7 +17706,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-collapse@npm:5.1.1":
+"react-collapse@npm:5.1.1, react-collapse@npm:5.x":
   version: 5.1.1
   resolution: "react-collapse@npm:5.1.1"
   peerDependencies:
@@ -17672,7 +17736,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:18.2.0":
+"react-dom@npm:18.2.0, react-dom@npm:18.x":
   version: 18.2.0
   resolution: "react-dom@npm:18.2.0"
   dependencies:
@@ -17773,7 +17837,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-modal@npm:3.16.1":
+"react-modal@npm:3.16.1, react-modal@npm:3.x":
   version: 3.16.1
   resolution: "react-modal@npm:3.16.1"
   dependencies:
@@ -17788,7 +17852,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-outside-click-handler@npm:1.3.0":
+"react-outside-click-handler@npm:1.x":
   version: 1.3.0
   resolution: "react-outside-click-handler@npm:1.3.0"
   dependencies:
@@ -17804,7 +17868,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-popper@npm:2.3.0":
+"react-popper@npm:2.3.0, react-popper@npm:2.x":
   version: 2.3.0
   resolution: "react-popper@npm:2.3.0"
   dependencies:
@@ -17818,7 +17882,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-query@npm:3.39.3":
+"react-query@npm:3.x":
   version: 3.39.3
   resolution: "react-query@npm:3.39.3"
   dependencies:
@@ -17843,7 +17907,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:18.2.0":
+"react@npm:18.2.0, react@npm:18.x":
   version: 18.2.0
   resolution: "react@npm:18.2.0"
   dependencies:
@@ -19719,7 +19783,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:3.3.3":
+"tailwindcss@npm:3.x":
   version: 3.3.3
   resolution: "tailwindcss@npm:3.3.3"
   dependencies:
