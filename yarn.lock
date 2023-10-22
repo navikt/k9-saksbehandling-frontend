@@ -3907,6 +3907,81 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@navikt/k9-fe-omsorgsdager@workspace:packages/omsorgsdager":
+  version: 0.0.0-use.local
+  resolution: "@navikt/k9-fe-omsorgsdager@workspace:packages/omsorgsdager"
+  dependencies:
+    "@navikt/ds-css": 5.6.1
+    "@navikt/ds-react": 5.6.1
+    "@navikt/fnrvalidator": 1.x
+    "@testing-library/react": 14.0.0
+    "@types/react": 18.2.24
+    "@types/react-dom": 18.2.8
+    classnames: 2.x
+    cors: 2.8.5
+    dayjs: 1.x
+    express: 4.18.2
+    jest: 29.7.0
+    jest-axe: 8.0.0
+    lodash: 4.x
+    lodash.throttle: 4.x
+    nav-datovelger: 12.x
+    nav-frontend-alertstriper: 4.x
+    nav-frontend-alertstriper-style: 3.x
+    nav-frontend-core: 6.x
+    nav-frontend-ikoner-assets: 3.x
+    nav-frontend-js-utils: 1.x
+    nav-frontend-knapper: 3.x
+    nav-frontend-knapper-style: 2.x
+    nav-frontend-lenker: 2.x
+    nav-frontend-lenker-style: 2.x
+    nav-frontend-paneler-style: 2.x
+    nav-frontend-skjema: 4.x
+    nav-frontend-skjema-style: 3.x
+    nav-frontend-spinner: 3.x
+    nav-frontend-spinner-style: 1.x
+    nav-frontend-typografi: 4.x
+    nav-frontend-typografi-style: 2.x
+    react: 18.x
+    react-day-picker: 7.x
+    react-dom: 18.x
+    react-hook-form: 7.47.0
+    string.prototype.replaceall: 1.0.8
+    stylelint: 15.10.3
+    typescript: 5.x
+    webpack-node-externals: ^3.0.0
+  peerDependencies:
+    "@navikt/ds-css": 5.6.1
+    "@navikt/ds-react": 5.6.1
+    "@navikt/fnrvalidator": 1.x
+    classnames: 2.x
+    dayjs: 1.x
+    lodash: 4.x
+    lodash.throttle: 4.x
+    nav-datovelger: 12.x
+    nav-frontend-alertstriper: 4.x
+    nav-frontend-alertstriper-style: 3.x
+    nav-frontend-core: 6.x
+    nav-frontend-ikoner-assets: 3.x
+    nav-frontend-js-utils: 1.x
+    nav-frontend-knapper: 3.x
+    nav-frontend-knapper-style: 2.x
+    nav-frontend-lenker: 2.x
+    nav-frontend-lenker-style: 2.x
+    nav-frontend-paneler-style: 2.x
+    nav-frontend-skjema: 4.x
+    nav-frontend-skjema-style: 3.x
+    nav-frontend-spinner: 3.x
+    nav-frontend-spinner-style: 1.x
+    nav-frontend-typografi: 4.x
+    nav-frontend-typografi-style: 2.x
+    react: 18.x
+    react-day-picker: 7.x
+    react-dom: 18.x
+    react-hook-form: 7.47.0
+  languageName: unknown
+  linkType: soft
+
 "@navikt/k9-fe-period-utils@1.0.8, @navikt/k9-fe-period-utils@^1.0.8, @navikt/k9-fe-period-utils@workspace:packages/k9-frontend-modules/period-utils":
   version: 0.0.0-use.local
   resolution: "@navikt/k9-fe-period-utils@workspace:packages/k9-frontend-modules/period-utils"
@@ -13948,7 +14023,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash@npm:4.17.21, lodash@npm:4.x, lodash@npm:^4.17.15, lodash@npm:^4.17.20, lodash@npm:^4.17.21, lodash@npm:^4.17.4":
+"lodash@npm:4.x, lodash@npm:^4.17.15, lodash@npm:^4.17.20, lodash@npm:^4.17.21, lodash@npm:^4.17.4":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: eb835a2e51d381e561e508ce932ea50a8e5a68f4ebdd771ea240d3048244a8d13658acbd502cd4829768c56f2e16bdd4340b9ea141297d472517b83868e677f7
@@ -14774,7 +14849,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nav-datovelger@npm:^12.6.0":
+"nav-datovelger@npm:12.x":
   version: 12.6.0
   resolution: "nav-datovelger@npm:12.6.0"
   dependencies:
@@ -14973,7 +15048,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nav-frontend-lenker-style@npm:2.0.2, nav-frontend-lenker-style@npm:2.x":
+"nav-frontend-lenker-style@npm:2.x":
   version: 2.0.2
   resolution: "nav-frontend-lenker-style@npm:2.0.2"
   peerDependencies:
@@ -14982,7 +15057,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nav-frontend-lenker@npm:2.0.2, nav-frontend-lenker@npm:2.x":
+"nav-frontend-lenker@npm:2.x":
   version: 2.0.2
   resolution: "nav-frontend-lenker@npm:2.0.2"
   peerDependencies:
@@ -15040,7 +15115,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nav-frontend-skjema-style@npm:3.0.3, nav-frontend-skjema-style@npm:3.x":
+"nav-frontend-skjema-style@npm:3.x":
   version: 3.0.3
   resolution: "nav-frontend-skjema-style@npm:3.0.3"
   peerDependencies:
@@ -15051,7 +15126,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nav-frontend-skjema@npm:4.0.6, nav-frontend-skjema@npm:4.x":
+"nav-frontend-skjema@npm:4.x":
   version: 4.0.6
   resolution: "nav-frontend-skjema@npm:4.0.6"
   peerDependencies:
@@ -15782,51 +15857,6 @@ __metadata:
   checksum: 41a2ba310e7b6f6c3b905af82c275bf8854896e2e4c5752966d64cbcd2f599cfffd5932006bcf3b8b419dfdacebb3a3912d5d94e10f1d0acab59876c8757f27f
   languageName: node
   linkType: hard
-
-"omsorgsdager-frontend@workspace:packages/omsorgsdager":
-  version: 0.0.0-use.local
-  resolution: "omsorgsdager-frontend@workspace:packages/omsorgsdager"
-  dependencies:
-    "@navikt/ds-css": 5.6.1
-    "@navikt/ds-react": 5.6.1
-    "@navikt/fnrvalidator": 1.3.3
-    "@testing-library/react": 14.0.0
-    "@types/react": 18.2.24
-    "@types/react-dom": 18.2.8
-    classnames: 2.3.2
-    cors: 2.8.5
-    dayjs: 1.11.10
-    express: 4.18.2
-    jest: 29.7.0
-    jest-axe: 8.0.0
-    lodash: 4.17.21
-    lodash.throttle: 4.1.1
-    nav-datovelger: ^12.6.0
-    nav-frontend-alertstriper: 4.0.2
-    nav-frontend-alertstriper-style: 3.0.2
-    nav-frontend-core: 6.0.1
-    nav-frontend-ikoner-assets: 3.0.1
-    nav-frontend-js-utils: 1.0.20
-    nav-frontend-knapper: 3.1.3
-    nav-frontend-knapper-style: 2.1.2
-    nav-frontend-lenker: 2.0.2
-    nav-frontend-lenker-style: 2.0.2
-    nav-frontend-paneler-style: 2.0.2
-    nav-frontend-skjema: 4.0.6
-    nav-frontend-skjema-style: 3.0.3
-    nav-frontend-spinner: 3.0.1
-    nav-frontend-spinner-style: 1.0.2
-    nav-frontend-typografi: 4.0.2
-    nav-frontend-typografi-style: 2.0.2
-    react: 18.2.0
-    react-day-picker: ^7.4.10
-    react-dom: 18.2.0
-    react-hook-form: 7.47.0
-    string.prototype.replaceall: 1.0.8
-    stylelint: 15.10.3
-    typescript: 5.2.2
-  languageName: unknown
-  linkType: soft
 
 "on-finished@npm:2.4.1":
   version: 2.4.1
@@ -17808,17 +17838,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-day-picker@npm:8.3.4":
-  version: 8.3.4
-  resolution: "react-day-picker@npm:8.3.4"
-  peerDependencies:
-    date-fns: ^2.28.0
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: 789e124e831383fc8219711f0b0610c1541ad283c37c71765ad1012288e4648bca504b1c21646363a9659ccc825d33f8600013fd0d119f9d13b1ff73196a7eaa
-  languageName: node
-  linkType: hard
-
-"react-day-picker@npm:^7.4.10":
+"react-day-picker@npm:7.x":
   version: 7.4.10
   resolution: "react-day-picker@npm:7.4.10"
   dependencies:
@@ -17826,6 +17846,16 @@ __metadata:
   peerDependencies:
     react: ~0.13.x || ~0.14.x || ^15.0.0 || ^16.0.0 || ^17.0.0
   checksum: 33a4614bb4d457a3e72462d092fa131d3d7ec1ba858ac7e70d65b59e464606ffc039afdd226db37ead1326e248ca9a103007ee0bb829b277cd7297e5f5807ad1
+  languageName: node
+  linkType: hard
+
+"react-day-picker@npm:8.3.4":
+  version: 8.3.4
+  resolution: "react-day-picker@npm:8.3.4"
+  peerDependencies:
+    date-fns: ^2.28.0
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: 789e124e831383fc8219711f0b0610c1541ad283c37c71765ad1012288e4648bca504b1c21646363a9659ccc825d33f8600013fd0d119f9d13b1ff73196a7eaa
   languageName: node
   linkType: hard
 
@@ -20547,7 +20577,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:5.2.2":
+"typescript@npm:5.2.2, typescript@npm:5.x":
   version: 5.2.2
   resolution: "typescript@npm:5.2.2"
   bin:
@@ -20567,7 +20597,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@5.2.2#~builtin<compat/typescript>":
+"typescript@patch:typescript@5.2.2#~builtin<compat/typescript>, typescript@patch:typescript@5.x#~builtin<compat/typescript>":
   version: 5.2.2
   resolution: "typescript@patch:typescript@npm%3A5.2.2#~builtin<compat/typescript>::version=5.2.2&hash=1f5320"
   bin:

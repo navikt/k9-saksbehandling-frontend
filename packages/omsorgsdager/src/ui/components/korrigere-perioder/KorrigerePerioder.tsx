@@ -1,7 +1,6 @@
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
-import '@navikt/ds-css';
 import { HelpText } from '@navikt/ds-react';
 import { Hovedknapp, Knapp } from 'nav-frontend-knapper';
 import { RadioGruppe } from 'nav-frontend-skjema';
@@ -148,12 +147,13 @@ const KorrigerePerioder: React.FunctionComponent<KorrigerePerioderProps> = ({
                     )}{' '}
                 </p>
 
-                {informasjonTilLesemodus.vilkarOppfylt && informasjonTilLesemodus.antallDagerDelvisInnvilget !== null && (
-                    <>
-                        <p className={styleLesemodus.label}>{tekst.antallDagerInnvilget}</p>
-                        <p className={styleLesemodus.text}>{informasjonTilLesemodus.antallDagerDelvisInnvilget} </p>
-                    </>
-                )}
+                {informasjonTilLesemodus.vilkarOppfylt &&
+                    informasjonTilLesemodus.antallDagerDelvisInnvilget !== null && (
+                        <>
+                            <p className={styleLesemodus.label}>{tekst.antallDagerInnvilget}</p>
+                            <p className={styleLesemodus.text}>{informasjonTilLesemodus.antallDagerDelvisInnvilget} </p>
+                        </>
+                    )}
                 <p className={styleLesemodus.label}>
                     {konfliktMedArbeidsgiver ? tekstKonfliktMedArbeidsgiver.begrunnelse : tekst.begrunnelse}
                 </p>
