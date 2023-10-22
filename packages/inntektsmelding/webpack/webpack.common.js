@@ -9,7 +9,6 @@ const nodeModules = path.resolve(__dirname, '../node_modules');
 const rootNodeModules = path.resolve(__dirname, '../../../node_modules');
 
 module.exports = {
-    entry: path.resolve(__dirname, '../', 'src') + '/app.ts',
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.css'],
     },
