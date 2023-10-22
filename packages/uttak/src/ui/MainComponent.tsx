@@ -7,8 +7,6 @@ import ContainerContext from './context/ContainerContext';
 import Infostripe from './components/infostripe/Infostripe';
 import UtsattePerioderStripe from './components/utsattePerioderStripe/UtsattePerioderStripe';
 import VurderDato from './components/vurderDato/VurderDato';
-import '@navikt/ds-css';
-import '@navikt/ft-plattform-komponenter/dist/style.css';
 import { aksjonspunktVurderDatoKode, aksjonspunktkodeVentAnnenPSBSakKode } from '../constants/Aksjonspunkter';
 
 interface MainComponentProps {
