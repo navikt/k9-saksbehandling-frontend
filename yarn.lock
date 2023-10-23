@@ -3018,9 +3018,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@navikt/k9-fe-medisinsk-vilkar@workspace:packages/medisinsk-vilkar":
+"@navikt/k9-fe-medisinsk-vilkar@workspace:packages/medisinsk-vilkår":
   version: 0.0.0-use.local
-  resolution: "@navikt/k9-fe-medisinsk-vilkar@workspace:packages/medisinsk-vilkar"
+  resolution: "@navikt/k9-fe-medisinsk-vilkar@workspace:packages/medisinsk-vilkår"
   dependencies:
     "@navikt/diagnosekoder": ^1.2023.0
     "@navikt/ds-css": 5.6.1
