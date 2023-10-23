@@ -1,6 +1,7 @@
 import { Close } from '@navikt/ds-icons';
 import { Alert, Label, Link } from '@navikt/ds-react';
 import { Box, ContentWithTooltip, Form, Margin, OnePersonOutlineGray } from '@navikt/ft-plattform-komponenter';
+import { isSameOrBefore } from '@navikt/k9-fe-date-utils';
 import { CheckboxGroup, PeriodpickerList, TextArea, YesOrNoQuestion } from '@navikt/k9-fe-form-utils';
 import { Period } from '@navikt/k9-fe-period-utils';
 import React, { useState } from 'react';
@@ -49,6 +50,8 @@ interface VurderingAvTilsynsbehovFormProps {
     dokumenter: Dokument[];
     onAvbryt: () => void;
     isSubmitting: boolean;
+    harPerioderDerPleietrengendeErOver18år?: boolean;
+    barnetsAttenårsdag?: string;
 }
 
 const VurderingAvTilsynsbehovForm = ({
@@ -59,6 +62,8 @@ const VurderingAvTilsynsbehovForm = ({
     dokumenter,
     onAvbryt,
     isSubmitting,
+    harPerioderDerPleietrengendeErOver18år,
+    barnetsAttenårsdag,
 }: VurderingAvTilsynsbehovFormProps): JSX.Element => {
     const { readOnly } = React.useContext(ContainerContext);
     const formMethods = useForm({
@@ -124,6 +129,18 @@ const VurderingAvTilsynsbehovForm = ({
             .flatMap((p) => new Period(p.fom, p.tom).asListOfDays());
         return dagerSomSkalVurderes.every((dagSomSkalVurderes) => dagerSomBlirVurdert.indexOf(dagSomSkalVurderes) > -1);
     }, [resterendeVurderingsperioder, perioderSomBlirVurdert]);
+
+    const visLovparagrafForPleietrengendeOver18år = React.useMemo(
+        () =>
+            harPerioderDerPleietrengendeErOver18år &&
+            perioderSomBlirVurdert.some((periode) => {
+                if ((periode as AnyType).period) {
+                    return isSameOrBefore(barnetsAttenårsdag, (periode as AnyType).period.fom);
+                }
+                return isSameOrBefore(barnetsAttenårsdag, periode.fom);
+            }),
+        [perioderSomBlirVurdert]
+    );
 
     const hullISøknadsperiodene = React.useMemo(
         () => finnHullIPerioder(perioderSomKanVurderes).map((period) => period.asInternationalPeriod()),
@@ -246,8 +263,11 @@ const VurderingAvTilsynsbehovForm = ({
                                 <>
                                     {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                                     <b>
-                                        Gjør en vurdering av om det er behov for kontinuerlig tilsyn og pleie som følge
-                                        av sykdommen etter § 9-10, første ledd.
+                                        {visLovparagrafForPleietrengendeOver18år
+                                            ? `Gjør en vurdering av om det er behov for kontinuerlig tilsyn og pleie som følge
+                                        av sykdommen etter § 9-10, tredje ledd.`
+                                            : `Gjør en vurdering av om det er behov for kontinuerlig tilsyn og pleie som følge
+                                        av sykdommen etter § 9-10, første ledd.`}
                                     </b>
                                     <p className={styles.begrunnelsesfelt__labeltekst}>
                                         Du skal ta utgangspunkt i{' '}
