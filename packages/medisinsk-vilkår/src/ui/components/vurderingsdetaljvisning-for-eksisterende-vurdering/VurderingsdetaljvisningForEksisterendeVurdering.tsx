@@ -1,4 +1,5 @@
 import React from 'react';
+import { addYearsToDate } from '@navikt/k9-fe-date-utils';
 import Vurderingselement from '../../../types/Vurderingselement';
 import VurderingsoppsummeringForKontinuerligTilsynOgPleie from '../vurderingsoppsummering-for-kontinuerlig-tilsyn-og-pleie/VurderingsoppsummeringForKontinuerligTilsynOgPleie';
 import VurderingsdetaljerFetcher from '../vurderingsdetaljer-fetcher/VurderingsdetaljerFetcher';
@@ -129,6 +130,14 @@ const VurderingsdetaljvisningForEksisterendeVurdering = ({
                                         onSubmit={onSubmit}
                                         onAvbryt={onAvbrytClick}
                                         isSubmitting={isSubmitting}
+                                        harPerioderDerPleietrengendeErOver18år={
+                                            vurderingsoversikt.harPerioderDerPleietrengendeErOver18år
+                                        }
+                                        barnetsAttenårsdag={
+                                            vurderingsoversikt.harPerioderDerPleietrengendeErOver18år
+                                                ? addYearsToDate(vurderingsoversikt.pleietrengendesFødselsdato, 18)
+                                                : undefined
+                                        }
                                     />
                                 );
                             }}
