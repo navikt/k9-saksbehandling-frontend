@@ -22,8 +22,8 @@
         "@navikt/k9-fe-date-utils": "^1.0.5"
     },
     "devDependencies": {
-        "dayjs": "1.11.9",
-        "jest": "29.6.4"
+        "dayjs": "1.11.10",
+        "jest": "29.7.0"
     },
     "peerDependencies": {
         "dayjs": "1.11.7"

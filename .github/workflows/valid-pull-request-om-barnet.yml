@@ -4,6 +4,7 @@ on:
         types: [opened, synchronize]
         paths:
             - 'packages/om-barnet/**/*'
+            - 'yarn.lock'
 env:
     package-name: psb-om-barnet-frontend
 jobs:
@@ -22,7 +23,7 @@ jobs:
                   NPM_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
             - name: Sette opp Node
               uses: actions/setup-node@v3
-                  
+
             - name: Installere dependencies
               run: yarn install --immutable
             - name: Bygg k9-frontend-modules
