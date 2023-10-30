@@ -22,17 +22,17 @@
     "author": "NAV IT",
     "license": "MIT",
     "devDependencies": {
-        "@types/jest": "29.5.5",
-        "@types/node": "20.8.0",
-        "@types/react": "18.2.24",
-        "@types/react-dom": "18.2.8"
+        "@types/jest": "29.5.6",
+        "@types/node": "20.8.9",
+        "@types/react": "18.2.33",
+        "@types/react-dom": "18.2.14"
     },
     "dependencies": {
-        "@navikt/ds-css": "5.5.0",
-        "@navikt/ds-react": "5.5.0",
-        "@navikt/ft-form-hooks": "4.2.6",
-        "@navikt/ft-form-validators": "2.1.2",
-        "@navikt/ft-plattform-komponenter": "2.3.2",
+        "@navikt/ds-css": "5.7.6",
+        "@navikt/ds-react": "5.7.6",
+        "@navikt/ft-form-hooks": "4.2.11",
+        "@navikt/ft-form-validators": "2.1.4",
+        "@navikt/ft-plattform-komponenter": "2.3.7",
         "@popperjs/core": "2.11.8",
         "classnames": "2.3.2",
         "cors": "2.8.5",
