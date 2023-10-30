@@ -75,6 +75,7 @@
         "webpack-merge": "5.10.0"
     },
     "resolutions": {
+        "postcss": "8.4.31",
         "trim": "1.0.1",
         "trim-newlines": "3.0.1",
         "glob-parent": "5.1.2"
