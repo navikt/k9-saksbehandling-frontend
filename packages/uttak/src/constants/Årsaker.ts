@@ -21,4 +21,17 @@ enum Årsaker {
     INNGANGSVILKÅR_IKKE_OPPFYLT = 'INNGANGSVILKÅR_IKKE_OPPFYLT',
 }
 
+export const ikkeOppfyltÅrsaker = [
+    Årsaker.UTENOM_PLEIEBEHOV,
+    Årsaker.FOR_LAV_REST_PGA_ETABLERT_TILSYN,
+    Årsaker.FOR_LAV_REST_PGA_ANDRE_SØKERE,
+    Årsaker.FOR_LAV_REST_PGA_ETABLERT_TILSYN_OG_ANDRE_SØKERE,
+    Årsaker.FOR_LAV_TAPT_ARBEIDSTID,
+    Årsaker.FOR_LAV_ØNSKET_UTTAKSGRAD,
+    Årsaker.LOVBESTEMT_FERIE,
+    Årsaker.BARNETS_DØDSFALL,
+    Årsaker.FOR_MANGE_DAGER_UTENLANDSOPPHOLD,
+    Årsaker.INNGANGSVILKÅR_IKKE_OPPFYLT,
+];
+
 export default Årsaker;

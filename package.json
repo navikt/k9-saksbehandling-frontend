@@ -38,7 +38,7 @@
         "css-minimizer-webpack-plugin": "5.0.1",
         "cypress": "13.3.3",
         "eslint": "8.52.0",
-        "eslint-config-airbnb": "18.2.1",
+        "eslint-config-airbnb": "19.0.4",
         "eslint-config-prettier": "9.0.0",
         "eslint-plugin-import": "2.29.0",
         "eslint-plugin-jsx-a11y": "6.7.1",
@@ -75,6 +75,7 @@
         "webpack-merge": "5.10.0"
     },
     "resolutions": {
+        "eslint-config-airbnb": "18.2.1",
         "postcss": "8.4.31",
         "trim": "1.0.1",
         "trim-newlines": "3.0.1",

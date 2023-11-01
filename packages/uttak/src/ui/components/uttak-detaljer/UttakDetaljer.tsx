@@ -9,7 +9,7 @@ import { arbeidstypeTilVisning } from '../../../constants/Arbeidstype';
 import BarnetsDødsfallÅrsakerMedTekst from '../../../constants/BarnetsDødsfallÅrsakerMedTekst';
 import IkkeOppfylteÅrsakerMedTekst from '../../../constants/IkkeOppfylteÅrsakerMedTekst';
 import OverseEtablertTilsynÅrsak from '../../../constants/OverseEtablertTilsynÅrsak';
-import Årsaker from '../../../constants/Årsaker';
+import Årsaker, { ikkeOppfyltÅrsaker } from '../../../constants/Årsaker';
 import ArbeidsgiverOpplysninger from '../../../types/ArbeidsgiverOpplysninger';
 import GraderingMotTilsyn from '../../../types/GraderingMotTilsyn';
 import Utbetalingsgrad from '../../../types/Utbetalingsgrad';
@@ -42,24 +42,20 @@ const getTekstVedBarnetsDødsfall = (årsaker: Årsaker[]) => {
 
 const utenlandsoppholdTekst = (utenlandsopphold, kodeverk) => {
     if (utenlandsopphold?.erEøsLand) {
-        return 'Periode med utenlandsopphold i EØS-land, telles ikke i 8 uker';
+        return 'Periode med utenlandsopphold i EØS-land, telles ikke i 8 uker.';
     }
 
     return kodeverk?.find((v) => v.kode === utenlandsopphold?.årsak)?.navn;
 };
 
-const utenlandsoppholdInfo = (årsaker, utenlandsopphold) => {
+const utenlandsoppholdInfo = (årsaker: Årsaker[], utenlandsopphold) => {
     const { kodeverkUtenlandsoppholdÅrsak } = React.useContext(ContainerContext);
 
     if (!utenlandsopphold?.landkode) {
         return null;
     }
 
-    if (
-        utenlandsopphold?.landkode &&
-        utenlandsopphold?.årsak === 'INGEN' &&
-        harÅrsak(årsaker, Årsaker.FOR_MANGE_DAGER_UTENLANDSOPPHOLD)
-    ) {
+    if (årsaker.some((årsak) => ikkeOppfyltÅrsaker.includes(årsak))) {
         return null;
     }
 
