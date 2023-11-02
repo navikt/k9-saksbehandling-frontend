@@ -2,7 +2,7 @@
     "name": "@navikt/k9-fe-http-utils",
     "author": "NAV",
     "license": "MIT",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "A collection of HTTP utils",
     "main": "./build/index.js",
     "types": "./build/index.d.ts",
@@ -18,7 +18,7 @@
         "test-watch": "jest --watch"
     },
     "devDependencies": {
-        "axios": "1.5.1"
+        "axios": "1.6.0"
     },
     "peerDependencies": {
         "axios": "1.2.6"
