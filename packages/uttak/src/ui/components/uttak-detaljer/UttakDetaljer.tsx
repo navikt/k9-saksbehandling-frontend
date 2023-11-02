@@ -19,6 +19,7 @@ import { harÅrsak } from '../../../util/årsakUtils';
 import ContainerContext from '../../context/ContainerContext';
 import styles from './uttakDetaljer.css';
 import UttakUtregning from './UttakUtregning';
+import Utfall from '../../../constants/Utfall';
 
 const cx = classNames.bind(styles);
 
@@ -42,24 +43,20 @@ const getTekstVedBarnetsDødsfall = (årsaker: Årsaker[]) => {
 
 const utenlandsoppholdTekst = (utenlandsopphold, kodeverk) => {
     if (utenlandsopphold?.erEøsLand) {
-        return 'Periode med utenlandsopphold i EØS-land, telles ikke i 8 uker';
+        return 'Periode med utenlandsopphold i EØS-land, telles ikke i 8 uker.';
     }
 
     return kodeverk?.find((v) => v.kode === utenlandsopphold?.årsak)?.navn;
 };
 
-const utenlandsoppholdInfo = (årsaker, utenlandsopphold) => {
+const utenlandsoppholdInfo = (utfall: Utfall, utenlandsopphold: { landkode: string }) => {
     const { kodeverkUtenlandsoppholdÅrsak } = React.useContext(ContainerContext);
 
     if (!utenlandsopphold?.landkode) {
         return null;
     }
 
-    if (
-        utenlandsopphold?.landkode &&
-        utenlandsopphold?.årsak === 'INGEN' &&
-        harÅrsak(årsaker, Årsaker.FOR_MANGE_DAGER_UTENLANDSOPPHOLD)
-    ) {
+    if (utfall === Utfall.IKKE_OPPFYLT) {
         return null;
     }
 
@@ -231,12 +228,13 @@ const UttakDetaljer = ({ uttak }: UttakDetaljerProps): JSX.Element => {
         søkersTapteArbeidstid,
         pleiebehov,
         utenlandsopphold,
+        utfall,
     } = uttak;
     return (
         <div className={styles.uttakDetaljer}>
             {getÅrsaksetiketter(årsaker)}
             {getTekstVedBarnetsDødsfall(årsaker)}
-            {utenlandsoppholdInfo(årsaker, utenlandsopphold)}
+            {utenlandsoppholdInfo(utfall, utenlandsopphold)}
             <div className={styles.uttakDetaljer__oppsummering}>
                 {søkerBerOmMaksimalt && getSøkerBerOmMaksimalt(søkerBerOmMaksimalt, årsaker)}
             </div>

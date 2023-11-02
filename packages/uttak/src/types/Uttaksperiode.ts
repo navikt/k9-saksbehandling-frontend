@@ -22,7 +22,11 @@ export interface Uttaksperiodeelement {
     pleiebehov: number;
     endringsstatus?: Endringsstatus;
     utenlandsoppholdUtenÅrsak?: boolean;
-    utenlandsopphold?: string;
+    utenlandsopphold?: {
+        ErEøsLand: boolean;
+        landkode: string;
+        årsak: string;
+    };
 }
 
 export interface Uttaksperiode extends Uttaksperiodeelement {
