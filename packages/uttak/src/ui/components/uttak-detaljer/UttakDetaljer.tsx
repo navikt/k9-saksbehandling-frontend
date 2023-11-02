@@ -9,7 +9,7 @@ import { arbeidstypeTilVisning } from '../../../constants/Arbeidstype';
 import BarnetsDødsfallÅrsakerMedTekst from '../../../constants/BarnetsDødsfallÅrsakerMedTekst';
 import IkkeOppfylteÅrsakerMedTekst from '../../../constants/IkkeOppfylteÅrsakerMedTekst';
 import OverseEtablertTilsynÅrsak from '../../../constants/OverseEtablertTilsynÅrsak';
-import Årsaker, { ikkeOppfyltÅrsaker } from '../../../constants/Årsaker';
+import Årsaker from '../../../constants/Årsaker';
 import ArbeidsgiverOpplysninger from '../../../types/ArbeidsgiverOpplysninger';
 import GraderingMotTilsyn from '../../../types/GraderingMotTilsyn';
 import Utbetalingsgrad from '../../../types/Utbetalingsgrad';
@@ -19,6 +19,7 @@ import { harÅrsak } from '../../../util/årsakUtils';
 import ContainerContext from '../../context/ContainerContext';
 import styles from './uttakDetaljer.css';
 import UttakUtregning from './UttakUtregning';
+import Utfall from '../../../constants/Utfall';
 
 const cx = classNames.bind(styles);
 
@@ -48,14 +49,14 @@ const utenlandsoppholdTekst = (utenlandsopphold, kodeverk) => {
     return kodeverk?.find((v) => v.kode === utenlandsopphold?.årsak)?.navn;
 };
 
-const utenlandsoppholdInfo = (årsaker: Årsaker[], utenlandsopphold) => {
+const utenlandsoppholdInfo = (utfall: Utfall, utenlandsopphold) => {
     const { kodeverkUtenlandsoppholdÅrsak } = React.useContext(ContainerContext);
 
     if (!utenlandsopphold?.landkode) {
         return null;
     }
 
-    if (årsaker.some((årsak) => ikkeOppfyltÅrsaker.includes(årsak))) {
+    if (utfall === Utfall.IKKE_OPPFYLT) {
         return null;
     }
 
@@ -227,12 +228,13 @@ const UttakDetaljer = ({ uttak }: UttakDetaljerProps): JSX.Element => {
         søkersTapteArbeidstid,
         pleiebehov,
         utenlandsopphold,
+        utfall,
     } = uttak;
     return (
         <div className={styles.uttakDetaljer}>
             {getÅrsaksetiketter(årsaker)}
             {getTekstVedBarnetsDødsfall(årsaker)}
-            {utenlandsoppholdInfo(årsaker, utenlandsopphold)}
+            {utenlandsoppholdInfo(utfall, utenlandsopphold)}
             <div className={styles.uttakDetaljer__oppsummering}>
                 {søkerBerOmMaksimalt && getSøkerBerOmMaksimalt(søkerBerOmMaksimalt, årsaker)}
             </div>
