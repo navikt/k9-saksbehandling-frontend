@@ -49,7 +49,7 @@ const utenlandsoppholdTekst = (utenlandsopphold, kodeverk) => {
     return kodeverk?.find((v) => v.kode === utenlandsopphold?.årsak)?.navn;
 };
 
-const utenlandsoppholdInfo = (utfall: Utfall, utenlandsopphold) => {
+const utenlandsoppholdInfo = (utfall: Utfall, utenlandsopphold: { landkode: string }) => {
     const { kodeverkUtenlandsoppholdÅrsak } = React.useContext(ContainerContext);
 
     if (!utenlandsopphold?.landkode) {
