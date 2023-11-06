@@ -8,7 +8,9 @@
         "test:all": "lerna run test --stream",
         "test:changed": "lerna run test --stream --since origin/main",
         "lint": "lerna run lint --stream",
-        "ts-check": "lerna run ts-check --stream"
+        "ts-check": "lerna run ts-check --stream",
+        "lerna-publish": "yarn build && lerna publish",
+        "lerna-changed": "lerna changed"
     },
     "keywords": [],
     "author": "NAV IT",
