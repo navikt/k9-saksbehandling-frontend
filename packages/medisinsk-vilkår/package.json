@@ -3,9 +3,7 @@
     "version": "0.0.5",
     "main": "./build/index.js",
     "files": [
-        "build",
-        "index.ts",
-        "package.json"
+        "build"
     ],
     "scripts": {
         "test": "cross-env DEBUG=test JEST_PUPPETEER_CONFIG=./jest-puppeteer.config.js jest --maxWorkers=2 --detectOpenHandles --config=./jest.config.js ",
