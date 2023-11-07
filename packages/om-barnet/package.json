@@ -10,11 +10,12 @@
     "scripts": {
         "test": "jest",
         "test-watch": "jest --watch",
-        "build": "cross-env NODE_ENV=production webpack --config webpack/webpack-config.production.js",
+        "build": "cross-env NODE_ENV=production webpack --config webpack/webpack-config.production.js && yarn ts-declarations",
         "dev": "node webpack/webpack-config.development.js",
         "majorVersion": "node ./majorVersion.js",
         "lint": "eslint 'src/**/*.{ts,tsx,js,jsx}'",
         "ts-check": "tsc --pretty --noEmit",
+        "ts-declarations": "tsc",
         "api-mock": "ts-node mock/api-mock.ts"
     },
     "pre-commit": [

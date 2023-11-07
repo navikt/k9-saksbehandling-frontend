@@ -9,11 +9,12 @@
     ],
     "scripts": {
         "test": "jest --maxWorkers=2 --detectOpenHandles --config=./jest.config.js",
-        "build": "cross-env NODE_ENV=production webpack --config webpack/webpack-config.production.js",
+        "build": "cross-env NODE_ENV=production webpack --config webpack/webpack-config.production.js && yarn ts-declarations",
         "dev": "node webpack/webpack-config.development.js",
         "lint": "eslint src/**/*.{ts,tsx,js,jsx}",
         "lint:css": "stylelint src/**/*.{less,css}",
         "ts-check": "tsc --pretty --noEmit",
+        "ts-declarations": "tsc",
         "checkPackageUpgrade": "yarn test && yarn lint && yarn lint:css && yarn build"
     },
     "keywords": [],

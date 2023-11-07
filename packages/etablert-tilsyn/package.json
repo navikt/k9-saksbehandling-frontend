@@ -10,11 +10,12 @@
     "scripts": {
         "test": "jest --maxWorkers=2",
         "test-watch": "jest --watch",
-        "build": "webpack --config webpack/webpack-config.production.js",
+        "build": "webpack --config webpack/webpack-config.production.js && yarn ts-declarations",
         "dev": "node webpack/webpack-config.development.js",
         "majorVersion": "node ./majorVersion.js",
         "lint": "eslint 'src/**/*.{ts,tsx,js,jsx}'",
         "ts-check": "tsc --pretty --noEmit",
+        "ts-declarations": "tsc",
         "api-mock": "ts-node mock/api-mock.ts",
         "cypress:headless": "cypress open",
         "test:e2e": "start-server-and-test dev http://localhost:8484 cypress:headless"
