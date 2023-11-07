@@ -3,9 +3,7 @@
     "version": "0.0.4",
     "main": "./build/index.js",
     "files": [
-        "build",
-        "index.ts",
-        "package.json"
+        "build"
     ],
     "scripts": {
         "test": "jest",
