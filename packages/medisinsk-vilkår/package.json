@@ -15,7 +15,7 @@
         "majorVersion": "node ./majorVersion.js",
         "lint": "eslint 'src/**/*.{ts,tsx,js,jsx}'",
         "ts-check": "tsc --pretty --noEmit",
-        "ts-declarations": "tsc",
+        "ts-declarations": "tsc --emitDeclarationOnly",
         "cypress:headless": "cypress run",
         "test:e2e": "start-server-and-test dev http://localhost:8081 cypress:headless",
         "start-ls:e2e": "nodemon mock/api-mock-livets-sluttfase.ts & node webpack/webpack-config.development.js"

@@ -10,8 +10,7 @@
         "types": ["node", "jest"],
         "esModuleInterop": true,
         "allowJs": true,
-        "outDir": "./build/",
-        "emitDeclarationOnly": true
+        "outDir": "./build/"
     },
     "include": ["./index.ts", "src", "@types"],
     "exclude": ["node_modules", "build", "**/*.spec.ts", "**/*.spec.tsx", "dist"]

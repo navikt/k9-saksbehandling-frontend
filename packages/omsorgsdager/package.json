@@ -12,7 +12,7 @@
         "lint": "eslint src/**/*.{ts,tsx,js,jsx}",
         "lint:css": "stylelint src/**/*.{less,css}",
         "ts-check": "tsc --pretty --noEmit",
-        "ts-declarations": "tsc",
+        "ts-declarations": "tsc --emitDeclarationOnly",
         "checkPackageUpgrade": "yarn test && yarn lint && yarn lint:css && yarn build"
     },
     "keywords": [],

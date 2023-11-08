@@ -14,7 +14,7 @@
         "majorVersion": "node ./majorVersion.js",
         "lint": "eslint 'src/**/*.{ts,tsx,js,jsx}'",
         "ts-check": "tsc --pretty --noEmit",
-        "ts-declarations": "tsc"
+        "ts-declarations": "tsc --emitDeclarationOnly"
     },
     "pre-commit": [
         "lint",

@@ -9,8 +9,7 @@
         "typeRoots": ["./node_modules/@types"],
         "esModuleInterop": true,
         "allowJs": true,
-        "outDir": "./build/",
-        "emitDeclarationOnly": true
+        "outDir": "./build/"
     },
     "include": ["./index.ts", "src", "@types"],
     "exclude": ["node_modules", "build"]

@@ -13,7 +13,7 @@
         "majorVersion": "node ./majorVersion.js",
         "lint": "eslint 'src/**/*.{ts,tsx,js,jsx}'",
         "ts-check": "tsc --pretty --noEmit",
-        "ts-declarations": "tsc",
+        "ts-declarations": "tsc --emitDeclarationOnly",
         "api-mock": "ts-node mock/api-mock.ts",
         "cypress:headless": "cypress open",
         "test:e2e": "start-server-and-test dev http://localhost:8484 cypress:headless"
