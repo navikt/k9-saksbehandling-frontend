@@ -9,14 +9,11 @@ interface ContainerContract {
         sykdomInnleggelse: string;
     };
     httpErrorHandler: HttpErrorHandler;
-    beredskapMåVurderes: boolean;
-    nattevåkMåVurderes: boolean;
     lagreBeredskapvurdering: (data: any) => void;
     lagreNattevåkvurdering: (data: any) => void;
     harAksjonspunktForBeredskap: boolean;
     harAksjonspunktForNattevåk: boolean;
     saksbehandlere: Saksbehandlere;
-    smoeringErTilgjengelig: boolean;
 }
 
 export default ContainerContract;
