@@ -35,7 +35,7 @@ const IkkeOppfylteÅrsakerMedTekst = [
     },
     {
         årsak: Årsaker.MAKS_DAGER_OVERSTEGET,
-        tekst: 'Årsak for avslag: Søker har mottatt pleiepenger i 60 dager',
+        tekst: 'Årsak for avslag: Søker har mottatt pleiepenger i 60 dager.',
     },
 ];
 
