@@ -1,5 +1,5 @@
-import { Box, Margin, InteractiveList } from '@navikt/ft-plattform-komponenter';
-import { Element, Undertittel } from 'nav-frontend-typografi';
+import { BodyShort, Heading } from '@navikt/ds-react';
+import { Box, InteractiveList, Margin } from '@navikt/ft-plattform-komponenter';
 import React, { useEffect } from 'react';
 import Vurderingsperiode from '../../../types/Vurderingsperiode';
 import { usePrevious } from '../../../util/hooks';
@@ -45,18 +45,36 @@ const Periodenavigasjon = ({
     return (
         <div className={styles.vurderingsnavigasjon}>
             <Box marginBottom={Margin.large}>
-                <Undertittel className={styles.vurderingsnavigasjon__heading}>Alle perioder</Undertittel>
+                <Heading size="small" level="2" className={styles.vurderingsnavigasjon__heading}>
+                    Alle perioder
+                </Heading>
             </Box>
             {antallPerioder === 0 && <p className={styles.vurderingsnavigasjon__emptyText}>Ingen vurderinger å vise</p>}
             {antallPerioder > 0 && (
                 <div className={styles.vurderingsvelgerContainer}>
                     <div className={styles.vurderingsvelgerContainer__columnHeadings}>
-                        <Element className={styles['vurderingsvelgerContainer__columnHeading--first']}>Status</Element>
-                        <Element className={styles['vurderingsvelgerContainer__columnHeading--second']}>
+                        <BodyShort
+                            size="small"
+                            weight="semibold"
+                            className={styles['vurderingsvelgerContainer__columnHeading--first']}
+                        >
+                            Status
+                        </BodyShort>
+                        <BodyShort
+                            size="small"
+                            weight="semibold"
+                            className={styles['vurderingsvelgerContainer__columnHeading--second']}
+                        >
                             Periode
-                        </Element>
+                        </BodyShort>
 
-                        <Element className={styles['vurderingsvelgerContainer__columnHeading--third']}>Kilde</Element>
+                        <BodyShort
+                            size="small"
+                            weight="semibold"
+                            className={styles['vurderingsvelgerContainer__columnHeading--third']}
+                        >
+                            Kilde
+                        </BodyShort>
                     </div>
                     <InteractiveList
                         elements={elements.map((element, currentIndex) => ({
