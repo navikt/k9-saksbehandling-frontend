@@ -33,6 +33,10 @@ const IkkeOppfylteÅrsakerMedTekst = [
         årsak: Årsaker.BARNETS_DØDSFALL,
         tekst: 'Årsak for avslag: Pleietrengende er død.',
     },
+    {
+        årsak: Årsaker.MAKS_DAGER_OVERSTEGET,
+        tekst: 'Årsak for avslag: Søker har mottatt pleiepenger i 60 dager.',
+    },
 ];
 
 export default IkkeOppfylteÅrsakerMedTekst;
