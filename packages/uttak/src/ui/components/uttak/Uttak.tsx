@@ -1,3 +1,4 @@
+import { BodyShort } from '@navikt/ds-react';
 import {
     ChevronIconBlack,
     ContentWithTooltip,
@@ -7,7 +8,6 @@ import {
     TwoPersonsWithOneHighlightedIconGray,
 } from '@navikt/ft-plattform-komponenter';
 import classNames from 'classnames/bind';
-import { Normaltekst } from 'nav-frontend-typografi';
 import * as React from 'react';
 import { Collapse } from 'react-collapse';
 import AnnenPart from '../../../constants/AnnenPart';
@@ -15,13 +15,13 @@ import Årsaker from '../../../constants/Årsaker';
 import { Uttaksperiode } from '../../../types/Uttaksperiode';
 import { harÅrsak } from '../../../util/årsakUtils';
 import Vilkårsliste from '../../../vilkårsliste/Vilkårsliste';
+import ContainerContext from '../../context/ContainerContext';
 import Endringsstatus from '../icons/Endringsstatus';
 import FullWidthRow from '../table/FullWidthRow';
 import TableColumn from '../table/TableColumn';
 import TableRow from '../table/TableRow';
 import UttakDetaljer from '../uttak-detaljer/UttakDetaljer';
 import styles from './uttak.css';
-import ContainerContext from '../../context/ContainerContext';
 
 const cx = classNames.bind(styles);
 
@@ -51,7 +51,7 @@ const Uttak = ({ uttak, erValgt, velgPeriode, withBorderTop = false }: UttakProp
         <>
             <TableRow className={`${erValgt ? styles.uttak__expandedRow : ''}`} onClick={velgPeriode}>
                 <TableColumn className={`${withBorderTop ? styles.borderTop : ''}`}>
-                    <Normaltekst>{periode.prettifyPeriod()}</Normaltekst>
+                    <BodyShort size="small">{periode.prettifyPeriod()}</BodyShort>
                 </TableColumn>
                 <TableColumn className={`${withBorderTop ? styles.borderTop : ''}`}>
                     {harOppfyltAlleInngangsvilkår ? <GreenCheckIconFilled /> : <RedCrossIconFilled />}
