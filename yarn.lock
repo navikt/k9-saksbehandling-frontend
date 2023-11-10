@@ -14484,32 +14484,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nav-frontend-ekspanderbartpanel-style@npm:2.0.2":
-  version: 2.0.2
-  resolution: "nav-frontend-ekspanderbartpanel-style@npm:2.0.2"
-  peerDependencies:
-    nav-frontend-chevron-style: ^1.0.4
-    nav-frontend-core: ^6.0.0
-    nav-frontend-paneler-style: ^2.0.0
-    nav-frontend-typografi-style: ^2.0.0
-  checksum: 116827e6f3ece2aeeca442dbad8b7772a202640852778a39f2c9a390651e49b461cb18ef113bccd48c34ec9f6adb83845b7f8763dd321ad845b756fcd5562402
-  languageName: node
-  linkType: hard
-
-"nav-frontend-ekspanderbartpanel@npm:4.0.4":
-  version: 4.0.4
-  resolution: "nav-frontend-ekspanderbartpanel@npm:4.0.4"
-  peerDependencies:
-    "@types/react-collapse": ^5.0.0
-    classnames: ^2.2.5
-    nav-frontend-ekspanderbartpanel-style: ^2.0.0
-    nav-frontend-js-utils: ^1.0.19
-    react: ^16.8.0 || ^17.0.0
-    react-collapse: ^5.0.0
-  checksum: b694fe56582a7363d2f9f25ec614389f57bce48d9ce5e9dd6922870d39ca0c347ed020f8371430b0bea2f6685a8fa2276e7d8123dbeafc830e78a3bde96dfb77
-  languageName: node
-  linkType: hard
-
 "nav-frontend-etiketter-style@npm:2.0.3":
   version: 2.0.3
   resolution: "nav-frontend-etiketter-style@npm:2.0.3"
@@ -17363,28 +17337,6 @@ __metadata:
     lodash.throttle: 4.1.1
     msw: 1.3.2
     msw-storybook-addon: 1.10.0
-    nav-frontend-alertstriper: 4.0.2
-    nav-frontend-alertstriper-style: 3.0.2
-    nav-frontend-chevron: 1.0.30
-    nav-frontend-chevron-style: 1.0.4
-    nav-frontend-core: 6.0.1
-    nav-frontend-ekspanderbartpanel: 4.0.4
-    nav-frontend-ekspanderbartpanel-style: 2.0.2
-    nav-frontend-ikoner-assets: 3.0.1
-    nav-frontend-ikonknapper: 2.1.3
-    nav-frontend-js-utils: 1.0.20
-    nav-frontend-knapper: 3.1.3
-    nav-frontend-knapper-style: 2.1.2
-    nav-frontend-lenker: 2.0.2
-    nav-frontend-lenker-style: 2.0.2
-    nav-frontend-paneler: 3.0.2
-    nav-frontend-paneler-style: 2.0.2
-    nav-frontend-skjema: 4.0.6
-    nav-frontend-skjema-style: 3.0.3
-    nav-frontend-spinner: 3.0.1
-    nav-frontend-spinner-style: 1.0.2
-    nav-frontend-typografi: 4.0.2
-    nav-frontend-typografi-style: 2.0.2
     nodemon: 3.0.1
     react: 18.2.0
     react-collapse: 5.1.1

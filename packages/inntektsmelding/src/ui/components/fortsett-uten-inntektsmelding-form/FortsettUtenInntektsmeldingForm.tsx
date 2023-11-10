@@ -1,9 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { Alert, Heading } from '@navikt/ds-react';
+import { Alert, Button, Heading } from '@navikt/ds-react';
 import { Form, RadioGroupPanel, TextAreaField } from '@navikt/ft-form-hooks';
 import { Box, Margin } from '@navikt/ft-plattform-komponenter';
-import { Hovedknapp, Knapp } from 'nav-frontend-knapper';
-import Panel from 'nav-frontend-paneler';
 import React from 'react';
 import { UseFormReturn } from 'react-hook-form';
 import ContainerContext from '../../../context/ContainerContext';
@@ -122,7 +120,7 @@ function FortsettUtenInntektsmeldingForm({
     return (
         // eslint-disable-next-line react/jsx-props-no-spreading
         <Form formMethods={formMethods} onSubmit={submit}>
-            <Panel className={styles.fortsettUtenInntektsmelding__panel}>
+            <div className={styles.fortsettUtenInntektsmelding__panel}>
                 <Heading className={styles.fortsettUtenInntektsmelding__radiogroupHeading} level="3" size="xsmall">
                     Kan du gå videre uten inntektsmelding?
                 </Heading>
@@ -176,19 +174,19 @@ function FortsettUtenInntektsmeldingForm({
                     <Box marginTop={Margin.large}>
                         <div className={styles.fortsettUtenInntektsmelding__knapper}>
                             {!harFlereTilstanderTilVurdering && !!beslutning && (
-                                <Hovedknapp mini>
+                                <Button size="small" variant="primary">
                                     {fortsettKnappTekstFunc[aksjonspunktKode](beslutning === Kode.FORTSETT)}
-                                </Hovedknapp>
+                                </Button>
                             )}
                             {redigeringsmodus && (
-                                <Knapp mini onClick={avbrytRedigering}>
+                                <Button size="small" variant="secondary" onClick={avbrytRedigering}>
                                     Avbryt redigering
-                                </Knapp>
+                                </Button>
                             )}
                         </div>
                     </Box>
                 </>
-            </Panel>
+            </div>
         </Form>
     );
 }
