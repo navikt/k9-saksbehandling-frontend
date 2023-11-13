@@ -1,24 +1,21 @@
+import { Alert, Button, Fieldset } from '@navikt/ds-react';
+import { Datepicker, RadioGroupPanel } from '@navikt/k9-fe-form-utils';
 import classNames from 'classnames';
-import { Hovedknapp } from 'nav-frontend-knapper';
-import { RadioGruppe, SkjemaGruppe } from 'nav-frontend-skjema';
 import React, { useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { hanteringAvDatoForDatoVelger } from '../../../util/dateUtils';
+import { VilkarMidlertidigAleneProps } from '../../../types/VilkarMidlertidigAleneProps';
+import { dateFromString, hanteringAvDatoForDatoVelger } from '../../../util/dateUtils';
 import { booleanTilTekst, tekstTilBoolean } from '../../../util/stringUtils';
 import useFormSessionStorage from '../../../util/useFormSessionStorageUtils';
 import { valideringsFunksjoner } from '../../../util/validationReactHookFormUtils';
-import AlertStripeTrekantVarsel from '../alertstripe-trekant-varsel/AlertStripeTrekantVarsel';
-import OpplysningerFraSoknad from '../opplysninger-fra-soknad/OpplysningerFraSoknad';
-import DatePicker from '../react-hook-form-wrappers/DatePicker';
-import RadioButtonWithBooleanValue from '../react-hook-form-wrappers/RadioButton';
-import TextArea from '../react-hook-form-wrappers/TextArea';
-import styles from './vilkarMidlertidigAlene.css';
+import { required } from '../../../util/validators';
 import styleLesemodus from '../lesemodus/lesemodusboks.css';
-import tekst from './vilkar-midlertidig-alene-tekst';
-import { VilkarMidlertidigAleneProps } from '../../../types/VilkarMidlertidigAleneProps';
+import OpplysningerFraSoknad from '../opplysninger-fra-soknad/OpplysningerFraSoknad';
+import TextArea from '../react-hook-form-wrappers/TextArea';
 import VilkarMidlertidigAleneLesemodus from '../vilkar-midlertidig-alene-lesemodus/VilkarMidlertidigAleneLesemodus';
 import VilkarStatus from '../vilkar-status/VilkarStatus';
-import styleRadioknapper from '../styles/radioknapper/radioknapper.css';
+import tekst from './vilkar-midlertidig-alene-tekst';
+import styles from './vilkarMidlertidigAlene.css';
 
 type FormData = {
     begrunnelse: string;
@@ -52,9 +49,11 @@ const VilkarMidlertidigAlene: React.FunctionComponent<VilkarMidlertidigAleneProp
         defaultValues: {
             begrunnelse: harAksjonspunktOgVilkarLostTidligere ? informasjonTilLesemodus.begrunnelse : '',
             fraDato: harAksjonspunktOgVilkarLostTidligere
-                ? informasjonTilLesemodus.dato.fra
-                : soknadsopplysninger.soknadsdato,
-            tilDato: harAksjonspunktOgVilkarLostTidligere ? informasjonTilLesemodus.dato.til : 'dd.mm.åååå',
+                ? dateFromString(informasjonTilLesemodus.dato.fra).toString()
+                : dateFromString(soknadsopplysninger.soknadsdato).toString(),
+            tilDato: harAksjonspunktOgVilkarLostTidligere
+                ? dateFromString(informasjonTilLesemodus.dato.til).toString()
+                : 'dd.mm.åååå',
             erSokerenMidlertidigAleneOmOmsorgen: harAksjonspunktOgVilkarLostTidligere
                 ? booleanTilTekst(informasjonTilLesemodus.vilkarOppfylt)
                 : '',
@@ -142,7 +141,9 @@ const VilkarMidlertidigAlene: React.FunctionComponent<VilkarMidlertidigAleneProp
 
             {(åpenForRedigering || (!lesemodus && !vedtakFattetVilkarOppfylt)) && (
                 <>
-                    <AlertStripeTrekantVarsel text={tekst.aksjonspunkt} />
+                    <Alert variant="warning" size="small">
+                        {tekst.aksjonspunkt}
+                    </Alert>
 
                     <OpplysningerFraSoknad periodeTekst="Oppgitt periode" {...soknadsopplysninger} />
 
@@ -151,21 +152,21 @@ const VilkarMidlertidigAlene: React.FunctionComponent<VilkarMidlertidigAleneProp
                             <TextArea label={tekst.begrunnelse} name="begrunnelse" />
 
                             <div>
-                                <RadioGruppe
-                                    className={styleRadioknapper.horisontalPlassering}
-                                    legend={tekst.sporsmålVilkarOppfylt}
-                                >
-                                    <RadioButtonWithBooleanValue
-                                        label="Ja"
-                                        value="true"
-                                        name="erSokerenMidlertidigAleneOmOmsorgen"
-                                    />
-                                    <RadioButtonWithBooleanValue
-                                        label="Nei"
-                                        value="false"
-                                        name="erSokerenMidlertidigAleneOmOmsorgen"
-                                    />
-                                </RadioGruppe>
+                                <RadioGroupPanel
+                                    name="erSokerenMidlertidigAleneOmOmsorgen"
+                                    question={tekst.sporsmålVilkarOppfylt}
+                                    radios={[
+                                        {
+                                            label: 'Ja',
+                                            value: 'true',
+                                        },
+                                        {
+                                            label: 'Nei',
+                                            value: 'false',
+                                        },
+                                    ]}
+                                    validators={{ required }}
+                                />
                                 {errors.erSokerenMidlertidigAleneOmOmsorgen && (
                                     <p className="typo-feilmelding">{tekst.feilIngenVurdering}</p>
                                 )}
@@ -175,26 +176,21 @@ const VilkarMidlertidigAlene: React.FunctionComponent<VilkarMidlertidigAleneProp
                                 sokerenMidlertidigAleneOmOmsorgen.length > 0 &&
                                 !tekstTilBoolean(sokerenMidlertidigAleneOmOmsorgen) && (
                                     <div>
-                                        <RadioGruppe
-                                            className={classNames(
-                                                styleRadioknapper.horisontalPlassering,
-                                                styles.avslagsArsakErPeriodeErIkkeOverSeksMån
-                                            )}
-                                            legend={tekst.velgArsak}
-                                        >
-                                            <RadioButtonWithBooleanValue
-                                                label={tekst.arsakIkkeAleneOmsorg}
-                                                value="false"
-                                                name="avslagsArsakErPeriodeErIkkeOverSeksMån"
-                                                valideringsFunksjoner={erAvslagsArsakErPeriodeErIkkeOverSeksMånGyldig}
-                                            />
-                                            <RadioButtonWithBooleanValue
-                                                label={tekst.arsakPeriodeIkkeOverSeksMån}
-                                                value="true"
-                                                name="avslagsArsakErPeriodeErIkkeOverSeksMån"
-                                                valideringsFunksjoner={erAvslagsArsakErPeriodeErIkkeOverSeksMånGyldig}
-                                            />
-                                        </RadioGruppe>
+                                        <RadioGroupPanel
+                                            name="avslagsArsakErPeriodeErIkkeOverSeksMån"
+                                            question={tekst.velgArsak}
+                                            radios={[
+                                                {
+                                                    label: tekst.arsakIkkeAleneOmsorg,
+                                                    value: 'false',
+                                                },
+                                                {
+                                                    label: tekst.arsakPeriodeIkkeOverSeksMån,
+                                                    value: 'true',
+                                                },
+                                            ]}
+                                            validators={{ erAvslagsArsakErPeriodeErIkkeOverSeksMånGyldig }}
+                                        />
                                         {errors.avslagsArsakErPeriodeErIkkeOverSeksMån && (
                                             <p className="typo-feilmelding">{tekst.feilIngenÅrsak}</p>
                                         )}
@@ -202,10 +198,10 @@ const VilkarMidlertidigAlene: React.FunctionComponent<VilkarMidlertidigAleneProp
                                 )}
 
                             {tekstTilBoolean(sokerenMidlertidigAleneOmOmsorgen) && (
-                                <SkjemaGruppe
+                                <Fieldset
                                     className={styles.gyldigVedtaksPeriode}
                                     legend={tekst.sporsmalPeriodeVedtakGyldig}
-                                    feil={
+                                    error={
                                         (errors.fraDato &&
                                             errors.fraDato.type === 'erDatoFyltUt' &&
                                             tekst.feilmedlingManglerFraDato) ||
@@ -223,27 +219,32 @@ const VilkarMidlertidigAlene: React.FunctionComponent<VilkarMidlertidigAleneProp
                                             tekst.feilmedlingUgyldigDato)
                                     }
                                 >
-                                    <DatePicker
-                                        titel="Fra"
-                                        navn="fraDato"
-                                        valideringsFunksjoner={{ erDatoFyltUt, erDatoGyldig }}
+                                    <Datepicker
+                                        label="Fra"
+                                        name="fraDato"
+                                        validators={{ erDatoFyltUt, erDatoGyldig }}
                                     />
 
-                                    <DatePicker
-                                        titel="Til"
-                                        navn="tilDato"
-                                        valideringsFunksjoner={{ erDatoFyltUt, erDatoGyldig, erDatoSisteDagenIÅret }}
-                                        begrensningerIKalender={hanteringAvDatoForDatoVelger(
-                                            soknadsopplysninger.soknadsdato
-                                        )}
+                                    <Datepicker
+                                        label="Til"
+                                        name="tilDato"
+                                        validators={{ erDatoFyltUt, erDatoGyldig, erDatoSisteDagenIÅret }}
+                                        disabledDays={
+                                            hanteringAvDatoForDatoVelger(soknadsopplysninger.soknadsdato)
+                                                ?.invalidDateRanges
+                                        }
+                                        fromDate={
+                                            hanteringAvDatoForDatoVelger(soknadsopplysninger.soknadsdato)?.minDate
+                                        }
+                                        toDate={hanteringAvDatoForDatoVelger(soknadsopplysninger.soknadsdato)?.maxDate}
                                     />
-                                </SkjemaGruppe>
+                                </Fieldset>
                             )}
 
-                            <Hovedknapp className={styles.bekreftKnapp} htmlType="submit">
+                            <Button size="small" variant="primary" className={styles.bekreftKnapp} type="submit">
                                 {' '}
                                 {tekst.bekreftFortsettKnapp}
-                            </Hovedknapp>
+                            </Button>
                         </form>
                     </FormProvider>
                 </>

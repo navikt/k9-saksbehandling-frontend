@@ -1,4 +1,4 @@
-import { Textarea } from 'nav-frontend-skjema';
+import { Textarea } from '@navikt/ds-react';
 import React from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 
@@ -23,11 +23,12 @@ const TextArea: React.FunctionComponent<OwnProps> = ({ label, name }) => {
             }}
             render={({ field: { onChange, value }, fieldState: { error } }) => (
                 <Textarea
+                    size="small"
                     label={label}
                     value={value}
                     onChange={(e) => onChange(e.target.value)}
                     maxLength={0}
-                    feil={error && error.message}
+                    error={error && error.message}
                 />
             )}
         />

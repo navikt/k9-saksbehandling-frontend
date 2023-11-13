@@ -1,18 +1,16 @@
-import { Hovedknapp } from 'nav-frontend-knapper';
-import { RadioGruppe } from 'nav-frontend-skjema';
+import { Alert, Button } from '@navikt/ds-react';
+import { RadioGroupPanel } from '@navikt/k9-fe-form-utils';
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { OmsorgProps } from '../../../types/OmsorgProps';
 import { booleanTilTekst, tekstTilBoolean } from '../../../util/stringUtils';
 import useFormSessionStorage from '../../../util/useFormSessionStorageUtils';
+import { required } from '../../../util/validators';
 import AksjonspunktLesemodus from '../aksjonspunkt-lesemodus/AksjonspunktLesemodus';
-import AlertStripeTrekantVarsel from '../alertstripe-trekant-varsel/AlertStripeTrekantVarsel';
 import styleLesemodus from '../lesemodus/lesemodusboks.css';
-import RadioButtonWithBooleanValue from '../react-hook-form-wrappers/RadioButton';
 import TextArea from '../react-hook-form-wrappers/TextArea';
-import styles from './omsorg.css';
 import VilkarStatus from '../vilkar-status/VilkarStatus';
-import styleRadioknapper from '../styles/radioknapper/radioknapper.css';
+import styles from './omsorg.css';
 
 type FormData = {
     harOmsorgen: string;
@@ -104,7 +102,7 @@ const Omsorg: React.FunctionComponent<OmsorgProps> = ({
         getValues
     );
 
-    const bekreftAksjonspunkt = data => {
+    const bekreftAksjonspunkt = (data) => {
         if (!errors.begrunnelse && !errors.harOmsorgen && losAksjonspunkt) {
             losAksjonspunkt(data.harOmsorgen, data.begrunnelse);
             setValue('åpenForRedigering', false);
@@ -119,7 +117,7 @@ const Omsorg: React.FunctionComponent<OmsorgProps> = ({
         <>
             <p>{tekst.opplysningerFraSoknaden}</p>
             <p className={styleLesemodus.label}>{tekst.sokersBarn}</p>
-            {barn.map(fnr => (
+            {barn.map((fnr) => (
                 <p className={styles.barnTekst} key={fnr}>
                     {fnr}
                 </p>
@@ -161,13 +159,11 @@ const Omsorg: React.FunctionComponent<OmsorgProps> = ({
 
             {(åpenForRedigering || (!lesemodus && !vedtakFattetVilkarOppfylt)) && (
                 <>
-                    <AlertStripeTrekantVarsel
-                        text={
-                            harBarnSoktForRammevedtakOmKroniskSyk
-                                ? tekstKroniskSyk.harBarnSoktForRammevedtakOmKroniskSykTekst
-                                : tekst.instruksjon
-                        }
-                    />
+                    <Alert variant="warning" size="small">
+                        {harBarnSoktForRammevedtakOmKroniskSyk
+                            ? tekstKroniskSyk.harBarnSoktForRammevedtakOmKroniskSykTekst
+                            : tekst.instruksjon}
+                    </Alert>
                     {opplysningerFraSoknaden}
 
                     <hr />
@@ -177,17 +173,28 @@ const Omsorg: React.FunctionComponent<OmsorgProps> = ({
                             <TextArea label={tekst.begrunnelse} name="begrunnelse" />
 
                             <div>
-                                <RadioGruppe
-                                    legend={tekst.sporsmalHarOmsorgen}
-                                    className={styleRadioknapper.horisontalPlassering}
-                                >
-                                    <RadioButtonWithBooleanValue label="Ja" value="true" name="harOmsorgen" />
-                                    <RadioButtonWithBooleanValue label="Nei" value="false" name="harOmsorgen" />
-                                </RadioGruppe>
+                                <RadioGroupPanel
+                                    name="harOmsorgen"
+                                    question={tekst.sporsmalHarOmsorgen}
+                                    radios={[
+                                        {
+                                            label: 'Ja',
+                                            value: 'true',
+                                        },
+                                        {
+                                            label: 'Nei',
+                                            value: 'false',
+                                        },
+                                    ]}
+                                    validators={{ required }}
+                                />
+
                                 {errors.harOmsorgen && <p className="typo-feilmelding">{tekst.feilIngenVurdering}</p>}
                             </div>
 
-                            <Hovedknapp htmlType="submit">Bekreft og fortsett</Hovedknapp>
+                            <Button size="small" variant="primary" type="submit">
+                                Bekreft og fortsett
+                            </Button>
                         </form>
                     </FormProvider>
                 </>

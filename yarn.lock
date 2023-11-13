@@ -3322,7 +3322,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@navikt/k9-fe-form-utils@^1.0.10, @navikt/k9-fe-form-utils@workspace:packages/k9-frontend-modules/form-utils":
+"@navikt/k9-fe-form-utils@1.0.10, @navikt/k9-fe-form-utils@^1.0.10, @navikt/k9-fe-form-utils@workspace:packages/k9-frontend-modules/form-utils":
   version: 0.0.0-use.local
   resolution: "@navikt/k9-fe-form-utils@workspace:packages/k9-frontend-modules/form-utils"
   dependencies:
@@ -10052,28 +10052,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"focus-trap-react@npm:^8.6.0":
-  version: 8.11.3
-  resolution: "focus-trap-react@npm:8.11.3"
-  dependencies:
-    focus-trap: ^6.9.4
-  peerDependencies:
-    prop-types: ^15.8.1
-    react: ">=16.0.0"
-    react-dom: ">=16.0.0"
-  checksum: d293b0645b91b2e7c4dee2329ab4aaab50c09d2f935478702f5049f1801db5ac647e6547e96af5e57475b63f3ee7d1fa86026a4539ac98175f5da0d61d8ac89f
-  languageName: node
-  linkType: hard
-
-"focus-trap@npm:^6.9.4":
-  version: 6.9.4
-  resolution: "focus-trap@npm:6.9.4"
-  dependencies:
-    tabbable: ^5.3.3
-  checksum: 0b4cebcc11010bd9397731092bd59a981e838c710c6497374ba70571875a14ab27c0db7d60f36005ec01bdabc3b9cfeda11d30ddf5b8874596dcc95e18913b3b
-  languageName: node
-  linkType: hard
-
 "follow-redirects@npm:^1.0.0, follow-redirects@npm:^1.14.9, follow-redirects@npm:^1.15.0":
   version: 1.15.2
   resolution: "follow-redirects@npm:1.15.2"
@@ -13517,7 +13495,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash.throttle@npm:4.1.1, lodash.throttle@npm:^4.1.1":
+"lodash.throttle@npm:4.1.1":
   version: 4.1.1
   resolution: "lodash.throttle@npm:4.1.1"
   checksum: 129c0a28cee48b348aef146f638ef8a8b197944d4e9ec26c1890c19d9bf5a5690fe11b655c77a4551268819b32d27f4206343e30c78961f60b561b8608c8c805
@@ -14414,199 +14392,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nav-datovelger@npm:^12.6.0":
-  version: 12.6.0
-  resolution: "nav-datovelger@npm:12.6.0"
-  dependencies:
-    focus-trap-react: ^8.6.0
-  peerDependencies:
-    classnames: ^2.3.x
-    dayjs: ^1.10.x
-    nav-frontend-core: ^6.0.x
-    nav-frontend-js-utils: ^1.0.x
-    nav-frontend-skjema: ^4.0.x
-    nav-frontend-typografi: ^4.0.x
-    react: 17
-    react-day-picker: ^7.4.x
-  checksum: 16630efbf62890768423308d2851875a4225dbff4b65247d13309eb093730f49015bc21f0c476111f95856a484a6bbc4ba2de034e48b71d5d48dbcab45e96af9
-  languageName: node
-  linkType: hard
-
-"nav-frontend-alertstriper-style@npm:3.0.2":
-  version: 3.0.2
-  resolution: "nav-frontend-alertstriper-style@npm:3.0.2"
-  peerDependencies:
-    nav-frontend-core: ^6.0.0
-    nav-frontend-ikoner-assets: ^3.0.0
-    nav-frontend-paneler-style: ^2.0.0
-    nav-frontend-typografi-style: ^2.0.0
-  checksum: 5632fe0c54cca67183e1aa615ea059c8bbaf9e0edd78ac24bc8513bb3194d2cce80544acd2f14c16512af935477287d7eeeb006d1f70ba1bd3c997a84fe8f9bb
-  languageName: node
-  linkType: hard
-
-"nav-frontend-alertstriper@npm:4.0.2":
-  version: 4.0.2
-  resolution: "nav-frontend-alertstriper@npm:4.0.2"
-  peerDependencies:
-    classnames: ^2.2.5
-    nav-frontend-alertstriper-style: ^3.0.0
-    nav-frontend-ikoner-assets: ^3.0.0
-    nav-frontend-typografi: ^4.0.0
-    prop-types: ^15.5.10
-    react: ^16.8.0 || ^17.0.0
-  checksum: 37eb283685186cf5e19948f22efa8e148dbf1f1815cf17858c2e4fe4289cda388844636631c968d9652ccd93966b0854da4260b928943107495db7816bd8344b
-  languageName: node
-  linkType: hard
-
-"nav-frontend-core@npm:6.0.1, nav-frontend-core@npm:^6.0.1":
-  version: 6.0.1
-  resolution: "nav-frontend-core@npm:6.0.1"
-  checksum: 7673f42a2a93a08fa6952d2c32d8e5d424de437910b76d84363d7cb86a7c0691e5f475a3623c8964366b3bbd33a6defb8e3907bc61b41c3434b4619aab7567d2
-  languageName: node
-  linkType: hard
-
-"nav-frontend-ikoner-assets@npm:3.0.1":
-  version: 3.0.1
-  resolution: "nav-frontend-ikoner-assets@npm:3.0.1"
-  checksum: 6d6bce01b95555d56333cd11cbadc715e5a4021a62a5981c30c4a8ba3d5807267cb04f6410bad2bc7804f377c0e020eb79e6d389c8bb19942a2b9d1f70b551d9
-  languageName: node
-  linkType: hard
-
-"nav-frontend-js-utils@npm:1.0.20":
-  version: 1.0.20
-  resolution: "nav-frontend-js-utils@npm:1.0.20"
-  dependencies:
-    lodash.throttle: ^4.1.1
-  peerDependencies:
-    lodash.throttle: ^4.1.1
-    prop-types: ^15.5.10
-    react: ^16.8.0 || ^17.0.0
-  checksum: c572c63794715c27eed790911fcb4f0ac71934184813d4b9d3ad33827a5f05164f4563c22aac8d577bbbb7cf9c95e0da2383f247f539da1d4032d831193f915a
-  languageName: node
-  linkType: hard
-
-"nav-frontend-knapper-style@npm:2.1.2":
-  version: 2.1.2
-  resolution: "nav-frontend-knapper-style@npm:2.1.2"
-  peerDependencies:
-    nav-frontend-core: ^6.0.0
-    nav-frontend-typografi-style: ^2.0.0
-  checksum: b2801d4fdeb74c21dd8dad3e686bb243213ef6c56df1ea7b36212d8e819a2c69836ecb2d62e6ed45d8fc36ca10c5921b3552abd95562743414be7ae9613a53c3
-  languageName: node
-  linkType: hard
-
-"nav-frontend-knapper@npm:3.1.3":
-  version: 3.1.3
-  resolution: "nav-frontend-knapper@npm:3.1.3"
-  peerDependencies:
-    classnames: ^2.2.5
-    nav-frontend-js-utils: ^1.0.19
-    nav-frontend-knapper-style: ^2.0.0
-    prop-types: ^15.5.10
-    react: ^16.8.0 || ^17.0.0
-  checksum: 7f76b51730f550379c8d2a6add956060e76af05ff70574c6f743653330e82b05f443bd763322cef1b6cfc5d59d2e8a3a3f23cc391a938c5bf63ff61b0ed2af61
-  languageName: node
-  linkType: hard
-
-"nav-frontend-lenker-style@npm:2.0.2":
-  version: 2.0.2
-  resolution: "nav-frontend-lenker-style@npm:2.0.2"
-  peerDependencies:
-    nav-frontend-core: ^6.0.0
-  checksum: d3352a66744afbad6c93a3bc56e5f442bf65efd33a587bf57a1e87a345eaa593214c0cb77575085ebf654c9bc3aea9278446238a2615c58b15f4257d9f713879
-  languageName: node
-  linkType: hard
-
-"nav-frontend-lenker@npm:2.0.2":
-  version: 2.0.2
-  resolution: "nav-frontend-lenker@npm:2.0.2"
-  peerDependencies:
-    classnames: ^2.2.5
-    nav-frontend-lenker-style: ^2.0.0
-    prop-types: ^15.5.10
-    react: ^16.8.0 || ^17.0.0
-  checksum: 135fc940765ec6947a594d7b18dd12c0862509646eba77db85386c2b87a695c7b69c72da4dc20e70abcaa06dafca7c4c2c6c6c1a46950727e09a8cade8f4cf60
-  languageName: node
-  linkType: hard
-
-"nav-frontend-paneler-style@npm:2.0.2":
-  version: 2.0.2
-  resolution: "nav-frontend-paneler-style@npm:2.0.2"
-  peerDependencies:
-    nav-frontend-core: ^6.0.0
-  checksum: 7d4b15e3b1a6cc127eca837ae17c42736ef69da9f7f2ca617180809d244c3abda7e4385dd144478c0befc3831c5bec686f5cae281c31235aacba8b79f032cc5d
-  languageName: node
-  linkType: hard
-
-"nav-frontend-skjema-style@npm:3.0.3":
-  version: 3.0.3
-  resolution: "nav-frontend-skjema-style@npm:3.0.3"
-  peerDependencies:
-    nav-frontend-core: ^6.0.0
-    nav-frontend-paneler-style: ^2.0.0
-    nav-frontend-typografi-style: ^2.0.0
-  checksum: c830ade670e012a157908130ceb7325d8c277e63b55365925c756135fbe2a5d978b6117e93b3853365b8fa7504aac41f76e2f861eb493c4fef97b1d6228be546
-  languageName: node
-  linkType: hard
-
-"nav-frontend-skjema@npm:4.0.6":
-  version: 4.0.6
-  resolution: "nav-frontend-skjema@npm:4.0.6"
-  peerDependencies:
-    "@navikt/fnrvalidator": ^1.1.0
-    classnames: ^2.2.5
-    nav-frontend-js-utils: ^1.0.19
-    nav-frontend-lenker: ^2.0.0
-    nav-frontend-skjema-style: ^3.0.0
-    nav-frontend-typografi: ^4.0.0
-    prop-types: ^15.5.10
-    react: ^16.8.0 || ^17.0.0
-  checksum: 1e92d796974224f0ca686c0a94bc45bd40fb7b1e799e74a8e10faa2ce73cb6ae23dc870ecaa487b74d760441840b3c4a707c56f10b1772e096c8cc2d56e9500c
-  languageName: node
-  linkType: hard
-
-"nav-frontend-spinner-style@npm:1.0.2":
-  version: 1.0.2
-  resolution: "nav-frontend-spinner-style@npm:1.0.2"
-  checksum: 28e376811be644987470012a513d4c4a22231263631e8911355cc15080301a54334ac8163a45503146706bf76483b3243a3495b1272b1321b4535a0e5103977f
-  languageName: node
-  linkType: hard
-
-"nav-frontend-spinner@npm:3.0.1":
-  version: 3.0.1
-  resolution: "nav-frontend-spinner@npm:3.0.1"
-  peerDependencies:
-    classnames: ^2.2.5
-    nav-frontend-ikoner-assets: ^3.0.0
-    nav-frontend-spinner-style: ^1.0.2
-    prop-types: ^15.5.10
-    react: ^16.8.0 || ^17.0.0
-  checksum: 16b52e8de4077c0d01957f914f668ee4f21671f788d3d171ad0cbd02947f8d77ce90d8c8b1566e7d1dc77cafcdcfcfb87a55cddeb0be2c5d25d67340da27736a
-  languageName: node
-  linkType: hard
-
-"nav-frontend-typografi-style@npm:2.0.2":
-  version: 2.0.2
-  resolution: "nav-frontend-typografi-style@npm:2.0.2"
-  dependencies:
-    nav-frontend-core: ^6.0.1
-  checksum: ca3f1ce19ad9b6009021bd9f27ccc5db32fe63988e734b647adfa229d2ab8a091efcc8de23ef9cbad7db0f1c8ef7e2c1ad1a01e062a8f8565271b8333645618e
-  languageName: node
-  linkType: hard
-
-"nav-frontend-typografi@npm:4.0.2":
-  version: 4.0.2
-  resolution: "nav-frontend-typografi@npm:4.0.2"
-  peerDependencies:
-    classnames: ^2.2.5
-    nav-frontend-core: ^6.0.0
-    nav-frontend-typografi-style: ^2.0.0
-    prop-types: ^15.5.10
-    react: ^16.8.0 || ^17.0.0
-  checksum: e41f89c1676c81fb6042583462a0533bab239c9acc0c66b205e56cfc39ae145424aa62779c9e0cc5c217fe47dee1db3d849aa3845b9987c850a4ead059e1993c
-  languageName: node
-  linkType: hard
-
 "needle@npm:^3.1.0":
   version: 3.2.0
   resolution: "needle@npm:3.2.0"
@@ -15324,6 +15109,7 @@ __metadata:
     "@navikt/ds-css": 5.8.0
     "@navikt/ds-react": 5.8.0
     "@navikt/fnrvalidator": 1.3.3
+    "@navikt/k9-fe-form-utils": 1.0.10
     "@testing-library/react": 14.0.0
     "@types/react": 18.2.33
     "@types/react-dom": 18.2.14
@@ -15335,23 +15121,6 @@ __metadata:
     jest-axe: 8.0.0
     lodash: 4.17.21
     lodash.throttle: 4.1.1
-    nav-datovelger: ^12.6.0
-    nav-frontend-alertstriper: 4.0.2
-    nav-frontend-alertstriper-style: 3.0.2
-    nav-frontend-core: 6.0.1
-    nav-frontend-ikoner-assets: 3.0.1
-    nav-frontend-js-utils: 1.0.20
-    nav-frontend-knapper: 3.1.3
-    nav-frontend-knapper-style: 2.1.2
-    nav-frontend-lenker: 2.0.2
-    nav-frontend-lenker-style: 2.0.2
-    nav-frontend-paneler-style: 2.0.2
-    nav-frontend-skjema: 4.0.6
-    nav-frontend-skjema-style: 3.0.3
-    nav-frontend-spinner: 3.0.1
-    nav-frontend-spinner-style: 1.0.2
-    nav-frontend-typografi: 4.0.2
-    nav-frontend-typografi-style: 2.0.2
     react: 18.2.0
     react-day-picker: ^7.4.10
     react-dom: 18.2.0
@@ -19467,13 +19236,6 @@ __metadata:
     "@pkgr/utils": ^2.3.1
     tslib: ^2.5.0
   checksum: 8a9560e5d8f3d94dc3cf5f7b9c83490ffa30d320093560a37b88f59483040771fd1750e76b9939abfbb1b5a23fd6dfbae77f6b338abffe7cae7329cd9b9bb86b
-  languageName: node
-  linkType: hard
-
-"tabbable@npm:^5.3.2, tabbable@npm:^5.3.3":
-  version: 5.3.3
-  resolution: "tabbable@npm:5.3.3"
-  checksum: 1aa56e1bb617cc10616c407f4e756f0607f3e2d30f9803664d70b85db037ca27e75918ed1c71443f3dc902e21dc9f991ce4b52d63a538c9b69b3218d3babcd70
   languageName: node
   linkType: hard
 

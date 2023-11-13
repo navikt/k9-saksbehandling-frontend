@@ -1,21 +1,18 @@
+import { Alert, Button, Fieldset } from '@navikt/ds-react';
+import { Datepicker, RadioGroupPanel } from '@navikt/k9-fe-form-utils';
 import classNames from 'classnames';
-import { Hovedknapp } from 'nav-frontend-knapper';
-import { RadioGruppe, SkjemaGruppe } from 'nav-frontend-skjema';
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { VilkarKroniskSyktBarnProps } from '../../../types/VilkarKroniskSyktBarnProps';
 import { booleanTilTekst, formatereDato, formatereDatoTilLesemodus, tekstTilBoolean } from '../../../util/stringUtils';
 import useFormSessionStorage from '../../../util/useFormSessionStorageUtils';
 import { valideringsFunksjoner } from '../../../util/validationReactHookFormUtils';
+import { required } from '../../../util/validators';
 import AksjonspunktLesemodus from '../aksjonspunkt-lesemodus/AksjonspunktLesemodus';
-import AlertStripeTrekantVarsel from '../alertstripe-trekant-varsel/AlertStripeTrekantVarsel';
 import styleLesemodus from '../lesemodus/lesemodusboks.css';
-import DatePicker from '../react-hook-form-wrappers/DatePicker';
-import RadioButtonWithBooleanValue from '../react-hook-form-wrappers/RadioButton';
 import TextArea from '../react-hook-form-wrappers/TextArea';
-import styles from './vilkarKronisSyktBarn.css';
 import VilkarStatus from '../vilkar-status/VilkarStatus';
-import styleRadioknapper from '../styles/radioknapper/radioknapper.css';
+import styles from './vilkarKronisSyktBarn.css';
 
 type FormData = {
     harDokumentasjonOgFravaerRisiko: string;
@@ -29,7 +26,7 @@ export enum AvslagskoderKroniskSyk {
     IKKE_UTVIDET_RETT = '1072',
     IKKE_KRONISK_SYK_ELLER_FUNKSJONSHEMMET = '1073',
     IKKE_OKT_RISIKO_FRA_FRAVAER = '1074',
-    MANGLENDE_DOKUMENTASJON = '1019'
+    MANGLENDE_DOKUMENTASJON = '1019',
 }
 
 const tekst = {
@@ -55,18 +52,20 @@ const tekst = {
 
 const mapTilAvslagstekst = (avslagsKode: string): string => {
     if (avslagsKode === AvslagskoderKroniskSyk.IKKE_OKT_RISIKO_FRA_FRAVAER) {
-        return tekst.arsakIkkeRisikoFraFravaer
+        return tekst.arsakIkkeRisikoFraFravaer;
     }
-    if (avslagsKode === AvslagskoderKroniskSyk.IKKE_KRONISK_SYK_ELLER_FUNKSJONSHEMMET
+    if (
+        avslagsKode === AvslagskoderKroniskSyk.IKKE_KRONISK_SYK_ELLER_FUNKSJONSHEMMET ||
         // Brukes bare for bakoverkompatiblitet
-        || avslagsKode === AvslagskoderKroniskSyk.IKKE_UTVIDET_RETT) {
-        return tekst.arsakIkkeSyk
+        avslagsKode === AvslagskoderKroniskSyk.IKKE_UTVIDET_RETT
+    ) {
+        return tekst.arsakIkkeSyk;
     }
     if (avslagsKode === AvslagskoderKroniskSyk.MANGLENDE_DOKUMENTASJON) {
-        return tekst.arsakManglerDokumentasjon
+        return tekst.arsakManglerDokumentasjon;
     }
-    return ''
-}
+    return '';
+};
 
 const VilkarKroniskSyktBarn: React.FunctionComponent<VilkarKroniskSyktBarnProps> = ({
     behandlingsID,
@@ -86,8 +85,7 @@ const VilkarKroniskSyktBarn: React.FunctionComponent<VilkarKroniskSyktBarnProps>
             harDokumentasjonOgFravaerRisiko: harAksjonspunktOgVilkarLostTidligere
                 ? booleanTilTekst(informasjonTilLesemodus.vilkarOppfylt)
                 : '',
-            avslagsårsakKode: harAksjonspunktOgVilkarLostTidligere
-                ? informasjonTilLesemodus.avslagsårsakKode : '',
+            avslagsårsakKode: harAksjonspunktOgVilkarLostTidligere ? informasjonTilLesemodus.avslagsårsakKode : '',
             fraDato: harAksjonspunktOgVilkarLostTidligere
                 ? formatereDato(informasjonTilLesemodus.fraDato)
                 : 'dd.mm.åååå',
@@ -109,7 +107,7 @@ const VilkarKroniskSyktBarn: React.FunctionComponent<VilkarKroniskSyktBarnProps>
         'harDokumentasjonOgFravaerRisiko'
     );
 
-    const erArsakErIkkeRiskioFraFravaer = val => {
+    const erArsakErIkkeRiskioFraFravaer = (val) => {
         if (tekstTilBoolean(getValues().harDokumentasjonOgFravaerRisiko)) return true;
         return val !== null && val.length > 0;
     };
@@ -124,7 +122,7 @@ const VilkarKroniskSyktBarn: React.FunctionComponent<VilkarKroniskSyktBarnProps>
         getValues
     );
 
-    const bekreftAksjonspunkt = data => {
+    const bekreftAksjonspunkt = (data) => {
         if (
             !errors.begrunnelse &&
             !errors.avslagsårsakKode &&
@@ -202,7 +200,9 @@ const VilkarKroniskSyktBarn: React.FunctionComponent<VilkarKroniskSyktBarnProps>
 
             {(åpenForRedigering || (!lesemodus && !vedtakFattetVilkarOppfylt)) && (
                 <>
-                    <AlertStripeTrekantVarsel text={tekst.instruksjon} />
+                    <Alert variant="warning" size="small">
+                        {tekst.instruksjon}
+                    </Alert>
                     <FormProvider {...methods}>
                         <>
                             <p className={styleLesemodus.label}>{tekst.soknadsdato}</p>
@@ -213,21 +213,22 @@ const VilkarKroniskSyktBarn: React.FunctionComponent<VilkarKroniskSyktBarnProps>
                             <TextArea label={tekst.begrunnelse} name="begrunnelse" />
 
                             <div>
-                                <RadioGruppe
-                                    className={styleRadioknapper.horisontalPlassering}
-                                    legend={tekst.sporsmalHarDokumentasjonOgFravaerRisiko}
-                                >
-                                    <RadioButtonWithBooleanValue
-                                        label="Ja"
-                                        value="true"
-                                        name="harDokumentasjonOgFravaerRisiko"
-                                    />
-                                    <RadioButtonWithBooleanValue
-                                        label="Nei"
-                                        value="false"
-                                        name="harDokumentasjonOgFravaerRisiko"
-                                    />
-                                </RadioGruppe>
+                                <RadioGroupPanel
+                                    name="harDokumentasjonOgFravaerRisiko"
+                                    question={tekst.sporsmalHarDokumentasjonOgFravaerRisiko}
+                                    radios={[
+                                        {
+                                            label: 'Ja',
+                                            value: 'true',
+                                        },
+                                        {
+                                            label: 'Nei',
+                                            value: 'false',
+                                        },
+                                    ]}
+                                    validators={{ required }}
+                                />
+
                                 {errors.harDokumentasjonOgFravaerRisiko && (
                                     <p className="typo-feilmelding">{tekst.feilOppgiHvisDokumentasjonGirRett}</p>
                                 )}
@@ -236,29 +237,25 @@ const VilkarKroniskSyktBarn: React.FunctionComponent<VilkarKroniskSyktBarnProps>
                             {harDokumentasjonOgFravaerRisiko.length > 0 &&
                                 !tekstTilBoolean(harDokumentasjonOgFravaerRisiko) && (
                                     <div>
-                                        <RadioGruppe
-                                            className={styleRadioknapper.horisontalPlassering}
-                                            legend={tekst.velgArsak}
-                                        >
-                                            <RadioButtonWithBooleanValue
-                                                label={tekst.arsakIkkeSyk}
-                                                value={AvslagskoderKroniskSyk.IKKE_KRONISK_SYK_ELLER_FUNKSJONSHEMMET}
-                                                name="avslagsårsakKode"
-                                                valideringsFunksjoner={erArsakErIkkeRiskioFraFravaer}
-                                            />
-                                            <RadioButtonWithBooleanValue
-                                                label={tekst.arsakIkkeRisikoFraFravaer}
-                                                value={AvslagskoderKroniskSyk.IKKE_OKT_RISIKO_FRA_FRAVAER}
-                                                name="avslagsårsakKode"
-                                                valideringsFunksjoner={erArsakErIkkeRiskioFraFravaer}
-                                            />
-                                            <RadioButtonWithBooleanValue
-                                                label={tekst.arsakManglerDokumentasjon}
-                                                value={AvslagskoderKroniskSyk.MANGLENDE_DOKUMENTASJON}
-                                                name="avslagsårsakKode"
-                                                valideringsFunksjoner={erArsakErIkkeRiskioFraFravaer}
-                                            />
-                                        </RadioGruppe>
+                                        <RadioGroupPanel
+                                            name="avslagsårsakKode"
+                                            question={tekst.velgArsak}
+                                            radios={[
+                                                {
+                                                    label: tekst.arsakIkkeSyk,
+                                                    value: AvslagskoderKroniskSyk.IKKE_KRONISK_SYK_ELLER_FUNKSJONSHEMMET,
+                                                },
+                                                {
+                                                    label: tekst.arsakIkkeRisikoFraFravaer,
+                                                    value: AvslagskoderKroniskSyk.IKKE_OKT_RISIKO_FRA_FRAVAER,
+                                                },
+                                                {
+                                                    label: tekst.arsakManglerDokumentasjon,
+                                                    value: AvslagskoderKroniskSyk.MANGLENDE_DOKUMENTASJON,
+                                                },
+                                            ]}
+                                            validators={{ erArsakErIkkeRiskioFraFravaer }}
+                                        />
                                         {errors.avslagsårsakKode && (
                                             <p className="typo-feilmelding">{tekst.feilOppgiÅrsak}</p>
                                         )}
@@ -268,10 +265,10 @@ const VilkarKroniskSyktBarn: React.FunctionComponent<VilkarKroniskSyktBarnProps>
                             {harDokumentasjonOgFravaerRisiko.length > 0 &&
                                 tekstTilBoolean(harDokumentasjonOgFravaerRisiko) && (
                                     <div>
-                                        <SkjemaGruppe
+                                        <Fieldset
                                             className={styles.fraDato}
                                             legend={tekst.sporsmalPeriodeVedtakGyldig}
-                                            feil={
+                                            error={
                                                 (errors.fraDato &&
                                                     errors.fraDato.type === 'erDatoFyltUt' &&
                                                     tekst.feilmedlingManglerFraDato) ||
@@ -283,20 +280,22 @@ const VilkarKroniskSyktBarn: React.FunctionComponent<VilkarKroniskSyktBarnProps>
                                                     tekst.feilmedlingerDatoIkkeIFremtid)
                                             }
                                         >
-                                            <DatePicker
-                                                titel=""
-                                                navn="fraDato"
-                                                valideringsFunksjoner={{
+                                            <Datepicker
+                                                label=""
+                                                name="fraDato"
+                                                validators={{
                                                     erDatoFyltUt,
                                                     erDatoGyldig,
                                                     erDatoIkkeIFremtid,
                                                 }}
                                             />
-                                        </SkjemaGruppe>
+                                        </Fieldset>
                                     </div>
                                 )}
 
-                            <Hovedknapp htmlType="submit">Bekreft og fortsett</Hovedknapp>
+                            <Button size="small" variant="primary" type="submit">
+                                Bekreft og fortsett
+                            </Button>
                         </form>
                     </FormProvider>
                 </>
