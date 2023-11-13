@@ -10,13 +10,14 @@
         "package.json"
     ],
     "scripts": {
-        "build": "rollup -c rollup.config.mjs",
+        "build": "vite build",
         "clean": "rm -rf ./build ./node_modules",
         "test": "jest --passWithNoTests --maxWorkers=2",
         "test-watch": "jest --watch"
     },
     "devDependencies": {
-        "dayjs": "1.11.10"
+        "dayjs": "1.11.10",
+        "vite": "4.5.0"
     },
     "peerDependencies": {
         "dayjs": "1.11.6"

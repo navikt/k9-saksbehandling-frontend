@@ -3,7 +3,7 @@
     "version": "1.0.10",
     "scripts": {
         "dev": "rollup -w -c rollup.config.mjs",
-        "build": "rollup -c rollup.config.mjs",
+        "build": "vite build",
         "clean": "rm -rf ./build ./node_modules",
         "storybook": "start-storybook -p 7003 --ci",
         "test": "jest --passWithNoTests --maxWorkers=2"
@@ -33,7 +33,8 @@
         "react-collapse": "5.1.1",
         "react-dom": "18.2.0",
         "react-hook-form": "7.47.0",
-        "react-popper": "2.3.0"
+        "react-popper": "2.3.0",
+        "vite": "4.5.0"
     },
     "peerDependencies": {
         "@hookform/error-message": "2.0.1",
