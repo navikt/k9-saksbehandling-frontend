@@ -1,10 +1,12 @@
-import classNames from 'classnames';
-import { Hovedknapp } from 'nav-frontend-knapper';
-import { RadioGruppe, SkjemaGruppe } from 'nav-frontend-skjema';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { AleneOmOmsorgenProps } from '../../../types/AleneOmOmsorgenProps';
-import { booleanTilTekst, formatereDato, formatereDatoTilLesemodus, tekstTilBoolean } from '../../../util/stringUtils';
+import classNames from 'classnames';
+import dayjs from 'dayjs';
+
+import { Detail, Label } from '@navikt/ds-react';
+import { Hovedknapp } from 'nav-frontend-knapper';
+import { RadioGruppe, Select, SkjemaGruppe } from 'nav-frontend-skjema';
+
 import useFormSessionStorage from '../../../util/useFormSessionStorageUtils';
 import { valideringsFunksjoner } from '../../../util/validationReactHookFormUtils';
 import AleneOmOmsorgenLesemodus from '../alene-om-omsorgen-lesemodus/AleneOmOmsorgenLesemodus';
@@ -14,10 +16,19 @@ import OpplysningerFraSoknad from '../opplysninger-fra-soknad/OpplysningerFraSok
 import DatePicker from '../react-hook-form-wrappers/DatePicker';
 import RadioButtonWithBooleanValue from '../react-hook-form-wrappers/RadioButton';
 import TextArea from '../react-hook-form-wrappers/TextArea';
-import styleRadioknapper from '../styles/radioknapper/radioknapper.css';
-import styles from '../vilkar-midlertidig-alene/vilkarMidlertidigAlene.css';
 import VilkarStatus from '../vilkar-status/VilkarStatus';
 import tekst from './alene-om-omsorgen-tekst';
+import {
+    booleanTilTekst,
+    formatereDato,
+    formatereDatoTilLesemodus,
+    tekstTilBoolean,
+    utledTilgjengeligeÅr,
+} from '../../../util/stringUtils';
+import { AleneOmOmsorgenProps } from '../../../types/AleneOmOmsorgenProps';
+
+import styles from '../vilkar-midlertidig-alene/vilkarMidlertidigAlene.css';
+import styleRadioknapper from '../styles/radioknapper/radioknapper.css';
 
 type FormData = {
     begrunnelse: string;
@@ -69,7 +80,19 @@ const AleneOmOmsorgen: React.FunctionComponent<AleneOmOmsorgenProps> = ({
     } = methods;
     const erSokerAleneOmOmsorgen = watch('erSokerenAleneOmOmsorgen');
     const åpenForRedigering = watch('åpenForRedigering');
+    const tilDatovalue = watch('tilDato');
+
     const { erDatoFyltUt, erDatoGyldig } = valideringsFunksjoner(getValues, 'erSokerenAleneOmOmsorgen');
+
+    useEffect(() => {
+        if (tekstTilBoolean(erSokerAleneOmOmsorgen)) {
+            setValue('fraDato', formatereDato(fraDatoFraSoknad));
+        }
+    }, [erSokerAleneOmOmsorgen, fraDatoFraSoknad]);
+
+    const settTilDatoFraÅr = (e: any) => {
+        setValue('tilDato', e.target.value === 'false' ? 'false' : `${e.target.value}.12.31`);
+    };
 
     const mellomlagringFormState = useFormSessionStorage(
         formStateKey,
@@ -195,14 +218,37 @@ const AleneOmOmsorgen: React.FunctionComponent<AleneOmOmsorgenProps> = ({
                                         titel="Fra"
                                         navn="fraDato"
                                         valideringsFunksjoner={{ erDatoFyltUt, erDatoGyldig }}
+                                        disabled={erBehandlingstypeRevurdering}
                                     />
 
                                     {erBehandlingstypeRevurdering && (
-                                        <DatePicker
-                                            titel="Til"
-                                            navn="tilDato"
-                                            valideringsFunksjoner={{ erDatoFyltUt, erDatoGyldig }}
-                                        />
+                                        <>
+                                            <Select
+                                                label="Til"
+                                                onChange={settTilDatoFraÅr}
+                                                defaultValue={
+                                                    informasjonTilLesemodus.tilDato
+                                                        ? dayjs(informasjonTilLesemodus.tilDato).year()
+                                                        : 'false'
+                                                }
+                                            >
+                                                {utledTilgjengeligeÅr(fraDatoFraSoknad).map((år) => (
+                                                    <option key={år.value} value={år.value}>
+                                                        {år.title}
+                                                    </option>
+                                                ))}
+                                            </Select>
+                                            {tilDatovalue !== 'dd.mm.åååå' && tilDatovalue !== 'false' && (
+                                                <Label as="p" className={styles.tilDatoVisning}>
+                                                    {tilDatovalue}
+                                                </Label>
+                                            )}
+                                            {tilDatovalue === 'false' && (
+                                                <Label as="p" className={styles.tilDatoVisning}>
+                                                    Ingen utløpsdato
+                                                </Label>
+                                            )}
+                                        </>
                                     )}
                                 </SkjemaGruppe>
                             )}
