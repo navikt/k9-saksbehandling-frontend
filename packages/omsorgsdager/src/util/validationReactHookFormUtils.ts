@@ -1,17 +1,17 @@
 import { tekstTilBoolean } from './stringUtils';
 
 export function valideringsFunksjoner(getValues, prop: string) {
-    const erDatoFyltUt = dato => {
+    const erDatoFyltUt = (dato) => {
         if (!tekstTilBoolean(getValues()[prop])) return true;
         return dato.toLowerCase() !== 'dd.mm.åååå' && dato !== '';
     };
 
-    const erDatoSisteDagenIÅret = dato => {
+    const erDatoSisteDagenIÅret = (dato) => {
         if (!tekstTilBoolean(getValues()[prop])) return true;
         return dato.substr(5, 5) === '12-31';
     };
 
-    const erDatoGyldig = dato => {
+    const erDatoGyldig = (dato) => {
         if (!tekstTilBoolean(getValues()[prop])) return true;
         const år = parseInt(dato.substr(0, 4), 10);
         const måned = parseInt(dato.substr(5, 2), 10) - 1;
@@ -22,7 +22,7 @@ export function valideringsFunksjoner(getValues, prop: string) {
         return false;
     };
 
-    const erDatoIkkeIFremtid = dato => {
+    const erDatoIkkeIFremtid = (dato) => {
         if (!tekstTilBoolean(getValues()[prop])) return true;
         const år = parseInt(dato.substr(0, 4), 10);
         const måned = parseInt(dato.substr(5, 2), 10) - 1;
@@ -34,7 +34,7 @@ export function valideringsFunksjoner(getValues, prop: string) {
         return true;
     };
 
-    const erAvslagsArsakErPeriodeErIkkeOverSeksMånGyldig = val => {
+    const erAvslagsArsakErPeriodeErIkkeOverSeksMånGyldig = (val) => {
         if (tekstTilBoolean(getValues()[prop])) return true;
         return val !== null && val.length > 0;
     };

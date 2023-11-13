@@ -1,22 +1,21 @@
 import React from 'react';
-import { useIntl } from 'react-intl';
 import { FormProvider, useForm, useWatch } from 'react-hook-form';
+import { useIntl } from 'react-intl';
 
-import { getPeriodDifference, Period } from '@navikt/k9-fe-period-utils';
-import { Box, Margin, DetailView, Form, LabelledContent } from '@navikt/ft-plattform-komponenter';
+import { Alert, Label } from '@navikt/ds-react';
+import { Box, DetailView, Form, LabelledContent, Margin } from '@navikt/ft-plattform-komponenter';
 import { PeriodpickerList, RadioGroupPanel, TextArea } from '@navikt/k9-fe-form-utils';
-import { Label } from '@navikt/ds-react';
-import { AlertStripeInfo } from 'nav-frontend-alertstriper';
+import { getPeriodDifference, Period } from '@navikt/k9-fe-period-utils';
 
 import Omsorgsperiode from '../../../types/Omsorgsperiode';
 import Relasjon from '../../../types/Relasjon';
 import Vurderingsresultat from '../../../types/Vurderingsresultat';
+import Ytelsestype from '../../../types/Ytelsestype';
 import ContainerContext from '../../context/ContainerContext';
 import { required } from '../../form/validators/index';
 import AddButton from '../add-button/AddButton';
 import DeleteButton from '../delete-button/DeleteButton';
 import styles from './vurderingAvOmsorgsperioderForm.css';
-import Ytelsestype from '../../../types/Ytelsestype';
 
 export enum FieldName {
     BEGRUNNELSE = 'begrunnelse',
@@ -140,13 +139,11 @@ const VurderingAvOmsorgsperioderForm = ({
                         shouldShowSubmitButton={!readOnly}
                     >
                         <Box marginTop={Margin.xLarge}>
-                            <Label htmlFor={FieldName.BEGRUNNELSE}>{intl.formatMessage({ id: 'vurdering.hjemmel' })}</Label>
-                            {erOMP && (<p>{intl.formatMessage({ id: 'vurdering.hjemmel.hjelpetekst' })}</p>)}
-                            <TextArea
-                                name={FieldName.BEGRUNNELSE}
-                                validators={{ required }}
-                                disabled={readOnly}
-                            />
+                            <Label htmlFor={FieldName.BEGRUNNELSE}>
+                                {intl.formatMessage({ id: 'vurdering.hjemmel' })}
+                            </Label>
+                            {erOMP && <p>{intl.formatMessage({ id: 'vurdering.hjemmel.hjelpetekst' })}</p>}
+                            <TextArea name={FieldName.BEGRUNNELSE} validators={{ required }} disabled={readOnly} />
                         </Box>
                         <Box marginTop={Margin.xLarge}>
                             <RadioGroupPanel
@@ -229,7 +226,7 @@ const VurderingAvOmsorgsperioderForm = ({
                         )}
                         {resterendePerioder.length > 0 && (
                             <Box marginTop={Margin.xLarge}>
-                                <AlertStripeInfo>
+                                <Alert variant="info" size="small">
                                     <LabelledContent
                                         label="Resterende perioder har søkeren ikke omsorgen for barnet:"
                                         content={resterendePerioder.map((periode) => (
@@ -238,7 +235,7 @@ const VurderingAvOmsorgsperioderForm = ({
                                             </p>
                                         ))}
                                     />
-                                </AlertStripeInfo>
+                                </Alert>
                             </Box>
                         )}
                     </Form>

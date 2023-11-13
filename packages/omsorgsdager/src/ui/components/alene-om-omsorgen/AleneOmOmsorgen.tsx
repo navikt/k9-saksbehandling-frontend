@@ -1,20 +1,18 @@
+import { Alert, Button, Fieldset } from '@navikt/ds-react';
+import { Datepicker, RadioGroupPanel } from '@navikt/k9-fe-form-utils';
 import classNames from 'classnames';
-import { Hovedknapp } from 'nav-frontend-knapper';
-import { RadioGruppe, SkjemaGruppe } from 'nav-frontend-skjema';
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { AleneOmOmsorgenProps } from '../../../types/AleneOmOmsorgenProps';
-import { booleanTilTekst, formatereDato, formatereDatoTilLesemodus, tekstTilBoolean } from '../../../util/stringUtils';
+import { dateFromString } from '../../../util/dateUtils';
+import { booleanTilTekst, formatereDatoTilLesemodus, tekstTilBoolean } from '../../../util/stringUtils';
 import useFormSessionStorage from '../../../util/useFormSessionStorageUtils';
 import { valideringsFunksjoner } from '../../../util/validationReactHookFormUtils';
+import { required } from '../../../util/validators';
 import AleneOmOmsorgenLesemodus from '../alene-om-omsorgen-lesemodus/AleneOmOmsorgenLesemodus';
-import AlertStripeTrekantVarsel from '../alertstripe-trekant-varsel/AlertStripeTrekantVarsel';
 import styleLesemodus from '../lesemodus/lesemodusboks.css';
 import OpplysningerFraSoknad from '../opplysninger-fra-soknad/OpplysningerFraSoknad';
-import DatePicker from '../react-hook-form-wrappers/DatePicker';
-import RadioButtonWithBooleanValue from '../react-hook-form-wrappers/RadioButton';
 import TextArea from '../react-hook-form-wrappers/TextArea';
-import styleRadioknapper from '../styles/radioknapper/radioknapper.css';
 import styles from '../vilkar-midlertidig-alene/vilkarMidlertidigAlene.css';
 import VilkarStatus from '../vilkar-status/VilkarStatus';
 import tekst from './alene-om-omsorgen-tekst';
@@ -48,10 +46,10 @@ const AleneOmOmsorgen: React.FunctionComponent<AleneOmOmsorgenProps> = ({
         defaultValues: {
             begrunnelse: harAksjonspunktOgVilkarLostTidligere ? informasjonTilLesemodus.begrunnelse : '',
             fraDato: harAksjonspunktOgVilkarLostTidligere
-                ? formatereDato(informasjonTilLesemodus.fraDato)
+                ? dateFromString(informasjonTilLesemodus.fraDato).toString()
                 : 'dd.mm.åååå',
             tilDato: harAksjonspunktOgVilkarLostTidligere
-                ? formatereDato(informasjonTilLesemodus.tilDato)
+                ? dateFromString(informasjonTilLesemodus.tilDato).toString()
                 : 'dd.mm.åååå',
             erSokerenAleneOmOmsorgen: harAksjonspunktOgVilkarLostTidligere
                 ? booleanTilTekst(informasjonTilLesemodus.vilkarOppfylt)
@@ -134,7 +132,9 @@ const AleneOmOmsorgen: React.FunctionComponent<AleneOmOmsorgenProps> = ({
 
             {(åpenForRedigering || (!lesemodus && !vedtakFattetVilkarOppfylt)) && (
                 <>
-                    <AlertStripeTrekantVarsel text={tekst.aksjonspunkt} />
+                    <Alert variant="warning" size="small">
+                        {tekst.aksjonspunkt}
+                    </Alert>
 
                     <OpplysningerFraSoknad
                         periodeTekst="Fra dato oppgitt"
@@ -146,35 +146,35 @@ const AleneOmOmsorgen: React.FunctionComponent<AleneOmOmsorgenProps> = ({
                             <TextArea label={tekst.begrunnelse} name="begrunnelse" />
 
                             <div>
-                                <RadioGruppe
-                                    className={styleRadioknapper.horisontalPlassering}
-                                    legend={tekst.sporsmålVilkarOppfylt}
-                                >
-                                    <RadioButtonWithBooleanValue
-                                        label="Ja"
-                                        value="true"
-                                        name="erSokerenAleneOmOmsorgen"
-                                    />
-                                    <RadioButtonWithBooleanValue
-                                        label="Nei"
-                                        value="false"
-                                        name="erSokerenAleneOmOmsorgen"
-                                    />
-                                </RadioGruppe>
+                                <RadioGroupPanel
+                                    name="erSokerenAleneOmOmsorgen"
+                                    question={tekst.sporsmålVilkarOppfylt}
+                                    radios={[
+                                        {
+                                            label: 'Ja',
+                                            value: 'true',
+                                        },
+                                        {
+                                            label: 'Nei',
+                                            value: 'false',
+                                        },
+                                    ]}
+                                    validators={{ required }}
+                                />
                                 {errors.erSokerenAleneOmOmsorgen && (
                                     <p className="typo-feilmelding">{tekst.feilIngenVurdering}</p>
                                 )}
                             </div>
 
                             {tekstTilBoolean(erSokerAleneOmOmsorgen) && (
-                                <SkjemaGruppe
+                                <Fieldset
                                     className={
                                         erBehandlingstypeRevurdering
                                             ? styles.gyldigVedtaksPeriode
                                             : styles.gyldigVedtaksPeriode_forstegangsbehandling_aleneOmOmsorgen
                                     }
                                     legend={tekst.sporsmalPeriodeVedtakGyldig}
-                                    feil={
+                                    error={
                                         (errors.fraDato &&
                                             errors.fraDato.type === 'erDatoFyltUt' &&
                                             tekst.feilmedlingManglerFraDato) ||
@@ -191,26 +191,26 @@ const AleneOmOmsorgen: React.FunctionComponent<AleneOmOmsorgenProps> = ({
                                             tekst.feilmedlingUgyldigDato)
                                     }
                                 >
-                                    <DatePicker
-                                        titel="Fra"
-                                        navn="fraDato"
-                                        valideringsFunksjoner={{ erDatoFyltUt, erDatoGyldig }}
+                                    <Datepicker
+                                        label="Fra"
+                                        name="fraDato"
+                                        validators={{ erDatoFyltUt, erDatoGyldig }}
                                     />
 
                                     {erBehandlingstypeRevurdering && (
-                                        <DatePicker
-                                            titel="Til"
-                                            navn="tilDato"
-                                            valideringsFunksjoner={{ erDatoFyltUt, erDatoGyldig }}
+                                        <Datepicker
+                                            label="Til"
+                                            name="tilDato"
+                                            validators={{ erDatoFyltUt, erDatoGyldig }}
                                         />
                                     )}
-                                </SkjemaGruppe>
+                                </Fieldset>
                             )}
 
-                            <Hovedknapp className={styles.bekreftKnapp} htmlType="submit">
+                            <Button size="small" variant="primary" className={styles.bekreftKnapp} type="submit">
                                 {' '}
                                 {tekst.bekreftFortsettKnapp}
-                            </Hovedknapp>
+                            </Button>
                         </form>
                     </FormProvider>
                 </>

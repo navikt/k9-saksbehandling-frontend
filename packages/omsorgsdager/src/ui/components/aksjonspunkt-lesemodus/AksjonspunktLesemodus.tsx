@@ -1,4 +1,4 @@
-import Lenke from 'nav-frontend-lenker';
+import { Button } from '@navikt/ds-react';
 import React from 'react';
 import styleLesemodus from '../lesemodus/lesemodusboks.css';
 
@@ -13,7 +13,7 @@ const AksjonspunktLesemodus = ({
     åpneForRedigereInformasjon,
     aksjonspunktTekst,
 }: OwnProps) => {
-    const håndtereKlikk = e => {
+    const håndtereKlikk = (e) => {
         e.preventDefault();
         e.stopPropagation();
         åpneForRedigereInformasjon();
@@ -26,14 +26,15 @@ const AksjonspunktLesemodus = ({
             </p>
             {harAksjonspunktBlivitLostTidligare && (
                 <div className={styleLesemodus.redigerVurderingTekst}>
-                    <Lenke
-                        href="#"
-                        onClick={e => {
+                    <Button
+                        size="medium"
+                        variant="tertiary"
+                        onClick={(e) => {
                             håndtereKlikk(e);
                         }}
                     >
                         Rediger vurdering
-                    </Lenke>
+                    </Button>
                 </div>
             )}
         </div>
