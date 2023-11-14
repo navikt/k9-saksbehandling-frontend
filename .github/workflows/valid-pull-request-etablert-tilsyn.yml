@@ -6,7 +6,7 @@ on:
             - 'packages/etablert-tilsyn/**/*'
             - 'yarn.lock'
 env:
-    package-name: psb-etablert-tilsyn-frontend
+    package-name: '@navikt/k9-fe-etablert-tilsyn'
 jobs:
     valid-pull-request:
         name: Validere pull request
@@ -23,7 +23,8 @@ jobs:
                   NPM_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
             - name: Sette opp Node
               uses: actions/setup-node@v4
-
+              with:
+                  cache: 'yarn'
             - name: Get cypress cache directory path
               id: cypress-cache-dir
               run: echo "CYPRESS_BIN_PATH=$(npx cypress cache path)" >> $GITHUB_OUTPUT
@@ -52,7 +53,7 @@ jobs:
               with:
                   install: false
                   project: ./packages/etablert-tilsyn
-                  start: lerna run dev --scope psb-etablert-tilsyn-frontend
+                  start: lerna run dev --scope @navikt/k9-fe-etablert-tilsyn
                   wait-on: 'http://localhost:8484'
                   wait-on-timeout: 60
             - name: Laster opp screenshots dersom Cypress-testene feiler

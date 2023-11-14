@@ -8,6 +8,7 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 const webpackConfig = merge(commonWebpackConfig, {
+    entry: path.resolve(__dirname, '../', 'src') + '/dev/app.ts',
     mode: 'development',
     devtool: 'eval-cheap-module-source-map',
     plugins: [

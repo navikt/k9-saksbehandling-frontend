@@ -1,8 +1,6 @@
 import { Period } from '@navikt/k9-fe-period-utils';
 import { PageContainer } from '@navikt/ft-plattform-komponenter';
-import '@navikt/ft-plattform-komponenter/dist/style.css';
 import React from 'react';
-import '@navikt/ds-css';
 import { get } from '@navikt/k9-fe-http-utils';
 import ContainerContext from '../context/ContainerContext';
 import ContainerContract from '../types/ContainerContract';

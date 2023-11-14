@@ -3,8 +3,6 @@ import { ChildIcon, Infostripe, PageContainer, WarningIcon } from '@navikt/ft-pl
 import classnames from 'classnames';
 import { TabsPure } from 'nav-frontend-tabs';
 import React, { useMemo } from 'react';
-import '@navikt/ft-plattform-komponenter/dist/style.css';
-import '@navikt/ds-css';
 import { Period } from '@navikt/k9-fe-period-utils';
 import ContainerContract from '../types/ContainerContract';
 import { InnleggelsesperiodeResponse, SykdomResponse, TilsynResponse } from '../types/TilsynResponse';

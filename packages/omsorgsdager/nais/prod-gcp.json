@@ -1,9 +1,0 @@
-{
-    "app": "omsorgsdager-frontend",
-    "cluster": "prod-gcp",
-    "namespace": "k9saksbehandling",
-    "team": "k9saksbehandling",
-    "minReplicas": "1",
-    "maxReplicas": "2",
-    "ingresses": ["https://omsorgsdager-frontend.intern.nav.no"]
-}
