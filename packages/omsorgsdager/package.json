@@ -2,6 +2,7 @@
     "name": "@navikt/k9-fe-omsorgsdager",
     "version": "0.0.4",
     "main": "./build/index.js",
+    "types": "./build/index.d.ts",
     "files": [
         "build"
     ],

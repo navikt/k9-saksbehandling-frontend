@@ -2,6 +2,7 @@
     "name": "@navikt/k9-fe-medisinsk-vilkar",
     "version": "0.0.7",
     "main": "./build/index.js",
+    "types": "./build/index.d.ts",
     "files": [
         "build"
     ],
