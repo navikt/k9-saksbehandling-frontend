@@ -2,7 +2,8 @@
     "name": "@navikt/k9-fe-date-utils",
     "version": "1.0.6",
     "description": "A collection of period utils",
-    "main": "./build/index.js",
+    "main": "./build/index.umd.js",
+    "module": "./build/index.es.js",
     "types": "./build/index.d.ts",
     "files": [
         "build",
@@ -10,13 +11,14 @@
         "package.json"
     ],
     "scripts": {
-        "build": "rollup -c rollup.config.mjs",
+        "build": "vite build",
         "clean": "rm -rf ./build ./node_modules",
         "test": "jest --passWithNoTests --maxWorkers=2",
         "test-watch": "jest --watch"
     },
     "devDependencies": {
-        "dayjs": "1.11.10"
+        "dayjs": "1.11.10",
+        "vite": "4.5.0"
     },
     "peerDependencies": {
         "dayjs": "1.11.6"
