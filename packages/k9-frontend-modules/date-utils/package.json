@@ -2,7 +2,8 @@
     "name": "@navikt/k9-fe-date-utils",
     "version": "1.0.6",
     "description": "A collection of period utils",
-    "main": "./build/index.js",
+    "main": "./build/index.umd.js",
+    "module": "./build/index.es.js",
     "types": "./build/index.d.ts",
     "files": [
         "build",
