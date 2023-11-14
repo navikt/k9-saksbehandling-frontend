@@ -1,7 +1,10 @@
-import React from 'react';
+import { ComponentStory } from '@storybook/react';
 import { rest } from 'msw';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import MainComponent from '../ui/MainComponent';
+import React from 'react';
+import inntektsmeldingPropsMock, {
+    aksjonspunkt9071FerdigProps,
+    aksjonspunkt9071Props,
+} from '../../mock/inntektsmeldingPropsMock';
 import ferdigvisning, {
     alleErMottatt,
     ikkePaakrevd,
@@ -9,14 +12,14 @@ import ferdigvisning, {
     manglerFlereInntektsmeldinger,
     manglerInntektsmelding,
 } from '../../mock/mockedKompletthetsdata';
-import inntektsmeldingPropsMock, { aksjonspunkt9071FerdigProps, aksjonspunkt9071Props } from '../../mock/inntektsmeldingPropsMock';
+import MainComponent from '../ui/MainComponent';
 
 export default {
     args: inntektsmeldingPropsMock,
     argTypes: { onFinished: { action: 'clicked' } },
     title: 'Inntektsmelding',
     component: MainComponent,
-} as ComponentMeta<typeof MainComponent>;
+};
 
 const Template: ComponentStory<typeof MainComponent> = (args: any) => <MainComponent data={args} />;
 

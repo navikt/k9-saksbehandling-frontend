@@ -7,6 +7,6 @@ export interface ContainerContract {
     readOnly: boolean;
     onFinished: (vurdering, fosterbarnForOmsorgspenger) => void;
     httpErrorHandler: HttpErrorHandler;
-    sakstype: string;
+    sakstype?: string;
     saksbehandlere: { [key: string]: string };
 }

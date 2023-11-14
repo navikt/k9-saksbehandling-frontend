@@ -34,7 +34,7 @@ interface ContainerContract {
         virkningsdato: string;
     }) => void;
     virkningsdatoUttakNyeRegler: string;
-    aksjonspunkter: Aksjonspunkt[];
+    aksjonspunkter?: Aksjonspunkt[];
 }
 
 export default ContainerContract;

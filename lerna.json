@@ -2,5 +2,20 @@
     "$schema": "node_modules/lerna/schemas/lerna-schema.json",
     "npmClient": "yarn",
     "version": "independent",
-    "packages": ["packages/*", "packages/k9-frontend-modules/*"]
+    "packages": ["packages/*", "packages/k9-frontend-modules/*"],
+    "command": {
+        "publish": {
+            "registry": "https://npm.pkg.github.com",
+            "ignoreChanges": [
+                "**/*.md",
+                "**/*.spec.tsx",
+                "**/*.spec.ts",
+                "**/*.stories.tsx",
+                "**/tsconfig.json",
+                "**/.storybook/**",
+                "**/build/**",
+                "**/node_modules/**"
+            ]
+        }
+    }
 }

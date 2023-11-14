@@ -9,6 +9,7 @@ interface OwnProps {
     navn: `${string}`;
     valideringsFunksjoner;
     begrensningerIKalender?: DatepickerLimitations;
+    disabled?: boolean;
 }
 
 const DatePicker: React.FunctionComponent<OwnProps> = ({
@@ -16,6 +17,7 @@ const DatePicker: React.FunctionComponent<OwnProps> = ({
     navn,
     valideringsFunksjoner,
     begrensningerIKalender,
+    disabled = false,
 }) => {
     const { control } = useFormContext();
 
@@ -36,6 +38,7 @@ const DatePicker: React.FunctionComponent<OwnProps> = ({
                             onChange={onChange}
                             value={value}
                             limitations={begrensningerIKalender}
+                            disabled={disabled}                            
                         />
                     </label>
                 )}

@@ -15,7 +15,7 @@ const renderAppInSuccessfulState = (appId: string, data: ContainerContract): Pro
     prepare().then(() => {
         const container = document.getElementById(appId);
         const root = createRoot(container);
-        root.render(<MainComponent containerData={data} />);
+        root.render(<MainComponent data={data} />);
     });
 
 export default {
