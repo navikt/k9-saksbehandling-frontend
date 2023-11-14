@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import classNames from 'classnames';
 import dayjs from 'dayjs';
 
-import { Detail, Label } from '@navikt/ds-react';
+import { Label } from '@navikt/ds-react';
 import { Hovedknapp } from 'nav-frontend-knapper';
 import { RadioGruppe, Select, SkjemaGruppe } from 'nav-frontend-skjema';
 
@@ -116,17 +116,22 @@ const AleneOmOmsorgen: React.FunctionComponent<AleneOmOmsorgenProps> = ({
                 !errors.erSokerenAleneOmOmsorgen &&
                 erBehandlingstypeRevurdering)
         ) {
+            let tilDatoSubmitValue = '';
+            if (tekstTilBoolean(erSokerenAleneOmOmsorgen)) {
+                tilDatoSubmitValue = (tilDato === 'false') ? null : tilDato.replaceAll('.', '-');
+            }
+
             losAksjonspunkt({
                 begrunnelse,
                 vilkarOppfylt: tekstTilBoolean(erSokerenAleneOmOmsorgen),
                 fraDato: tekstTilBoolean(erSokerenAleneOmOmsorgen) ? fraDato.replaceAll('.', '-') : '',
-                tilDato: tekstTilBoolean(erSokerenAleneOmOmsorgen) ? tilDato.replaceAll('.', '-') : '',
+                tilDato: tilDatoSubmitValue,
             });
             setValue('åpenForRedigering', false);
             mellomlagringFormState.fjerneState();
         }
     };
-
+    
     return (
         <div
             className={classNames(
@@ -240,12 +245,7 @@ const AleneOmOmsorgen: React.FunctionComponent<AleneOmOmsorgenProps> = ({
                                             </Select>
                                             {tilDatovalue !== 'dd.mm.åååå' && tilDatovalue !== 'false' && (
                                                 <Label as="p" className={styles.tilDatoVisning}>
-                                                    {tilDatovalue}
-                                                </Label>
-                                            )}
-                                            {tilDatovalue === 'false' && (
-                                                <Label as="p" className={styles.tilDatoVisning}>
-                                                    Ingen utløpsdato
+                                                    {dayjs(tilDatovalue).format('DD.MM.YYYY')}
                                                 </Label>
                                             )}
                                         </>

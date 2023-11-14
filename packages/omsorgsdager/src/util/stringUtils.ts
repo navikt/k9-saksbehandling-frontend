@@ -27,10 +27,10 @@ export const utledTilgjengeligeÅr = (fraDato: string): { value: string; title: 
     const tidligsteMuligeÅr = årFraDato > nåværendeÅr ? årFraDato : nåværendeÅr;
 
     const år = [
-        { value: 'false', title: 'Utløper ikke' },
+        { value: 'false', title: 'Ingen endring' },
     ];
 
-    for (let i = tidligsteMuligeÅr; i <= dayjs().year() + 2; i++) {
+    for (let i = tidligsteMuligeÅr; i <= dayjs().year() + 1; i++) {
         år.push({ value: i.toString(), title: i.toString() });
     }
     return år;
