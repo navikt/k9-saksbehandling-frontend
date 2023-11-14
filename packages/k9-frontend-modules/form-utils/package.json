@@ -1,6 +1,6 @@
 {
     "name": "@navikt/k9-fe-form-utils",
-    "version": "1.0.11",
+    "version": "1.0.12",
     "scripts": {
         "dev": "rollup -w -c rollup.config.mjs",
         "build": "rollup -c rollup.config.mjs",
