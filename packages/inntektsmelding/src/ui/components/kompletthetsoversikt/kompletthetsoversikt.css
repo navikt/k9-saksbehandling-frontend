@@ -5,7 +5,7 @@
 .alert :global(.navds-alert__wrapper) {
     max-width: none;
 }
-.alertAccordion :global(.navds-accordion__header) {
+.alertAccordion :global(button.navds-accordion__header) {
     border: none;
     padding: 0;
     box-shadow: none;
@@ -14,7 +14,7 @@
 .alertAccordion :global(.navds-accordion__content) {
     border: none;
 }
-.alertAccordion__heading:global(.navds-heading--xsmall) {
+h3.alertAccordion__heading:global(.navds-heading--xsmall) {
     font-weight: var(--navds-font-weight-regular);
     margin-bottom: 0;
 }

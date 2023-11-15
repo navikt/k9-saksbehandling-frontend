@@ -123,7 +123,7 @@ function FortsettUtenInntektsmeldingForm({
         // eslint-disable-next-line react/jsx-props-no-spreading
         <Form formMethods={formMethods} onSubmit={submit}>
             <Panel className={styles.fortsettUtenInntektsmelding__panel}>
-                <Heading className={styles.fortsettUtenInntektsmelding__radiogroupHeading} level="3" size="xsmall">
+                <Heading level="3" size="xsmall">
                     Kan du gå videre uten inntektsmelding?
                 </Heading>
                 <Alert className={styles.fortsettUtenInntektsmelding__radiogroupAlert} variant="info" size="medium">

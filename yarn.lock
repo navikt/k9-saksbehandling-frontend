@@ -3148,6 +3148,7 @@ __metadata:
     nav-frontend-spinner-style: 1.x
     nav-frontend-typografi: 4.x
     nav-frontend-typografi-style: 2.x
+    nodemon: ^3.0.1
     object-hash: 3.x
     react: 18.x
     react-collapse: 5.x
@@ -14399,7 +14400,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nodemon@npm:3.0.1":
+"nodemon@npm:3.0.1, nodemon@npm:^3.0.1":
   version: 3.0.1
   resolution: "nodemon@npm:3.0.1"
   dependencies:
