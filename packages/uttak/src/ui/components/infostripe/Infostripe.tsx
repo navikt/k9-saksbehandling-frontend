@@ -1,7 +1,7 @@
-import { AlertStripeAdvarsel } from 'nav-frontend-alertstriper';
+import { Alert } from '@navikt/ds-react';
 import React from 'react';
-import styles from './infostripe.css';
 import ContainerContext from '../../context/ContainerContext';
+import styles from './infostripe.css';
 
 interface InfostripeProps {
     harVentAnnenPSBSakAksjonspunkt: boolean;
@@ -16,7 +16,7 @@ const Infostripe: React.FC<InfostripeProps> = ({ harVentAnnenPSBSakAksjonspunkt 
 
     return (
         <div className={styles.infostripe}>
-            <AlertStripeAdvarsel>
+            <Alert size="small" variant="warning">
                 Det er nødvendig med mer informasjon fra andre saker før dette steget kan fullføres.
                 <ol className={styles.infostripe__punktliste}>
                     <li>
@@ -28,7 +28,7 @@ const Infostripe: React.FC<InfostripeProps> = ({ harVentAnnenPSBSakAksjonspunkt 
                         før neste sak behandles.
                     </li>
                 </ol>
-            </AlertStripeAdvarsel>
+            </Alert>
         </div>
     );
 };

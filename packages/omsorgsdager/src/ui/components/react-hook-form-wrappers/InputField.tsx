@@ -1,6 +1,6 @@
+import { TextField } from '@navikt/ds-react';
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
-import { Input } from 'nav-frontend-skjema';
 
 interface OwnProps {
     label?: string;
@@ -27,31 +27,31 @@ const InputField: React.FunctionComponent<OwnProps> = ({
 
     if (isMini) {
         return (
-            <Input
-                mini
+            <TextField
+                size="small"
                 name={input.name}
                 label={label}
                 onChange={input.onChange}
                 onBlur={input.onBlur}
-                inputRef={input.ref}
-                bredde="S"
+                ref={input.ref}
+                htmlSize={140}
                 placeholder={placeholder}
                 aria-label={arialabel}
-                feil={typeof feil !== 'undefined' ? feil : ''}
+                error={typeof feil !== 'undefined' ? feil : ''}
             />
         );
     }
     return (
-        <Input
+        <TextField
             name={input.name}
             label={label}
             onChange={input.onChange}
             onBlur={input.onBlur}
-            inputRef={input.ref}
-            bredde="XS"
+            ref={input.ref}
+            htmlSize={70}
             placeholder={placeholder}
             aria-label={arialabel}
-            feil={typeof feil !== 'undefined' ? feil : ''}
+            error={typeof feil !== 'undefined' ? feil : ''}
         />
     );
 };

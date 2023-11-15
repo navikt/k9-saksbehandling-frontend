@@ -1,14 +1,12 @@
+import { BodyShort, HelpText, Tag } from '@navikt/ds-react';
 import { ContentWithTooltip, GreenCheckIcon, OnePersonIconBlue } from '@navikt/ft-plattform-komponenter';
 import classNames from 'classnames/bind';
-import { EtikettAdvarsel, EtikettSuksess } from 'nav-frontend-etiketter';
-import Hjelpetekst from 'nav-frontend-hjelpetekst';
-import { PopoverOrientering } from 'nav-frontend-popover';
-import { Element } from 'nav-frontend-typografi';
 import * as React from 'react';
 import { arbeidstypeTilVisning } from '../../../constants/Arbeidstype';
 import BarnetsDødsfallÅrsakerMedTekst from '../../../constants/BarnetsDødsfallÅrsakerMedTekst';
 import IkkeOppfylteÅrsakerMedTekst from '../../../constants/IkkeOppfylteÅrsakerMedTekst';
 import OverseEtablertTilsynÅrsak from '../../../constants/OverseEtablertTilsynÅrsak';
+import Utfall from '../../../constants/Utfall';
 import Årsaker from '../../../constants/Årsaker';
 import ArbeidsgiverOpplysninger from '../../../types/ArbeidsgiverOpplysninger';
 import GraderingMotTilsyn from '../../../types/GraderingMotTilsyn';
@@ -17,18 +15,17 @@ import { Uttaksperiode } from '../../../types/Uttaksperiode';
 import { beregnDagerTimer } from '../../../util/dateUtils';
 import { harÅrsak } from '../../../util/årsakUtils';
 import ContainerContext from '../../context/ContainerContext';
-import styles from './uttakDetaljer.css';
 import UttakUtregning from './UttakUtregning';
-import Utfall from '../../../constants/Utfall';
+import styles from './uttakDetaljer.css';
 
 const cx = classNames.bind(styles);
 
 const getÅrsaksetiketter = (årsaker: Årsaker[]) => {
     const funnedeÅrsaker = IkkeOppfylteÅrsakerMedTekst.filter((årsak) => harÅrsak(årsaker, årsak.årsak));
     return funnedeÅrsaker.map((årsak) => (
-        <EtikettAdvarsel key={årsak.årsak} className={styles.uttakDetaljer__etikett}>
+        <Tag variant="error" size="small" key={årsak.årsak} className={styles.uttakDetaljer__etikett}>
             {årsak.tekst}
-        </EtikettAdvarsel>
+        </Tag>
     ));
 };
 
@@ -61,9 +58,9 @@ const utenlandsoppholdInfo = (utfall: Utfall, utenlandsopphold: { landkode: stri
     }
 
     return (
-        <EtikettSuksess className={styles.uttakDetaljer__etikett}>
+        <Tag variant="success" size="small" className={styles.uttakDetaljer__etikett}>
             {utenlandsoppholdTekst(utenlandsopphold, kodeverkUtenlandsoppholdÅrsak)}
-        </EtikettSuksess>
+        </Tag>
     );
 };
 
@@ -105,14 +102,11 @@ const formatGraderingMotTilsyn = (graderingMotTilsyn: GraderingMotTilsyn, pleieb
                         <span className={cx('uttakDetaljer__data--utnullet', 'uttakDetaljer__data--margin-left')}>
                             {etablertTilsyn} %
                         </span>
-                        <Hjelpetekst
-                            className={styles.uttakDetaljer__data__questionMark}
-                            type={PopoverOrientering.Hoyre}
-                        >
+                        <HelpText placement="right" className={styles.uttakDetaljer__data__questionMark}>
                             {utnullingPåGrunnAvBeredskapEllerNattevåk
                                 ? beredskapEllerNattevåkÅrsakTekst
                                 : 'Etablert tilsyn under 10 % blir ikke medregnet.'}
-                        </Hjelpetekst>
+                        </HelpText>
                     </>
                 ) : (
                     `${etablertTilsyn} %`
@@ -147,10 +141,14 @@ const formatAvkortingMotArbeid = (
                 return (
                     // eslint-disable-next-line react/no-array-index-key
                     <div key={index}>
-                        <Element className={styles.uttakDetaljer__avkortingMotArbeid__heading}>
+                        <BodyShort
+                            size="small"
+                            weight="semibold"
+                            className={styles.uttakDetaljer__avkortingMotArbeid__heading}
+                        >
                             <span>{arbeidstype}</span>
                             <span>{arbeidsgiverInfo || orgnr || arbeidsgiverFnr}</span>
-                        </Element>
+                        </BodyShort>
                         <p className={styles.uttakDetaljer__data}>
                             {`Normal arbeidstid: ${beregnetNormalArbeidstid} timer`}
                         </p>
@@ -166,13 +164,10 @@ const formatAvkortingMotArbeid = (
                             </span>
                             <span>{`${faktiskOverstigerNormal ? beregnetNormalArbeidstid : ''} timer`}</span>
                             {faktiskOverstigerNormal && (
-                                <Hjelpetekst
-                                    className={styles.uttakDetaljer__data__questionMark}
-                                    type={PopoverOrientering.Hoyre}
-                                >
+                                <HelpText placement="right" className={styles.uttakDetaljer__data__questionMark}>
                                     Overstigende timer tas ikke hensyn til, faktisk arbeidstid settes lik normal
                                     arbeidstid
-                                </Hjelpetekst>
+                                </HelpText>
                             )}
                         </span>
                         <p className={styles.uttakDetaljer__data}>{`Utbetalingsgrad: ${utbetalingsgrad} %`}</p>
@@ -245,12 +240,9 @@ const UttakDetaljer = ({ uttak }: UttakDetaljerProps): JSX.Element => {
                         highlight={shouldHighlight(Årsaker.GRADERT_MOT_TILSYN, årsaker)}
                         headingPostContent={
                             harBarnetsDødsfallÅrsak(årsaker) && (
-                                <Hjelpetekst
-                                    className={styles.uttakDetaljer__data__questionMark}
-                                    type={PopoverOrientering.Hoyre}
-                                >
+                                <HelpText placement="right" className={styles.uttakDetaljer__data__questionMark}>
                                     Gradering mot tilsyn blir ikke medregnet på grunn av barnets dødsfall.
-                                </Hjelpetekst>
+                                </HelpText>
                             )
                         }
                     >

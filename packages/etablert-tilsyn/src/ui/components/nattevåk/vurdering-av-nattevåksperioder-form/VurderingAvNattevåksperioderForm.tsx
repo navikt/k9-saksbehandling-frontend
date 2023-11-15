@@ -1,7 +1,7 @@
-import { Period } from '@navikt/k9-fe-period-utils';
-import { Box, Margin, DetailView, LabelledContent, Form } from '@navikt/ft-plattform-komponenter';
+import { Alert } from '@navikt/ds-react';
+import { Box, DetailView, Form, LabelledContent, Margin } from '@navikt/ft-plattform-komponenter';
 import { PeriodpickerList, RadioGroupPanel, TextArea } from '@navikt/k9-fe-form-utils';
-import { AlertStripeInfo } from 'nav-frontend-alertstriper';
+import { Period } from '@navikt/k9-fe-period-utils';
 import React from 'react';
 import { FormProvider, useForm, useWatch } from 'react-hook-form';
 import Beskrivelse from '../../../../types/Beskrivelse';
@@ -182,7 +182,7 @@ const VurderingAvNattevåksperioderForm = ({
                     )}
                     {perioderUtenBehovForNattevåk.length > 0 && (
                         <Box marginTop={Margin.xLarge}>
-                            <AlertStripeInfo>
+                            <Alert size="small" variant="info">
                                 <LabelledContent
                                     label="Resterende perioder har søkeren ikke behov for nattevåk:"
                                     content={perioderUtenBehovForNattevåk.map((periode) => (
@@ -191,7 +191,7 @@ const VurderingAvNattevåksperioderForm = ({
                                         </p>
                                     ))}
                                 />
-                            </AlertStripeInfo>
+                            </Alert>
                         </Box>
                     )}
                 </Form>

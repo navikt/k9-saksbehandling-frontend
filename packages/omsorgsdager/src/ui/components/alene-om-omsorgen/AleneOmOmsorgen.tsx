@@ -1,21 +1,19 @@
-import React, { useEffect } from 'react';
-import { FormProvider, useForm } from 'react-hook-form';
+import { Select, Label, Alert, Button, Fieldset } from '@navikt/ds-react';
+import { Datepicker, RadioGroupPanel } from '@navikt/k9-fe-form-utils';
 import classNames from 'classnames';
-import dayjs from 'dayjs';
-
-import { Label } from '@navikt/ds-react';
-import { Hovedknapp } from 'nav-frontend-knapper';
-import { RadioGruppe, Select, SkjemaGruppe } from 'nav-frontend-skjema';
-
+import React from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
+import { AleneOmOmsorgenProps } from '../../../types/AleneOmOmsorgenProps';
+import { dateFromString } from '../../../util/dateUtils';
+import { booleanTilTekst, formatereDatoTilLesemodus, tekstTilBoolean } from '../../../util/stringUtils';
 import useFormSessionStorage from '../../../util/useFormSessionStorageUtils';
 import { valideringsFunksjoner } from '../../../util/validationReactHookFormUtils';
+import { required } from '../../../util/validators';
 import AleneOmOmsorgenLesemodus from '../alene-om-omsorgen-lesemodus/AleneOmOmsorgenLesemodus';
-import AlertStripeTrekantVarsel from '../alertstripe-trekant-varsel/AlertStripeTrekantVarsel';
 import styleLesemodus from '../lesemodus/lesemodusboks.css';
 import OpplysningerFraSoknad from '../opplysninger-fra-soknad/OpplysningerFraSoknad';
-import DatePicker from '../react-hook-form-wrappers/DatePicker';
-import RadioButtonWithBooleanValue from '../react-hook-form-wrappers/RadioButton';
 import TextArea from '../react-hook-form-wrappers/TextArea';
+import styles from '../vilkar-midlertidig-alene/vilkarMidlertidigAlene.css';
 import VilkarStatus from '../vilkar-status/VilkarStatus';
 import tekst from './alene-om-omsorgen-tekst';
 import {
@@ -29,6 +27,7 @@ import { AleneOmOmsorgenProps } from '../../../types/AleneOmOmsorgenProps';
 
 import styles from '../vilkar-midlertidig-alene/vilkarMidlertidigAlene.css';
 import styleRadioknapper from '../styles/radioknapper/radioknapper.css';
+import dayjs from 'dayjs';
 
 type FormData = {
     begrunnelse: string;
@@ -59,10 +58,10 @@ const AleneOmOmsorgen: React.FunctionComponent<AleneOmOmsorgenProps> = ({
         defaultValues: {
             begrunnelse: harAksjonspunktOgVilkarLostTidligere ? informasjonTilLesemodus.begrunnelse : '',
             fraDato: harAksjonspunktOgVilkarLostTidligere
-                ? formatereDato(informasjonTilLesemodus.fraDato)
+                ? dateFromString(informasjonTilLesemodus.fraDato).toString()
                 : 'dd.mm.åååå',
             tilDato: harAksjonspunktOgVilkarLostTidligere
-                ? formatereDato(informasjonTilLesemodus.tilDato)
+                ? dateFromString(informasjonTilLesemodus.tilDato).toString()
                 : 'dd.mm.åååå',
             erSokerenAleneOmOmsorgen: harAksjonspunktOgVilkarLostTidligere
                 ? booleanTilTekst(informasjonTilLesemodus.vilkarOppfylt)
@@ -162,7 +161,9 @@ const AleneOmOmsorgen: React.FunctionComponent<AleneOmOmsorgenProps> = ({
 
             {(åpenForRedigering || (!lesemodus && !vedtakFattetVilkarOppfylt)) && (
                 <>
-                    <AlertStripeTrekantVarsel text={tekst.aksjonspunkt} />
+                    <Alert variant="warning" size="small">
+                        {tekst.aksjonspunkt}
+                    </Alert>
 
                     <OpplysningerFraSoknad
                         periodeTekst="Fra dato oppgitt"
@@ -174,35 +175,35 @@ const AleneOmOmsorgen: React.FunctionComponent<AleneOmOmsorgenProps> = ({
                             <TextArea label={tekst.begrunnelse} name="begrunnelse" />
 
                             <div>
-                                <RadioGruppe
-                                    className={styleRadioknapper.horisontalPlassering}
-                                    legend={tekst.sporsmålVilkarOppfylt}
-                                >
-                                    <RadioButtonWithBooleanValue
-                                        label="Ja"
-                                        value="true"
-                                        name="erSokerenAleneOmOmsorgen"
-                                    />
-                                    <RadioButtonWithBooleanValue
-                                        label="Nei"
-                                        value="false"
-                                        name="erSokerenAleneOmOmsorgen"
-                                    />
-                                </RadioGruppe>
+                                <RadioGroupPanel
+                                    name="erSokerenAleneOmOmsorgen"
+                                    question={tekst.sporsmålVilkarOppfylt}
+                                    radios={[
+                                        {
+                                            label: 'Ja',
+                                            value: 'true',
+                                        },
+                                        {
+                                            label: 'Nei',
+                                            value: 'false',
+                                        },
+                                    ]}
+                                    validators={{ required }}
+                                />
                                 {errors.erSokerenAleneOmOmsorgen && (
                                     <p className="typo-feilmelding">{tekst.feilIngenVurdering}</p>
                                 )}
                             </div>
 
                             {tekstTilBoolean(erSokerAleneOmOmsorgen) && (
-                                <SkjemaGruppe
+                                <Fieldset
                                     className={
                                         erBehandlingstypeRevurdering
                                             ? styles.gyldigVedtaksPeriode
                                             : styles.gyldigVedtaksPeriode_forstegangsbehandling_aleneOmOmsorgen
                                     }
                                     legend={tekst.sporsmalPeriodeVedtakGyldig}
-                                    feil={
+                                    error={
                                         (errors.fraDato &&
                                             errors.fraDato.type === 'erDatoFyltUt' &&
                                             tekst.feilmedlingManglerFraDato) ||
@@ -219,10 +220,10 @@ const AleneOmOmsorgen: React.FunctionComponent<AleneOmOmsorgenProps> = ({
                                             tekst.feilmedlingUgyldigDato)
                                     }
                                 >
-                                    <DatePicker
-                                        titel="Fra"
-                                        navn="fraDato"
-                                        valideringsFunksjoner={{ erDatoFyltUt, erDatoGyldig }}
+                                    <Datepicker
+                                        label="Fra"
+                                        name="fraDato"
+                                        validators={{ erDatoFyltUt, erDatoGyldig }}
                                         disabled={erBehandlingstypeRevurdering}
                                     />
 
@@ -250,13 +251,13 @@ const AleneOmOmsorgen: React.FunctionComponent<AleneOmOmsorgenProps> = ({
                                             )}
                                         </>
                                     )}
-                                </SkjemaGruppe>
+                                </Fieldset>
                             )}
 
-                            <Hovedknapp className={styles.bekreftKnapp} htmlType="submit">
+                            <Button size="small" variant="primary" className={styles.bekreftKnapp} type="submit">
                                 {' '}
                                 {tekst.bekreftFortsettKnapp}
-                            </Hovedknapp>
+                            </Button>
                         </form>
                     </FormProvider>
                 </>

@@ -1,12 +1,13 @@
-import { get } from '@navikt/k9-fe-http-utils';
+import '@navikt/ds-css';
+import { Alert, Tabs } from '@navikt/ds-react';
 import { ChildIcon, Infostripe, PageContainer, WarningIcon } from '@navikt/ft-plattform-komponenter';
-import classnames from 'classnames';
-import { TabsPure } from 'nav-frontend-tabs';
-import React, { useMemo } from 'react';
+import '@navikt/ft-plattform-komponenter/dist/style.css';
+import { get } from '@navikt/k9-fe-http-utils';
 import { Period } from '@navikt/k9-fe-period-utils';
+import classnames from 'classnames';
+import React, { useMemo } from 'react';
 import ContainerContract from '../types/ContainerContract';
 import { InnleggelsesperiodeResponse, SykdomResponse, TilsynResponse } from '../types/TilsynResponse';
-import Alertstripe from './components/alertstripe/Alertstripe';
 import Beredskapsperiodeoversikt from './components/beredskap/beredskapsperioderoversikt/Beredskapsperiodeoversikt';
 import EtablertTilsyn from './components/etablertTilsyn/EtablertTilsynMedSmoring';
 import Nattevåksperiodeoversikt from './components/nattevåk/nattevåksperiodeoversikt/Nattevåksperiodeoversikt';
@@ -138,11 +139,11 @@ const MainComponent = ({ data }: MainComponentProps) => {
 
     if (tilsynHarFeilet || sykdomHarFeilet || innleggelserFeilet) {
         return (
-            <Alertstripe type="info">
+            <Alert size="small" variant="info">
                 Noe gikk galt under henting av informasjon om etablert tilsyn. Dette kan skyldes at informasjon om
                 etablert tilsyn ikke er tilgjengelig ennå, og at andre steg i behandlingen må fullføres før de kan vises
                 her.
-            </Alertstripe>
+            </Alert>
         );
     }
 
@@ -153,22 +154,30 @@ const MainComponent = ({ data }: MainComponentProps) => {
                 iconRenderer={() => <ChildIcon />}
             />
             <div className={styles.mainComponent}>
-                <TabsPure
-                    kompakt
-                    tabs={tabs.map((tabName, index) => ({
-                        label: (
-                            <TabItem
-                                label={tabName}
-                                showWarningIcon={
-                                    (index === 1 && harAksjonspunktForBeredskap) ||
-                                    (index === 2 && harAksjonspunktForNattevåk)
+                <Tabs
+                    value={`${activeTab}`}
+                    onChange={(clickedIndex: string) => {
+                        setActiveTab(+clickedIndex);
+                    }}
+                >
+                    <Tabs.List>
+                        {tabs.map((step, index) => (
+                            <Tabs.Tab
+                                key={step}
+                                value={`${index}`}
+                                label={
+                                    <TabItem
+                                        label={step}
+                                        showWarningIcon={
+                                            (index === 1 && harAksjonspunktForBeredskap) ||
+                                            (index === 2 && harAksjonspunktForNattevåk)
+                                        }
+                                    />
                                 }
                             />
-                        ),
-                        aktiv: activeTab === index,
-                    }))}
-                    onChange={(event, clickedIndex) => setActiveTab(clickedIndex)}
-                />
+                        ))}
+                    </Tabs.List>
+                </Tabs>
                 <PageContainer isLoading={isLoading}>
                     <div className={styles.mainComponent__contentContainer}>
                         {activeTab === 0 && (

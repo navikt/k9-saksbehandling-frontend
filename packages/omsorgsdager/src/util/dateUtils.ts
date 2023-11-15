@@ -31,7 +31,7 @@ export function getPeriodAsListOfDays(period: Period) {
 }
 
 function getDaySequencesAsListOfPeriods(daySequences: string[][]): Period[] {
-    return daySequences.map(daySequence => {
+    return daySequences.map((daySequence) => {
         const firstDay = daySequence[0];
         const lastDay = daySequence[daySequence.length - 1];
         return new Period(firstDay, lastDay);
@@ -41,12 +41,12 @@ function getDaySequencesAsListOfPeriods(daySequences: string[][]): Period[] {
 export function getPeriodDifference(basePeriod: Period, periods: Period[]) {
     const baseListOfDays = getPeriodAsListOfDays(basePeriod);
 
-    const listOfDaysToExclude = periods.map(period => getPeriodAsListOfDays(period)).flat();
+    const listOfDaysToExclude = periods.map((period) => getPeriodAsListOfDays(period)).flat();
 
     const daysToInclude = [];
     let index = 0;
 
-    baseListOfDays.forEach(currentDay => {
+    baseListOfDays.forEach((currentDay) => {
         const currentDayShouldBeIncluded = !listOfDaysToExclude.includes(currentDay);
         if (currentDayShouldBeIncluded) {
             if (Array.isArray(daysToInclude[index])) {
@@ -87,7 +87,7 @@ export function hanteringAvDatoForDatoVelger(soknadsdato) {
 
     return {
         invalidDateRanges,
-        minDate: startDato.toISOString().substring(0, 10),
-        maxDate: maxDato.toISOString().substring(0, 10),
+        minDate: startDato,
+        maxDate: maxDato,
     };
 }

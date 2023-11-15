@@ -1,21 +1,19 @@
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
-import { HelpText } from '@navikt/ds-react';
-import { Hovedknapp, Knapp } from 'nav-frontend-knapper';
-import { RadioGruppe } from 'nav-frontend-skjema';
+import '@navikt/ds-css';
+import { Alert, Button, HelpText } from '@navikt/ds-react';
 
+import { RadioGroupPanel } from '@navikt/k9-fe-form-utils';
 import { KorrigerePerioderProps } from '../../../types/KorrigerePerioderProps';
 import { booleanTilTekst } from '../../../util/stringUtils';
 import useFormSessionStorage from '../../../util/useFormSessionStorageUtils';
 import AksjonspunktLesemodus from '../aksjonspunkt-lesemodus/AksjonspunktLesemodus';
-import AlertStripeTrekantVarsel from '../alertstripe-trekant-varsel/AlertStripeTrekantVarsel';
 import styleLesemodus from '../lesemodus/lesemodusboks.css';
 import InputField from '../react-hook-form-wrappers/InputField';
-import RadioButtonWithBooleanValue from '../react-hook-form-wrappers/RadioButton';
 import TextArea from '../react-hook-form-wrappers/TextArea';
-import styleRadioknapper from '../styles/radioknapper/radioknapper.css';
 
+import { required } from '../../../util/validators';
 import styles from './korrigerePerioder.css';
 
 type FormData = {
@@ -165,9 +163,9 @@ const KorrigerePerioder: React.FunctionComponent<KorrigerePerioderProps> = ({
     return (
         <div className={styles.korrigerePerioder}>
             <div className={styles.korrigerePerioderAlertStripe}>
-                <AlertStripeTrekantVarsel
-                    text={konfliktMedArbeidsgiver ? tekstKonfliktMedArbeidsgiver.instruksjon : tekst.instruksjon}
-                />
+                <Alert variant="warning" size="small">
+                    {konfliktMedArbeidsgiver ? tekstKonfliktMedArbeidsgiver.instruksjon : tekst.instruksjon}
+                </Alert>
                 {!konfliktMedArbeidsgiver && (
                     <HelpText className={styles.korrigerePerioderHelpText} placement="right">
                         Disse situasjonene kan gi rett til at det skal utbetales dager:
@@ -196,30 +194,29 @@ const KorrigerePerioder: React.FunctionComponent<KorrigerePerioderProps> = ({
                         label={konfliktMedArbeidsgiver ? tekstKonfliktMedArbeidsgiver.begrunnelse : tekst.begrunnelse}
                         name="begrunnelse"
                     />
-                    <RadioGruppe
-                        legend={
+                    <RadioGroupPanel
+                        name="fravaerGrunnetSmittevernhensynEllerStengt"
+                        question={
                             konfliktMedArbeidsgiver
                                 ? tekstKonfliktMedArbeidsgiver.sporsmalErInnvilget
                                 : tekst.sporsmalErInnvilget
                         }
-                        className={styleRadioknapper.horisontalPlassering}
-                    >
-                        <RadioButtonWithBooleanValue
-                            label="Ja"
-                            value="true"
-                            name="fravaerGrunnetSmittevernhensynEllerStengt"
-                        />
-                        <RadioButtonWithBooleanValue
-                            label="Nei"
-                            value="false"
-                            name="fravaerGrunnetSmittevernhensynEllerStengt"
-                        />
-                        <RadioButtonWithBooleanValue
-                            label="Delvis"
-                            value="delvis"
-                            name="fravaerGrunnetSmittevernhensynEllerStengt"
-                        />
-                    </RadioGruppe>
+                        radios={[
+                            {
+                                label: 'Ja',
+                                value: 'true',
+                            },
+                            {
+                                label: 'Nei',
+                                value: 'false',
+                            },
+                            {
+                                label: 'Delvis',
+                                value: 'delvis',
+                            },
+                        ]}
+                        validators={{ required }}
+                    />
 
                     {errors.fravaerGrunnetSmittevernhensynEllerStengt && (
                         <p className="typo-feilmelding">{tekst.feilIngenVurdering}</p>
@@ -236,12 +233,18 @@ const KorrigerePerioder: React.FunctionComponent<KorrigerePerioderProps> = ({
                             />
                         </div>
                     )}
-                    <Hovedknapp className={styles.knapp} htmlType="submit">
+                    <Button size="small" variant="primary" className={styles.knapp} type="submit">
                         Bekreft og fortsett
-                    </Hovedknapp>
-                    <Knapp className={styles.knapp} htmlType="button" onClick={avbrytRedigereInformasjon}>
+                    </Button>
+                    <Button
+                        size="small"
+                        variant="secondary"
+                        className={styles.knapp}
+                        type="button"
+                        onClick={avbrytRedigereInformasjon}
+                    >
                         Avbryt
-                    </Knapp>
+                    </Button>
                 </form>
             </FormProvider>
         </div>
