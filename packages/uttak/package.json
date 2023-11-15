@@ -71,7 +71,7 @@
         "react-popper": "2.x",
         "webpack-node-externals": "^3.0.0"
     },
-    "dependencies": {
+    "peerDependencies": {
         "@navikt/ds-css": "5.10.0",
         "@navikt/ds-react": "5.10.0",
         "@navikt/ft-form-hooks": "4.2.13",
