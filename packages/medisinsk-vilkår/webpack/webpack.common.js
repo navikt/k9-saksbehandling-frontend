@@ -42,7 +42,7 @@ module.exports = {
                         options: {
                             importLoaders: 1,
                             modules: {
-                                localIdentName: '[name]_[local]_[contenthash:base64:5]',
+                                localIdentName: 'sykdom_[name]_[local]_[hash:base64:5]',
                             },
                         },
                     },
