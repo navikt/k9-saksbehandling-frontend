@@ -116,22 +116,17 @@ const AleneOmOmsorgen: React.FunctionComponent<AleneOmOmsorgenProps> = ({
                 !errors.erSokerenAleneOmOmsorgen &&
                 erBehandlingstypeRevurdering)
         ) {
-            let tilDatoSubmitValue = '';
-            if (tekstTilBoolean(erSokerenAleneOmOmsorgen)) {
-                tilDatoSubmitValue = (tilDato === 'false') ? null : tilDato.replaceAll('.', '-');
-            }
-
             losAksjonspunkt({
                 begrunnelse,
                 vilkarOppfylt: tekstTilBoolean(erSokerenAleneOmOmsorgen),
                 fraDato: tekstTilBoolean(erSokerenAleneOmOmsorgen) ? fraDato.replaceAll('.', '-') : '',
-                tilDato: tilDatoSubmitValue,
+                tilDato: tilDato.replaceAll('.', '-'),
             });
             setValue('åpenForRedigering', false);
             mellomlagringFormState.fjerneState();
         }
     };
-    
+
     return (
         <div
             className={classNames(
@@ -234,11 +229,11 @@ const AleneOmOmsorgen: React.FunctionComponent<AleneOmOmsorgenProps> = ({
                                                 defaultValue={
                                                     informasjonTilLesemodus.tilDato
                                                         ? dayjs(informasjonTilLesemodus.tilDato).year()
-                                                        : 'false'
+                                                        : '0'
                                                 }
                                             >
                                                 {utledTilgjengeligeÅr(fraDatoFraSoknad).map((år) => (
-                                                    <option key={år.value} value={år.value}>
+                                                    <option key={år.value} value={år.value} disabled={år.disabled}>
                                                         {år.title}
                                                     </option>
                                                 ))}
