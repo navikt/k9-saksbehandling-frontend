@@ -1,4 +1,4 @@
-import { BodyShort, Heading, Label, Tag } from '@navikt/ds-react';
+import { BodyShort, Heading, Tag } from '@navikt/ds-react';
 import {
     ContentWithTooltip,
     EditedBySaksbehandlerIcon,
