@@ -247,6 +247,7 @@ const AleneOmOmsorgen: React.FunctionComponent<AleneOmOmsorgenProps> = ({
                                     )}
                                 </SkjemaGruppe>
                             )}
+
                             <Hovedknapp className={styles.bekreftKnapp} htmlType="submit">
                                 {' '}
                                 {tekst.bekreftFortsettKnapp}
