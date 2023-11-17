@@ -28,8 +28,8 @@
         "@types/react-dom": "18.2.14"
     },
     "dependencies": {
-        "@navikt/ds-css": "5.8.0",
-        "@navikt/ds-react": "5.8.0",
+        "@navikt/ds-css": "5.10.3",
+        "@navikt/ds-react": "5.10.3",
         "@navikt/ft-form-hooks": "4.2.11",
         "@navikt/ft-form-validators": "2.1.4",
         "@navikt/ft-plattform-komponenter": "2.3.7",
