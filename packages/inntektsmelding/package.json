@@ -29,7 +29,7 @@
         "@navikt/ds-react": "5.10.0",
         "@navikt/fnrvalidator": "1.x",
         "@navikt/ft-form-hooks": "4.2.13",
-        "@navikt/ft-plattform-komponenter": "2.3.9",
+        "@navikt/ft-plattform-komponenter": "2.3.10",
         "@navikt/k9-fe-array-utils": "1.0.4",
         "@navikt/k9-fe-date-utils": "^1.0.7",
         "@navikt/k9-fe-http-utils": "^1.0.6",

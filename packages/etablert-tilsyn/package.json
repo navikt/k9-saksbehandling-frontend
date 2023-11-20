@@ -27,7 +27,7 @@
         "@navikt/ds-icons": "3.4.3",
         "@navikt/ds-react": "5.10.0",
         "@navikt/fnrvalidator": "1.x",
-        "@navikt/ft-plattform-komponenter": "2.3.9",
+        "@navikt/ft-plattform-komponenter": "2.3.10",
         "@navikt/k9-fe-date-utils": "^1.0.7",
         "@navikt/k9-fe-form-utils": "^1.0.12",
         "@navikt/k9-fe-http-utils": "^1.0.6",
