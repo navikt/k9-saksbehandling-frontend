@@ -71,6 +71,10 @@ const StrukturerDokumentForm = ({
                                     value: Dokumenttype.ANDRE_MEDISINSKE_OPPLYSNINGER,
                                 },
                                 {
+                                    label: 'Ja, epikrise fra sykehus/spesialisthelsetjenesten',
+                                    value: Dokumenttype.EPIKRISE,
+                                },
+                                {
                                     label: 'Dokumentet inneholder ikke medisinske opplysninger',
                                     value: Dokumenttype.MANGLER_MEDISINSKE_OPPLYSNINGER,
                                 },
