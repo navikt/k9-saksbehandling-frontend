@@ -2,6 +2,7 @@ import Link from './Link';
 
 export enum Dokumenttype {
     LEGEERKLÆRING = 'LEGEERKLÆRING_SYKEHUS',
+    EPIKRISE = 'EPIKRISE',
     ANDRE_MEDISINSKE_OPPLYSNINGER = 'MEDISINSKE_OPPLYSNINGER',
     MANGLER_MEDISINSKE_OPPLYSNINGER = 'ANNET',
     UKLASSIFISERT = 'UKLASSIFISERT',
@@ -18,6 +19,7 @@ export const dokumentLabel = {
     LEGEERKLÆRING_ANNEN: 'Legeerklæring',
     LEGEERKLÆRING_MED_DOKUMENTASJON_AV_OPPLÆRING: 'Legeerklæring/kursdok.',
     DOKUMENTASJON_AV_OPPLÆRING: 'Kursdok.',
+    EPIKRISE: 'Epikrise',
 };
 
 export interface Dokument {

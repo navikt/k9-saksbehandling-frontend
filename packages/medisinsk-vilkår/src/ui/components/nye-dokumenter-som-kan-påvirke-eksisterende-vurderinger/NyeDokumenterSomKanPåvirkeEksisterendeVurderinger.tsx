@@ -18,6 +18,9 @@ const getDokumentLabel = (type: Dokumenttype) => {
     if (type === Dokumenttype.ANDRE_MEDISINSKE_OPPLYSNINGER) {
         return 'Andre medisinske opplysninger';
     }
+    if (type === Dokumenttype.EPIKRISE) {
+        return 'Epikrise';
+    }
     return null;
 };
 
