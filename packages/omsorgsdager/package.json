@@ -57,6 +57,6 @@
         "react-day-picker": "^7.4.10",
         "react-dom": "18.2.0",
         "react-hook-form": "7.47.0",
-        "typescript": "5.2.2"
+        "typescript": "5.3.2"
     }
 }
