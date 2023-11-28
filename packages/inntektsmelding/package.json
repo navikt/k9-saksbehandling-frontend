@@ -42,7 +42,7 @@
         "@testing-library/user-event": "14.5.1",
         "@types/jest": "29.5.7",
         "@types/node": "20.8.10",
-        "@types/react": "18.2.34",
+        "@types/react": "18.2.39",
         "axios": "1.x",
         "classnames": "2.x",
         "cors": "2.8.5",

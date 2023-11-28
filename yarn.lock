@@ -2734,7 +2734,7 @@ __metadata:
     "@testing-library/jest-dom": 6.1.4
     "@testing-library/react": 14.0.0
     "@testing-library/user-event": 14.5.1
-    "@types/react": 18.2.34
+    "@types/react": 18.2.39
     "@types/react-dom": 18.2.14
     axios: 1.x
     classnames: 2.x
@@ -2835,7 +2835,7 @@ __metadata:
     "@navikt/k9-fe-period-utils": ^1.0.11
     "@popperjs/core": 2.11.8
     "@storybook/react": 7.5.2
-    "@types/react": 18.2.34
+    "@types/react": 18.2.39
     classnames: 2.3.2
     dayjs: 1.11.10
     lodash.throttle: 4.1.1
@@ -2895,7 +2895,7 @@ __metadata:
     "@testing-library/user-event": 14.5.1
     "@types/jest": 29.5.7
     "@types/node": 20.8.10
-    "@types/react": 18.2.34
+    "@types/react": 18.2.39
     axios: 1.x
     classnames: 2.x
     cors: 2.8.5
@@ -3007,7 +3007,7 @@ __metadata:
     "@testing-library/user-event": 14.5.1
     "@types/jest": 29.5.7
     "@types/node": 20.8.10
-    "@types/react": 18.2.34
+    "@types/react": 18.2.39
     "@types/react-dom": 18.2.14
     "@types/react-modal": 3.16.2
     axios: 1.x
@@ -3070,7 +3070,7 @@ __metadata:
     "@popperjs/core": 2.x
     "@types/jest": 29.5.7
     "@types/node": 20.8.10
-    "@types/react": 18.2.34
+    "@types/react": 18.2.39
     "@types/react-dom": 18.2.14
     "@types/react-modal": 3.16.2
     autoprefixer: 10.4.16
@@ -3131,7 +3131,7 @@ __metadata:
     "@navikt/k9-fe-http-utils": ^1.0.7
     "@navikt/k9-fe-period-utils": ^1.0.11
     "@popperjs/core": 2.x
-    "@types/react": 18.2.34
+    "@types/react": 18.2.39
     "@types/react-dom": 18.2.14
     axios: 1.x
     classnames: 2.x
@@ -3224,7 +3224,7 @@ __metadata:
     "@navikt/ds-react": 5.10.0
     "@navikt/fnrvalidator": 1.x
     "@testing-library/react": 14.0.0
-    "@types/react": 18.2.34
+    "@types/react": 18.2.39
     "@types/react-dom": 18.2.14
     classnames: 2.x
     cors: 2.8.5
@@ -3316,7 +3316,7 @@ __metadata:
     "@popperjs/core": 2.x
     "@types/jest": 29.5.7
     "@types/node": 20.8.10
-    "@types/react": 18.2.34
+    "@types/react": 18.2.39
     "@types/react-dom": 18.2.14
     classnames: 2.x
     cors: 2.8.5
@@ -5045,7 +5045,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:16 || 17 || 18":
+"@types/react@npm:*, @types/react@npm:16 || 17 || 18, @types/react@npm:18.2.39":
   version: 18.2.39
   resolution: "@types/react@npm:18.2.39"
   dependencies:
@@ -5053,17 +5053,6 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: 9bcb1f1f060f1bf8f4730fb1c7772d0323a6e707f274efee3b976c40d92af4677df4d88e9135faaacf34e13e02f92ef24eb7d0cbcf7fb75c1883f5623ccb19f4
-  languageName: node
-  linkType: hard
-
-"@types/react@npm:18.2.34":
-  version: 18.2.34
-  resolution: "@types/react@npm:18.2.34"
-  dependencies:
-    "@types/prop-types": "*"
-    "@types/scheduler": "*"
-    csstype: ^3.0.2
-  checksum: 16446542228cba827143caf0ecb4718cbf02ae5befd4a6bc6d67ed144fe1c0cb4b06b20facf3d2b972d86c67a17cc82f5ec8a03fce42d50e12b2dcd0592fc66e
   languageName: node
   linkType: hard
 
