@@ -2,7 +2,7 @@
     "name": "@navikt/k9-fe-period-utils",
     "author": "NAV",
     "license": "MIT",
-    "version": "1.0.10",
+    "version": "1.0.11",
     "description": "A collection of period utils",
     "main": "./build/index.js",
     "types": "./build/index.d.ts",
@@ -18,8 +18,8 @@
         "test-watch": "jest --watch"
     },
     "dependencies": {
-        "@navikt/k9-fe-array-utils": "1.0.4",
-        "@navikt/k9-fe-date-utils": "^1.0.7"
+        "@navikt/k9-fe-array-utils": "^1.0.5",
+        "@navikt/k9-fe-date-utils": "^1.0.8"
     },
     "devDependencies": {
         "dayjs": "1.11.10",
