@@ -49,4 +49,9 @@
 .dokumentnavigasjon :global(.navds-accordion__header[aria-expanded='false']) {
     border-bottom: 1px solid #6a6a6a;
     border-radius: 4px;
+    box-shadow: none;
+}
+
+.dokumentnavigasjon :global(.navds-accordion__header[aria-expanded='true']) {
+    box-shadow: none;
 }
