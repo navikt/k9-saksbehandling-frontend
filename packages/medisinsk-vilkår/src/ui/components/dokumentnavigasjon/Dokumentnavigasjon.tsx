@@ -1,4 +1,4 @@
-import { Accordion, BodyShort, Label } from '@navikt/ds-react';
+import { Accordion, BodyShort } from '@navikt/ds-react';
 import { InteractiveList } from '@navikt/ft-plattform-komponenter';
 import React from 'react';
 import { Dokument, Dokumenttype } from '../../../types/Dokument';

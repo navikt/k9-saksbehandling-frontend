@@ -1,6 +1,6 @@
 {
     "name": "@navikt/k9-fe-uttak",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "main": "./build/index.js",
     "types": "./build/index.d.ts",
     "files": [
@@ -29,7 +29,7 @@
         "@navikt/ds-react": "5.10.0",
         "@navikt/ft-form-hooks": "4.2.13",
         "@navikt/ft-form-validators": "2.1.6",
-        "@navikt/ft-plattform-komponenter": "2.3.9",
+        "@navikt/ft-plattform-komponenter": "2.3.10",
         "@popperjs/core": "2.x",
         "@types/jest": "29.5.7",
         "@types/node": "20.8.10",

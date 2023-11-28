@@ -38,6 +38,9 @@ const renderDokumenttypeContent = (dokumenttype: Dokumenttype, fagsakYtelseType:
     if (dokumenttype === Dokumenttype.LEGEERKLÆRING_MED_DOKUMENTASJON_AV_OPPLÆRING) {
         return <span>Ja, både legeerklæring og dokumentasjon av opplæring</span>;
     }
+    if (dokumenttype === Dokumenttype.EPIKRISE) {
+        return <span>Ja, epikrise</span>;
+    }
     if (dokumenttype === Dokumenttype.LEGEERKLÆRING_ANNEN) {
         return <span>Ja, legeerklæring fra lege eller helseinstitusjon</span>;
     }
