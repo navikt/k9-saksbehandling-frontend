@@ -1,4 +1,22 @@
-import { ArbeidsgiverOpplysninger, KodeverkMedNavn, Uttaksperioder } from '.';
+import Uttaksperioder from './Uttaksperioder';
+import ArbeidsgiverOpplysninger from './ArbeidsgiverOpplysninger';
+import KodeverkMedNavn from './kodeverkMedNavnTsType';
+import Kodeverk from './kodeverkTsType';
+
+export type Aksjonspunkt = Readonly<{
+    definisjon: Kodeverk;
+    status: Kodeverk;
+    begrunnelse?: string;
+    vilkarType?: Kodeverk;
+    toTrinnsBehandling?: boolean;
+    toTrinnsBehandlingGodkjent?: boolean;
+    vurderPaNyttArsaker?: Kodeverk[];
+    besluttersBegrunnelse?: string;
+    aksjonspunktType?: Kodeverk;
+    kanLoses: boolean;
+    erAktivt: boolean;
+    venteårsakVariant?: string;
+}>;
 
 interface ContainerContract {
     httpErrorHandler: (error: any) => void;
@@ -16,6 +34,15 @@ interface ContainerContract {
     handleOverstyringAksjonspunkt: (data: any) => Promise<any>;
     versjon: string;
     featureToggles: { [key: string]: boolean };
+    løsAksjonspunktVurderDatoNyRegelUttak: ({
+        begrunnelse,
+        virkningsdato,
+    }: {
+        begrunnelse: string;
+        virkningsdato: string;
+    }) => void;
+    virkningsdatoUttakNyeRegler: string;
+    aksjonspunkter: Aksjonspunkt[];
 }
 
 export default ContainerContract;

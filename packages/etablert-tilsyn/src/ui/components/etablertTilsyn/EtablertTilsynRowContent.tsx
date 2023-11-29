@@ -1,4 +1,4 @@
-import { BodyShort, Detail, HelpText, Label, Tag } from '@navikt/ds-react';
+import { BodyShort, Detail, HelpText, Label } from '@navikt/ds-react';
 import { Period } from '@navikt/k9-fe-period-utils';
 import dayjs from 'dayjs';
 import React from 'react';

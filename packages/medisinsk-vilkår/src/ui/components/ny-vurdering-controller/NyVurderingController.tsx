@@ -2,7 +2,6 @@ import { get } from '@navikt/k9-fe-http-utils';
 import { Period } from '@navikt/k9-fe-period-utils';
 import { PageContainer, Box, Margin } from '@navikt/ft-plattform-komponenter';
 import React, { useMemo } from 'react';
-import axios from 'axios';
 import Dokument from '../../../types/Dokument';
 import Link from '../../../types/Link';
 import { Vurderingsversjon } from '../../../types/Vurdering';

@@ -1,7 +1,7 @@
 import LinkRel from '../../src/constants/LinkRel';
 
 export default {
-    diagnosekoder: ['hei', 'test'],
+    diagnosekoder: ['A001', 'B04'],
     links: [
         {
             rel: LinkRel.ENDRE_DIAGNOSEKODER,

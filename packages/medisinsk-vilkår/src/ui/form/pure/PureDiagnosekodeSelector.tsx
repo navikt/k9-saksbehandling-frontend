@@ -4,6 +4,7 @@ import * as React from 'react';
 import Diagnosekode from '../../../types/Diagnosekode';
 import DeleteButton from '../../components/delete-button/DeleteButton';
 import styles from './diagnosekodeSelector.css';
+import { type DiagnosekodeSearcherPromise, toLegacyDiagnosekode } from '../../../util/diagnosekodeSearcher';
 
 interface Suggestion {
     key: string;
@@ -18,10 +19,8 @@ interface DiagnosekodeSelectorProps {
     initialDiagnosekodeValue: string;
     hideLabel?: boolean;
     selectedDiagnosekoder: string[];
+    searcherPromise: DiagnosekodeSearcherPromise;
 }
-
-const fetchDiagnosekoderByQuery = (queryString: string) =>
-    fetch(`/k9/diagnosekoder/?query=${queryString}&max=8`).then((response) => response.json());
 
 const PureDiagnosekodeSelector = ({
     label,
@@ -31,6 +30,7 @@ const PureDiagnosekodeSelector = ({
     initialDiagnosekodeValue,
     hideLabel,
     selectedDiagnosekoder,
+    searcherPromise,
 }: DiagnosekodeSelectorProps): JSX.Element => {
     const [suggestions, setSuggestions] = React.useState([]);
     const [inputValue, setInputValue] = React.useState('');
@@ -40,7 +40,10 @@ const PureDiagnosekodeSelector = ({
     const getUpdatedSuggestions = async (queryString: string) => {
         if (queryString.length >= 3) {
             setIsLoading(true);
-            const diagnosekoder: Diagnosekode[] = await fetchDiagnosekoderByQuery(queryString);
+            const searcher = await searcherPromise;
+            const diagnosekoder: Diagnosekode[] = (await searcher.search(queryString, 1)).diagnosekoder.map(
+                toLegacyDiagnosekode
+            );
             setIsLoading(false);
             return diagnosekoder.map(({ kode, beskrivelse }) => ({
                 key: kode,

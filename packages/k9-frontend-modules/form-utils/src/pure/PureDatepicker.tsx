@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable camelcase */
 /* eslint-disable react/jsx-pascal-case */
-import { UNSAFE_DatePicker, UNSAFE_useDatepicker } from '@navikt/ds-react';
+import { DatePicker, useDatepicker } from '@navikt/ds-react';
 import '@navikt/ft-plattform-komponenter/dist/style.css';
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
@@ -58,7 +58,7 @@ const PureDatepicker = ({
     const stringToDate = (date: string | Date): Date => new Date(date);
     const [ugyldigDatoError, setUgyldigDatoError] = React.useState(false);
 
-    const { datepickerProps, inputProps } = UNSAFE_useDatepicker({
+    const { datepickerProps, inputProps } = useDatepicker({
         fromDate: limitations && limitations.minDate ? new Date(limitations.minDate) : fromDate,
         toDate: limitations && limitations.maxDate ? new Date(limitations.maxDate) : toDate,
         defaultMonth: initialMonth ? new Date(initialMonth) : undefined,
@@ -84,8 +84,8 @@ const PureDatepicker = ({
 
     return (
         <div className={styles.datepicker}>
-            <UNSAFE_DatePicker {...datepickerProps}>
-                <UNSAFE_DatePicker.Input
+            <DatePicker {...datepickerProps}>
+                <DatePicker.Input
                     {...inputProps}
                     hideLabel={hideLabel || !label}
                     label={label}
@@ -98,7 +98,7 @@ const PureDatepicker = ({
                     }
                     aria-label={ariaLabel}
                 />
-            </UNSAFE_DatePicker>
+            </DatePicker>
         </div>
     );
 };

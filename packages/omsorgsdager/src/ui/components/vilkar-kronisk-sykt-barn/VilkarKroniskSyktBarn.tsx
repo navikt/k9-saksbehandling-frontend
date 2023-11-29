@@ -19,11 +19,18 @@ import styleRadioknapper from '../styles/radioknapper/radioknapper.css';
 
 type FormData = {
     harDokumentasjonOgFravaerRisiko: string;
-    arsakErIkkeRiskioFraFravaer: string;
+    avslagsårsakKode: string;
     begrunnelse: string;
     åpenForRedigering: boolean;
     fraDato: string;
 };
+
+export enum AvslagskoderKroniskSyk {
+    IKKE_UTVIDET_RETT = '1072',
+    IKKE_KRONISK_SYK_ELLER_FUNKSJONSHEMMET = '1073',
+    IKKE_OKT_RISIKO_FRA_FRAVAER = '1074',
+    MANGLENDE_DOKUMENTASJON = '1019'
+}
 
 const tekst = {
     instruksjon:
@@ -33,8 +40,9 @@ const tekst = {
     arsak: 'Årsak',
     begrunnelse: 'Vurdering',
     velgArsak: 'Velg årsak',
-    arsakIkkeSyk: 'Barnet har ikke en kronisk sykdom eller funksjonshemming',
+    arsakIkkeSyk: 'Barnet har ikke en kronisk eller langvarig sykdom, eller funksjonshemming',
     arsakIkkeRisikoFraFravaer: 'Det er ikke økt risiko for fravær fra arbeid',
+    arsakManglerDokumentasjon: 'Dokumentasjon mangler',
     feilOppgiÅrsak: 'Årsak må oppgis.',
     feilOppgiHvisDokumentasjonGirRett: 'Resultat må oppgis.',
     sporsmalPeriodeVedtakGyldig: 'Fra hvilken dato er vedtaket gyldig?',
@@ -44,6 +52,21 @@ const tekst = {
     feilmedlingerDatoIkkeIFremtid: 'Fra-dato kan ikke være frem i tid.',
     soknadsdato: 'Søknadsdato',
 };
+
+const mapTilAvslagstekst = (avslagsKode: string): string => {
+    if (avslagsKode === AvslagskoderKroniskSyk.IKKE_OKT_RISIKO_FRA_FRAVAER) {
+        return tekst.arsakIkkeRisikoFraFravaer
+    }
+    if (avslagsKode === AvslagskoderKroniskSyk.IKKE_KRONISK_SYK_ELLER_FUNKSJONSHEMMET
+        // Brukes bare for bakoverkompatiblitet
+        || avslagsKode === AvslagskoderKroniskSyk.IKKE_UTVIDET_RETT) {
+        return tekst.arsakIkkeSyk
+    }
+    if (avslagsKode === AvslagskoderKroniskSyk.MANGLENDE_DOKUMENTASJON) {
+        return tekst.arsakManglerDokumentasjon
+    }
+    return ''
+}
 
 const VilkarKroniskSyktBarn: React.FunctionComponent<VilkarKroniskSyktBarnProps> = ({
     behandlingsID,
@@ -63,9 +86,8 @@ const VilkarKroniskSyktBarn: React.FunctionComponent<VilkarKroniskSyktBarnProps>
             harDokumentasjonOgFravaerRisiko: harAksjonspunktOgVilkarLostTidligere
                 ? booleanTilTekst(informasjonTilLesemodus.vilkarOppfylt)
                 : '',
-            arsakErIkkeRiskioFraFravaer: harAksjonspunktOgVilkarLostTidligere
-                ? booleanTilTekst(informasjonTilLesemodus.avslagsArsakErIkkeRiskioFraFravaer)
-                : '',
+            avslagsårsakKode: harAksjonspunktOgVilkarLostTidligere
+                ? informasjonTilLesemodus.avslagsårsakKode : '',
             fraDato: harAksjonspunktOgVilkarLostTidligere
                 ? formatereDato(informasjonTilLesemodus.fraDato)
                 : 'dd.mm.åååå',
@@ -105,14 +127,14 @@ const VilkarKroniskSyktBarn: React.FunctionComponent<VilkarKroniskSyktBarnProps>
     const bekreftAksjonspunkt = data => {
         if (
             !errors.begrunnelse &&
-            !errors.arsakErIkkeRiskioFraFravaer &&
+            !errors.avslagsårsakKode &&
             !errors.fraDato &&
             !errors.harDokumentasjonOgFravaerRisiko
         ) {
             losAksjonspunkt(
-                data.harDokumentasjonOgFravaerRisiko,
+                tekstTilBoolean(data.harDokumentasjonOgFravaerRisiko),
                 data.begrunnelse,
-                data.arsakErIkkeRiskioFraFravaer,
+                data.avslagsårsakKode,
                 tekstTilBoolean(harDokumentasjonOgFravaerRisiko) ? data.fraDato.replaceAll('.', '-') : ''
             );
             setValue('åpenForRedigering', false);
@@ -159,9 +181,7 @@ const VilkarKroniskSyktBarn: React.FunctionComponent<VilkarKroniskSyktBarnProps>
                         <>
                             <p className={styleLesemodus.label}>{tekst.arsak}</p>
                             <p className={styleLesemodus.text}>
-                                {informasjonTilLesemodus.avslagsArsakErIkkeRiskioFraFravaer
-                                    ? tekst.arsakIkkeRisikoFraFravaer
-                                    : tekst.arsakIkkeSyk}
+                                {mapTilAvslagstekst(informasjonTilLesemodus.avslagsårsakKode)}
                             </p>
                         </>
                     )}
@@ -222,18 +242,24 @@ const VilkarKroniskSyktBarn: React.FunctionComponent<VilkarKroniskSyktBarnProps>
                                         >
                                             <RadioButtonWithBooleanValue
                                                 label={tekst.arsakIkkeSyk}
-                                                value="false"
-                                                name="arsakErIkkeRiskioFraFravaer"
+                                                value={AvslagskoderKroniskSyk.IKKE_KRONISK_SYK_ELLER_FUNKSJONSHEMMET}
+                                                name="avslagsårsakKode"
                                                 valideringsFunksjoner={erArsakErIkkeRiskioFraFravaer}
                                             />
                                             <RadioButtonWithBooleanValue
                                                 label={tekst.arsakIkkeRisikoFraFravaer}
-                                                value="true"
-                                                name="arsakErIkkeRiskioFraFravaer"
+                                                value={AvslagskoderKroniskSyk.IKKE_OKT_RISIKO_FRA_FRAVAER}
+                                                name="avslagsårsakKode"
+                                                valideringsFunksjoner={erArsakErIkkeRiskioFraFravaer}
+                                            />
+                                            <RadioButtonWithBooleanValue
+                                                label={tekst.arsakManglerDokumentasjon}
+                                                value={AvslagskoderKroniskSyk.MANGLENDE_DOKUMENTASJON}
+                                                name="avslagsårsakKode"
                                                 valideringsFunksjoner={erArsakErIkkeRiskioFraFravaer}
                                             />
                                         </RadioGruppe>
-                                        {errors.arsakErIkkeRiskioFraFravaer && (
+                                        {errors.avslagsårsakKode && (
                                             <p className="typo-feilmelding">{tekst.feilOppgiÅrsak}</p>
                                         )}
                                     </div>

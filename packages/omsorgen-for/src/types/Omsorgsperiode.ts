@@ -14,6 +14,10 @@ class Omsorgsperiode {
 
     begrunnelse?: string;
 
+    vurdertAv?: string;
+
+    vurdertTidspunkt?: string;
+
     constructor({
         periode,
         resultatEtterAutomatikk,
@@ -21,6 +25,8 @@ class Omsorgsperiode {
         relasjonsbeskrivelse,
         begrunnelse,
         relasjon,
+        vurdertAv,
+        vurdertTidspunkt,
     }: Partial<Omsorgsperiode>) {
         this.periode = new Period(periode.fom, periode.tom);
         this.resultatEtterAutomatikk = resultatEtterAutomatikk;
@@ -28,6 +34,8 @@ class Omsorgsperiode {
         this.relasjonsbeskrivelse = relasjonsbeskrivelse;
         this.begrunnelse = begrunnelse;
         this.relasjon = relasjon ? relasjon[0].toUpperCase() + relasjon.slice(1).toLowerCase() : '';
+        this.vurdertAv = vurdertAv;
+        this.vurdertTidspunkt = vurdertTidspunkt;
     }
 
     erOppfylt(): boolean {
