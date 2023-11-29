@@ -9,9 +9,10 @@ interface CheckboxGroupProps {
     checkboxes: { value: string; label: string | React.ReactNode }[];
     validators?: { [key: string]: (v: any) => string | boolean | undefined };
     disabled?: boolean;
+    hideLegend?: boolean;
 }
 
-const CheckboxGroup = ({ question, checkboxes, name, validators, disabled }: CheckboxGroupProps) => {
+const CheckboxGroup = ({ question, checkboxes, name, validators, disabled, hideLegend }: CheckboxGroupProps) => {
     const {
         control,
         formState: { errors },
@@ -30,6 +31,7 @@ const CheckboxGroup = ({ question, checkboxes, name, validators, disabled }: Che
         <DSCheckboxGroup
             name={name}
             legend={question}
+            hideLegend={hideLegend}
             error={errors[name]?.message && <ErrorMessage errors={errors} name={name} />}
             size="small"
             onChange={(value) => {
