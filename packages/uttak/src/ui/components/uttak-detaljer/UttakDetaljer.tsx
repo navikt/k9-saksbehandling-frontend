@@ -19,6 +19,7 @@ import { harÅrsak } from '../../../util/årsakUtils';
 import ContainerContext from '../../context/ContainerContext';
 import styles from './uttakDetaljer.css';
 import UttakUtregning from './UttakUtregning';
+import { HelpText } from '@navikt/ds-react';
 
 const cx = classNames.bind(styles);
 
@@ -147,6 +148,8 @@ const formatAvkortingMotArbeid = (
                 const beregnetNormalArbeidstid = beregnDagerTimer(normalArbeidstid);
                 const beregnetFaktiskArbeidstid = beregnDagerTimer(faktiskArbeidstid);
                 const faktiskOverstigerNormal = beregnetNormalArbeidstid < beregnetFaktiskArbeidstid;
+                const fraværProsent = 100 - (beregnetFaktiskArbeidstid / beregnetNormalArbeidstid) * 100;
+
                 return (
                     // eslint-disable-next-line react/no-array-index-key
                     <div key={index}>
@@ -178,7 +181,14 @@ const formatAvkortingMotArbeid = (
                                 </Hjelpetekst>
                             )}
                         </span>
-                        <p className={styles.uttakDetaljer__data}>{`Utbetalingsgrad: ${utbetalingsgrad} %`}</p>
+                        <hr />
+                        <p className={styles.uttakDetaljer__data__utbetalingsgrad}>
+                            <span className={styles.uttakDetaljer__data__utbetalingsgrad_fravær}>= {`${fraværProsent}% fravær`}</span>
+                            <span className={styles.uttakDetaljer__data__utbetalingsgrad_prosent}>{`Utbetalingsgrad: ${utbetalingsgrad} %`}</span>
+                            <HelpText className={styles.uttakDetaljer__data__utbetalingsgrad_hjelp} title="Informasjon om utbetalingsgrader" placement="right">
+                                Informasjon om utbetalingsgrader
+                            </HelpText>
+                        </p>
                     </div>
                 );
             })}

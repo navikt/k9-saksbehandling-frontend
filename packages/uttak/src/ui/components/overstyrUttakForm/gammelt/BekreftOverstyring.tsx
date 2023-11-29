@@ -50,7 +50,7 @@ const BekreftOverstyringUttak: React.FC<BekreftOverstyringUttakProps> = ({ aktiv
         // if(
 
         // )
-        console.log('errors', errors, test);
+        // console.log('errors', errors, test);
         // event.preventDefault();
         // console.log(overstyrUttak, aktivitet, fraDato, tilDato, uttaksgrad);
     };

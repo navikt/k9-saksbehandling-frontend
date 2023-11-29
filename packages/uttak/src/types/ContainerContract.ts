@@ -1,8 +1,11 @@
-import Uttaksperioder from './Uttaksperioder';
-import ArbeidsgiverOpplysninger from './ArbeidsgiverOpplysninger';
-import KodeverkMedNavn from './kodeverkMedNavnTsType';
+import { ArbeidsgiverOpplysninger, KodeverkMedNavn, Uttaksperioder } from '.';
 
 interface ContainerContract {
+    httpErrorHandler: (error: any) => void;
+    endpoints: {
+        behandlingUttakOverstyrbareAktiviteter: string;
+        behandlingUttakOverstyrt: string;
+    };
     uttaksperioder: Uttaksperioder;
     utsattePerioder: string[];
     aktivBehandlingUuid: string;
@@ -11,7 +14,8 @@ interface ContainerContract {
     erFagytelsetypeLivetsSluttfase: boolean;
     kodeverkUtenlandsoppholdÅrsak: KodeverkMedNavn[];
     handleOverstyringAksjonspunkt: (data: any) => Promise<any>;
-    featureToggles: { [key: string]: boolean }
+    versjon: string;
+    featureToggles: { [key: string]: boolean };
 }
 
 export default ContainerContract;

@@ -1,9 +1,20 @@
+@import '@navikt/ds-tokens';
+
+.overstyrUttakForm {
+  margin-top: var(--a-spacing-4);
+}
+
 .leggTilOverstyringKnapp {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+    margin-top: var(--a-spacing-5);
+    margin-bottom: var(--a-spacing-5);
 }
 
 .overstyrUttakFormFooter {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+    margin-top: var(--a-spacing-5);
+    margin-bottom: var(--a-spacing-5);
+}
+
+.overstyringUttakTabell {
+  width: auto;
+  margin-top: var(--a-spacing-4);
 }

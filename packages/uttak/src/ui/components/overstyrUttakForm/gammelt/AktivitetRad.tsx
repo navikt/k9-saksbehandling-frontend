@@ -19,7 +19,6 @@ interface AktivitetRadProps {
 
 const AktivitetRad: React.FC<AktivitetRadProps> = ({ aktivitet, overstyrId, setOverstyrId }) => {
     const { id, navn, fraDato, tilDato, uttaksgrad, begrunnelse } = aktivitet;
-    console.log("overstyrId", overstyrId)
     return (
         <Table.ExpandableRow key={`aktivitet-rad-${id}`} content={<>{begrunnelse}</>}>
             <Table.DataCell>{navn}</Table.DataCell>

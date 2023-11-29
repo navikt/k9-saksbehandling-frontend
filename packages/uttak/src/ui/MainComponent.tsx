@@ -11,31 +11,30 @@ import Overstyr from './components/overstyrUttakForm/Overstyr';
 
 import { Heading } from '@navikt/ds-react';
 import OverstyringIkon from './components/overstyrUttakForm/components/OverstyringIkon';
+import { KeyVerticalIcon } from '@navikt/aksel-icons';
+import { OverstyrUttakContextProvider } from './context/OverstyrUttakContext';
 
 interface MainComponentProps {
     containerData: ContainerContract;
 }
 
 const MainComponent = ({ containerData }: MainComponentProps): JSX.Element => {
-    const { uttaksperioder, aksjonspunktkoder, featureToggles } = containerData;
+    const { uttaksperioder, aksjonspunktkoder, featureToggles, endpoints } = containerData;
     const aksjonspunktkodeVentAnnenPSBSak = '9290';
     const harVentAnnenPSBSakAksjonspunkt = aksjonspunktkoder?.some(
         (aksjonspunktkode) => aksjonspunktkode === aksjonspunktkodeVentAnnenPSBSak
     );
-
-    const [overstyringAktiv, setOverstyringAktiv] = React.useState<boolean>(false);
-
+    const [overstyringAktiv, setOverstyringAktiv] = React.useState<boolean>(aksjonspunktkoder.includes('6017'));
     const toggleOverstyring = () => setOverstyringAktiv(!overstyringAktiv);
 
     // Data som må utledes
     const erOverstyrer = true;
 
-    console.log('toggles', featureToggles);
     return (
         <ContainerContext.Provider value={containerData}>
             <Heading size="medium">
                 Uttak
-                {featureToggles.OVERSTYRING_UTTAK && (
+                {featureToggles?.OVERSTYRING_UTTAK && (
                     <OverstyringIkon
                         erOverstyrer={erOverstyrer}
                         aktiv={overstyringAktiv}
@@ -45,7 +44,11 @@ const MainComponent = ({ containerData }: MainComponentProps): JSX.Element => {
             </Heading>
 
             <Infostripe harVentAnnenPSBSakAksjonspunkt={harVentAnnenPSBSakAksjonspunkt} />
-            {erOverstyrer && overstyringAktiv && <Overstyr />}
+
+            <OverstyrUttakContextProvider>
+                {erOverstyrer && overstyringAktiv && <Overstyr />}
+            </OverstyrUttakContextProvider>
+
             <UtsattePerioderStripe />
             {!harVentAnnenPSBSakAksjonspunkt && (
                 <UttaksperiodeListe uttaksperioder={lagUttaksperiodeliste(uttaksperioder)} />

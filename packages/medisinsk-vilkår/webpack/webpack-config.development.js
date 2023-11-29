@@ -28,7 +28,7 @@ const webpackConfig = merge(commonWebpackConfig, {
     ],
 });
 
-const port = 8081;
+const port = 7979;
 const devServerOptions = {
     hot: true,
     headers: {

@@ -1,6 +1,6 @@
-import Årsaker from './Årsaker';
+import Årsaker from "./Årsaker";
 
-const BarnetsDødsfallÅrsakerMedTekst = [
+export const BarnetsDødsfallÅrsakerMedTekst = [
     {
         årsak: Årsaker.OPPFYLT_PGA_BARNETS_DØDSFALL,
         tekst: '100 % pleiepenger innvilget i 30 dager (6 uker) som følge av barnets dødsfall. Perioden graderes bare mot eventuelt arbeid.',

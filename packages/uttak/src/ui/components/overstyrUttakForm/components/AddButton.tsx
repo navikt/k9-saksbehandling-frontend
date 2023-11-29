@@ -12,7 +12,7 @@ interface AddButtonProps {
 
 const AddButton = ({ className, label, onClick, id, disabled = false }: AddButtonProps): JSX.Element => (
     <button disabled={disabled} className={`${styles.addButton} ${className || ''}`} type="button" onClick={onClick} id={id || ''}>
-        <PlusIcon /> asdf
+        <PlusIcon />
         <span className={styles.addButton__text}>{label}</span>
     </button>
 );

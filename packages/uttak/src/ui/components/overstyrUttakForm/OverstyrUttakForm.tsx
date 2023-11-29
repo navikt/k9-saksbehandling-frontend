@@ -1,42 +1,31 @@
-import React from 'react';
-import { FormProvider, useForm, useFieldArray } from 'react-hook-form';
+import React, { useState } from 'react';
 
-import { Form } from '@navikt/ft-plattform-komponenter';
-import { Button, Table } from '@navikt/ds-react';
+import { Button, Heading, Table } from '@navikt/ds-react';
 import { PlusIcon } from '@navikt/ft-plattform-komponenter';
 
-import AktivitetRadRediger from './AktivitetRadRediger';
+import ContainerContext from '../../context/ContainerContext';
+import OverstyringUttakForm from './OverstyringUttakForm';
+import AktivitetRad from './AktivitetRad';
 
 import styles from './overstyrUttakForm.css';
-import ContainerContext from '../../context/ContainerContext';
-
-export type OverstyrUttakAktivitet = {
-  id: string;
-  navn: string;
-  fraDato: string;
-  tilDato: string;
-  uttaksgrad: number;
-  begrunnelse: string;
-};
-
-interface OverstyrUttakFormProps {
-    aktiviteter: OverstyrUttakAktivitet[];
-}
+import { useOverstyrUttak } from '../../context/OverstyrUttakContext';
+import NavFrontendSpinner from 'nav-frontend-spinner';
+import { UttakOverstyring } from '../../../types/UttakOverstyring';
+import { formaterOverstyringTilFormData } from '../../../util/overstyringUtils';
 
 const tableHeaders = (
     <Table.Header>
         <Table.Row>
-            <Table.HeaderCell>Aktivitet</Table.HeaderCell>
+            <Table.HeaderCell></Table.HeaderCell>
             <Table.HeaderCell>Fra og med</Table.HeaderCell>
             <Table.HeaderCell>Til og med</Table.HeaderCell>
-            <Table.HeaderCell>Uttaksgrad</Table.HeaderCell>
+            <Table.HeaderCell>Ny uttaksgrad</Table.HeaderCell>
             <Table.HeaderCell>Valg for overstyring</Table.HeaderCell>
-            <Table.HeaderCell></Table.HeaderCell>
         </Table.Row>
     </Table.Header>
 );
 
-const nyAktivitet: OverstyrUttakAktivitet = {
+const nyOverstyring: UttakOverstyring = {
     id: '',
     navn: '',
     fraDato: '',
@@ -45,86 +34,115 @@ const nyAktivitet: OverstyrUttakAktivitet = {
     begrunnelse: '',
 };
 
-type FormData = {
-    aktiviteter: OverstyrUttakAktivitet[];
-};
-
-const OverstyrUttakForm: React.FC<OverstyrUttakFormProps> = ({ aktiviteter }) => {
-  const { handleOverstyringAksjonspunkt } = React.useContext(ContainerContext);
-  
-    const [aktivIndex, setAktivIndex] = React.useState<number>(-1);
-    const [nyOverstyringIndex, setNyOverstyringIndex] = React.useState<number>(-1);
-
-    const formMethods = useForm<FormData>({
-        reValidateMode: 'onSubmit',
-        defaultValues: {
-            aktiviteter: aktiviteter,
-        },
-        mode: 'onChange',
-    });
-
-    const {
-        control,
-        formState: { errors },
-        getValues,
-    } = formMethods;
-
-    const { fields, append, remove } = useFieldArray({
-        control,
-        name: 'aktiviteter',
-    });
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const formValues = getValues();
-        // console.log('values', formValues);
-        handleOverstyringAksjonspunkt(formValues);
+const OverstyrUttakForm: React.FC = () => {
+    const [loading, setLoading] = useState<boolean>(false);
+    const { handleOverstyringAksjonspunkt } = React.useContext(ContainerContext);
+    const [visOverstyringSkjema, setVisOverstyringSkjema] = React.useState<boolean>(false);
+    const { lasterOverstyringer, overstyrte } = useOverstyrUttak();
+    const [redigerOverstyring, setRedigerOverstyring] = React.useState<number | boolean>(false);
+    const handleSubmit = () => {
+        setLoading(true);
+        handleOverstyringAksjonspunkt({
+            gåVidere: true,
+            lagreEllerOppdater: [],
+            slett: [],
+            periode: {},
+        });
     };
 
-    const handleLeggTilOverstyring = () => {
-        append(nyAktivitet);
-        setAktivIndex(fields.length);
-        setNyOverstyringIndex(fields.length);
+    const handleSlett = (id: string): void => {
+        setLoading(true);
+        handleOverstyringAksjonspunkt({
+            gåVidere: false,
+            lagreEllerOppdater: [],
+            slett: [{ id: id }],
+            periode: {},
+        });
+    };
+
+    const handleAvbrytOverstyringForm = () => {
+        setVisOverstyringSkjema(false);
+        setRedigerOverstyring(false);
+    };
+
+    const handleRediger = (index: number) => {
+        setRedigerOverstyring(index);
+        setVisOverstyringSkjema(true);
     };
 
     return (
-        <FormProvider {...formMethods}>
-            <Form shouldShowSubmitButton={false} onSubmit={handleSubmit}>
+        <div className={styles.overstyrUttakForm}>
+            {lasterOverstyringer && <NavFrontendSpinner />}
+            {!lasterOverstyringer && (
+                <>
+                    {overstyrte?.length === 0 && !visOverstyringSkjema && (
+                        <>Det er ingen overstyrte aktiviteter i denne saken</>
+                    )}
+                    {overstyrte?.length > 0 && (
+                        <>
+                            <Heading size="xsmall">Overstyrte perioder</Heading>
+                            <Table size="small" className={styles.overstyringUttakTabell}>
+                                {tableHeaders}
+                                <Table.Body>
+                                    {overstyrte.map((overstyring, index) => (
+                                        <AktivitetRad
+                                            key={overstyring.id}
+                                            overstyring={overstyring}
+                                            index={index}
+                                            handleRediger={handleRediger}
+                                            visOverstyringSkjema={visOverstyringSkjema}
+                                            handleSlett={handleSlett}
+                                            loading={loading}
+                                            setLoading={setLoading}
+                                        />
+                                    ))}
+                                </Table.Body>
+                            </Table>
+                        </>
+                    )}
+                </>
+            )}
+
+            {!visOverstyringSkjema && (
                 <div className={styles.leggTilOverstyringKnapp}>
                     <Button
                         variant="secondary"
                         size="small"
-                        disabled={aktivIndex > -1}
-                        onClick={handleLeggTilOverstyring}
+                        disabled={loading}
+                        onClick={() => setVisOverstyringSkjema(true)}
                         icon={<PlusIcon />}
+                        loading={loading}
                     >
-                        Legg til overstyring av uttaksgrad
+                        Legg til ny overstyring
                     </Button>
                 </div>
+            )}
 
-                <Table size="small">
-                    {tableHeaders}
-                    <Table.Body>
-                        {fields.map((field, index) => (
-                            <AktivitetRadRediger
-                                key={field.id}
-                                setAktivIndex={setAktivIndex}
-                                index={index}
-                                aktivIndex={aktivIndex}
-                                remove={remove}
-                                erNyOverstyring={nyOverstyringIndex === index}
-                                setNyOverstyringIndex={setNyOverstyringIndex}
-                            />
-                        ))}
-                    </Table.Body>
-                </Table>
-                <div className={styles.overstyrUttakFormFooter}>
-                    <Button variant="primary" size="small" type="submit" disabled={aktivIndex > -1}>
-                        Bekreft og fortsett
-                    </Button>
-                </div>
-            </Form>
-        </FormProvider>
+            {!visOverstyringSkjema && overstyrte?.length > 0 && (
+                <>
+                    <div className={styles.overstyrUttakFormFooter}>
+                        <Button variant="primary" size="small" type="submit" onClick={handleSubmit} loading={loading}>
+                            Bekreft og fortsett
+                        </Button>
+                    </div>
+                </>
+            )}
+            {visOverstyringSkjema && redigerOverstyring === false && (
+                <OverstyringUttakForm
+                    handleAvbrytOverstyringForm={handleAvbrytOverstyringForm}
+                    loading={loading}
+                    setLoading={setLoading}
+                />
+            )}
+            {visOverstyringSkjema && typeof redigerOverstyring === 'number' && (
+                <OverstyringUttakForm
+                    handleAvbrytOverstyringForm={handleAvbrytOverstyringForm}
+                    overstyring={formaterOverstyringTilFormData(overstyrte[redigerOverstyring])}
+                    loading={loading}
+                    setLoading={setLoading}
+                />
+            )}
+        </div>
     );
 };
 

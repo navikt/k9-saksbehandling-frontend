@@ -7,8 +7,8 @@ import styles from './begrunnelseBoks.css';
 
 interface BegrunnelseBoksProps {
     begrunnelse: string;
-    saksbehandler: string;
-    dato: string;
+    saksbehandler: string | undefined;
+    dato: string | undefined;
 }
 
 const BegrunnelseBoks: React.FC<BegrunnelseBoksProps> = ({ begrunnelse, saksbehandler, dato }) => {
@@ -18,13 +18,15 @@ const BegrunnelseBoks: React.FC<BegrunnelseBoksProps> = ({ begrunnelse, saksbeha
             <BodyShort size="small" className={styles.begrunnelseTekst}>
                 {begrunnelse}
             </BodyShort>
-
-            <div className={styles.begrunnelseFooter}>
-                <PersonPencilFillIcon title="Saksbehandlerikon" fontSize="1.5rem" />
-                <span>
-                    Vurdering av {saksbehandler}, {dato}
-                </span>
-            </div>
+            
+            {saksbehandler && dato && (
+                <div className={styles.begrunnelseFooter}>
+                    <PersonPencilFillIcon title="Saksbehandlerikon" fontSize="1.5rem" />
+                    <span>
+                        Vurdering av {saksbehandler}, {dato}
+                    </span>
+                </div>
+            )}
         </div>
     );
 };

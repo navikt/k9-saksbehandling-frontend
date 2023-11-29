@@ -2782,6 +2782,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@navikt/ds-tokens@npm:^4.6.1":
+  version: 4.6.1
+  resolution: "@navikt/ds-tokens@npm:4.6.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Fds-tokens%2F4.6.1%2Fd48f7c8bad197297dfb59b20685a6843f41f269e"
+  checksum: 2c1118b956c8dda426eeaf0371caf3a37641415c6a882200cc272d1be5f3ccfebc96b5a5250a290643c45e0d7e7911e0cfbf7025cdc3d981a19a004c6ba0873d
+  languageName: node
+  linkType: hard
+
 "@navikt/fnrvalidator@npm:1.3.3":
   version: 1.3.3
   resolution: "@navikt/fnrvalidator@npm:1.3.3::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40navikt%2Ffnrvalidator%2F1.3.3%2F8414963a30e59e3056c9befea7bb022498a2a742"
@@ -19931,6 +19938,7 @@ __metadata:
     "@navikt/aksel-icons": ^3.1.3
     "@navikt/ds-css": 2.8.15
     "@navikt/ds-react": 2.8.15
+    "@navikt/ds-tokens": ^4.6.1
     "@navikt/ft-plattform-komponenter": 2.0.19
     "@navikt/k9-fe-form-utils": ^1.0.6
     "@popperjs/core": 2.11.7
