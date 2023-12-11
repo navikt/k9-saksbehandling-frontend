@@ -2727,7 +2727,7 @@ __metadata:
     "@navikt/fnrvalidator": 1.x
     "@navikt/ft-plattform-komponenter": 2.3.14
     "@navikt/k9-fe-date-utils": ^1.0.9
-    "@navikt/k9-fe-form-utils": ^1.0.17
+    "@navikt/k9-fe-form-utils": ^1.0.18
     "@navikt/k9-fe-http-utils": ^1.0.8
     "@navikt/k9-fe-period-utils": ^1.0.12
     "@popperjs/core": 2.x
@@ -2820,7 +2820,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@navikt/k9-fe-form-utils@^1.0.17, @navikt/k9-fe-form-utils@workspace:packages/k9-frontend-modules/form-utils":
+"@navikt/k9-fe-form-utils@^1.0.18, @navikt/k9-fe-form-utils@workspace:packages/k9-frontend-modules/form-utils":
   version: 0.0.0-use.local
   resolution: "@navikt/k9-fe-form-utils@workspace:packages/k9-frontend-modules/form-utils"
   dependencies:
@@ -2994,7 +2994,7 @@ __metadata:
     "@navikt/ft-plattform-komponenter": 2.3.14
     "@navikt/k9-fe-array-utils": ^1.0.6
     "@navikt/k9-fe-date-utils": ^1.0.9
-    "@navikt/k9-fe-form-utils": ^1.0.17
+    "@navikt/k9-fe-form-utils": ^1.0.18
     "@navikt/k9-fe-http-utils": ^1.0.8
     "@navikt/k9-fe-period-utils": ^1.0.12
     "@popperjs/core": 2.x
@@ -3060,7 +3060,7 @@ __metadata:
     "@navikt/ft-plattform-komponenter": 2.3.14
     "@navikt/k9-fe-array-utils": ^1.0.6
     "@navikt/k9-fe-date-utils": ^1.0.9
-    "@navikt/k9-fe-form-utils": ^1.0.17
+    "@navikt/k9-fe-form-utils": ^1.0.18
     "@navikt/k9-fe-http-utils": ^1.0.8
     "@navikt/k9-fe-period-utils": ^1.0.12
     "@popperjs/core": 2.x
@@ -3123,7 +3123,7 @@ __metadata:
     "@navikt/ft-plattform-komponenter": 2.3.14
     "@navikt/k9-fe-array-utils": ^1.0.6
     "@navikt/k9-fe-date-utils": ^1.0.9
-    "@navikt/k9-fe-form-utils": ^1.0.17
+    "@navikt/k9-fe-form-utils": ^1.0.18
     "@navikt/k9-fe-http-utils": ^1.0.8
     "@navikt/k9-fe-period-utils": ^1.0.12
     "@popperjs/core": 2.x
