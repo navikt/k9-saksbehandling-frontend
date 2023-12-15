@@ -56,7 +56,7 @@ jobs:
                   wait-on: 'http://localhost:8484'
                   wait-on-timeout: 60
             - name: Laster opp screenshots dersom Cypress-testene feiler
-              uses: actions/upload-artifact@v3
+              uses: actions/upload-artifact@v4
               if: failure()
               with:
                   name: cypress-screenshots

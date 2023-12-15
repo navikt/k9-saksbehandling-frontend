@@ -74,7 +74,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Deploy til dev-gcp
-        uses: nais/deploy/actions/deploy@v1
+        uses: nais/deploy/actions/deploy@v2
         if: github.event.inputs.environment == 'Q1'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -85,7 +85,7 @@ jobs:
 
       - name: Deploy til prod-gcp
         if: (github.ref == 'refs/heads/main' && github.event.inputs.environment == 'Prod') || (github.event.client_payload.ref == 'main' && github.event.client_payload.environment == 'Prod')
-        uses: nais/deploy/actions/deploy@v1
+        uses: nais/deploy/actions/deploy@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY_K9SAKSBEHANDLING }}

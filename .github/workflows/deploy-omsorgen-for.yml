@@ -82,7 +82,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Deploy til dev-fss
-        uses: nais/deploy/actions/deploy@v1
+        uses: nais/deploy/actions/deploy@v2
         if: github.event.inputs.environment == 'Q1'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -92,7 +92,7 @@ jobs:
           VARS: ./packages/omsorgen-for/nais/dev-fss.json
       - name: Deploy til prod-fss
         if: (github.ref == 'refs/heads/main' && github.event.inputs.environment == 'Prod') || (github.event.client_payload.ref == 'main' && github.event.client_payload.environment == 'Prod')
-        uses: nais/deploy/actions/deploy@v1
+        uses: nais/deploy/actions/deploy@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}

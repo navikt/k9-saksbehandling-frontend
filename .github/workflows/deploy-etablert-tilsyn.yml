@@ -71,7 +71,7 @@ jobs:
           wait-on: "http://localhost:8484"
           wait-on-timeout: 60
       - name: Laster opp screenshots dersom Cypress-testene feiler
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-screenshots
@@ -109,7 +109,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Deploy til dev-fss
-        uses: nais/deploy/actions/deploy@v1
+        uses: nais/deploy/actions/deploy@v2
         if: github.event.inputs.environment == 'Q1'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -119,7 +119,7 @@ jobs:
           VARS: ./packages/etablert-tilsyn/nais/dev-fss.json
       - name: Deploy til prod-fss
         if: (github.ref == 'refs/heads/main' && github.event.inputs.environment == 'Prod') || (github.event.client_payload.ref == 'main' && github.event.client_payload.environment == 'Prod')
-        uses: nais/deploy/actions/deploy@v1
+        uses: nais/deploy/actions/deploy@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}

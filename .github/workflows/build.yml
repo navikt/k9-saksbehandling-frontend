@@ -38,7 +38,7 @@ jobs:
         run: yarn install --immutable
       - name: Kjøre bygg
         run: yarn lerna run build --scope ${{inputs.package-name}}
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: ${{inputs.upload-artifact}}
         with:
           name: build
