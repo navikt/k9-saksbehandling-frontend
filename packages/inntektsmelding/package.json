@@ -24,9 +24,9 @@
     "author": "NAV IT",
     "license": "MIT",
     "devDependencies": {
-        "@navikt/ds-css": "5.11.2",
+        "@navikt/ds-css": "5.12.4",
         "@navikt/ds-icons": "3.4.3",
-        "@navikt/ds-react": "5.11.2",
+        "@navikt/ds-react": "5.12.4",
         "@navikt/fnrvalidator": "1.x",
         "@navikt/ft-form-hooks": "4.2.17",
         "@navikt/ft-plattform-komponenter": "2.3.14",
@@ -86,9 +86,9 @@
         "webpack-node-externals": "^3.0.0"
     },
     "peerDependencies": {
-        "@navikt/ds-css": "5.11.2",
+        "@navikt/ds-css": "5.12.4",
         "@navikt/ds-icons": "3.4.3",
-        "@navikt/ds-react": "5.11.2",
+        "@navikt/ds-react": "5.12.4",
         "@navikt/fnrvalidator": "1.x",
         "@navikt/ft-form-hooks": "4.2.17",
         "@navikt/ft-plattform-komponenter": "2.3.14",
