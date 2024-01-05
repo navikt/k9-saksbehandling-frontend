@@ -49,9 +49,9 @@ const DokumentoversiktMessages = ({
                     <Box marginBottom={Margin.large}>
                         <Alert size="small" variant="warning">
                             {erPleiepengerSluttfaseFagsak ? (
-                                <span>Dokumentasjon signert av lege eller helseinstitusjon mangler.</span>
+                                <>Dokumentasjon signert av lege eller helseinstitusjon mangler. </>
                             ) : (
-                                <span>Dokumentasjon signert av sykehuslege/spesialisthelsetjenesten mangler.</span>
+                                <>Dokumentasjon signert av sykehuslege/spesialisthelsetjenesten mangler. </>
                             )}
                             Sett saken på vent mens du innhenter mer dokumentasjon.
                         </Alert>

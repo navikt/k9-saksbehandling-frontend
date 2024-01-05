@@ -7,6 +7,7 @@ const commonWebpackConfig = require('./webpack.common.js');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const webpackConfig = merge(commonWebpackConfig, {
+    entry: path.resolve(__dirname, '../', 'src') + '/dev/app.ts',
     mode: 'development',
     devtool: 'eval-cheap-module-source-map',
     plugins: [

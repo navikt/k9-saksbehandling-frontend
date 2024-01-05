@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef } from 'react';
-import throttle from 'lodash.throttle';
+import throttle from 'lodash/throttle';
 
 // Brukes for midlertidig mellomlagring av input fra saksbehandlare som ett global objekt i k9-sak-web.
 export const BrukFormSesjonslagring = (
@@ -24,7 +24,7 @@ export const BrukFormSesjonslagring = (
             if (!data) return;
             setValue('åpenForRedigering', data.åpenForRedigering);
             if ((lesemodus && getValues().åpenForRedigering) || !lesemodus) {
-                Object.keys(data).forEach(key => {
+                Object.keys(data).forEach((key) => {
                     setValue(key, data[key]);
                 });
             }
@@ -42,7 +42,7 @@ export const BrukFormSesjonslagring = (
             stateSlettet.current = true;
             return formState.deleteState(formStateKey);
         },
-        fjerneDataTilknyttetBehandling: behandlingsID => {
+        fjerneDataTilknyttetBehandling: (behandlingsID) => {
             formState.deleteState(formStateKey);
             formState.deleteState(`${behandlingsID}-utvidetrett-ks`);
             formState.deleteState(`${behandlingsID}-utvidetrett-ma`);

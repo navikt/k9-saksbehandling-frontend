@@ -1,7 +1,7 @@
 import React from 'react';
 import { Table } from '@navikt/ds-react';
 import dayjs from 'dayjs';
-import { uniq } from 'lodash';
+import uniq from 'lodash/uniq';
 import { isDayAfter } from '@navikt/k9-fe-date-utils';
 import { Period } from '@navikt/k9-fe-period-utils';
 import EtablertTilsynType from '../../../types/EtablertTilsynType';

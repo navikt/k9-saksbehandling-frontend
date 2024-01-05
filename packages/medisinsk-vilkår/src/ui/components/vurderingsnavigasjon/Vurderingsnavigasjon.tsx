@@ -1,4 +1,4 @@
-import { Heading, Label, Tag } from '@navikt/ds-react';
+import { BodyShort, Heading, Tag } from '@navikt/ds-react';
 import {
     ContentWithTooltip,
     EditedBySaksbehandlerIcon,
@@ -147,16 +147,22 @@ const Vurderingsnavigasjon = ({
             {allElements.length > 0 && (
                 <div className={styles.vurderingsvelgerContainer}>
                     <div className={styles.vurderingsvelgerContainer__columnHeadings}>
-                        <Label size="small" className={styles['vurderingsvelgerContainer__columnHeading--first']}>
-                            Status
-                        </Label>
-                        <Label size="small" className={styles['vurderingsvelgerContainer__columnHeading--second']}>
-                            Periode
-                        </Label>
+                        <div className={styles['vurderingsvelgerContainer__columnHeading--first']}>
+                            <BodyShort weight="semibold" size="small">
+                                Status
+                            </BodyShort>
+                        </div>
+                        <div className={styles['vurderingsvelgerContainer__columnHeading--second']}>
+                            <BodyShort weight="semibold" size="small">
+                                Periode
+                            </BodyShort>
+                        </div>
                         {visParterLabel && (
-                            <Label size="small" className={styles['vurderingsvelgerContainer__columnHeading--third']}>
-                                Part
-                            </Label>
+                            <div className={styles['vurderingsvelgerContainer__columnHeading--third']}>
+                                <BodyShort weight="semibold" size="small">
+                                    Part
+                                </BodyShort>
+                            </div>
                         )}
                     </div>
                     <InteractiveList

@@ -16,7 +16,7 @@
 .chevronDropdown__dropdown__checkbox div {
     margin: 10px 0;
 }
-.chevronDropdown__toggleButton {
+button.chevronDropdown__toggleButton {
     border: none;
     background: none;
     padding: unset;

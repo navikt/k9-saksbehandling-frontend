@@ -8,6 +8,5 @@ export const makeArrayWithoutDuplicates = (array: any[]) => {
     return arrayWithoutDuplicates;
 };
 
-export const getArrayDifference = (baseArray: any[], otherArray: any[]) => {
-    return baseArray.filter((value) => otherArray.includes(value) === false);
-};
+export const getArrayDifference = (baseArray: any[], otherArray: any[]) =>
+    baseArray.filter((value) => otherArray.includes(value) === false);

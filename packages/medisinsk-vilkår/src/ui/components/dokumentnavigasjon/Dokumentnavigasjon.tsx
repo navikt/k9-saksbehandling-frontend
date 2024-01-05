@@ -1,4 +1,4 @@
-import { Accordion, BodyShort, Label } from '@navikt/ds-react';
+import { Accordion, BodyShort } from '@navikt/ds-react';
 import { InteractiveList } from '@navikt/ft-plattform-komponenter';
 import React from 'react';
 import { Dokument, Dokumenttype } from '../../../types/Dokument';
@@ -55,13 +55,17 @@ const Dokumentnavigasjon = ({
                     <Accordion.Content>
                         <div className={styles.dokumentnavigasjon__container}>
                             <div className={styles.dokumentnavigasjon__columnHeadings}>
-                                <Label size="small" className={styles['dokumentnavigasjon__columnHeading--first']}>
-                                    Status
-                                </Label>
+                                <div className={styles['dokumentnavigasjon__columnHeading--first']}>
+                                    <BodyShort weight="semibold" size="small">
+                                        Status
+                                    </BodyShort>
+                                </div>
                                 {!displayFilterOption && (
-                                    <Label size="small" className={styles['dokumentnavigasjon__columnHeading--second']}>
-                                        Type
-                                    </Label>
+                                    <div className={styles['dokumentnavigasjon__columnHeading--second']}>
+                                        <BodyShort weight="semibold" size="small">
+                                            Type
+                                        </BodyShort>
+                                    </div>
                                 )}
                                 {displayFilterOption && (
                                     <Dokumentfilter
@@ -71,12 +75,16 @@ const Dokumentnavigasjon = ({
                                         onFilterChange={updateDokumenttypeFilter}
                                     />
                                 )}
-                                <Label size="small" className={styles['dokumentnavigasjon__columnHeading--third']}>
-                                    Datert
-                                </Label>
-                                <Label size="small" className={styles['dokumentnavigasjon__columnHeading--fourth']}>
-                                    Part
-                                </Label>
+                                <div className={styles['dokumentnavigasjon__columnHeading--third']}>
+                                    <BodyShort weight="semibold" size="small">
+                                        Datert
+                                    </BodyShort>
+                                </div>
+                                <div className={styles['dokumentnavigasjon__columnHeading--fourth']}>
+                                    <BodyShort weight="semibold" size="small">
+                                        Part
+                                    </BodyShort>
+                                </div>
                             </div>
                             {dokumentElementer.length === 0 && (
                                 <div style={{ padding: '0.5rem 1rem 1rem 1rem' }}>

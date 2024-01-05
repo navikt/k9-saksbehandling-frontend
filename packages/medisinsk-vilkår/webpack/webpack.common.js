@@ -10,7 +10,6 @@ const rootNodeModules = path.resolve(__dirname, '../../../node_modules');
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
 module.exports = {
-    entry: path.resolve(__dirname, '../', 'src') + '/app.ts',
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.css'],
     },
@@ -43,7 +42,7 @@ module.exports = {
                         options: {
                             importLoaders: 1,
                             modules: {
-                                localIdentName: '[name]_[local]_[contenthash:base64:5]',
+                                localIdentName: 'sykdom_[name]_[local]_[hash:base64:5]',
                             },
                         },
                     },

@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
-import { HttpErrorHandler } from './HttpErrorHandler';
 import { handleErrorExternally, httpErrorShouldBeHandledExternally } from './responseHelpers';
+import { HttpErrorHandler } from './HttpErrorHandler';
 
 export async function get<T>(
     url: string,

@@ -19,7 +19,7 @@
 
 .etablertTilsyn__timer__container {
     display: flex;
-    align-items: end;
+    align-items: flex-end;
 }
 
 .etablertTilsyn__ikon__container {
