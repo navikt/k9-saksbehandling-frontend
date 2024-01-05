@@ -2895,7 +2895,7 @@ __metadata:
     axios: 1.x
     classnames: 2.x
     cors: 2.8.5
-    date-fns: 2.x
+    date-fns: 3.x
     dayjs: 1.x
     express: 4.18.2
     lodash: 4.x
@@ -2947,7 +2947,7 @@ __metadata:
     "@popperjs/core": 2.x
     axios: 1.x
     classnames: 2.x
-    date-fns: 2.x
+    date-fns: 3.x
     dayjs: 1.x
     lodash: 4.x
     nav-frontend-alertstriper: 4.x
@@ -7988,7 +7988,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"date-fns@npm:2.x, date-fns@npm:^2.30.0":
+"date-fns@npm:3.x":
+  version: 3.1.0
+  resolution: "date-fns@npm:3.1.0"
+  checksum: 8de5474a0e5a4b9901547f0eb572b0ae8b3027d6d8117053d9b258000a4350b673f03c847211f6dfee316c39a1df30e1ea0f85efd475ef90764c0c3d18aabed3
+  languageName: node
+  linkType: hard
+
+"date-fns@npm:^2.30.0":
   version: 2.30.0
   resolution: "date-fns@npm:2.30.0"
   dependencies:
