@@ -55,7 +55,7 @@
         "react-dom": "18.x",
         "react-hook-form": "7.48.2",
         "string.prototype.replaceall": "1.0.8",
-        "stylelint": "15.11.0",
+        "stylelint": "16.1.0",
         "typescript": "5.x",
         "webpack-node-externals": "^3.0.0"
     },
