@@ -51,7 +51,7 @@
         "nav-frontend-typografi": "4.x",
         "nav-frontend-typografi-style": "2.x",
         "react": "18.x",
-        "react-day-picker": "7.x",
+        "react-day-picker": "8.x",
         "react-dom": "18.x",
         "react-hook-form": "7.48.2",
         "string.prototype.replaceall": "1.0.8",
@@ -84,7 +84,7 @@
         "nav-frontend-typografi": "4.x",
         "nav-frontend-typografi-style": "2.x",
         "react": "18.x",
-        "react-day-picker": "7.x",
+        "react-day-picker": "8.x",
         "react-dom": "18.x",
         "react-hook-form": "7.47.0"
     },
