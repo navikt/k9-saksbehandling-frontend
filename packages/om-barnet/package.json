@@ -54,7 +54,7 @@
         "react": "18.x",
         "react-collapse": "5.x",
         "react-dom": "18.x",
-        "react-hook-form": "7.48.2",
+        "react-hook-form": "7.49.3",
         "react-popper": "2.x",
         "tailwindcss": "3.x",
         "webpack-node-externals": "^3.0.0"
@@ -78,7 +78,7 @@
         "react": "18.x",
         "react-collapse": "5.x",
         "react-dom": "18.x",
-        "react-hook-form": "7.48.2",
+        "react-hook-form": "7.49.3",
         "react-popper": "2.x",
         "tailwindcss": "3.x"
     },
