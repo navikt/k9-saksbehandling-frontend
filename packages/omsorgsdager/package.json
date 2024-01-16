@@ -20,8 +20,8 @@
     "author": "NAV IT",
     "license": "MIT",
     "devDependencies": {
-        "@navikt/ds-css": "5.11.2",
-        "@navikt/ds-react": "5.11.2",
+        "@navikt/ds-css": "5.15.0",
+        "@navikt/ds-react": "5.15.0",
         "@navikt/fnrvalidator": "1.x",
         "@testing-library/react": "14.0.0",
         "@types/react": "18.2.39",
@@ -60,8 +60,8 @@
         "webpack-node-externals": "^3.0.0"
     },
     "peerDependencies": {
-        "@navikt/ds-css": "5.11.2",
-        "@navikt/ds-react": "5.11.2",
+        "@navikt/ds-css": "5.15.0",
+        "@navikt/ds-react": "5.15.0",
         "@navikt/fnrvalidator": "1.x",
         "classnames": "2.x",
         "dayjs": "1.x",
