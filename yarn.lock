@@ -4959,7 +4959,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^18.0.0, @types/node@npm:^18.17.5":
+"@types/node@npm:^18.0.0":
   version: 18.18.13
   resolution: "@types/node@npm:18.18.13"
   dependencies:
@@ -7901,13 +7901,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cypress@npm:13.4.0":
-  version: 13.4.0
-  resolution: "cypress@npm:13.4.0"
+"cypress@npm:13.6.3":
+  version: 13.6.3
+  resolution: "cypress@npm:13.6.3"
   dependencies:
     "@cypress/request": ^3.0.0
     "@cypress/xvfb": ^1.2.4
-    "@types/node": ^18.17.5
     "@types/sinonjs__fake-timers": 8.1.1
     "@types/sizzle": ^2.3.2
     arch: ^2.2.0
@@ -7950,7 +7949,7 @@ __metadata:
     yauzl: ^2.10.0
   bin:
     cypress: bin/cypress
-  checksum: d64495105a61ed1fb41a5189d5015cfa80314c84d1004595e9c4019eedd394f83509409b6f8489a18e92ea96c6b66ffbb918f41ab97c3eaed34abe107c0846aa
+  checksum: 1c8a23f56cf26b3273379046240f3c0739fb6ca5f297c84ffa13c3911475ff77d107a3bca3790b854dc2d2b24a892fd522c5724cbf0d9eded9f3de45f5b9846b
   languageName: node
   linkType: hard
 
@@ -12605,7 +12604,7 @@ __metadata:
     cross-env: 7.0.3
     css-loader: 6.8.1
     css-minimizer-webpack-plugin: 5.0.1
-    cypress: 13.4.0
+    cypress: 13.6.3
     eslint: 8.52.0
     eslint-config-airbnb: 19.0.4
     eslint-config-prettier: 9.0.0
