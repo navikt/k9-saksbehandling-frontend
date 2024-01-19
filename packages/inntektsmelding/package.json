@@ -35,7 +35,7 @@
         "@navikt/k9-fe-http-utils": "^1.0.8",
         "@navikt/k9-fe-period-utils": "^1.0.12",
         "@popperjs/core": "2.x",
-        "@storybook/react": "7.5.2",
+        "@storybook/react": "7.6.10",
         "@storybook/testing-library": "0.2.2",
         "@storybook/testing-react": "2.0.1",
         "@testing-library/react": "14.0.0",
