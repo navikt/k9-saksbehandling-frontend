@@ -1,3 +1,4 @@
+# Flyttet til https://github.com/navikt/k9-sak-web
 
 # Mikrofrontender for pleiepenger, omsorgspenger, opplæringspenger og pleiepenger i livets sluttfase
 
